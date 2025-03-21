@@ -1,13 +1,28 @@
 import React, { useState } from "react";
-import LoadVideo from "./components/LoadVideo";
+import LoadVideo from "./components/FirstLoadPageVideo";
 import logo from "./assets/logo.webp";
+import videoMp4 from "./assets/logo-video.mp4";
+import videoWebm from "./assets/logo-video.webm";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
     <>
-      <LoadVideo onVideoLoaded={setVideoLoaded} />
+      <LoadVideo
+        videoPath={videoMp4}
+        videoType={"mp4"}
+        videoWebmPath={videoWebm}
+        animationTime={3}
+        hideVideoTime={0.8}
+        hideVideoScaleX={0.45}
+        hideVideoScaleY={0.45}
+        hideVideoTranslateX={"-40%"}
+        hideVideoTranslateY={"-24%"}
+        transformOriginX="0%"
+        transformOriginY="0%"
+        onVideoLoaded={setVideoLoaded}
+      />
       {videoLoaded && (
         <>
           <div className="nav">
