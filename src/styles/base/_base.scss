@@ -1,0 +1,28 @@
+///////////////////////////////////////////////////////////////////////////
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: $font-size-primary;
+  font-family: $font-primary;
+  // color: $font-color-primary;
+  // font-weight: $font-weight-primary;
+  box-sizing: border-box;
+  background-color: $background-color;
+  color: $font-color-text;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000;
+  margin: 0;
+}
