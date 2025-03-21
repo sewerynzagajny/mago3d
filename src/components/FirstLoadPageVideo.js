@@ -43,15 +43,15 @@ export default function FirstLoadPageVideo({
   hideVideoScaleY = 0,
   hideVideoTranslateX = "0%",
   hideVideoTranslateY = "0%",
-  transformOriginX = "50%",
-  transformOriginY = "50%",
+  hideVideotransformOriginX = "50%",
+  hideVideotransformOriginY = "50%",
   onVideoLoaded,
 }) {
   useEffect(() => {
     const hideVideo = {
       opacity: 0,
       transform: `scale(${hideVideoScaleX}, ${hideVideoScaleY}) translate(${hideVideoTranslateX}, ${hideVideoTranslateY})`,
-      transformOrigin: `${transformOriginX} ${transformOriginY}`,
+      transformOrigin: `${hideVideotransformOriginX} ${hideVideotransformOriginY}`,
       transition: `all ${hideVideoTime}s`,
     };
     const videoElement = document.querySelector(
@@ -76,8 +76,8 @@ export default function FirstLoadPageVideo({
     hideVideoTranslateY,
     hideVideoScaleX,
     hideVideoScaleY,
-    transformOriginX,
-    transformOriginY,
+    hideVideotransformOriginX,
+    hideVideotransformOriginY,
   ]);
 
   return (

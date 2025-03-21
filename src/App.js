@@ -19,8 +19,8 @@ export default function App() {
         hideVideoScaleY={0.45}
         hideVideoTranslateX={"-40%"}
         hideVideoTranslateY={"-24%"}
-        transformOriginX="0%"
-        transformOriginY="0%"
+        hideVideotransformOriginX="0%"
+        hideVideotransformOriginY="0%"
         onVideoLoaded={setVideoLoaded}
       />
       {videoLoaded && (
