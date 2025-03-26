@@ -1,0 +1,46 @@
+.about-us {
+  padding: 3.2rem 0 3.2rem 0;
+  background: linear-gradient(to bottom, $black, $background-color);
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    max-width: 120rem;
+    gap: 1rem;
+
+    &__picture {
+      background-image: url("../../assets/abaut-us_picture.jpg");
+      background-size: cover; /* Ustawia obrazek tak, aby pokrywał cały element */
+      background-position: center; /* Ustawia obrazek na środku */
+      background-repeat: no-repeat;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      gap: 2rem;
+
+      &__item {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      &__item--large {
+        width: 50%;
+        height: auto;
+        grid-column: 3 / span 4;
+        grid-row: 1 / span 4;
+      }
+
+      &__item--small {
+        width: 50%;
+        height: auto;
+        grid-column: 4 / span 3;
+        grid-row: 3 / span 3;
+      }
+    }
+
+    &__content {
+      padding-left: 16rem;
+    }
+  }
+}
