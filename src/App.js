@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FirstLoadPageVideo from "./components/FirstLoadPageVideo";
-import logo from "./assets/logo.png";
+// import logo from "./assets/logo.png";
 import videoMp4 from "./assets/logo-video.mp4";
 import videoWebm from "./assets/logo-video.webm";
 import Navigation from "./components/Navigation";
