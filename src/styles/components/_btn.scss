@@ -1,0 +1,59 @@
+.btn {
+  background: linear-gradient(
+    45deg,
+    $font-color-primary,
+    darken($font-color-primary, 10%)
+  );
+  color: $black;
+  padding: 1.5rem 3rem;
+
+  border: none;
+  border-radius: 5rem;
+  font-size: 1.8rem;
+  font-weight: $font-strong;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  box-shadow: 0 1rem 2rem $btn-color-neon;
+
+  &:hover {
+    transform: translateY(-0.3rem);
+
+    background: linear-gradient(
+      45deg,
+      lighten($font-color-primary, 10%),
+      $font-color-primary
+    );
+    box-shadow: 0 1.5rem 3rem $btn-color-neon-hover-or-active;
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1rem 3rem $btn-color-neon-hover-or-active;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(
+      45deg,
+      $font-color-primary,
+      darken($font-color-primary, 10%)
+    );
+    transition: all 0.4s;
+  }
+}

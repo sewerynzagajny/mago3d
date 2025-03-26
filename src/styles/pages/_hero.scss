@@ -8,8 +8,8 @@
     line-height: 1.5;
     font-style: italic;
     text-shadow: 0.3rem 0.3rem 0.8rem rgba($black, 0.8);
-    border-bottom: 0.3rem solid rgba($font-color-primary, 0.7); // Delikatne podkreślenie
-    display: inline-block; // Zapobiega zajmowaniu całej szerokości
+    border-bottom: 0.3rem solid rgba($font-color-primary, 0.7);
+    display: inline-block;
   }
 
   &__description {
@@ -17,66 +17,5 @@
     max-width: 80rem;
     margin-bottom: 4.8rem;
     text-shadow: 0.3rem 0.3rem 0.8rem rgba($black, 0.8);
-  }
-
-  &__btn {
-    // background: $font-color-primary;
-    background: linear-gradient(
-      45deg,
-      $font-color-primary,
-      darken($font-color-primary, 10%)
-    );
-    color: $black;
-    padding: 1.5rem 3rem;
-    // padding: 2.4rem 5rem;
-    border: none;
-    border-radius: 5rem;
-    font-size: 1.8rem;
-    font-weight: $font-strong;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.4s;
-    position: relative;
-    box-shadow: 0 1rem 2rem rgba(0, 255, 0, 0.3); // Neonowy efekt
-
-    &:hover {
-      transform: translateY(-0.3rem);
-      // background: lighten($font-color-primary, 10%);
-      background: linear-gradient(
-        45deg,
-        lighten($font-color-primary, 10%),
-        $font-color-primary
-      );
-      box-shadow: 0 1.5rem 3rem rgba(0, 255, 0, 0.4);
-
-      &::after {
-        transform: scaleX(1.4) scaleY(1.6);
-        opacity: 0;
-      }
-    }
-    &:active,
-    &:focus {
-      outline: none;
-      transform: translateY(-0.1rem);
-    }
-
-    &::after {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      border-radius: 5rem;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      // background-color: $font-color-primary;
-      background: linear-gradient(
-        45deg,
-        $font-color-primary,
-        darken($font-color-primary, 10%)
-      );
-      transition: all 0.4s;
-    }
   }
 }

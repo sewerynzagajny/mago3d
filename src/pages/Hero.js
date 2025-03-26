@@ -1,4 +1,5 @@
 import React from "react";
+import Btn from "../components/Btn";
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
           Tworzymy unikalne stojaki i akcesoria, które są w pełni funkcjonalne i
           pasują do Twojego stylu. <br /> Sprawdź naszą ofertę!
         </p>
-        <button className="hero__btn">Zobacz Produkty!</button>
+        <Btn>Zobacz Produkty!</Btn>
       </div>
     </section>
   );
