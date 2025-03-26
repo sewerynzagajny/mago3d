@@ -1,0 +1,46 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem 0.5rem 6rem;
+  background-color: transparent;
+
+  &__logo img {
+    height: 10rem;
+  }
+
+  &__links {
+    gap: 3rem;
+    display: flex;
+    list-style: none;
+    font-size: 1.8rem;
+
+    a {
+      color: $font-color-primary;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-weight: $font-strong;
+      display: inline-block;
+      border-radius: 5rem;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $font-color-primary 50%
+      );
+      background-size: 250%;
+      transition: all 0.4s;
+
+      &:hover {
+        background-position: 100%;
+        color: $black;
+        transform: translateX(1rem);
+      }
+
+      &:active {
+        transform: translate(1rem, 0.1rem);
+      }
+    }
+  }
+}
