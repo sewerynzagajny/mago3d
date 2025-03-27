@@ -1,0 +1,5 @@
+.grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // Dwie kolumny o równej szerokości
+  gap: 2rem; // Odstęp między kolumnami
+}

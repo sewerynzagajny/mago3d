@@ -32,7 +32,8 @@ export default function AboutUs() {
           </h2>
 
           <p>
-            Po sprzedaży pasieki (tak, wcześniej byłem pszczelarzem! 😊), którą
+            vvvvvvvvvvvvvvvvvvv lorenewfewf
+            {/* Po sprzedaży pasieki (tak, wcześniej byłem pszczelarzem! 😊), którą
             zdecydowałem się zamknąć głównie ze względu na niską opłacalność,
             czasochłonność oraz rychłe narodziny synka, zacząłem szukać nowego
             zajęcia. Chciałem czegoś, co pozwoli mi pracować z domu i
@@ -58,7 +59,7 @@ export default function AboutUs() {
             klientów dodało nam skrzydeł i stało się motywacją do dalszego
             rozwijania oferty. Choć prowadzenie własnej działalności bywa
             wyzwaniem, z optymizmem patrzymy w przyszłość i nieustannie
-            pracujemy nad nowymi pomysłami.
+            pracujemy nad nowymi pomysłami. */}
           </p>
         </div>
       </div>

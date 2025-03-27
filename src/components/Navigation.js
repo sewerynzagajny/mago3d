@@ -1,9 +1,9 @@
 import React from "react";
 import logo from "../assets/logo.png";
 
-export default function Navigation() {
+export default function Navigation(addClassName = "") {
   return (
-    <nav className="nav">
+    <nav className={`nav ${addClassName}`}>
       <div className="nav__logo">
         <img src={logo} alt="logo" />
       </div>

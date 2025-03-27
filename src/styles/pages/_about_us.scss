@@ -10,10 +10,10 @@
     gap: 1rem;
 
     &__picture {
-      background-image: url("../../assets/abaut-us_picture.jpg");
-      background-size: cover; /* Ustawia obrazek tak, aby pokrywał cały element */
-      background-position: center; /* Ustawia obrazek na środku */
-      background-repeat: no-repeat;
+      // background-image: url("../../assets/abaut-us_picture.jpg");
+      // background-size: cover; /* Ustawia obrazek tak, aby pokrywał cały element */
+      // background-position: center; /* Ustawia obrazek na środku */
+      // background-repeat: no-repeat;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: repeat(6, 1fr);

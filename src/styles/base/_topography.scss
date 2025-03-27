@@ -1,0 +1,37 @@
+body {
+  font-size: $font-size-primary;
+  font-family: $font-primary;
+  color: $font-color-text;
+  font-weight: $font-weight-primary;
+  background-color: $background-color;
+}
+
+.company-name {
+  font-weight: $font-stronger;
+  color: $font-color-primary;
+}
+
+.heading-primary {
+  font-size: 3.6rem;
+  font-weight: $font-strong;
+  color: $font-color-primary;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.heading-secondary {
+  font-size: 3rem;
+  font-weight: $font-strong;
+  color: $font-color-text;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+.heading-tertiary {
+  font-size: 2.4rem;
+  font-weight: $font-strong;
+  color: $font-color-primary;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
