@@ -4,11 +4,19 @@
 
   &__container {
     margin: 0 auto;
-    padding: 12.8rem 4.8rem;
+    padding: 8rem 4.8rem;
     max-width: 130rem;
     &__content {
-      grid-column: 1 / -1; // Rozciąga się od pierwszej do ostatniej kolumny
       text-align: justify;
     }
   }
+}
+
+.all-line {
+  grid-column: 1 / -1; // Rozciąga się od pierwszej do ostatniej kolumny
+}
+
+.grid-center {
+  justify-items: center; // Wyśrodkowanie elementów w poziomie
+  // align-items: center; // Wyśrodkowanie elementów w pionie
 }

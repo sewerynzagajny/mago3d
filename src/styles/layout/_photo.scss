@@ -1,0 +1,30 @@
+.photo-frame {
+  display: inline-block;
+  position: relative;
+  padding: 1rem; // Odstęp na białą ramkę
+
+  background-color: $font-color-text; // Kolor ramki
+  border-radius: 1rem; // Zaokrąglenie rogów ramki
+  box-shadow: 0 1rem 2rem rgba($black, 0.2); // Cień dla głębi
+  transition: transform 0.3s, box-shadow 0.3s;
+  // width: 50rem;
+
+  & figure {
+    overflow: hidden;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0.8rem;
+      transition: all 0.4s;
+      &:hover {
+        transform: scale(1.1);
+      } // Dopasowanie zaokrąglenia do ramki
+    }
+  }
+
+  &:hover {
+    // transform: translateY(-0.5rem); // Efekt unoszenia
+    box-shadow: 0 1.5rem 3rem rgba($black, 0.3); // Zwiększenie cienia przy najechaniu
+  }
+}
