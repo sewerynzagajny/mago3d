@@ -1,6 +1,22 @@
 .grid-2-col {
   display: grid;
   grid-template-columns: repeat(2, 1fr); // Dwie kolumny o równej szerokości
-  gap: 4.8rem; // Odstęp między kolumnami
-  // grid-auto-rows: max-content;
+  column-gap: 4.8rem;
+}
+
+.all-line {
+  grid-column: 1 / -1; // Rozciąga się od pierwszej do ostatniej kolumny
+}
+
+.first-column {
+  grid-column: 1 / 2; // Rozciąga się od pierwszej do drugiej kolumny
+}
+
+.second-column {
+  grid-column: 2 / -1;
+}
+
+.grid-center {
+  justify-items: center; // Wyśrodkowanie elementów w poziomie
+  // align-items: center; // Wyśrodkowanie elementów w pionie
 }

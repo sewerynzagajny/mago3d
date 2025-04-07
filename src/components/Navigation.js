@@ -1,27 +1,33 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Navigation(addClassName = "") {
   return (
     <nav className={`nav ${addClassName}`}>
       <div className="nav__logo">
-        <img src={logo} alt="logo" />
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
       <ul className="nav__links">
-        <li>
-          <a href="#home">Home</a>
+        <li key="home">
+          <Link to="/">Główna</Link>
         </li>
-        <li>
-          <a href="#asortyment">Asortyment</a>
+        <li key="about">
+          <Link to="/#o_nas">O nas</Link>
         </li>
-        <li>
-          <a href="#materialy">Materiały</a>
+        <li key="history">
+          <Link to="/historia">Historia</Link>
         </li>
-        <li>
-          <a href="#o_nas">O nas</a>
+        <li key="assortment">
+          <Link to="/#asortyment">Asortyment</Link>
         </li>
-        <li>
-          <a href="#kontakt">Kontakt</a>
+        <li key="materials">
+          <Link to="/#materialy">Materiały</Link>
+        </li>
+        <li key="contact">
+          <Link to="/#kontakt">Kontakt</Link>
         </li>
       </ul>
     </nav>

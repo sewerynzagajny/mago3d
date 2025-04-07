@@ -14,11 +14,12 @@ export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const firstLoadPageVideoTime = 3;
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, firstLoadPageVideoTime * 1000);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     window.scrollTo(0, 0);
+  //   }, firstLoadPageVideoTime * 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <Router>
@@ -40,7 +41,7 @@ export default function App() {
                 hideVideoTranslateY={"1vh"}
                 hideVideotransformOriginX={"0%"}
                 hideVideotransformOriginY={"0%"}
-                onVideoLoaded={setVideoLoaded}
+                onVideoLoaded={() => setVideoLoaded(true)}
               />
               {videoLoaded && (
                 <>

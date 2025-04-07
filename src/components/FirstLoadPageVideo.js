@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
-const firstLoadPageVideoStyle = {
+let firstLoadPageVideoStyle = {
   position: "fixed",
   top: 0,
   left: 0,
@@ -63,8 +63,18 @@ export default function FirstLoadPageVideo({
       setTimeout(() => {
         Object.assign(videoElement.style, hideVideo);
         setTimeout(() => {
-          videoElement.remove();
-          document.querySelector(".first-load-page-video").remove();
+          if (videoElement) {
+            videoElement.remove();
+          }
+
+          const parentElement = document.querySelector(
+            ".first-load-page-video"
+          );
+          if (parentElement) {
+            if (parentElement) {
+              parentElement.style.display = "none";
+            }
+          }
         }, hideVideoTime * 1000 + 100);
       }, animationTime * 1000);
     };
