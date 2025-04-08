@@ -14,6 +14,7 @@ import Hero from "./pages/Hero";
 import Header from "./components/Header";
 import AboutUs from "./pages/AboutUs";
 import History from "./pages/History";
+import Footer from "./components/Footer";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -79,6 +80,7 @@ export default function App() {
                   <main>
                     <AboutUs />
                   </main>
+                  <Footer />
                 </>
               )}
             </>

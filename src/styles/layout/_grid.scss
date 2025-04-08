@@ -4,6 +4,13 @@
   column-gap: 4.8rem;
 }
 
+.grid-4-col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2.4rem;
+  row-gap: 4.8rem;
+}
+
 .all-line {
   grid-column: 1 / -1; // Rozciąga się od pierwszej do ostatniej kolumny
 }
