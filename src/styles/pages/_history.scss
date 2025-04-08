@@ -11,6 +11,14 @@
     // transform: translateY(2rem);
     &__content {
       text-align: justify;
+
+      &--signature {
+        text-align: right;
+        // font-weight: $font-stronger;
+        font-style: italic;
+        margin-bottom: 2.4rem;
+        margin-top: 4.8rem;
+      }
     }
   }
 }

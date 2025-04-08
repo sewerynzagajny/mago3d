@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import FirstLoadPageVideo from "./components/FirstLoadPageVideo";
 // import logo from "./assets/logo.png";
 import videoMp4 from "./assets/logo-video.mp4";
@@ -14,15 +19,37 @@ export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const firstLoadPageVideoTime = 3;
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     window.scrollTo(0, 0);
-  //   }, firstLoadPageVideoTime * 1000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  // Custom hook to handle scrolling to anchor
+  function ScrollToTopOrAnchor() {
+    const location = useLocation();
+    const [prevPathname, setPrevPathname] = useState("");
+
+    useEffect(() => {
+      const hash = location.hash; // Pobierz hash z URL (np. #about)
+
+      if (prevPathname && location.pathname !== prevPathname) {
+        // Jeśli zmieniono podstronę, przewiń natychmiast na górę
+        window.scrollTo(0, 0);
+      } else if (hash) {
+        // Jeśli hash istnieje, przewiń płynnie do elementu
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else if (!hash) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Zaktualizuj poprzednią ścieżkę
+      setPrevPathname(location.pathname);
+    }, [location, prevPathname]);
+
+    return null;
+  }
 
   return (
     <Router>
+      <ScrollToTopOrAnchor />
       <Routes>
         {/* Główna strona */}
         <Route

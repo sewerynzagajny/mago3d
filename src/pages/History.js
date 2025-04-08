@@ -20,9 +20,20 @@ export default function History() {
           <q>Jak to się zaczęło...</q>
         </h2>
         <div className="grid-2-col grid-center ">
+          <p
+            className="history__container__content all-line"
+            style={{ marginBottom: "4.8rem" }}
+          >
+            Cześć! Nazywam się Mateusz i jestem założycielem marki{" "}
+            <span className="company-name">MaGo3d.</span> Jestem szczliwym mężem
+            i ojcem. Po sprzedaży pasieki (tak, wcześniej byłem pszczelarzem!
+            😊), którą zdecydowałem się zamknąć głównie ze względu na niską
+            opłacalność, czasochłonność oraz rychłe narodziny synka, zacząłem
+            szukać nowego zajęcia.
+          </p>
           <div
             className="history__container__photo photo-frame"
-            style={{ marginBottom: "5.2rem" }}
+            style={{ marginBottom: "4.8rem" }}
           >
             <figure>
               <img
@@ -32,45 +43,41 @@ export default function History() {
               />
             </figure>
           </div>
+
           <p className="history__container__content">
-            Cześć! Nazywam się Mateusz i jestem założycielem marki{" "}
-            <span className="company-name">MaGo3d.</span> Jestem szczliwym mężem
-            i ojcem. Po sprzedaży pasieki (tak, wcześniej byłem pszczelarzem!
-            😊), którą zdecydowałem się zamknąć głównie ze względu na niską
-            opłacalność, czasochłonność oraz rychłe narodziny synka, zacząłem
-            szukać nowego zajęcia. Chciałem czegoś, co pozwoli mi pracować z
-            domu i jednocześnie zabezpieczy rodzinny budżet w razie
-            nieprzewidzianych sytuacji. Ponieważ miałem doświadczenie w
-            modelowaniu CAD, naturalnym krokiem stało się dla mnie odkrycie
-            druku 3D.
+            Chciałem czegoś, co pozwoli mi pracować z domu i jednocześnie
+            zabezpieczy rodzinny budżet w razie nieprzewidzianych sytuacji.
+            Ponieważ miałem doświadczenie w modelowaniu CAD, naturalnym krokiem
+            stało się dla mnie odkrycie druku 3D. Pierwszym produktem, który
+            opracowałem, były podstawki pod Thermomix. Pomysł wziął się z
+            codziennej obserwacji – widząc, jak moja żona z trudem przesuwa to
+            ciężkie urządzenie, postanowiłem znaleźć rozwiązanie. Ku mojemu
+            zaskoczeniu, po przeszukaniu Internetu okazało się, że nikt nie
+            oferuje podstawek z kółkami.
           </p>
           <p className="history__container__content">
-            Pierwszym produktem, który opracowałem, były podstawki pod
-            Thermomix. Pomysł wziął się z codziennej obserwacji – widząc, jak
-            moja żona z trudem przesuwa to ciężkie urządzenie, postanowiłem
-            znaleźć rozwiązanie. Ku mojemu zaskoczeniu, po przeszukaniu
-            Internetu okazało się, że nikt nie oferuje podstawek z kółkami.
             Wykorzystując umiejętności projektowania w CAD, stworzyłem i
             wydrukowałem pierwsze prototypy – oczywiście pod czujnym okiem żony!
             Okazały się bardzo udane, więc przekazaliśmy kilka egzemplarzy
-            znajomym do testów.
+            znajomym do testów. Ich pozytywne opinie utwierdziły nas w
+            przekonaniu, że to może być strzał w dziesiątkę. Postanowiliśmy
+            wystawić produkt na sprzedaż w grupach Facebookowych związanych z
+            Thermomixem. Odzew przerósł nasze oczekiwania – prawie 600
+            komentarzy potwierdziło, że trafiliśmy w realną potrzebę
+            użytkowników.
           </p>
-          <p
-            className="history__container__content"
-            style={{ gridColumn: "1/2" }}
-          >
-            Ich pozytywne opinie utwierdziły nas w przekonaniu, że to może być
-            strzał w dziesiątkę. Postanowiliśmy wystawić produkt na sprzedaż w
-            grupach Facebookowych związanych z Thermomixem. Odzew przerósł nasze
-            oczekiwania – prawie 600 komentarzy potwierdziło, że trafiliśmy w
-            realną potrzebę użytkowników. Zdecydowaliśmy się zastrzec wzór
-            użytkowy w EUIPO. Była to spora inwestycja na początek, ale szybko
-            się opłaciła – pozwoliła nam skutecznie odstraszyć konkurencję,
-            która błyskawicznie zaczęła kopiować nasz produkt.
+          <p className="history__container__content">
+            Zdecydowaliśmy się zastrzec wzór użytkowy w EUIPO. Była to spora
+            inwestycja na początek, ale szybko się opłaciła – pozwoliła nam
+            skutecznie odstraszyć konkurencję, która błyskawicznie zaczęła
+            kopiować nasz produkt. Zadowolenie klientów dodało nam skrzydeł i
+            stało się motywacją do dalszego rozwijania oferty. Choć prowadzenie
+            własnej działalności bywa wyzwaniem, z optymizmem patrzymy w
+            przyszłość i nieustannie pracujemy nad nowymi pomysłami.
           </p>
           <div
             className="history__container__photo photo-frame"
-            style={{ gridRow: "2/ 4", gridColumn: "2/-1" }}
+            style={{ gridRow: "3/ 5", gridColumn: "2/-1" }}
           >
             <figure>
               <img
@@ -81,6 +88,13 @@ export default function History() {
             </figure>
           </div>
         </div>
+        <p className="history__container__content--signature">
+          Pozdrawiamy serdecznie i zapraszamy do zakupów!
+          <br />
+          <span className="company-name">
+            Mateusz, Gosia i Maksiu Nowosieleccy
+          </span>
+        </p>
       </ScrollEffectContainer>
     </section>
   );
