@@ -20,7 +20,7 @@ export default function History() {
           <h2 className="heading-secondary">
             <q>Jak to się zaczęło...</q>
           </h2>
-          <div className="grid-2-col grid-center ">
+          <div className="grid-2-col grid-center-justify ">
             <p
               className="history__container__content all-line"
               style={{ marginBottom: "4.8rem" }}

@@ -60,6 +60,17 @@ export default function AboutUs() {
             rozwijania oferty. Choć prowadzenie własnej działalności bywa
             wyzwaniem, z optymizmem patrzymy w przyszłość i nieustannie
             pracujemy nad nowymi pomysłami. */}
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1034151744392067%2F&show_text=false&width=267&t=0"
+              width="267"
+              height="476"
+              style={{ border: "none", overflow: "hidden" }}
+              title="Facebook Video"
+              scrolling="no"
+              frameBorder="0"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
           </p>
         </div>
       </div>

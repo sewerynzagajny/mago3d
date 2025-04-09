@@ -1,13 +1,25 @@
 .grid-2-col {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // Dwie kolumny o równej szerokości
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 4.8rem;
+}
+
+.grid-2-col-2-0_5 {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr;
+  column-gap: 8rem;
+}
+
+.grid-2-col-0_5-2 {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  column-gap: 8rem;
+  margin-bottom: 3.6rem;
 }
 
 .grid-4-col {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr; // Cztery kolumny o równej szerokości
-  // justify-content: space-between;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
   column-gap: 6.4rem;
   row-gap: 4.8rem;
 }
@@ -24,7 +36,12 @@
   grid-column: 2 / -1;
 }
 
-.grid-center {
+.grid-center-justify {
   justify-items: center; // Wyśrodkowanie elementów w poziomie
   // align-items: center; // Wyśrodkowanie elementów w pionie
+}
+
+.grid-center-align {
+  // Wyśrodkowanie elementów w poziomie
+  align-items: center; // Wyśrodkowanie elementów w pionie
 }
