@@ -5,8 +5,52 @@
   // text-align: center;
   font-size: 1.6rem;
 
+  &__container {
+    max-width: 130rem;
+    margin: 0 auto;
+    // padding: 0 4rem;
+  }
+
   &__information {
     line-height: 3.6rem;
+
+    &--heading {
+      margin-bottom: 1rem;
+    }
+
+    &--icon-and-link {
+      display: flex; /* Ustawia ikonę i tekst w jednej linii */
+      align-items: center; /* Wyrównuje ikonę i tekst pionowo */
+      text-decoration: none;
+      color: inherit;
+      gap: 0.8rem; /* Odstęp między ikoną a tekstem */
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: $font-color-primary;
+      }
+    }
+
+    &__follow-and-shop {
+      display: flex;
+      // justify-content: space-between;
+      // align-items: center;
+      flex-wrap: wrap;
+      column-gap: 3.6rem;
+      row-gap: 1rem;
+      list-style: none;
+      margin-top: 1rem;
+
+      &--link {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: $font-color-primary;
+        }
+      }
+    }
   }
 
   &__logo-container {
@@ -22,6 +66,11 @@
     &--copyright {
       font-size: 1.4rem;
       margin-top: 1.6rem;
+      text-decoration: none;
+    }
+
+    &--policy-link {
+      color: inherit;
     }
   }
 
