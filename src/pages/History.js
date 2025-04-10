@@ -21,10 +21,7 @@ export default function History() {
             <q>Jak to się zaczęło...</q>
           </h2>
           <div className="grid-2-col grid-center-justify ">
-            <p
-              className="history__container__content all-line"
-              style={{ marginBottom: "4.8rem" }}
-            >
+            <p className="history__container__content all-line u-margin-bottom-medium">
               Cześć! Nazywam się Mateusz i jestem założycielem marki{" "}
               <span className="company-name">MaGo3d.</span> Jestem szczliwym
               mężem i ojcem. Po sprzedaży pasieki (tak, wcześniej byłem
@@ -32,10 +29,7 @@ export default function History() {
               względu na niską opłacalność, czasochłonność oraz rychłe narodziny
               synka, zacząłem szukać nowego zajęcia.
             </p>
-            <div
-              className="history__container__photo photo-frame"
-              style={{ marginBottom: "4.8rem" }}
-            >
+            <div className="history__container__photo photo-frame u-margin-bottom-medium">
               <figure>
                 <img
                   src={photo1}
