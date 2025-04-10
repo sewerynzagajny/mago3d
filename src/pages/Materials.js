@@ -1,9 +1,13 @@
+import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import photo1 from "../assets//materials/materials-1.png";
+import photo2 from "../assets//materials/materials-2.png";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 
 export default function Materials() {
+  const [flag, setFlag] = useState(false);
+
   return (
     <section className="materials">
       <Navigation />
@@ -65,7 +69,7 @@ export default function Materials() {
             </ul>
             <div className="materials__container__photo">
               <img
-                src={photo1}
+                src={photo2}
                 alt="Example of Mago3d materials"
                 loading="lazy"
               />
@@ -73,7 +77,7 @@ export default function Materials() {
           </div>
         </ScrollEffectContainer>
         <ScrollEffectContainer
-          totalImages={1}
+          totalImages={0}
           threshold={0.1}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
@@ -83,7 +87,7 @@ export default function Materials() {
             <q>Modelowanie metodą stapiania i osadzania</q>
           </h2>
 
-          <div className="grid-2-col grid-center-justify ">
+          <div className="grid-4-col grid-center-justify ">
             <p className="materials__container__content--text all-line">
               <span className="company-name">
                 FDM (Fused Deposition Modeling – Modelowanie metodą stapiania i
@@ -98,24 +102,83 @@ export default function Materials() {
               ustawień i filamentu. Ograniczenia to widoczne warstwy i mniejsza
               precyzja w porównaniu do żywic (SLA).
             </p>
-            <div className="history__container__photo photo-frame u-margin-bottom-medium">
+            <div
+              className="photo-frame u-margin-bottom-medium"
+              style={{ justifySelf: "start" }}
+            >
               <figure>
-                <img
-                  src={photo1}
-                  alt="Example of Mago3d history"
-                  loading="lazy"
-                />
+                <iframe
+                  src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1034151744392067%2F&show_text=false&width=267&t=0"
+                  width="267"
+                  height="476"
+                  style={{ border: "none", overflow: "hidden" }}
+                  title="Facebook Video"
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                ></iframe>
               </figure>
             </div>
-            <div>
-              <p className="">Kluczowe cechy</p>
-              <ul className="materials__container__content--list">
-                <li>Łatwość użycia</li>
-                <li>Wszechstronność materiałów</li>
-                <li>Ekonomiczność</li>
-                <li>Duża dostępność filamentów</li>
-                <li>Możliwość druku dużych modeli</li>
-              </ul>
+            <div className="second-column">
+              <ScrollEffectContainer
+                totalImages={0}
+                threshold={1}
+                animationTime={0.3}
+                animationTransform="translateY(2rem)"
+                rootMargin="-320px"
+                flag={() => setFlag(true)}
+              >
+                <h4 className="heading-fourth">Kluczowe cechy</h4>
+              </ScrollEffectContainer>
+              {flag && (
+                <ul className="materials__container__content">
+                  <ScrollEffectContainer
+                    totalImages={0}
+                    threshold={1}
+                    animationTime={0.3}
+                    animationTransform="translateY(6rem)"
+                    animationDelay={1}
+                  >
+                    <li className="materials__container__content--list">
+                      Proces
+                    </li>
+                    <p className="materials__container__content--text u-margin-bottom-xsmall">
+                      Filament jest topiony w temperaturze 180-260°C (zależnie
+                      od materiału) i osadzany z dokładnością rzędu 0,1-0,3 mm
+                    </p>
+                  </ScrollEffectContainer>
+                  <ScrollEffectContainer
+                    totalImages={0}
+                    threshold={1}
+                    animationTime={0.3}
+                    animationTransform="translateY(6rem)"
+                    animationDelay={2}
+                  >
+                    <li className="materials__container__content--list">
+                      Zalety
+                    </li>
+                    <p className="materials__container__content--text u-margin-bottom-xsmall">
+                      Niski koszt, szeroki wybór materiałów, łatwość obsługi,
+                      możliwość druku wielokolorowego
+                    </p>
+                  </ScrollEffectContainer>
+                  <ScrollEffectContainer
+                    totalImages={0}
+                    threshold={1}
+                    animationTime={0.3}
+                    animationTransform="translateY(6rem)"
+                    animationDelay={3}
+                  >
+                    <li className="materials__container__content--list">
+                      Wady
+                    </li>
+                    <p className="materials__container__content--text u-margin-bottom-xsmall">
+                      Widoczne warstwy w porównaniu do SLA (żywicy)
+                    </p>
+                  </ScrollEffectContainer>
+                </ul>
+              )}
             </div>
           </div>
         </ScrollEffectContainer>

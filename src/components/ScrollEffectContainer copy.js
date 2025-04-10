@@ -11,7 +11,6 @@ ScrollEffectContainer.propTypes = {
   className: PropTypes.string,
   onAllImagesLoaded: PropTypes.func,
   rootMargin: PropTypes.string,
-  flag: PropTypes.func,
 };
 
 export default function ScrollEffectContainer({
@@ -24,7 +23,6 @@ export default function ScrollEffectContainer({
   className = "",
   rootMargin = "0px",
   onAllImagesLoaded = () => {},
-  flag,
 }) {
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -41,9 +39,6 @@ export default function ScrollEffectContainer({
       ([entry]) => {
         if (entry.isIntersecting && imagesLoaded === totalImages) {
           setIsVisible(true);
-          if (typeof flag === "function") {
-            flag(true);
-          }
           onAllImagesLoaded();
         }
       },
@@ -60,14 +55,7 @@ export default function ScrollEffectContainer({
         observer.unobserve(currentRef);
       }
     };
-  }, [
-    imagesLoaded,
-    totalImages,
-    threshold,
-    rootMargin,
-    onAllImagesLoaded,
-    flag,
-  ]);
+  }, [imagesLoaded, totalImages, threshold, rootMargin, onAllImagesLoaded]);
 
   function handleImageLoad() {
     setImagesLoaded((prev) => prev + 1);
