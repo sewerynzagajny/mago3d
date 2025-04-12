@@ -1,14 +1,8 @@
 .materials {
-  background: linear-gradient(to bottom, $black, $background-color);
-  // height: 200vh;
+  @extend %section-background;
 
   &__container {
-    // opacity: 0;
-    margin: 0 auto;
-    padding: 8rem 4.8rem;
-    max-width: 130rem;
-    // transition: opacity 0.6s ease, transform 0.6s ease;
-    // transform: translateY(2rem);
+    @extend %container-style;
 
     &__photo {
       // width: 80%;
@@ -26,18 +20,6 @@
       &--list {
         font-weight: $font-strong;
         color: $font-color-primary;
-      }
-
-      // &--text {
-      //   // margin-top: 1.2rem;
-      // }
-
-      &--signature {
-        text-align: right;
-        // font-weight: $font-stronger;
-        font-style: italic;
-        margin-bottom: 2.4rem;
-        margin-top: 4.8rem;
       }
     }
   }

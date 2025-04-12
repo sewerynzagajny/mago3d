@@ -1,6 +1,6 @@
 .about-us {
   padding: 3.2rem 0 3.2rem 0;
-  background: linear-gradient(to bottom, $black, $background-color);
+  @extend %section-background;
 
   &__container {
     display: grid;

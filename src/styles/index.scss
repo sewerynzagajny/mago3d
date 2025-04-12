@@ -1,7 +1,9 @@
 @import "abstracts/variables";
 @import "base/base";
 @import "base/topography";
-@import "base/utilities";
+@import "utils/utilities";
+@import "utils/mixins";
+@import "utils/extend";
 
 @import "components/btn";
 @import "components/icon";
@@ -12,8 +14,10 @@
 @import "pages/about_us";
 @import "pages/history";
 @import "pages/materials";
+@import "pages/contacts";
 
 @import "layout/grid";
+@import "layout/flex";
 @import "layout/header";
 @import "layout/footer";
 @import "layout/photo";

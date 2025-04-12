@@ -53,7 +53,7 @@ export default function Navigation() {
             <Link to="/#materialy">Materiały</Link>
           </li>
           <li key="contact">
-            <Link to="/#kontakt">Kontakt</Link>
+            <Link to="/kontakt">Kontakt</Link>
           </li>
         </ul>
       </nav>
