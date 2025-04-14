@@ -7,6 +7,7 @@ import ScrollEffectContainer from "../components/ScrollEffectContainer";
 // import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
 import photo1 from "../assets/contacts/contact-1.png";
 // import photo2 from "../assets/contacts/contact-2.png";
+import photo2 from "../assets/contacts/test2.png";
 import CompanyInfo from "../components/CompanyInfo";
 import BankAccount from "../components/BankAcount";
 
@@ -59,25 +60,27 @@ export default function Contact() {
           {/* <ContactForm /> */}
         </ScrollEffectContainer>
         <ScrollEffectContainer
-          totalImages={0}
+          totalImages={1}
           threshold={0.1}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
         >
           <h2 className="heading-secondary">Formularz kontaktowy</h2>
-          <h3 className="heading-tertiary">
+          <h3 className="heading-tertiary u-margin-bottom-medium-large">
             <q>Napisz do Nas</q>
           </h3>
-          <div className="contact__container__form">
-            <ContactForm />
-            <div className="contact__container__form--image"></div>
+          <div className="frame">
+            <div className="contact__container__form">
+              <ContactForm />
+              {/* <div className="contact__container__form--image"></div> */}
 
-            {/* <img
-              className="contact__container__form--image"
-              src={photo2}
-              alt="Example of Mago3d contact form"
-              loading="lazy"
-            /> */}
+              <img
+                className="contact__container__form--image"
+                src={photo2}
+                alt="Example of Mago3d contact form"
+                loading="lazy"
+              />
+            </div>
           </div>
         </ScrollEffectContainer>
       </div>

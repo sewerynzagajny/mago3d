@@ -8,17 +8,31 @@
   max-width: 130rem;
 }
 
-%photo_and_video-frame {
+%frame {
   display: inline-block;
   position: relative;
   padding: 1rem; // Odstęp na ramkę
   border: 0.2rem solid $font-color-text;
 
-  background-color: $font-color-text; // Kolor ramki
+  background-color: $font-color-text;
   border-radius: 1rem; // Zaokrąglenie rogów ramki
-  box-shadow: 0 1rem 2rem rgba($black, 0.2); // Cień dla głębi
-  // transition: transform 0.3s, box-shadow 0.3s;
+  // box-shadow: 0 1rem 2rem rgba($black, 0.2);
+  box-shadow: 0 2.4rem 4.8rem rgba($black, 0.5);
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  // width: 50rem;
   overflow: hidden;
+  &:hover {
+    // box-shadow: 0 1.5rem 3rem rgba($black, 0.3);
+    border-color: $font-color-primary;
+  }
+}
+
+%photo-frame {
+  @extend %frame;
+
+  &:hover {
+    box-shadow: 0 2.6rem 5.8rem rgba($black, 0.6);
+    img {
+      transform: scale(1.06);
+    }
+  }
 }
