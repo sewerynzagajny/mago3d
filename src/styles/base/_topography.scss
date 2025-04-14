@@ -6,7 +6,8 @@ body {
   background-color: $black;
 }
 
-.company-name {
+.company-name,
+.comapny-bank-account {
   font-weight: $font-stronger;
   color: $font-color-primary;
   font-style: italic;

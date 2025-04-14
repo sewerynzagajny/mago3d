@@ -103,42 +103,14 @@ export default function Materials() {
               ustawień i filamentu. Ograniczenia to widoczne warstwy i mniejsza
               precyzja w porównaniu do żywic (SLA).
             </p>
-            <div
-              className="photo-frame u-margin-bottom-medium"
-              // style={{ justifySelf: "start" }}
-            >
-              {/* <figure>
-                <iframe
-                  src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1034151744392067%2F&show_text=false&width=267&t=0"
-                  width="267"
-                  height="476"
-                  style={{ border: "none", overflow: "hidden" }}
-                  title="Facebook Video"
-                  scrolling="no"
-                  frameBorder="0"
-                  allowFullScreen={true}
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                ></iframe>
-              </figure> */}
-
-              <video
-                className="video"
-                autoPlay
-                loop
-                muted
-                playsInline
-                width="100%"
-                height="100%"
-                style={{
-                  overlow: "hidden",
-                  borderRadius: "1rem",
-                  display: "block",
-                }}
-              >
-                <source src={videomp4} type="video/mp4" />
-                {/* <source src={videoWebm} type="video/webm" /> */}
-                Your browser is not supported!
-              </video>
+            <div className="video-frame u-margin-bottom-medium">
+              <figure>
+                <video autoPlay loop muted playsInline>
+                  <source src={videomp4} type="video/mp4" />
+                  {/* <source src={videoWebm} type="video/webm" /> */}
+                  Your browser is not supported!
+                </video>
+              </figure>
             </div>
             <div className="second-column">
               <ScrollEffectContainer

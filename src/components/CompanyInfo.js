@@ -1,7 +1,7 @@
 import { ReactComponent as CallIcon } from "../svg/call-outline.svg";
 import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
 
-export default function Information({ className = "" }) {
+export default function CompanyInfo({ className = "" }) {
   return (
     <>
       <div className={className}>

@@ -7,7 +7,8 @@ import ScrollEffectContainer from "../components/ScrollEffectContainer";
 // import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
 import photo1 from "../assets/contacts/contact-1.png";
 // import photo2 from "../assets/contacts/contact-2.png";
-import Information from "../components/Information";
+import CompanyInfo from "../components/CompanyInfo";
+import BankAccount from "../components/BankAcount";
 
 export default function Contact() {
   return (
@@ -46,16 +47,13 @@ export default function Contact() {
           </div>
 
           <div className="flex u-font-size-big u-text-line-height u-margin-bottom-medium">
-            <Information className="contact__information" />
+            <CompanyInfo className="contact__company-info" />
           </div>
 
           <div className="contact__container__content u-margin-bottom-large">
-            <p className="footer__information--text">
+            <p className="footer__company-info--text u-font-size-big">
               Nr konta:
-              <span className="company-name">
-                {" "}
-                41 1140 2004 0000 3902 7579 5889
-              </span>
+              <BankAccount style={{ marginLeft: "3.2rem" }} />
             </p>
           </div>
           {/* <ContactForm /> */}
@@ -66,10 +64,10 @@ export default function Contact() {
           animationTime={0.6}
           animationTransform="translateY(2rem)"
         >
-          <h3 className="heading-tertiary">Formularz kontaktowy</h3>
-          <h2 className="heading-secondary">
+          <h2 className="heading-secondary">Formularz kontaktowy</h2>
+          <h3 className="heading-tertiary">
             <q>Napisz do Nas</q>
-          </h2>
+          </h3>
           <div className="contact__container__form">
             <ContactForm />
             <div className="contact__container__form--image"></div>

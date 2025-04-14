@@ -7,3 +7,18 @@
   padding: 8rem 4.8rem;
   max-width: 130rem;
 }
+
+%photo_and_video-frame {
+  display: inline-block;
+  position: relative;
+  padding: 1rem; // Odstęp na ramkę
+  border: 0.2rem solid $font-color-text;
+
+  background-color: $font-color-text; // Kolor ramki
+  border-radius: 1rem; // Zaokrąglenie rogów ramki
+  box-shadow: 0 1rem 2rem rgba($black, 0.2); // Cień dla głębi
+  // transition: transform 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  // width: 50rem;
+  overflow: hidden;
+}

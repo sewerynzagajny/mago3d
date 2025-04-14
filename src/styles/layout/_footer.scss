@@ -11,7 +11,7 @@
     // padding: 0 4rem;
   }
 
-  &__information {
+  &__company-info {
     line-height: 3.6rem;
 
     &--heading {
@@ -39,7 +39,7 @@
       column-gap: 3.6rem;
       row-gap: 1rem;
       list-style: none;
-      margin-top: 1rem;
+      margin-top: 1.2rem !important;
 
       &--link {
         text-decoration: none;
