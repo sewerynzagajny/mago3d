@@ -1,13 +1,13 @@
 import React from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import ContactForm from "../components/ContactForm";
+import ContactsForm from "../components/ContactsForm";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 // import { ReactComponent as CallIcon } from "../svg/call-outline.svg";
 // import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
 import photo1 from "../assets/contacts/contact-1.png";
-// import photo2 from "../assets/contacts/contact-2.png";
-import photo2 from "../assets/contacts/test2.png";
+import photo2 from "../assets/contacts/contact-2.png";
+
 import CompanyInfo from "../components/CompanyInfo";
 import BankAccount from "../components/BankAcount";
 
@@ -71,8 +71,7 @@ export default function Contact() {
           </h3>
           <div className="frame">
             <div className="contact__container__form">
-              <ContactForm />
-              {/* <div className="contact__container__form--image"></div> */}
+              <ContactsForm className="contact__container__form" />
 
               <img
                 className="contact__container__form--image"

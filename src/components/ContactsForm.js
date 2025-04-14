@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Btn from "./Btn";
 
-export default function ContactForm() {
+export default function ContactsForm({ className = "" }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -12,37 +13,43 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="name">Imię:</label>
+    <form className={`${className}__contact-form`} onSubmit={handleSubmit}>
+      <div className={`${className}__contact-form--form-group`}>
+        <label htmlFor="name">Imię i nazwisko</label>
         <input
           type="text"
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          placeholder="Imię i nazwisko"
           required
         />
       </div>
-      <div className="form-group">
+      <div className={`${className}__contact-form--form-group`}>
         <label htmlFor="email">Adres e-mail:</label>
         <input
           type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Adres e-mail"
           required
         />
       </div>
-      <div className="form-group">
+      <div className={`${className}__contact-form--form-group`}>
         <label htmlFor="message">Wiadomość:</label>
         <textarea
           id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          placeholder="Wiadomość"
+          // rows="4"
           required
         ></textarea>
       </div>
-      <button type="submit">Wyślij</button>
+      <Btn className={`btn ${className}__contact-form--btn`} type="submit">
+        Wyślij
+      </Btn>
     </form>
   );
 }
