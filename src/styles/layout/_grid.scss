@@ -45,6 +45,9 @@
   align-items: center; // Wyśrodkowanie elementów w pionie
 }
 
-.column-gap {
+.column-gap-0_8 {
   column-gap: 0.8rem;
+}
+.row-gap-4_8 {
+  row-gap: 4.8rem;
 }

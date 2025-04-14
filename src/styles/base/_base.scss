@@ -24,3 +24,9 @@ body {
 strong {
   font-weight: 600;
 }
+
+img,
+video {
+  pointer-events: none;
+  user-select: none;
+}

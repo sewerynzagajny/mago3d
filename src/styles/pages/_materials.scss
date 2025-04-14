@@ -21,6 +21,10 @@
         font-weight: $font-strong;
         color: $font-color-primary;
       }
+
+      &--text-list {
+        list-style: none;
+      }
     }
   }
 }

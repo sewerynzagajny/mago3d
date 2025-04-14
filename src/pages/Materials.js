@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import photo1 from "../assets//materials/materials-1.png";
 import photo2 from "../assets//materials/materials-2.png";
+import videomp4 from "../assets/materials/video-materials-1.mp4";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 
 export default function Materials() {
@@ -18,10 +19,10 @@ export default function Materials() {
           animationTime={0.6}
           animationTransform="translateY(2rem)"
         >
-          <h3 className="heading-tertiary">Materiały</h3>
-          <h2 className="heading-secondary">
+          <h2 className="heading-secondary">Materiały</h2>
+          <h3 className="heading-tertiary">
             <q>Z czego drukujemy</q>
-          </h2>
+          </h3>
           <div className="grid-2-col-0_5-2 grid-center grid-center-align u-margin-bottom-medium">
             <div className="materials__container__photo">
               <img
@@ -34,7 +35,7 @@ export default function Materials() {
               <li className="materials__container__content--list u-margin-bottom-xsmall">
                 PETG (Polietylenotereftalan glikolu modyfikowany glikolem)
               </li>
-              <p className="materials__container__content--text">
+              <li className="materials__container__content--text-list">
                 <strong>PETG</strong> to wytrzymały, elastyczny filament łączący
                 zalety <strong>PLA</strong> i <strong>ABS</strong>. Jest odporny
                 na uderzenia, temperaturę (do <strong>ok. 80°C)</strong> i
@@ -45,7 +46,7 @@ export default function Materials() {
                 recyklingu mechanicznego (przetapiania), co jest jego
                 ekologiczną zaletą, ale to proces wymagający odpowiedniej
                 infrastruktury.
-              </p>
+              </li>
             </ul>
           </div>
           <div className="grid-2-col-2-0_5 grid-center grid-center-align u-margin-bottom-large">
@@ -53,7 +54,7 @@ export default function Materials() {
               <li className="materials__container__content--list u-margin-bottom-xsmall">
                 PLA (Kwas polimlekowy)
               </li>
-              <p className="materials__container__content--text">
+              <li className="materials__container__content--text-list">
                 <strong>PLA</strong> to najpopularniejszy filament w druku 3D –
                 biodegradowalny, wykonany z odnawialnych źródeł (np. kukurydzy).
                 Łatwy w druku, nie wydziela szkodliwych zapachów, wymaga niskiej
@@ -65,7 +66,7 @@ export default function Materials() {
                 pochodzi z kwasu mlekowego i rozkłada się w warunkach
                 kompostowania przemysłowego (wysoka temperatura i wilgotność) w
                 ciągu kilku miesięcy.
-              </p>
+              </li>
             </ul>
             <div className="materials__container__photo">
               <img
@@ -87,7 +88,7 @@ export default function Materials() {
             <q>Modelowanie metodą stapiania i osadzania</q>
           </h2>
 
-          <div className="grid-4-col grid-center-justify ">
+          <div className="grid-2-col grid-center-justify row-gap-4_8">
             <p className="materials__container__content--text all-line">
               <span className="company-name">
                 FDM (Fused Deposition Modeling – Modelowanie metodą stapiania i
@@ -104,9 +105,9 @@ export default function Materials() {
             </p>
             <div
               className="photo-frame u-margin-bottom-medium"
-              style={{ justifySelf: "start" }}
+              // style={{ justifySelf: "start" }}
             >
-              <figure>
+              {/* <figure>
                 <iframe
                   src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1034151744392067%2F&show_text=false&width=267&t=0"
                   width="267"
@@ -118,7 +119,26 @@ export default function Materials() {
                   allowFullScreen={true}
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 ></iframe>
-              </figure>
+              </figure> */}
+
+              <video
+                className="video"
+                autoPlay
+                loop
+                muted
+                playsInline
+                width="100%"
+                height="100%"
+                style={{
+                  overlow: "hidden",
+                  borderRadius: "1rem",
+                  display: "block",
+                }}
+              >
+                <source src={videomp4} type="video/mp4" />
+                {/* <source src={videoWebm} type="video/webm" /> */}
+                Your browser is not supported!
+              </video>
             </div>
             <div className="second-column">
               <ScrollEffectContainer
@@ -126,16 +146,17 @@ export default function Materials() {
                 threshold={1}
                 animationTime={0.3}
                 animationTransform="translateY(2rem)"
-                rootMargin="-320px"
+                // rootMargin="-320px"
+                rootMargin="-220px"
                 flag={() => setFlag(true)}
               >
-                <h4 className="heading-fourth">Kluczowe cechy</h4>
+                <h1 className="heading-fourth">Kluczowe cechy</h1>
               </ScrollEffectContainer>
               {flag && (
                 <ul className="materials__container__content">
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={1}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={1}
@@ -143,14 +164,14 @@ export default function Materials() {
                     <li className="materials__container__content--list">
                       Proces
                     </li>
-                    <p className="materials__container__content--text u-margin-bottom-xsmall">
+                    <li className="materials__container__content--text-list u-margin-bottom-xsmall">
                       Filament jest topiony w temperaturze 180-260°C (zależnie
                       od materiału) i osadzany z dokładnością rzędu 0,1-0,3 mm
-                    </p>
+                    </li>
                   </ScrollEffectContainer>
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={1}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={2}
@@ -158,14 +179,14 @@ export default function Materials() {
                     <li className="materials__container__content--list">
                       Zalety
                     </li>
-                    <p className="materials__container__content--text u-margin-bottom-xsmall">
+                    <li className="materials__container__content--text-list u-margin-bottom-xsmall">
                       Niski koszt, szeroki wybór materiałów, łatwość obsługi,
                       możliwość druku wielokolorowego
-                    </p>
+                    </li>
                   </ScrollEffectContainer>
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={1}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={3}
@@ -173,9 +194,9 @@ export default function Materials() {
                     <li className="materials__container__content--list">
                       Wady
                     </li>
-                    <p className="materials__container__content--text u-margin-bottom-xsmall">
+                    <li className="materials__container__content--text-list u-margin-bottom-xsmall">
                       Widoczne warstwy w porównaniu do SLA (żywicy)
-                    </p>
+                    </li>
                   </ScrollEffectContainer>
                 </ul>
               )}

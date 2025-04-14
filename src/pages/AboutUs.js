@@ -25,7 +25,7 @@ export default function AboutUs() {
           />
         </div>
         <div className="about-us__container__content">
-          <h3>Kim jesteśmy</h3>
+          <h2>Kim jesteśmy</h2>
           <h2>
             Pasja, wtrwałość, chęć niesienia pomocy. Idalny przepis na....
             inowacje

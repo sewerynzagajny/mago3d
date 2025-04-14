@@ -3,10 +3,10 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
-import { ReactComponent as CallIcon } from "../svg/call-outline.svg";
-import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
+// import { ReactComponent as CallIcon } from "../svg/call-outline.svg";
+// import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
 import photo1 from "../assets/contacts/contact-1.png";
-import photo2 from "../assets/contacts/contact-2.png";
+// import photo2 from "../assets/contacts/contact-2.png";
 import Information from "../components/Information";
 
 export default function Contact() {
@@ -21,11 +21,11 @@ export default function Contact() {
           animationTime={0.6}
           animationTransform="translateY(2rem)"
         >
-          <h3 className="heading-tertiary">Kontakt</h3>
-          <h2 className="heading-secondary">
+          <h2 className="heading-secondary">Kontakt</h2>
+          <h3 className="heading-tertiary">
             <q>Skontaktuj się z nami</q>
-          </h2>
-          <div className="grid-2-col-0_5-2 column-gap">
+          </h3>
+          <div className="grid-2-col-0_5-2 column-gap-0_8">
             {" "}
             <div className="contact__container__photo">
               <img

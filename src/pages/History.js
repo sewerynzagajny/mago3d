@@ -16,10 +16,10 @@ export default function History() {
         animationTransform="translateY(2rem)"
       >
         <div className="history__container">
-          <h3 className="heading-tertiary">Historia</h3>
-          <h2 className="heading-secondary">
+          <h2 className="heading-secondary">Historia</h2>
+          <h3 className="heading-tertiary">
             <q>Jak to się zaczęło...</q>
-          </h2>
+          </h3>
           <div className="grid-2-col grid-center-justify ">
             <p className="history__container__content all-line u-margin-bottom-medium">
               Cześć! Nazywam się Mateusz i jestem założycielem marki{" "}

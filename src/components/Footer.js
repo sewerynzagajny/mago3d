@@ -21,9 +21,10 @@ export default function Footer() {
             <li>
               <a
                 href="https://www.facebook.com/profile.php?id=61551364580021"
-                className="footer__information__follow-and-shop--link"
+                className="footer__information__follow-and-shop--link--facebook"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Odwiedź nas na Facebooku"
               >
                 <FacebookIcon className="icon-follow-and-shop" />
               </a>
@@ -31,9 +32,10 @@ export default function Footer() {
             <li>
               <a
                 href="https://www.instagram.com/mago3d.pl/"
-                className="footer__information__follow-and-shop--link"
+                className="footer__information__follow-and-shop--link--instagram"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Odwiedź nas na Instagramie"
               >
                 <InstagramIcon className="icon-follow-and-shop" />
               </a>
@@ -41,9 +43,10 @@ export default function Footer() {
             <li>
               <a
                 href="https://www.tiktok.com/@mago3d.pl"
-                className="footer__information__follow-and-shop--link"
+                className="footer__information__follow-and-shop--link--tiktok"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Odwiedź nas na TikToku"
               >
                 <TiktokIcon className="icon-follow-and-shop" />
               </a>
@@ -51,9 +54,10 @@ export default function Footer() {
             <li>
               <a
                 href="https://www.youtube.com/@MaGo3dpl"
-                className="footer__information__follow-and-shop--link"
+                className="footer__information__follow-and-shop--link--youtube"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Odwiedź nas na YouTube"
               >
                 <YoutubeIcon className="icon-follow-and-shop" />
               </a>
@@ -62,9 +66,10 @@ export default function Footer() {
             <li>
               <a
                 href="https://allegro.pl/uzytkownik/MaGo3d"
-                className="footer__information__follow-and-shop--link"
+                className="footer__information__follow-and-shop--link--allegro"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Kupuj na Allegro"
               >
                 <AllegroIcon className="icon-follow-and-shop" />
               </a>
@@ -73,9 +78,10 @@ export default function Footer() {
             <li>
               <a
                 href="https://www.etsy.com/pl/shop/MaGo3dPL"
-                className="footer__information__follow-and-shop--link"
+                className="footer__information__follow-and-shop--link---etsy"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Kupuj na Etsy"
               >
                 <EtsyIcon className="icon-follow-and-shop" />
               </a>
