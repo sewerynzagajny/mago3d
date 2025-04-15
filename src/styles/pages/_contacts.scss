@@ -26,9 +26,11 @@
       gap: 2rem;
       justify-content: center;
       text-align: center;
+      // align-items: center;
 
       border-radius: 1rem;
-      height: 60rem;
+      min-height: 60rem;
+      height: auto;
       padding: 2.4rem;
 
       background-image: linear-gradient(

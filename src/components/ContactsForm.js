@@ -15,7 +15,6 @@ export default function ContactsForm({ className = "" }) {
   return (
     <form className={`${className}__contact-form`} onSubmit={handleSubmit}>
       <div className={`${className}__contact-form--form-group`}>
-        <label htmlFor="name">Imię i nazwisko</label>
         <input
           type="text"
           id="name"
@@ -24,9 +23,9 @@ export default function ContactsForm({ className = "" }) {
           placeholder="Imię i nazwisko"
           required
         />
+        <label htmlFor="name">Imię i nazwisko</label>
       </div>
       <div className={`${className}__contact-form--form-group`}>
-        <label htmlFor="email">Adres e-mail:</label>
         <input
           type="email"
           id="email"
@@ -35,9 +34,9 @@ export default function ContactsForm({ className = "" }) {
           placeholder="Adres e-mail"
           required
         />
+        <label htmlFor="email">Adres e-mail</label>
       </div>
       <div className={`${className}__contact-form--form-group`}>
-        <label htmlFor="message">Wiadomość:</label>
         <textarea
           id="message"
           value={message}
@@ -46,7 +45,9 @@ export default function ContactsForm({ className = "" }) {
           // rows="4"
           required
         ></textarea>
+        <label htmlFor="message">Wiadomość:</label>
       </div>
+
       <Btn className={`btn ${className}__contact-form--btn`} type="submit">
         Wyślij
       </Btn>
