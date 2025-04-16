@@ -30,11 +30,11 @@ export default function CompanyInfo({ className = "" }) {
         </p>
         <p className={`${className}--text`}>
           <a
-            href="mailto:info@mago3d.pl"
+            href="mailto:biuro@mago3d.pl"
             className={`${className}--icon-and-link`}
           >
             <MailIcon className="icon-contact" />
-            <span>info@mago3d.pl</span>
+            <span>biuro@mago3d.pl</span>
           </a>
         </p>
       </div>
