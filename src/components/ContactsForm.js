@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Btn from "./Btn";
+import ShortenFilename from "./ShortenFilename";
 
 export default function ContactsForm({ className = "", color }) {
   const [name, setName] = useState("");
@@ -157,7 +158,8 @@ export default function ContactsForm({ className = "", color }) {
               className={`${className}__contact-form--form-group__file-list--item `}
             >
               <div>
-                {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+                <ShortenFilename>{file.name}</ShortenFilename> (
+                {(file.size / 1024 / 1024).toFixed(2)} MB)
               </div>
               <div
                 className={`${className}__contact-form--form-group__file-list--item--close `}
