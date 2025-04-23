@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Btn from "./Btn";
 import ShortenFilename from "./ShortenFilename";
+import axios from "axios";
 
 export default function ContactsForm({ className = "", color }) {
   const [name, setName] = useState("");
@@ -85,6 +86,29 @@ export default function ContactsForm({ className = "", color }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+    files.forEach((file) => formData.append("attachments", file));
+
+    axios
+      .post("http://localhost:5000/send-email", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((_response) => {
+        alert("Wiadomość została wysłana!");
+        setName("");
+        setEmail("");
+        setMessage("");
+        setFiles([]);
+      })
+      .catch((error) => {
+        console.error("Błąd podczas wysyłania wiadomości:", error);
+        alert("Wystąpił błąd podczas wysyłania wiadomości.");
+      });
   }
 
   function handleFileChange(e) {
