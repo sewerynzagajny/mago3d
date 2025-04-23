@@ -93,7 +93,8 @@ export default function ContactsForm({ className = "", color }) {
     files.forEach((file) => formData.append("attachments", file));
 
     axios
-      .post("http://localhost:5000/send-email", formData, {
+      // .post("http://localhost:5000/send-email", formData, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/send-email`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
