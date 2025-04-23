@@ -66,9 +66,19 @@ export default function Contact() {
           animationTransform="translateY(2rem)"
         >
           <h2 className="heading-secondary">Formularz kontaktowy</h2>
-          <h3 className="heading-tertiary u-margin-bottom-medium-large">
+          <h3 className="heading-tertiary ">
             <q>Napisz do Nas</q>
           </h3>
+
+          <p className="contact__container__content  u-margin-bottom-medium">
+            Wypełnij formularz kontaktowy, a my skontaktujemy się z Tobą tak
+            szybko, jak to możliwe. Możesz również przesłać nam pliki, które
+            pomogą nam lepiej zrozumieć Twoje potrzeby. Możesz dodać maskymalnie
+            5 załączników o łacznym rozmiarze do 30 MB. Aby dodać załacznik
+            wciśnij przycisk <strong>Dodaj</strong> lub przeciągnij i upuść plik
+            w oknie <strong>Wiadomość</strong>. W ciągu godziny możesz wysłać 3
+            wiadomości.{" "}
+          </p>
           <div className="frame">
             <div className="contact__container__form">
               <ContactsForm className="contact__container__form" />

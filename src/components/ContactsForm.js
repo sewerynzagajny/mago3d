@@ -1,41 +1,104 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Btn from "./Btn";
 
-export default function ContactsForm({ className = "" }) {
+export default function ContactsForm({ className = "", color }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef(null);
 
-  function AddFiiles(e) {
-    const newFiles = Array.from(e.target.files || e.dataTransfer.files);
-    const totalSize = [...files, ...newFiles].reduce(
-      (acc, file) => acc + file.size,
-      0
-    );
+  const AddFiiles = useCallback(
+    (e) => {
+      const newFiles = Array.from(
+        e.target.files || e.dataTransfer.files
+      ).filter((file) => file.type !== "");
 
-    if (totalSize > 30 * 1024 * 1024) {
-      alert("Łączny rozmiar plików nie może przekraczać 30 MB.");
-      return;
+      const totalSize = [...files, ...newFiles].reduce(
+        (acc, file) => acc + file.size,
+        0
+      );
+
+      if (totalSize > 30 * 1024 * 1024) {
+        alert("Łączny rozmiar plików nie może przekraczać 30 MB.");
+        return;
+      }
+
+      if (files.length + newFiles.length > 5) {
+        alert("Możesz dodać maksymalnie 5 plików.");
+        return;
+      }
+      setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+      console.log(files);
+    },
+    [files]
+  );
+
+  useEffect(() => {
+    let dragCounter = 0;
+    // Funkcje obsługi globalnego przeciągania
+    function handleDragEnter(e) {
+      e.preventDefault();
+      dragCounter++;
+      setIsDragging(true);
     }
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-  }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      dragCounter--;
+      if (dragCounter === 0) {
+        setIsDragging(false);
+      }
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      dragCounter = 0;
+      setIsDragging(false);
+      if (!e.target.closest(`.${className}__contact-form--form-group--text`)) {
+        return; // Jeśli nie, zakończ funkcję
+      }
+
+      AddFiiles(e); // Dodaj pliki, jeśli upuszczono w polu
+    }
+
+    // Dodaj globalne nasłuchiwanie zdarzeń
+    document.addEventListener("dragenter", handleDragEnter);
+    document.addEventListener("dragleave", handleDragLeave);
+    document.addEventListener("dragover", handleDragOver);
+    document.addEventListener("drop", handleDrop);
+
+    // Usuń nasłuchiwanie zdarzeń po odmontowaniu komponentu
+    return () => {
+      document.removeEventListener("dragenter", handleDragEnter);
+      document.removeEventListener("dragleave", handleDragLeave);
+      document.removeEventListener("dragover", handleDragOver);
+      document.removeEventListener("drop", handleDrop);
+    };
+  }, [className, AddFiiles]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", { name, email, message });
   }
 
   function handleFileChange(e) {
     AddFiiles(e);
   }
 
-  function handleDrop(e) {
-    e.preventDefault();
-    AddFiiles(e);
+  function handleAddClick() {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
   }
 
+  function handleRemoveFile(index) {
+    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+  }
   return (
     <form className={`${className}__contact-form`} onSubmit={handleSubmit}>
       <div className={`${className}__contact-form--form-group`}>
@@ -61,60 +124,74 @@ export default function ContactsForm({ className = "" }) {
         <label htmlFor="email">Adres e-mail</label>
       </div>
       <div className={`${className}__contact-form--form-group`}>
-        <textarea
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={handleDrop}
-          id="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Wiadomość"
-          // rows="4"
-          required
-        ></textarea>
-        <label htmlFor="message">Wiadomość:</label>
-      </div>
-      <div
-        className={`${className}__contact-form--form-group`}
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={handleDrop}
-      >
+        <div className={`${className}__contact-form--form-group--text`}>
+          <textarea
+            id="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Wiadomość"
+            required
+          ></textarea>
+          <label htmlFor="message">Wiadomość:</label>
+          {isDragging && (
+            <div
+              className={`${className}__contact-form--form-group__drag-overlay `}
+            >
+              Przeciągnij i upuć plik tutaj
+            </div>
+          )}
+        </div>
         <input
           type="file"
           id="attachments"
           multiple
+          ref={fileInputRef}
           onChange={handleFileChange}
           style={{ display: "none" }}
         />{" "}
-        <label
-          htmlFor="attachments"
-          style={
-            {
-              // display: "none",
-            }
-          }
-        >
-          <div
-            className={`btn ${className}__contact-form--btn`}
-            style={{ texTransform: "none", fontSize: "1.6rem" }}
-          >
-            Dodaj
-          </div>
-        </label>
-        <p style={{ fontSize: "1.6rem" }}>
-          Łączny rozmiar załączników nie może przekraczać 20 MB.
-        </p>
-        <ul>
+        <label htmlFor="attachments"></label>
+        <ul className={`${className}__contact-form--form-group__file-list `}>
           {files.map((file, i) => (
-            <li key={i}>
-              {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+            <li
+              key={i}
+              className={`${className}__contact-form--form-group__file-list--item `}
+            >
+              <div>
+                {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+              </div>
+              <div
+                className={`${className}__contact-form--form-group__file-list--item--close `}
+                onClick={() => handleRemoveFile(i)}
+              >
+                {" "}
+                x
+              </div>
             </li>
           ))}
         </ul>
       </div>
 
-      <Btn className={`btn ${className}__contact-form--btn`} type="submit">
-        Wyślij
-      </Btn>
+      <div className={`${className}__contact-form--form-group`}>
+        <div className={` ${className}__contact-form--form-group__btns`}>
+          <Btn
+            className={`btn ${className}__contact-form--form-group__btns--btn`}
+            type="submit"
+          >
+            Wyślij
+          </Btn>{" "}
+          <div
+            className={`btn ${className}__contact-form--form-group__btns--btn`}
+            onClick={handleAddClick}
+            style={{
+              textTransform: "none",
+              fontSize: "1.6rem",
+              padding: "1.4rem 3rem",
+            }}
+          >
+            Dodaj
+          </div>
+        </div>
+      </div>
     </form>
   );
 }
