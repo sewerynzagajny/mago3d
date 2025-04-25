@@ -90,14 +90,25 @@ export default function ContactsForm({ className = "", color }) {
     // Pobierz istniejące dane z localStorage
     const messages = JSON.parse(localStorage.getItem("sentMessages")) || [];
     const now = Date.now();
+    const limitMessages = 3; // Limit wiadomości w ciągu godziny
+    const limitTime = 60 * 60 * 1000; // 1 godzina w milisekundach
 
     // Filtruj wiadomości wysłane w ciągu ostatniej godziny
     const recentMessages = messages.filter(
-      (timestamp) => now - timestamp < 60 * 60 * 1000
+      (timestamp) => now - timestamp < limitTime
     );
 
-    if (recentMessages.length >= 3) {
-      alert("Osiągnąłeś limit 3 wiadomości w ciągu jednej godziny.");
+    if (recentMessages.length >= limitMessages) {
+      // Oblicz czas do kolejnej możliwości wysłania wiadomości
+      const oldestMessageTime = Math.min(...recentMessages);
+      const timeLeft = limitTime - (now - oldestMessageTime);
+
+      // Przekształć czas w minuty i sekundy
+      const minutes = Math.floor(timeLeft / 60000);
+
+      alert(
+        `Osiągnąłeś limit ${limitMessages} wiadomości w ciągu jednej godziny. Spróbuj ponownie za ${minutes} minut`
+      );
       return;
     }
 
