@@ -7,133 +7,61 @@ const multer = require("multer");
 const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 // Middleware
-app.use(
-  cors({
-    origin: "https://twoja-strona.netlify.app", // Zamień na dokładny URL Twojego frontendu
-    methods: ["POST"],
-  })
-);
+app.use(cors());
 app.use(bodyParser.json());
 
-// Multer - upload załączników
+// Konfiguracja multer do obsługi załączników
 const upload = multer({ dest: "uploads/" });
 
-// Limit wiadomości
-const MAX_MESSAGES = 3;
-const BLOCK_TIME = 60 * 60 * 1000; // 1h
-// In-memory storage, nie zapisujemy do pliku
-let userLimits = {};
-
-// Inicjalizacja limitów (load z pamięci, brak pliku .json na Renderze)
-// eslint-disable-next-line no-unused-vars
-function loadLimits() {
-  // Na Renderze trzymamy tylko w pamięci
-  return userLimits;
-}
-
-// Zapis limitów (na Renderze zapisujemy tylko w pamięci)
-function saveLimits() {
-  console.log("Limity zapisane w pamięci RAM:", userLimits);
-}
-
-// Endpoint formularza
+// Endpoint do obsługi formularza
 app.post("/send-email", upload.array("attachments"), async (req, res) => {
   const { name, email, message } = req.body;
   const files = req.files;
 
-  if (!email || !email.includes("@")) {
-    return res.status(400).json({ message: "Nieprawidłowy adres e-mail." });
-  }
-
-  // Inicjalizacja użytkownika jeśli nie istnieje
-  if (!userLimits[email]) {
-    userLimits[email] = { counter: 0, blockUntil: 0 };
-  }
-
-  const userData = userLimits[email];
-
-  // Sprawdzenie blokady
-  if (userData.counter >= MAX_MESSAGES && Date.now() <= userData.blockUntil) {
-    const remainingTime = Math.ceil(
-      (userData.blockUntil - Date.now()) / (1000 * 60)
-    );
-    return res.status(429).json({
-      message: `Przekroczono limit wiadomości. Spróbuj za ${remainingTime} min.`,
-    });
-  }
-
-  // Reset limitu jeśli czas minął
-  if (Date.now() > userData.blockUntil) {
-    userData.counter = 0;
-    userData.blockUntil = 0;
-  }
-
   try {
+    // Konfiguracja transportera SMTP
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE === "true",
+      host: process.env.SMTP_HOST, // Host SMTP
+      port: process.env.SMTP_PORT, // Port SMTP
+      secure: process.env.SMTP_SECURE === "true", // true dla SSL, false dla TLS
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.SMTP_USER, // Login SMTP
+        pass: process.env.SMTP_PASS, // Hasło SMTP
       },
     });
 
+    // Przygotowanie załączników
     const attachments = files.map((file) => ({
       filename: file.originalname,
       path: file.path,
     }));
 
+    // Konfiguracja wiadomości
     const mailOptions = {
       from: email,
-      to: process.env.RECIPIENT_EMAIL,
+      to: process.env.RECIPIENT_EMAIL, // Adres odbiorcy
       subject: `Nowa wiadomość od ${name}`,
       text: message,
       attachments,
     };
 
+    // Wysyłanie wiadomości
     await transporter.sendMail(mailOptions);
 
+    // Usuwanie załączników z serwera po wysłaniu
     files.forEach((file) => fs.unlinkSync(file.path));
-
-    userData.counter++;
-    if (userData.counter >= MAX_MESSAGES) {
-      userData.blockUntil = Date.now() + BLOCK_TIME;
-    }
-
-    saveLimits(); // Zapisz limity
 
     res.status(200).send("Wiadomość wysłana pomyślnie!");
   } catch (error) {
-    console.error("Błąd e-maila:", error);
+    console.error("Błąd podczas wysyłania e-maila:", error);
     res.status(500).send("Wystąpił błąd podczas wysyłania wiadomości.");
   }
 });
 
-// 🧼 Auto-clean nieaktywnych użytkowników
-const CLEAN_INTERVAL = 15 * 60 * 1000; // 15 minut
-const STALE_LIMIT_TIME = 2 * 60 * 60 * 1000; // 2 godziny
-
-setInterval(() => {
-  const now = Date.now();
-  let changed = false;
-
-  for (const email in userLimits) {
-    const { blockUntil } = userLimits[email];
-    if (blockUntil && now - blockUntil > STALE_LIMIT_TIME) {
-      console.log(`🧹 Usuwam starego użytkownika: ${email}`);
-      delete userLimits[email];
-      changed = true;
-    }
-  }
-
-  if (changed) saveLimits();
-}, CLEAN_INTERVAL);
-
 // Start serwera
 app.listen(PORT, () => {
-  console.log(`🚀 Serwer działa na porcie ${PORT}`);
+  console.log(`Serwer działa na porcie ${PORT}`);
 });
