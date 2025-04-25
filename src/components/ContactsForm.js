@@ -10,9 +10,6 @@ export default function ContactsForm({ className = "", color }) {
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef(null);
-  const maxLimitToSendMessage = 3; // max limit to send message
-  let counterLimitToSendMessage = 0; // counter limit to send message
-  let timeLimitToSendMessage = 0; // time limit to send message
 
   const AddFiiles = useCallback(
     (e) => {
@@ -89,22 +86,35 @@ export default function ContactsForm({ className = "", color }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    // Pobierz dane z localStorage
+    const userEmail = email; // Zakładamy, że email identyfikuje użytkownika
+    const userData = JSON.parse(localStorage.getItem(userEmail)) || {
+      counter: 0,
+      blockUntil: 0,
+    };
+    const maxLimitToSendMessage = 3; // Maksymalna liczba wiadomości do wysłania
+
+    // Sprawdź, czy użytkownik jest zablokowany
     if (
-      counterLimitToSendMessage >= maxLimitToSendMessage &&
-      Date.now() <= timeLimitToSendMessage
+      userData.counter >= maxLimitToSendMessage &&
+      Date.now() <= userData.blockUntil
     ) {
+      const remainingTime = Math.ceil(
+        (userData.blockUntil - Date.now()) / (1000 * 60)
+      );
       alert(
-        "Przekroczono limit wysyłania wiadomości. Proszę spróbować później."
+        `Przekroczono limit wysyłania wiadomości. Spróbuj ponownie za ${remainingTime} minut.`
       );
       return;
     }
-    if (
-      counterLimitToSendMessage >= maxLimitToSendMessage &&
-      Date.now() > timeLimitToSendMessage
-    ) {
-      counterLimitToSendMessage = 0;
-      timeLimitToSendMessage = 0;
+
+    // Zresetuj licznik, jeśli czas blokady minął
+    if (Date.now() > userData.blockUntil) {
+      userData.counter = 0;
+      userData.blockUntil = 0;
     }
+
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
@@ -124,10 +134,15 @@ export default function ContactsForm({ className = "", color }) {
         setEmail("");
         setMessage("");
         setFiles([]);
-        counterLimitToSendMessage++;
-        if (counterLimitToSendMessage >= maxLimitToSendMessage) {
-          timeLimitToSendMessage = Date.now() + 1000 * 60 * 60; // 60 minut
+
+        // Zwiększ licznik i ustaw czas blokady, jeśli osiągnięto limit
+        userData.counter++;
+        if (userData.counter >= maxLimitToSendMessage) {
+          userData.blockUntil = Date.now() + 1000 * 60 * 60; // 60 minut
         }
+
+        // Zapisz dane użytkownika w localStorage
+        localStorage.setItem(userEmail, JSON.stringify(userData));
       })
       .catch((error) => {
         console.error("Błąd podczas wysyłania wiadomości:", error);
