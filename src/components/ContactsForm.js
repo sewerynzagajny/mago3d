@@ -86,6 +86,25 @@ export default function ContactsForm({ className = "", color }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    // Pobierz istniejące dane z localStorage
+    const messages = JSON.parse(localStorage.getItem("sentMessages")) || [];
+    const now = Date.now();
+
+    // Filtruj wiadomości wysłane w ciągu ostatniej godziny
+    const recentMessages = messages.filter(
+      (timestamp) => now - timestamp < 60 * 60 * 1000
+    );
+
+    if (recentMessages.length >= 3) {
+      alert("Osiągnąłeś limit 3 wiadomości w ciągu jednej godziny.");
+      return;
+    }
+
+    // Dodaj nową wiadomość do listy
+    recentMessages.push(now);
+    localStorage.setItem("sentMessages", JSON.stringify(recentMessages));
+
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
