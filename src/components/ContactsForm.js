@@ -10,6 +10,9 @@ export default function ContactsForm({ className = "", color }) {
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef(null);
+  const maxLimitToSendMessage = 3; // max limit to send message
+  let counterLimitToSendMessage = 0; // counter limit to send message
+  let timeLimitToSendMessage = 0; // time limit to send message
 
   const AddFiiles = useCallback(
     (e) => {
@@ -86,6 +89,22 @@ export default function ContactsForm({ className = "", color }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (
+      counterLimitToSendMessage >= maxLimitToSendMessage &&
+      Date.now() <= timeLimitToSendMessage
+    ) {
+      alert(
+        "Przekroczono limit wysyłania wiadomości. Proszę spróbować później."
+      );
+      return;
+    }
+    if (
+      counterLimitToSendMessage >= maxLimitToSendMessage &&
+      Date.now() > timeLimitToSendMessage
+    ) {
+      counterLimitToSendMessage = 0;
+      timeLimitToSendMessage = 0;
+    }
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
@@ -105,6 +124,10 @@ export default function ContactsForm({ className = "", color }) {
         setEmail("");
         setMessage("");
         setFiles([]);
+        counterLimitToSendMessage++;
+        if (counterLimitToSendMessage >= maxLimitToSendMessage) {
+          timeLimitToSendMessage = Date.now() + 1000 * 60 * 60; // 60 minut
+        }
       })
       .catch((error) => {
         console.error("Błąd podczas wysyłania wiadomości:", error);
