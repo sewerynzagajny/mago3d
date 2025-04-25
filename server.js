@@ -7,10 +7,15 @@ const multer = require("multer");
 const fs = require("fs");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://twoja-strona.netlify.app", // Zamień na dokładny URL Twojego frontendu
+    methods: ["POST"],
+  })
+);
 app.use(bodyParser.json());
 
 // Multer - upload załączników
@@ -19,26 +24,20 @@ const upload = multer({ dest: "uploads/" });
 // Limit wiadomości
 const MAX_MESSAGES = 3;
 const BLOCK_TIME = 60 * 60 * 1000; // 1h
-const LIMITS_FILE = "./limits.json";
+// In-memory storage, nie zapisujemy do pliku
+let userLimits = {};
 
-// Wczytanie istniejących limitów z pliku
+// Inicjalizacja limitów (load z pamięci, brak pliku .json na Renderze)
+// eslint-disable-next-line no-unused-vars
 function loadLimits() {
-  try {
-    const data = fs.readFileSync(LIMITS_FILE, "utf8");
-    return JSON.parse(data);
-  } catch (err) {
-    console.warn("Brak pliku limits.json – tworzymy nowy.");
-    return {};
-  }
+  // Na Renderze trzymamy tylko w pamięci
+  return userLimits;
 }
 
-// Zapis limitów do pliku
+// Zapis limitów (na Renderze zapisujemy tylko w pamięci)
 function saveLimits() {
-  fs.writeFileSync(LIMITS_FILE, JSON.stringify(userLimits, null, 2), "utf8");
+  console.log("Limity zapisane w pamięci RAM:", userLimits);
 }
-
-// Inicjalizacja limitów
-const userLimits = loadLimits();
 
 // Endpoint formularza
 app.post("/send-email", upload.array("attachments"), async (req, res) => {
