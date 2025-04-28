@@ -15,7 +15,7 @@ export default function Hero() {
           Tworzymy unikalne produkty i akcesoria, które zaskarbiły sobie uznanie
           wielu zadowolonych klientów. <br /> Sprawdź naszą ofertę.
         </p>
-        <Btn>Zobacz Produkty!</Btn>
+        <Btn href="https://allegro.pl/uzytkownik/MaGo3d">Zobacz Produkty!</Btn>
       </div>
     </section>
   );

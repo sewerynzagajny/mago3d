@@ -51,7 +51,13 @@ export default function Navigation() {
             <Link to="/historia">Historia</Link>
           </li>
           <li key="assortment">
-            <Link to="/#asortyment">Asortyment</Link>
+            <a
+              href="https://allegro.pl/uzytkownik/MaGo3d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Asortyment
+            </a>
           </li>
           <li key="materials">
             <Link to="/materialy">Materiały</Link>
