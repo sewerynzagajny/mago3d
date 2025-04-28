@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Btn from "./Btn";
 import ShortenFilename from "./ShortenFilename";
+import Spinner from "./Spinner";
 import axios from "axios";
 
 export default function ContactsForm({ className = "", color }) {
@@ -9,7 +10,9 @@ export default function ContactsForm({ className = "", color }) {
   const [message, setMessage] = useState("");
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [loading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
+  const honeypotRef = useRef(null); // Ref do ukrytego pola honeypot
 
   const AddFiiles = useCallback(
     (e) => {
@@ -87,6 +90,14 @@ export default function ContactsForm({ className = "", color }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    // Sprawdź honeypot field
+    if (honeypotRef.current && honeypotRef.current.value) {
+      console.warn("Bot wykryty! Formularz został zablokowany.");
+      return;
+    }
+
+    setIsLoading(true); // Ustaw stan ładowania na true
+
     // Pobierz istniejące dane z localStorage
     const messages = JSON.parse(localStorage.getItem("sentMessages")) || [];
     const now = Date.now();
@@ -135,10 +146,12 @@ export default function ContactsForm({ className = "", color }) {
         setEmail("");
         setMessage("");
         setFiles([]);
+        setIsLoading(false); // Ustaw isLoading na false po sukcesie
       })
       .catch((error) => {
         console.error("Błąd podczas wysyłania wiadomości:", error);
         alert("Wystąpił błąd podczas wysyłania wiadomości.");
+        setIsLoading(false); // Ustaw isLoading na false po sukcesie
       });
   }
 
@@ -160,11 +173,21 @@ export default function ContactsForm({ className = "", color }) {
       <div className={`${className}__contact-form--form-group`}>
         <input
           type="text"
+          id="honeypot"
+          name="honeypot"
+          ref={honeypotRef}
+          style={{ display: "none" }}
+          tabIndex="-1"
+          autoComplete="off"
+        />
+        <input
+          type="text"
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Imię i nazwisko"
           required
+          disabled={loading}
         />
         <label htmlFor="name">Imię i nazwisko</label>
       </div>
@@ -176,6 +199,7 @@ export default function ContactsForm({ className = "", color }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Adres e-mail"
           required
+          disabled={loading}
         />
         <label htmlFor="email">Adres e-mail</label>
       </div>
@@ -187,6 +211,7 @@ export default function ContactsForm({ className = "", color }) {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Wiadomość"
             required
+            disabled={loading}
           ></textarea>
           <label htmlFor="message">Wiadomość:</label>
           {isDragging && (
@@ -204,6 +229,7 @@ export default function ContactsForm({ className = "", color }) {
           ref={fileInputRef}
           onChange={handleFileChange}
           style={{ display: "none" }}
+          disabled={loading}
         />{" "}
         <label htmlFor="attachments"></label>
         <ul className={`${className}__contact-form--form-group__file-list `}>
@@ -231,18 +257,22 @@ export default function ContactsForm({ className = "", color }) {
       <div className={`${className}__contact-form--form-group`}>
         <div className={` ${className}__contact-form--form-group__btns`}>
           <Btn
+            loading={loading}
             className={`btn ${className}__contact-form--form-group__btns--btn`}
             type="submit"
           >
-            Wyślij
+            {loading ? <Spinner /> : "Wyślij"}
           </Btn>{" "}
           <div
             className={`btn ${className}__contact-form--form-group__btns--btn`}
-            onClick={handleAddClick}
+            onClick={!loading ? handleAddClick : null}
+            aria-disabled={loading}
             style={{
               textTransform: "none",
               fontSize: "1.6rem",
-              padding: "1.4rem 3rem",
+              padding: "1.36rem 3rem",
+              cursor: loading ? "not-allowed" : "pointer", // Zmień kursor, jeśli loading jest true
+              opacity: loading ? 0.6 : 1, // Zmień przezroczystość, jeśli loading jest true
             }}
           >
             Dodaj
