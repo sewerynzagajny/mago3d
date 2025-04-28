@@ -181,6 +181,7 @@ export default function ContactsForm({ className = "", color }) {
           autoComplete="off"
         />
         <input
+          className={`${loading ? "loading" : ""}`}
           type="text"
           id="name"
           value={name}
@@ -193,6 +194,7 @@ export default function ContactsForm({ className = "", color }) {
       </div>
       <div className={`${className}__contact-form--form-group`}>
         <input
+          className={`${loading ? "loading" : ""}`}
           type="email"
           id="email"
           value={email}
@@ -206,6 +208,7 @@ export default function ContactsForm({ className = "", color }) {
       <div className={`${className}__contact-form--form-group`}>
         <div className={`${className}__contact-form--form-group--text`}>
           <textarea
+            className={`${loading ? "loading" : ""}`}
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -258,21 +261,23 @@ export default function ContactsForm({ className = "", color }) {
         <div className={` ${className}__contact-form--form-group__btns`}>
           <Btn
             loading={loading}
-            className={`btn ${className}__contact-form--form-group__btns--btn`}
+            className={`btn ${className}__contact-form--form-group__btns--btn ${
+              loading ? "loading" : ""
+            }`}
             type="submit"
           >
             {loading ? <Spinner /> : "Wyślij"}
           </Btn>{" "}
           <div
-            className={`btn ${className}__contact-form--form-group__btns--btn`}
+            className={`btn ${className}__contact-form--form-group__btns--btn ${
+              loading ? "loading" : ""
+            }`}
             onClick={!loading ? handleAddClick : null}
             aria-disabled={loading}
             style={{
               textTransform: "none",
               fontSize: "1.6rem",
               padding: "1.36rem 3rem",
-              cursor: loading ? "not-allowed" : "pointer", // Zmień kursor, jeśli loading jest true
-              opacity: loading ? 0.6 : 1, // Zmień przezroczystość, jeśli loading jest true
             }}
           >
             Dodaj

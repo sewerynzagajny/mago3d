@@ -18,3 +18,18 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  opacity: 0.5 !important;
+  pointer-events: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
