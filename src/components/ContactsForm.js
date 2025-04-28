@@ -111,7 +111,9 @@ export default function ContactsForm({ className = "", color }) {
 
     if (recentMessages.length >= limitMessages) {
       // Oblicz czas do kolejnej możliwości wysłania wiadomości
-      const oldestMessageTime = Math.min(...recentMessages);
+      // const oldestMessageTime = Math.min(...recentMessages); pierwsza wiadomość
+      const oldestMessageTime =
+        recentMessages[recentMessages.length - limitMessages]; // ostatnia wiadomość
       const timeLeft = limitTime - (now - oldestMessageTime);
 
       // Przekształć czas w minuty i sekundy
@@ -120,6 +122,7 @@ export default function ContactsForm({ className = "", color }) {
       alert(
         `Osiągnąłeś limit ${limitMessages} wiadomości w ciągu jednej godziny. Spróbuj ponownie za ${minutes} minut`
       );
+      setIsLoading(false); // Ustaw isLoading na false po błędzie
       return;
     }
 
@@ -151,7 +154,7 @@ export default function ContactsForm({ className = "", color }) {
       .catch((error) => {
         console.error("Błąd podczas wysyłania wiadomości:", error);
         alert("Wystąpił błąd podczas wysyłania wiadomości.");
-        setIsLoading(false); // Ustaw isLoading na false po sukcesie
+        setIsLoading(false); // Ustaw isLoading na false po błędzie
       });
   }
 
