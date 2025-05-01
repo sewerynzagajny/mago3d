@@ -1,6 +1,9 @@
 .hero {
   // padding: 9.2rem 14.6rem;
   padding: 11.2rem 14.6rem;
+  @media only screen and (max-width: 40rem) {
+    padding: 11.2rem 3.2rem;
+  }
 
   &__title {
     font-size: 4.4rem;
@@ -9,8 +12,21 @@
     line-height: 1.5;
     font-style: italic;
     text-shadow: 0.3rem 0.3rem 0.8rem rgba($black, 0.8);
-    border-bottom: 0.3rem solid rgba($font-color-primary, 0.7);
+    // border-bottom: 0.3rem solid rgba($font-color-primary, 0.7);
+    text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-color: rgba($font-color-primary, 0.7);
+    text-underline-offset: 1.8rem;
+
     display: inline-block;
+
+    @media only screen and (max-width: 40rem) {
+      font-size: 3.6rem;
+    }
+    @media only screen and (max-width: 35rem) {
+      font-size: 2.4rem;
+      text-underline-offset: 1.2rem;
+    }
 
     // &::after {
     //   content: "";
@@ -31,5 +47,12 @@
     max-width: 70rem;
     margin-bottom: 4.8rem;
     text-shadow: 0.3rem 0.3rem 0.8rem rgba($black, 0.8);
+
+    @media only screen and (max-width: 40rem) {
+      font-size: 2rem;
+    }
+    @media only screen and (max-width: 35rem) {
+      font-size: 1.8rem;
+    }
   }
 }

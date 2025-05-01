@@ -7,7 +7,7 @@ import FollowAndShop from "./FollowAndShop";
 export default function Footer() {
   return (
     <footer className="footer ">
-      <div className="footer__container grid-4-col">
+      <div className="footer__container grid-4-col__footer">
         <CompanyInfo className="footer__company-info" />
 
         <div className="footer__company-info">

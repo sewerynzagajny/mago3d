@@ -16,11 +16,20 @@
   column-gap: 8rem;
 }
 
-.grid-4-col {
+.grid-4-col__footer {
   display: grid;
   grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
   column-gap: 6.4rem;
   row-gap: 4.8rem;
+
+  @media only screen and (max-width: $bp-footer) {
+    column-gap: 3.6rem;
+  }
+
+  @media only screen and (max-width: $bp-footer-2) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 6.4rem;
+  }
 }
 
 .all-line {
