@@ -21,7 +21,7 @@ export default function History() {
             <q>Jak to się zaczęło...</q>
           </h3>
           <div className="grid-2-col grid-center-justify ">
-            <p className="history__container__content all-line u-margin-bottom-medium">
+            <p className="history__container__content all-line paragraph ">
               Cześć! Nazywam się Mateusz i jestem założycielem marki{" "}
               <span className="company-name">MaGo3d.</span> Jestem szczliwym
               mężem i ojcem. Po sprzedaży pasieki (tak, wcześniej byłem
@@ -29,7 +29,7 @@ export default function History() {
               względu na niską opłacalność, czasochłonność oraz rychłe narodziny
               synka, zacząłem szukać nowego zajęcia.
             </p>
-            <div className="history__container__photo photo-frame u-margin-bottom-medium">
+            <div className="history__container__photo photo-frame photo">
               <figure>
                 <img
                   src={photo1}
@@ -39,7 +39,7 @@ export default function History() {
               </figure>
             </div>
 
-            <p className="history__container__content">
+            <p className="history__container__content paragraph">
               Chciałem czegoś, co pozwoli mi pracować z domu i jednocześnie
               zabezpieczy rodzinny budżet w razie nieprzewidzianych sytuacji.
               Ponieważ miałem doświadczenie w modelowaniu CAD, naturalnym
@@ -50,30 +50,32 @@ export default function History() {
               zaskoczeniu, po przeszukaniu Internetu okazało się, że nikt nie
               oferuje podstawek z kółkami.
             </p>
-            <p className="history__container__content">
+            <p className="history__container__content paragraph">
               Wykorzystując umiejętności projektowania w CAD, stworzyłem i
               wydrukowałem pierwsze prototypy – oczywiście pod czujnym okiem
-              żony! Okazały się bardzo udane, więc przekazaliśmy kilka
+              żony! Okazały się one bardzo udane, więc przekazaliśmy kilka
               egzemplarzy znajomym do testów. Ich pozytywne opinie utwierdziły
               nas w przekonaniu, że to może być strzał w dziesiątkę.
               Postanowiliśmy wystawić produkt na sprzedaż w grupach
               Facebookowych związanych z Thermomixem. Odzew przerósł nasze
               oczekiwania – prawie 600 komentarzy potwierdziło, że trafiliśmy w
-              realną potrzebę użytkowników.
+              realną potrzebę użytkowników. Liczba zamówień rosła z dnia na
+              dzień, co tylko utwierdzało nas w słuszności obranej drogi.
             </p>
-            <p className="history__container__content">
-              Zdecydowaliśmy się zastrzec wzór użytkowy w EUIPO. Była to spora
-              inwestycja na początek, ale szybko się opłaciła – pozwoliła nam
-              skutecznie odstraszyć konkurencję, która błyskawicznie zaczęła
-              kopiować nasz produkt. Zadowolenie klientów dodało nam skrzydeł i
-              stało się motywacją do dalszego rozwijania oferty. Choć
-              prowadzenie własnej działalności bywa wyzwaniem, z optymizmem
-              patrzymy w przyszłość i nieustannie pracujemy nad nowymi
-              pomysłami.
+            <p className="history__container__content paragraph">
+              To był moment, w którym poczuliśmy, że naprawdę tworzymy coś
+              wartościowego. Zdecydowaliśmy się zastrzec wzór użytkowy w EUIPO.
+              Była to spora inwestycja na początek, ale szybko się opłaciła –
+              pozwoliła nam skutecznie odstraszyć konkurencję, która
+              błyskawicznie zaczęła kopiować nasz produkt. Zadowolenie klientów
+              dodało nam skrzydeł i stało się motywacją do dalszego rozwijania
+              oferty. Choć prowadzenie własnej działalności bywa wyzwaniem, z
+              optymizmem patrzymy w przyszłość i nieustannie pracujemy nad
+              nowymi pomysłami.
             </p>
             <div
-              className="history__container__photo photo-frame"
-              style={{ gridRow: "3/ 5", gridColumn: "2/-1" }}
+              className="history__container__photo photo-frame text-2_photo-1-left photo"
+              // style={{ gridRow: "3/ 5", gridColumn: "2/-1" }}
             >
               <figure>
                 <img

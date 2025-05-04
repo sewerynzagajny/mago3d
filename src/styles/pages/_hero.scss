@@ -1,6 +1,9 @@
 .hero {
   // padding: 9.2rem 14.6rem;
   padding: 11.2rem 14.6rem;
+  @media only screen and (max-width: 78rem) {
+    padding: 11.2rem 9.6rem;
+  }
   @media only screen and (max-width: 40rem) {
     padding: 11.2rem 3.2rem;
   }

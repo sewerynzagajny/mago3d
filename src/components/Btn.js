@@ -3,6 +3,7 @@ import React from "react";
 export default function Btn({
   children,
   className = "btn",
+  hrefClassName = "btn_href",
   type = "",
   loading,
   onClick,
@@ -12,11 +13,7 @@ export default function Btn({
     return (
       <a
         href={href}
-        className={className}
-        style={{
-          padding: "1.2rem 2.8rem",
-          fontSize: "1.9rem",
-        }}
+        className={`${className} ${hrefClassName}`}
         target="_blank"
         rel="noopener noreferrer"
       >

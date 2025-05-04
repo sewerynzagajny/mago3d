@@ -4,6 +4,12 @@
   padding: 4.8rem 8rem 8rem 8rem;
   // text-align: center;
   font-size: 1.6rem;
+  @media only screen and (max-width: $bp-footer-4) {
+    padding: 4.8rem 3.2rem 8rem 3.2rem;
+  }
+  // @media only screen and (max-width: $bp-footer-5) {
+  //   padding: 4.8rem 1.2rem 8rem 1.2rem;
+  // }
 
   &__container {
     max-width: 130rem;

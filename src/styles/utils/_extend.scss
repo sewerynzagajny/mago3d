@@ -24,6 +24,9 @@
     // box-shadow: 0 1.5rem 3rem rgba($black, 0.3);
     border-color: $font-color-primary;
   }
+  @media only screen and (max-width: 40rem) {
+    padding: 0.7rem;
+  }
 }
 
 %photo-frame {
