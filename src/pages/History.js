@@ -11,10 +11,9 @@ export default function History() {
       <Navigation />
       <ScrollEffectContainer
         totalImages={2}
-        threshold={0}
+        threshold={0.1}
         animationTime={0.6}
         animationTransform="translateY(2rem)"
-        rootMargin="100%"
       >
         <div className="history__container">
           <h2 className="heading-secondary">Historia</h2>

@@ -30,11 +30,7 @@ export default function Contact() {
           <div className="grid-2-col-0_5-2 column-gap-0_8">
             {" "}
             <div className="contact__container__photo">
-              <img
-                src={photo1}
-                alt="Example of Mago3d contact"
-                loading="lazy"
-              />
+              <img src={photo1} alt="Example of Mago3d contact" />
             </div>
             <p className="contact__container__content u-text-line-height u-margin-bottom-medium">
               Chętnie odpowiemy na Twoje pytania i pomożemy w rozwiązaniu
@@ -87,7 +83,6 @@ export default function Contact() {
                 className="contact__container__form--image"
                 src={photo2}
                 alt="Example of Mago3d contact form"
-                loading="lazy"
               />
             </div>
           </div>

@@ -25,11 +25,7 @@ export default function Materials() {
           </h3>
           <div className="grid-2-col-0_5-2 grid-center grid-center-align u-margin-bottom-medium">
             <div className="materials__container__photo">
-              <img
-                src={photo1}
-                alt="Example of Mago3d materials"
-                loading="lazy"
-              />
+              <img src={photo1} alt="Example of Mago3d materials" />
             </div>
             <ul className="materials__container__content">
               <li className="materials__container__content--list u-margin-bottom-xsmall">
@@ -69,11 +65,7 @@ export default function Materials() {
               </li>
             </ul>
             <div className="materials__container__photo">
-              <img
-                src={photo2}
-                alt="Example of Mago3d materials"
-                loading="lazy"
-              />
+              <img src={photo2} alt="Example of Mago3d materials" />
             </div>
           </div>
         </ScrollEffectContainer>
