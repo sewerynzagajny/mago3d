@@ -32,11 +32,7 @@ export default function History() {
             </p>
             <div className="history__container__photo photo-frame photo">
               <figure>
-                <img
-                  src={photo1}
-                  alt="Example of Mago3d history"
-                  loading="lazy"
-                />
+                <img src={photo1} alt="Example of Mago3d history" />
               </figure>
             </div>
 
@@ -79,11 +75,7 @@ export default function History() {
               // style={{ gridRow: "3/ 5", gridColumn: "2/-1" }}
             >
               <figure>
-                <img
-                  src={photo2}
-                  alt="Example of Mago3d history"
-                  loading="lazy"
-                />
+                <img src={photo2} alt="Example of Mago3d history" />
               </figure>
             </div>
           </div>

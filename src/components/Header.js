@@ -4,7 +4,7 @@ import ScrollEffectContainer from "./ScrollEffectContainer";
 export default function Header({ children }) {
   return (
     <ScrollEffectContainer
-      totalImages={1}
+      totalImages={0}
       threshold={0}
       animationTime={0.6}
       animationDelay={1}
