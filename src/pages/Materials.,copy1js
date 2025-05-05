@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import photo1 from "../assets//materials/materials-1.png";
 import photo2 from "../assets//materials/materials-2.png";
 import videomp4 from "../assets/materials/video-materials-1.mp4";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
-import { debounce } from "lodash";
 
 export default function Materials() {
   const [flag, setFlag] = useState(false);
-  const [rootMargin, setRootMargin] = useState("-220px");
-
-  useEffect(() => {
-    const updateRootMargin = debounce(() => {
-      if (window.innerWidth <= 768) {
-        setRootMargin("200px");
-      } else {
-        setRootMargin("-320px");
-      }
-    }, 0); // 200ms opóźnienia
-
-    updateRootMargin();
-    window.addEventListener("resize", updateRootMargin);
-
-    return () => window.removeEventListener("resize", updateRootMargin);
-  }, []);
 
   return (
     <section className="materials">
@@ -125,11 +108,11 @@ export default function Materials() {
             <div className="second-column">
               <ScrollEffectContainer
                 totalImages={0}
-                threshold={0}
+                threshold={1}
                 animationTime={0.3}
                 animationTransform="translateY(2rem)"
                 // rootMargin="-320px"
-                rootMargin={rootMargin}
+                rootMargin="-220px"
                 flag={() => setFlag(true)}
               >
                 <h1 className="heading-fourth">Kluczowe cechy</h1>
@@ -138,7 +121,7 @@ export default function Materials() {
                 <ul className="materials__container__content">
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={0}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={1}
@@ -153,7 +136,7 @@ export default function Materials() {
                   </ScrollEffectContainer>
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={0}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={2}
@@ -168,7 +151,7 @@ export default function Materials() {
                   </ScrollEffectContainer>
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={0}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={3}

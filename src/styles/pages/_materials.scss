@@ -5,6 +5,25 @@
     @extend %container-style;
 
     &__photo {
+      @media only screen and (max-width: 52rem) {
+        width: 30%;
+        justify-self: center;
+        margin-top: 4rem;
+        &:last-child {
+          margin-top: 2rem;
+        }
+      }
+      @media only screen and (max-width: 40rem) {
+        width: 35%;
+      }
+
+      @media only screen and (max-width: 35rem) {
+        width: 40%;
+      }
+
+      @media only screen and (max-width: 28rem) {
+        width: 60%;
+      }
       // width: 80%;
       // height: 80%;
 

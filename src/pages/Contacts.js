@@ -76,7 +76,7 @@ export default function Contact() {
             w oknie <strong>Wiadomość</strong>. W ciągu godziny możesz wysłać 3
             wiadomości.{" "}
           </p>
-          <div className="frame">
+          <div className="frame u-margin-bottom-medium">
             <div className="contact__container__form">
               <ContactsForm className="contact__container__form" />
 

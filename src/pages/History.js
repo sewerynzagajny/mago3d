@@ -21,7 +21,7 @@ export default function History() {
           <h3 className="heading-tertiary">
             <q>Jak to się zaczęło...</q>
           </h3>
-          <div className="grid-2-col grid-center-justify ">
+          <div className="grid-2-col-history grid-center-justify ">
             <p className="history__container__content all-line paragraph ">
               Cześć! Nazywam się Mateusz i jestem założycielem marki{" "}
               <span className="company-name">MaGo3d.</span> Jestem szczliwym
