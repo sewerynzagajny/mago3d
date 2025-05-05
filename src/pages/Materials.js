@@ -15,9 +15,10 @@ export default function Materials() {
       <div className="materials__container">
         <ScrollEffectContainer
           totalImages={2}
-          threshold={0.1}
+          threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
+          rootMargin="50%"
         >
           <h2 className="heading-secondary">Materiały</h2>
           <h3 className="heading-tertiary">
