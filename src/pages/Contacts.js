@@ -22,6 +22,7 @@ export default function Contact() {
           threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
+          rootMargin="50%"
         >
           <h2 className="heading-secondary">Kontakt</h2>
           <h3 className="heading-tertiary">
@@ -61,7 +62,7 @@ export default function Contact() {
         </ScrollEffectContainer>
         <ScrollEffectContainer
           totalImages={1}
-          threshold={0}
+          threshold={0.1}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
         >

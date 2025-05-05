@@ -17,7 +17,7 @@ ScrollEffectContainer.propTypes = {
 export default function ScrollEffectContainer({
   children,
   totalImages = 0,
-  threshold = 0,
+  threshold = 0.1,
   animationTime = 0.6,
   animationDelay = 0,
   animationTransform = "translateY(2rem)",
@@ -54,31 +54,6 @@ export default function ScrollEffectContainer({
     if (currentRef) {
       observer.observe(currentRef);
     }
-
-    // Fallback: Sprawdź widoczność elementu po załadowaniu komponentu
-    const checkVisibilityFallback = () => {
-      if (currentRef) {
-        const rect = currentRef.getBoundingClientRect();
-        const isVisibleFallback =
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <=
-            (window.innerWidth || document.documentElement.clientWidth);
-
-        if (isVisibleFallback && imagesLoaded === totalImages) {
-          setIsVisible(true);
-          if (typeof flag === "function") {
-            flag(true);
-          }
-          onAllImagesLoaded();
-        }
-      }
-    };
-
-    // Wywołaj fallback po załadowaniu komponentu
-    checkVisibilityFallback();
 
     return () => {
       if (currentRef) {
