@@ -29,8 +29,8 @@ FirstLoadPageVideo.propTypes = {
   hideVideoTranslateX: PropTypes.string,
   hideVideoTranslateY: PropTypes.string,
   onVideoLoaded: PropTypes.func.isRequired,
-  transformOriginX: PropTypes.string,
-  transformOriginY: PropTypes.string,
+  hideVideotransformOriginX: PropTypes.string,
+  hideVideotransformOriginY: PropTypes.string,
 };
 
 export default function FirstLoadPageVideo({
