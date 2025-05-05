@@ -19,7 +19,6 @@ export default function Contact() {
       <div className="contact__container">
         <ScrollEffectContainer
           totalImages={1}
-          threshold={0.1}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
         >
