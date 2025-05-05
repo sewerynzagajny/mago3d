@@ -10,7 +10,8 @@ export default function History() {
     <section className="history">
       <Navigation />
       <ScrollEffectContainer
-        totalImages={0}
+        totalImages={2}
+        threshold={0}
         animationTime={0.6}
         animationTransform="translateY(2rem)"
       >
