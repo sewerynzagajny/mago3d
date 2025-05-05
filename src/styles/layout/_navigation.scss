@@ -21,12 +21,15 @@
 
   &__toggle {
     display: none; // Domyślnie hamburger ukryty
-    font-size: 3rem;
+    font-size: 5.2rem;
     background: none;
     border: none;
     color: $font-color-primary;
     cursor: pointer;
     z-index: 1001;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
     @media (max-width: 75rem) {
       display: block; // Pokaż hamburger na mobile

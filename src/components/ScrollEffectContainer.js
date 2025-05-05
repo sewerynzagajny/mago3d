@@ -17,7 +17,7 @@ ScrollEffectContainer.propTypes = {
 export default function ScrollEffectContainer({
   children,
   totalImages = 0,
-  threshold = 0.1,
+  threshold = 0,
   animationTime = 0.6,
   animationDelay = 0,
   animationTransform = "translateY(2rem)",
