@@ -14,7 +14,7 @@ export default function History() {
         threshold={0}
         animationTime={0.6}
         animationTransform="translateY(2rem)"
-        rootMargin="50%"
+        rootMargin="100%"
       >
         <div className="history__container">
           <h2 className="heading-secondary">Historia</h2>

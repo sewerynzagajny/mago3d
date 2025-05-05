@@ -22,7 +22,7 @@ export default function Contact() {
           threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
-          rootMargin="50%"
+          rootMargin="100%"
         >
           <h2 className="heading-secondary">Kontakt</h2>
           <h3 className="heading-tertiary">
