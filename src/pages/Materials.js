@@ -99,7 +99,7 @@ export default function Materials() {
           </h3>
 
           <div className="grid-2-col-materials grid-center-justify u-margin-bottom-medium">
-            <p className="materials__container__content--text all-line u-text-justify">
+            <p className="materials__container__content--text all-line u-text-justify content">
               <span className="company-name">
                 FDM (Fused Deposition Modeling – Modelowanie metodą stapiania i
                 osadzania)
@@ -113,7 +113,7 @@ export default function Materials() {
               ustawień i filamentu. Ograniczenia to widoczne warstwy i mniejsza
               precyzja w porównaniu do żywic (SLA).
             </p>
-            <div className="video-frame">
+            <div className="video-frame video">
               <figure>
                 <video autoPlay loop muted playsInline>
                   <source src={videomp4} type="video/mp4" />
@@ -122,7 +122,7 @@ export default function Materials() {
                 </video>
               </figure>
             </div>
-            <div className="second-column">
+            <div className="second-column content">
               <ScrollEffectContainer
                 totalImages={0}
                 threshold={0}

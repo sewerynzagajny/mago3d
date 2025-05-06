@@ -39,6 +39,24 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 4.8rem;
   row-gap: 4.8rem;
+  @media only screen and (max-width: 52rem) {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "content1"
+      "video1"
+      "content2";
+
+    & > .content:nth-of-type(1) {
+      grid-area: content1;
+    }
+    & > .video:nth-of-type(1) {
+      grid-area: video1;
+    }
+    & > .content:nth-of-type(2) {
+      grid-area: content2;
+    }
+  }
 }
 
 .grid-2-col-0_5-2-materials,
