@@ -1,5 +1,12 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-export default function Header({ children }) {
-  return <header className="header">{children}</header>;
-}
+// Pozwala przekazać ref do <header>
+const Header = forwardRef(function Header({ children }, ref) {
+  return (
+    <header className="header" ref={ref}>
+      {children}
+    </header>
+  );
+});
+
+export default Header;

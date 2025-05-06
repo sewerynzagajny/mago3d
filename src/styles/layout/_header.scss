@@ -1,5 +1,19 @@
 .header {
-  background: url("../../assets/hero.jpg") no-repeat center center/cover;
+  background: none;
+
   position: relative;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; // blokuje kliknięcia
+  user-select: none; // blokuje zaznaczanie
+
   // height: 100vh;
+}
+
+.header-visible {
+  background: url("../../assets/hero.jpg") no-repeat center center/cover;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; // zezwala na kliknięcia
+  user-select: auto; // zezwala na zaznaczanie
 }

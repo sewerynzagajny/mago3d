@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -21,20 +21,31 @@ import Contact from "./pages/Contacts";
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const firstLoadPageVideoTime = 3;
+  const headerRef = useRef(null); // Tworzymy referencję do nagłówka
 
   // Custom hook to handle scrolling to anchor
   function ScrollToTopOrAnchor() {
     const location = useLocation();
     const [prevPathname, setPrevPathname] = useState("");
 
+    // Obsługa opóźnionego pokazania nagłówka po starcie
     useEffect(() => {
-      const hash = location.hash; // Pobierz hash z URL (np. #about)
+      if (!headerRef.current) return;
+
+      const timeout = setTimeout(() => {
+        headerRef.current.classList.add("header-visible");
+      }, (firstLoadPageVideoTime * 1000) / 2);
+
+      return () => clearTimeout(timeout);
+    }, [location, prevPathname]);
+
+    // Obsługa przewijania na kotwicę lub górę po zmianie lokalizacji
+    useEffect(() => {
+      const hash = location.hash;
 
       if (prevPathname && location.pathname !== prevPathname) {
-        // Jeśli zmieniono podstronę, przewiń natychmiast na górę
         window.scrollTo(0, 0);
       } else if (hash) {
-        // Jeśli hash istnieje, przewiń płynnie do elementu
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
@@ -43,7 +54,6 @@ export default function App() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      // Zaktualizuj poprzednią ścieżkę
       setPrevPathname(location.pathname);
     }, [location, prevPathname]);
 
@@ -75,7 +85,7 @@ export default function App() {
               />
               {videoLoaded && (
                 <>
-                  <Header>
+                  <Header ref={headerRef}>
                     <Navigation />
                     <Hero />
                   </Header>
