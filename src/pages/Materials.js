@@ -9,21 +9,30 @@ import { debounce } from "lodash";
 
 export default function Materials() {
   const [flag, setFlag] = useState(false);
-  const [rootMargin, setRootMargin] = useState("-220px");
+  const [rootMargin, setRootMargin] = useState("220px");
 
   useEffect(() => {
-    const updateRootMargin = debounce(() => {
+    const updateRootMargin = () => {
       if (window.innerWidth <= 768) {
-        setRootMargin("200px");
+        setRootMargin("-10px");
+      } else if (window.innerWidth <= 960) {
+        setRootMargin("-260px");
+      } else if (window.innerWidth <= 1216) {
+        setRootMargin("-300px");
       } else {
         setRootMargin("-320px");
       }
-    }, 0); // 200ms opóźnienia
+    };
 
+    // Wywołanie funkcji przy pierwszym renderze
     updateRootMargin();
-    window.addEventListener("resize", updateRootMargin);
 
-    return () => window.removeEventListener("resize", updateRootMargin);
+    // Dodanie nasłuchiwania na zmianę rozmiaru okna
+    const debouncedUpdate = debounce(updateRootMargin, 100); // 100ms opóźnienia
+    window.addEventListener("resize", debouncedUpdate);
+
+    // Czyszczenie nasłuchiwania przy odmontowaniu komponentu
+    return () => window.removeEventListener("resize", debouncedUpdate);
   }, []);
 
   return (
