@@ -10,11 +10,28 @@ import { debounce } from "lodash";
 export default function Materials() {
   const [flag, setFlag] = useState(false);
   const [rootMargin, setRootMargin] = useState("220px");
+  const [rootMarginMobile, setRootMarginMobile] = useState("0px");
+
+  const listItems = [
+    {
+      title: "Proces",
+      text: "Filament jest topiony w temperaturze 180–260°C (zależnie od materiału) i osadzany z dokładnością rzędu 0,1–0,3 mm",
+    },
+    {
+      title: "Zalety",
+      text: "Niski koszt, szeroki wybór materiałów, łatwość obsługi, możliwość druku wielokolorowego",
+    },
+    {
+      title: "Wady",
+      text: "Widoczne warstwy w porównaniu do SLA (żywicy)",
+    },
+  ];
 
   useEffect(() => {
     const updateRootMargin = () => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 832) {
         setRootMargin("-10px");
+        setRootMarginMobile("200px");
       } else if (window.innerWidth <= 960) {
         setRootMargin("-260px");
       } else if (window.innerWidth <= 1216) {
@@ -134,7 +151,7 @@ export default function Materials() {
             <div className="second-column content">
               <ScrollEffectContainer
                 totalImages={0}
-                threshold={0.2}
+                threshold={0}
                 animationTime={0.3}
                 animationTransform="translateY(2rem)"
                 // rootMargin="-320px"
@@ -145,50 +162,24 @@ export default function Materials() {
               </ScrollEffectContainer>
               {flag && (
                 <ul className="materials__container__content">
-                  <ScrollEffectContainer
-                    totalImages={0}
-                    threshold={0.1}
-                    animationTime={0.3}
-                    animationTransform="translateY(6rem)"
-                    animationDelay={1}
-                  >
-                    <li className="materials__container__content--list">
-                      Proces
-                    </li>
-                    <li className="materials__container__content--text-list u-margin-bottom-xsmall">
-                      Filament jest topiony w temperaturze 180-260°C (zależnie
-                      od materiału) i osadzany z dokładnością rzędu 0,1-0,3 mm
-                    </li>
-                  </ScrollEffectContainer>
-                  <ScrollEffectContainer
-                    totalImages={0}
-                    threshold={0.1}
-                    animationTime={0.3}
-                    animationTransform="translateY(6rem)"
-                    animationDelay={2}
-                  >
-                    <li className="materials__container__content--list">
-                      Zalety
-                    </li>
-                    <li className="materials__container__content--text-list u-margin-bottom-xsmall">
-                      Niski koszt, szeroki wybór materiałów, łatwość obsługi,
-                      możliwość druku wielokolorowego
-                    </li>
-                  </ScrollEffectContainer>
-                  <ScrollEffectContainer
-                    totalImages={0}
-                    threshold={0.1}
-                    animationTime={0.3}
-                    animationTransform="translateY(6rem)"
-                    animationDelay={3}
-                  >
-                    <li className="materials__container__content--list">
-                      Wady
-                    </li>
-                    <li className="materials__container__content--text-list u-margin-bottom-xsmall">
-                      Widoczne warstwy w porównaniu do SLA (żywicy)
-                    </li>
-                  </ScrollEffectContainer>
+                  {listItems.map((item, index) => (
+                    <ScrollEffectContainer
+                      key={index}
+                      totalImages={0}
+                      threshold={0}
+                      animationTime={0.3}
+                      animationTransform="translateY(6rem)"
+                      animationDelay={(index + 1) * 1}
+                      rootMargin={rootMarginMobile}
+                    >
+                      <li className="materials__container__content--list">
+                        {item.title}
+                      </li>
+                      <li className="materials__container__content--text-list u-margin-bottom-xsmall">
+                        {item.text}
+                      </li>
+                    </ScrollEffectContainer>
+                  ))}
                 </ul>
               )}
             </div>
