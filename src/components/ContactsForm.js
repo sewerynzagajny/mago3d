@@ -219,7 +219,7 @@ export default function ContactsForm({ className = "", color }) {
             required
             disabled={loading}
           ></textarea>
-          <label htmlFor="message">Wiadomość:</label>
+          <label htmlFor="message">Wiadomość</label>
           {isDragging && (
             <div
               className={`${className}__contact-form--form-group__drag-overlay `}
