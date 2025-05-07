@@ -10,7 +10,7 @@ import { debounce } from "lodash";
 export default function Materials() {
   const [flag, setFlag] = useState(false);
   const [rootMargin, setRootMargin] = useState("220px");
-  const [rootMarginMobile, setRootMarginMobile] = useState("0px");
+  const rootMarginMobile = "150%";
 
   const listItems = [
     {
@@ -31,7 +31,6 @@ export default function Materials() {
     const updateRootMargin = () => {
       if (window.innerWidth <= 832) {
         setRootMargin("-10px");
-        setRootMarginMobile("200px");
       } else if (window.innerWidth <= 960) {
         setRootMargin("-260px");
       } else if (window.innerWidth <= 1216) {

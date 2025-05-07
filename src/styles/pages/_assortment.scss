@@ -1,0 +1,7 @@
+.assortment {
+  @extend %section-background;
+
+  &__container {
+    @extend %container-style;
+  }
+}

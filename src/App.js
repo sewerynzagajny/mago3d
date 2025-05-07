@@ -17,6 +17,7 @@ import History from "./pages/History";
 import Footer from "./components/Footer";
 import Materials from "./pages/Materials";
 import Contact from "./pages/Contacts";
+import Assortment from "./pages/Assortment";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -102,6 +103,7 @@ export default function App() {
         <Route path="/historia" element={<History />} />
         <Route path="/materialy" element={<Materials />} />
         <Route path="/kontakt" element={<Contact />} />
+        <Route path="/asortyment" element={<Assortment />} />
         {/* Nowa podstrona */}
         {/* <Route path="/new-page" element={<NewPage />} /> */}
       </Routes>

@@ -74,14 +74,17 @@ export default function Navigation() {
               </Link>
             </li>
             <li key="assortment">
-              <a
+              <Link to="/asortyment" onClick={closeMenu}>
+                Asortyment
+              </Link>
+              {/* <a
                 href="https://allegro.pl/uzytkownik/MaGo3d"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
               >
                 Asortyment
-              </a>
+              </a> */}
             </li>
             <li key="materials">
               <Link to="/materialy" onClick={closeMenu}>
