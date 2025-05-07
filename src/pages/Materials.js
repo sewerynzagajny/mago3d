@@ -134,7 +134,7 @@ export default function Materials() {
             <div className="second-column content">
               <ScrollEffectContainer
                 totalImages={0}
-                threshold={0}
+                threshold={0.2}
                 animationTime={0.3}
                 animationTransform="translateY(2rem)"
                 // rootMargin="-320px"
@@ -147,7 +147,7 @@ export default function Materials() {
                 <ul className="materials__container__content">
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={0}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={1}
@@ -162,7 +162,7 @@ export default function Materials() {
                   </ScrollEffectContainer>
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={0}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={2}
@@ -177,7 +177,7 @@ export default function Materials() {
                   </ScrollEffectContainer>
                   <ScrollEffectContainer
                     totalImages={0}
-                    threshold={0}
+                    threshold={0.1}
                     animationTime={0.3}
                     animationTransform="translateY(6rem)"
                     animationDelay={3}
