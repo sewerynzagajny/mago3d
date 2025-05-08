@@ -59,7 +59,8 @@
   }
 }
 
-.grid-2-col-0_5-2-materials {
+.grid-2-col-0_5-2-materials,
+.grid-2-col-0_5-2-contact {
   display: grid;
   grid-template-columns: 0.5fr 2fr;
   column-gap: 8rem;
@@ -75,17 +76,6 @@
     & > .photo:nth-of-type(1) {
       grid-area: photo;
     }
-  }
-}
-
-.grid-2-col-0_5-2 {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr;
-  // justify-content: center;
-  // align-items: center;
-  column-gap: 8rem;
-  @media only screen and (max-width: 52rem) {
-    grid-template-columns: 1fr;
   }
 }
 

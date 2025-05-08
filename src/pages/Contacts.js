@@ -28,7 +28,7 @@ export default function Contact() {
           <h3 className="heading-tertiary">
             <q>Skontaktuj się z nami</q>
           </h3>
-          <div className="grid-2-col-0_5-2 column-gap-0_8">
+          <div className="grid-2-col-0_5-2-contact column-gap-0_8">
             {" "}
             <div className="contact__container__photo">
               <img src={photo1} alt="Example of Mago3d contact" />
