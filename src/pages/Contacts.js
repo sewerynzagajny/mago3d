@@ -44,16 +44,16 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="flex u-font-size-big u-text-line-height u-margin-bottom-medium">
+          <div className="flex u-font-size-big u-text-line-height u-margin-bottom-large">
             <CompanyInfo className="contact__company-info" />
+            <div className="contact__container__content account-info">
+              <div className="contact__company-info--text u-font-size-big">
+                <p className="contact__company-info--heading">Nr konta:</p>
+                <BankAccount className="contact__company-info" />
+              </div>
+            </div>
           </div>
 
-          <div className="contact__container__content u-margin-bottom-large">
-            <p className="footer__company-info--text u-font-size-big">
-              Nr konta:
-              <BankAccount style={{ marginLeft: "3.2rem" }} />
-            </p>
-          </div>
           {/* <ContactForm /> */}
         </ScrollEffectContainer>
         <ScrollEffectContainer

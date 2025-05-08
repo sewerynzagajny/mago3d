@@ -63,11 +63,11 @@ export default function Navigation() {
                 Główna
               </Link>
             </li>
-            <li key="about">
+            {/* <li key="about">
               <a href="#o_nas" onClick={closeMenu}>
                 O nas
               </a>
-            </li>
+            </li> */}
             <li key="history">
               <Link to="/historia" onClick={closeMenu}>
                 Historia

@@ -3,6 +3,16 @@
   // flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  column-gap: 6rem;
+  row-gap: 4rem;
   // align-items: center;
   // gap: $gap;
+  @media only screen and (max-width: 52rem) {
+    justify-content: flex-start;
+    column-gap: 8rem;
+  }
+  @media only screen and (max-width: 41.2rem) {
+    justify-content: flex-start;
+    column-gap: 40rem;
+  }
 }

@@ -4,14 +4,24 @@
   &__container {
     @extend %container-style;
 
-    &__photo {
-      width: 80%;
-      height: 80%;
+    .contact__container__photo {
+      min-width: 16rem;
+      width: 70%;
+      height: auto;
+      // align-self: center;
+      // justify-self: center;
+
+      @media only screen and (max-width: 52rem) {
+        min-width: 0;
+        width: 60%;
+        align-self: center;
+        justify-self: center;
+      }
 
       img {
         width: 100%;
-        height: 100%;
-        object-fit: contain; // Zapewnia odpowiednie dopasowanie obrazu
+        height: auto;
+        object-fit: contain;
       }
     }
 
@@ -66,5 +76,19 @@
         color: $font-color-primary;
       }
     }
+    // &--text {
+    //   // display: flex;
+    //   // gap: 3.2rem;
+    // }
+  }
+}
+
+.account-info {
+  @media only screen and (max-width: 48.2rem) {
+    margin-left: 9.8rem;
+  }
+
+  @media only screen and (max-width: 41.2rem) {
+    margin-left: 0;
   }
 }
