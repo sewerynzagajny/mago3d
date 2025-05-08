@@ -63,6 +63,37 @@
       &--image {
         width: 100%;
         height: auto;
+        @media only screen and (max-width: 52rem) {
+          width: 70%;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+
+      @media only screen and (max-width: 52rem) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "text";
+
+        & > .contact__container__form--image:nth-of-type(1) {
+          grid-area: photo;
+        }
+        & > .contact__container__form:nth-of-type(1) {
+          grid-area: text;
+        }
+      }
+
+      @media only screen and (max-width: 24rem) {
+        &__contact-form {
+          &--form-group {
+            &__btns {
+              display: flex;
+              flex-direction: column;
+              gap: 4rem;
+            }
+          }
+        }
       }
     }
   }

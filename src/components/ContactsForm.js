@@ -262,15 +262,6 @@ export default function ContactsForm({ className = "", color }) {
 
       <div className={`${className}__contact-form--form-group`}>
         <div className={` ${className}__contact-form--form-group__btns`}>
-          <Btn
-            loading={loading}
-            className={`btn ${className}__contact-form--form-group__btns--btn ${
-              loading ? "loading" : ""
-            }`}
-            type="submit"
-          >
-            {loading ? <Spinner /> : "Wyślij"}
-          </Btn>{" "}
           <div
             className={`btn ${className}__contact-form--form-group__btns--btn ${
               loading ? "loading" : ""
@@ -285,6 +276,15 @@ export default function ContactsForm({ className = "", color }) {
           >
             Dodaj
           </div>
+          <Btn
+            loading={loading}
+            className={`btn ${className}__contact-form--form-group__btns--btn ${
+              loading ? "loading" : ""
+            }`}
+            type="submit"
+          >
+            {loading ? <Spinner /> : "Wyślij"}
+          </Btn>{" "}
         </div>
       </div>
     </form>
