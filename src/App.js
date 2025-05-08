@@ -9,6 +9,7 @@ import FirstLoadPageVideo from "./components/FirstLoadPageVideo";
 // import logo from "./assets/logo.png";
 import videoMp4 from "./assets/logo-video.mp4";
 import videoWebm from "./assets/logo-video.webm";
+import poster from "./assets/black-background.png";
 import Navigation from "./components/Navigation";
 import Hero from "./pages/Hero";
 import Header from "./components/Header";
@@ -71,8 +72,10 @@ export default function App() {
           element={
             <>
               <FirstLoadPageVideo
+                key={videoLoaded ? "video-hidden" : "video-visible"}
                 videoPath={videoMp4}
                 videoType={"mp4"}
+                posterPath={poster}
                 videoWebmPath={videoWebm}
                 animationTime={firstLoadPageVideoTime}
                 hideVideoTime={0.8}

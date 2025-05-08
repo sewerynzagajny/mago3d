@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 let firstLoadPageVideoStyle = {
@@ -37,6 +37,7 @@ export default function FirstLoadPageVideo({
   videoPath,
   videoType,
   videoWebmPath,
+  posterPath,
   animationTime = 3,
   hideVideoTime = 0.8,
   hideVideoScaleX = 0,
@@ -47,6 +48,7 @@ export default function FirstLoadPageVideo({
   hideVideotransformOriginY = "50%",
   onVideoLoaded,
 }) {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   useEffect(() => {
     const hideVideo = {
       opacity: 0,
@@ -59,6 +61,7 @@ export default function FirstLoadPageVideo({
     );
     if (!videoElement) return;
     videoElement.onloadeddata = () => {
+      setIsVideoLoaded(true);
       onVideoLoaded(true);
       setTimeout(() => {
         Object.assign(videoElement.style, hideVideo);
@@ -91,12 +94,20 @@ export default function FirstLoadPageVideo({
   ]);
 
   return (
-    <div className="first-load-page-video" style={firstLoadPageVideoStyle}>
+    <div
+      className="first-load-page-video"
+      style={{
+        ...firstLoadPageVideoStyle,
+        display: isVideoLoaded ? "block" : "none", // Ukryj wideo, dopóki się nie załaduje
+      }}
+    >
       <video
         className="first-load-page-video__content"
         style={videoContent}
         autoPlay
         muted
+        playsInline
+        poster={posterPath} // Ścieżka do obrazu zastępczego
       >
         <source src={videoPath} type={`video/${videoType}`} />
         {videoWebmPath && <source src={videoWebmPath} type="video/webm" />}
