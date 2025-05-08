@@ -44,11 +44,11 @@ export default function Navigation() {
         ref={navRef}
         className={`nav ${hasBackground ? "nav--with-background" : ""}`}
       >
-        <div className="nav__logo">
-          <Link to="/" onClick={closeMenu}>
+        <Link to="/" onClick={closeMenu}>
+          <div className="nav__logo">
             <img src={logo} alt="logo" />
-          </Link>
-        </div>
+          </div>
+        </Link>
 
         <button className="nav__toggle" onClick={toggleMenu}>
           {menuOpen ? "✖" : "☰"}

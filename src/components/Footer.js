@@ -17,11 +17,13 @@ export default function Footer() {
         <div className="footer__divider-line"></div>
         <div className="footer__logo-container">
           <Link to="/">
-            <img
-              src={logo}
-              alt="Logo"
-              className="footer__logo-container--logo"
-            />
+            <div style={{ display: "inline-block" }}>
+              <img
+                src={logo}
+                alt="Logo"
+                className="footer__logo-container--logo"
+              />
+            </div>
           </Link>
           <p className="footer__logo-container--copyright">
             Copyright &copy; <span>{new Date().getFullYear()}</span> by Seweryn
