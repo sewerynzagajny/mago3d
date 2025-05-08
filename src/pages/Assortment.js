@@ -1,6 +1,7 @@
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
+import Btn from "../components/Btn";
 
 export default function Assortment() {
   return (
@@ -18,7 +19,10 @@ export default function Assortment() {
           <h3 className="heading-tertiary">
             <q>Wybierz platformę sprzedażową</q>
           </h3>
-          <div className="grid-2-col-0_5-2 column-gap-0_8"></div>
+          <div className="assortment__container__btns">
+            <Btn href="https://www.etsy.com/pl/shop/MaGo3dPL">Etsy</Btn>
+            <Btn href="https://allegro.pl/uzytkownik/MaGo3d">Allegro</Btn>
+          </div>
         </div>
         <Footer />
       </ScrollEffectContainer>

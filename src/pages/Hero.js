@@ -1,5 +1,6 @@
 import React from "react";
 import Btn from "../components/Btn";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -15,7 +16,12 @@ export default function Hero() {
           Tworzymy unikalne produkty i akcesoria, które zaskarbiły sobie uznanie
           wielu zadowolonych klientów. <br /> Sprawdź naszą ofertę.
         </p>
-        <Btn href="https://allegro.pl/uzytkownik/MaGo3d">Zobacz Produkty!</Btn>
+        <Btn>
+          {" "}
+          <Link to="/asortyment" className="hero__btn">
+            Zobacz Produkty!
+          </Link>
+        </Btn>
       </div>
     </section>
   );
