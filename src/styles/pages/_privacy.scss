@@ -1,0 +1,36 @@
+.privacy {
+  @extend %section-background;
+
+  &__container {
+    @extend %container-style;
+
+    a {
+      font-style: italic;
+      font-weight: $font-stronger;
+      text-decoration: none;
+      color: $font-color-primary;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: $font-color-primary-litle-dark;
+      }
+    }
+
+    p {
+      text-align: justify;
+      // margin-bottom: 6rem;
+    }
+
+    ul li::marker {
+      color: $font-color-primary;
+    }
+
+    .heading-tertiary-privacy {
+      font-size: 3rem;
+      font-weight: $font-strong;
+      // color: $font-color-primary;
+      // text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+  }
+}

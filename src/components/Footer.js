@@ -29,7 +29,7 @@ export default function Footer() {
             Copyright &copy; <span>{new Date().getFullYear()}</span> by Seweryn
             Zagajny. <br />
             All rights reserved.{" "}
-            <Link to="/" className="footer__logo-container--policy-link">
+            <Link to="/privacy" className="footer__logo-container--policy-link">
               Polityka prywatności
             </Link>
           </p>

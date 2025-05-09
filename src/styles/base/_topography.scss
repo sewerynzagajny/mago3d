@@ -21,7 +21,8 @@ body {
   margin-bottom: 3rem;
 }
 
-.heading-secondary {
+.heading-secondary,
+.heading-primary-privacy {
   font-size: 2.4rem;
   font-weight: $font-strong;
   color: $font-color-primary;
@@ -29,7 +30,8 @@ body {
   margin-bottom: 3rem;
 }
 
-.heading-tertiary {
+.heading-tertiary,
+.heading-secondary-privacy {
   font-size: 3rem;
   font-weight: $font-strong;
   color: $font-color-text;
