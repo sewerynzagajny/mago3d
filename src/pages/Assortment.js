@@ -1,5 +1,6 @@
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import Btn from "../components/Btn";
 import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
@@ -45,6 +46,7 @@ export default function Assortment() {
         </ScrollEffectContainer>
       </div>
       <Footer />
+      <CookieBaner />
     </section>
   );
 }

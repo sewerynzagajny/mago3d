@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Btn from "./Btn";
 import ShortenFilename from "./ShortenFilename";
 import Spinner from "./Spinner";

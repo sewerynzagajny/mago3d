@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 // Pozwala przekazać ref do <header>
 const Header = forwardRef(function Header({ children }, ref) {

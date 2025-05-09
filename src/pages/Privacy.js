@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 
 export default function Privacy() {
@@ -127,6 +128,7 @@ export default function Privacy() {
         </ScrollEffectContainer>
       </div>
       <Footer />
+      <CookieBaner />
     </section>
   );
 }

@@ -20,6 +20,7 @@ import Materials from "./pages/Materials";
 import Contact from "./pages/Contacts";
 import Assortment from "./pages/Assortment";
 import Privacy from "./pages/Privacy";
+import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -93,6 +94,7 @@ export default function App() {
                   <Header ref={headerRef}>
                     <Navigation />
                     <Hero />
+                    <CookieBanner />
                   </Header>
                   <main>
                     <AboutUs />

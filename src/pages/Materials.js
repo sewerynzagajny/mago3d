@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import CookieBaner from "../components/CookieBanner";
 import photo1 from "../assets//materials/materials-1.png";
 import photo2 from "../assets//materials/materials-2.png";
 import videomp4 from "../assets/materials/video-materials-1.mp4";
@@ -186,6 +187,7 @@ export default function Materials() {
         </ScrollEffectContainer>
       </div>
       <Footer />
+      <CookieBaner />
     </section>
   );
 }

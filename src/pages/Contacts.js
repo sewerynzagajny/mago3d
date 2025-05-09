@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import ContactsForm from "../components/ContactsForm";
+import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 // import { ReactComponent as CallIcon } from "../svg/call-outline.svg";
 // import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
@@ -91,6 +92,7 @@ export default function Contact() {
       </div>
 
       <Footer />
+      <CookieBaner />
     </section>
   );
 }

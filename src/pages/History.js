@@ -1,5 +1,6 @@
 // import React, { useEffect, useRef, useState } from "react";
 import Navigation from "../components/Navigation";
+import CookieBanner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import photo1 from "../assets//history/history-1.jpg";
 import photo2 from "../assets//history/history-2.jpg";
@@ -89,6 +90,7 @@ export default function History() {
         </div>
         <Footer />
       </ScrollEffectContainer>
+      <CookieBanner />
     </section>
   );
 }
