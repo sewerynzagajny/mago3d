@@ -6,8 +6,8 @@ import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 // import { ReactComponent as CallIcon } from "../svg/call-outline.svg";
 // import { ReactComponent as MailIcon } from "../svg/mail-outline.svg";
-import photo1 from "../assets/contacts/contact-1.png";
-import photo2 from "../assets/contacts/contact-2.png";
+import photo1 from "../assets/contacts/contact-1.webp";
+import photo2 from "../assets/contacts/contact-2.webp";
 
 import CompanyInfo from "../components/CompanyInfo";
 import BankAccount from "../components/BankAcount";
