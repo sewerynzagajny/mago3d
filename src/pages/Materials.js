@@ -57,7 +57,7 @@ export default function Materials() {
       <Navigation />
       <div className="materials__container">
         <ScrollEffectContainer
-          totalImages={2}
+          totalImages={0}
           threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
