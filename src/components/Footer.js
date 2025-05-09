@@ -26,8 +26,8 @@ export default function Footer() {
             </div>
           </Link>
           <p className="footer__logo-container--copyright">
-            Copyright &copy; <span>{new Date().getFullYear()}</span> by Seweryn
-            Zagajny. <br />
+            Copyright &copy; <span>{new Date().getFullYear()}</span> by{" "}
+            <span className="company-name">MaGo3d</span> <br />
             All rights reserved.{" "}
             <Link to="/privacy" className="footer__logo-container--policy-link">
               Polityka prywatności

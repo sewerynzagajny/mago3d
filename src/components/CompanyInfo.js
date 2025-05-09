@@ -23,9 +23,9 @@ export default function CompanyInfo({ className = "" }) {
       <div className={className}>
         <p className={`${className}--heading`}>Kontakt:</p>
         <p className={`${className}--text`}>
-          <a href="tel:882115883" className={`${className}--icon-and-link`}>
+          <a href="tel:+48882115883" className={`${className}--icon-and-link`}>
             <CallIcon className="icon-contact" />
-            <span>882 115 883 </span>
+            <span>+48 882 115 883 </span>
           </a>
         </p>
         <p className={`${className}--text`}>

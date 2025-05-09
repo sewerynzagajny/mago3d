@@ -169,7 +169,7 @@ export default function Materials() {
                       threshold={0}
                       animationTime={0.3}
                       animationTransform="translateY(6rem)"
-                      animationDelay={(index + 1) * 1}
+                      animationDelay={(index + 1) * 0.4}
                       rootMargin={rootMarginMobile}
                     >
                       <li className="materials__container__content--list">
