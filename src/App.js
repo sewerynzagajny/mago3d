@@ -24,7 +24,7 @@ import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const firstLoadPageVideoTime = 1.65;
+  const firstLoadPageVideoTime = 1.7;
   const headerRef = useRef(null); // Tworzymy referencję do nagłówka
 
   // Custom hook to handle scrolling to anchor
