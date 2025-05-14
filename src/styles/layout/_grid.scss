@@ -5,8 +5,6 @@
   row-gap: 4.8rem;
   @media only screen and (max-width: 60rem) {
     grid-template-columns: 1fr;
-    justify-content: center;
-    align-items: center;
     grid-template-areas:
       "paragraph1"
       "paragraph2"
@@ -77,6 +75,7 @@
 
     & > .photo:nth-of-type(1) {
       grid-area: photo;
+      justify-self: center;
     }
   }
 }

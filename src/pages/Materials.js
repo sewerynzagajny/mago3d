@@ -74,9 +74,10 @@ export default function Materials() {
               animationTime={0}
               animationTransform="translateY(0rem)"
               rootMargin="50%"
+              className="photo"
             >
               {" "}
-              <div className="materials__container__photo photo">
+              <div className="materials__container__photo">
                 <img
                   src={photo1}
                   alt="Example of Mago3d materials"
