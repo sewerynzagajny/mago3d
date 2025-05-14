@@ -25,8 +25,8 @@ export default function ContactsForm({ className = "", color }) {
         0
       );
 
-      if (totalSize > 30 * 1024 * 1024) {
-        alert("Łączny rozmiar plików nie może przekraczać 30 MB.");
+      if (totalSize > 20 * 1024 * 1024) {
+        alert("Łączny rozmiar plików nie może przekraczać 20 MB.");
         return;
       }
 
@@ -134,10 +134,11 @@ export default function ContactsForm({ className = "", color }) {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("message", message);
-    files.forEach((file) => formData.append("attachments", file));
+    // files.forEach((file) => formData.append("attachments", file)); nodejs
+    files.forEach((file) => formData.append("attachments[]", file)); // PHP
 
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/send-email`, formData, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/send-email.php`, formData, {
         // .post("http://localhost:5000/send-email", formData, {
         headers: {
           "Content-Type": "multipart/form-data",

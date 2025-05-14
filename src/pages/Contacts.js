@@ -19,7 +19,7 @@ export default function Contact() {
 
       <div className="contact__container">
         <ScrollEffectContainer
-          totalImages={1}
+          totalImages={0}
           threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
@@ -31,9 +31,17 @@ export default function Contact() {
           </h3>
           <div className="grid-2-col-0_5-2-contact column-gap-0_8">
             {" "}
-            <div className="contact__container__photo">
-              <img src={photo1} alt="Example of Mago3d contact" />
-            </div>
+            <ScrollEffectContainer
+              totalImages={1}
+              threshold={0}
+              animationTime={0}
+              animationTransform="translateY(0rem)"
+              rootMargin="50%"
+            >
+              <div className="contact__container__photo">
+                <img src={photo1} alt="Example of Mago3d contact" />
+              </div>
+            </ScrollEffectContainer>
             <p className="contact__container__content u-text-line-height u-margin-bottom-medium">
               Chętnie odpowiemy na Twoje pytania i pomożemy w rozwiązaniu
               ewentualnych problemów. Oferujemy profesjonalne doradztwo oraz
@@ -58,7 +66,7 @@ export default function Contact() {
           {/* <ContactForm /> */}
         </ScrollEffectContainer>
         <ScrollEffectContainer
-          totalImages={1}
+          totalImages={0}
           threshold={0.1}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
@@ -72,7 +80,7 @@ export default function Contact() {
             Wypełnij formularz kontaktowy, a my skontaktujemy się z Tobą tak
             szybko, jak to możliwe. Możesz również przesłać nam pliki, które
             pomogą nam lepiej zrozumieć Twoje potrzeby. Możesz dodać maskymalnie
-            5 załączników o łacznym rozmiarze do 30 MB. Aby dodać załacznik
+            5 załączników o łacznym rozmiarze do 20 MB. Aby dodać załacznik
             wciśnij przycisk <strong>Dodaj</strong> lub przeciągnij i upuść plik
             w oknie <strong>Wiadomość</strong>. W ciągu godziny możesz wysłać 3
             wiadomości.{" "}
@@ -80,12 +88,19 @@ export default function Contact() {
           <div className="frame u-margin-bottom-medium">
             <div className="contact__container__form">
               <ContactsForm className="contact__container__form" />
-
-              <img
-                className="contact__container__form--image"
-                src={photo2}
-                alt="Example of Mago3d contact form"
-              />
+              <ScrollEffectContainer
+                totalImages={1}
+                threshold={0}
+                animationTime={0}
+                animationTransform="translateY(0rem)"
+                rootMargin="50%"
+              >
+                <img
+                  className="contact__container__form--image"
+                  src={photo2}
+                  alt="Example of Mago3d contact form"
+                />
+              </ScrollEffectContainer>
             </div>
           </div>
         </ScrollEffectContainer>
