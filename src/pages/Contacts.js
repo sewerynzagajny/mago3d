@@ -19,7 +19,7 @@ export default function Contact() {
 
       <div className="contact__container">
         <ScrollEffectContainer
-          totalImages={0}
+          totalImages={1}
           threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
@@ -31,17 +31,9 @@ export default function Contact() {
           </h3>
           <div className="grid-2-col-0_5-2-contact column-gap-0_8">
             {" "}
-            <ScrollEffectContainer
-              totalImages={1}
-              threshold={0}
-              animationTime={0}
-              animationTransform="translateY(0rem)"
-              rootMargin="50%"
-            >
-              <div className="contact__container__photo">
-                <img src={photo1} alt="Example of Mago3d contact" />
-              </div>
-            </ScrollEffectContainer>
+            <div className="contact__container__photo">
+              <img src={photo1} alt="Example of Mago3d contact" />
+            </div>
             <p className="contact__container__content u-text-line-height u-margin-bottom-medium">
               Chętnie odpowiemy na Twoje pytania i pomożemy w rozwiązaniu
               ewentualnych problemów. Oferujemy profesjonalne doradztwo oraz
@@ -66,7 +58,7 @@ export default function Contact() {
           {/* <ContactForm /> */}
         </ScrollEffectContainer>
         <ScrollEffectContainer
-          totalImages={0}
+          totalImages={1}
           threshold={0.1}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
@@ -88,19 +80,12 @@ export default function Contact() {
           <div className="frame u-margin-bottom-medium">
             <div className="contact__container__form">
               <ContactsForm className="contact__container__form" />
-              <ScrollEffectContainer
-                totalImages={1}
-                threshold={0}
-                animationTime={0}
-                animationTransform="translateY(0rem)"
-                rootMargin="50%"
-              >
-                <img
-                  className="contact__container__form--image"
-                  src={photo2}
-                  alt="Example of Mago3d contact form"
-                />
-              </ScrollEffectContainer>
+
+              <img
+                className="contact__container__form--image"
+                src={photo2}
+                alt="Example of Mago3d contact form"
+              />
             </div>
           </div>
         </ScrollEffectContainer>

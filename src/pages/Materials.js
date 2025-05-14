@@ -57,7 +57,7 @@ export default function Materials() {
       <Navigation />
       <div className="materials__container">
         <ScrollEffectContainer
-          totalImages={0}
+          totalImages={2}
           threshold={0}
           animationTime={0.6}
           animationTransform="translateY(2rem)"
@@ -68,24 +68,10 @@ export default function Materials() {
             <q>Z czego drukujemy</q>
           </h3>
           <div className="grid-2-col-0_5-2-materials grid-center grid-center-align u-margin-bottom-medium">
-            <ScrollEffectContainer
-              totalImages={1}
-              threshold={0}
-              animationTime={0}
-              animationTransform="translateY(0rem)"
-              rootMargin="50%"
-              className="photo"
-            >
-              {" "}
-              <div className="materials__container__photo">
-                <img
-                  src={photo1}
-                  alt="Example of Mago3d materials"
-                  loading="lazy"
-                />
-              </div>
-            </ScrollEffectContainer>
-
+            {" "}
+            <div className="materials__container__photo photo">
+              <img src={photo1} alt="Example of Mago3d materials" />
+            </div>
             <ul className="materials__container__content text">
               <li className="materials__container__content--list u-margin-bottom-xsmall">
                 PETG (Polietylenotereftalan glikolu modyfikowany glikolem)
@@ -123,22 +109,10 @@ export default function Materials() {
                 ciągu kilku miesięcy.
               </li>
             </ul>
-            <ScrollEffectContainer
-              totalImages={1}
-              threshold={0}
-              animationTime={0}
-              animationTransform="translateY(0rem)"
-              rootMargin="50%"
-            >
-              {" "}
-              <div className="materials__container__photo">
-                <img
-                  src={photo2}
-                  alt="Example of Mago3d materials"
-                  loading="lazy"
-                />
-              </div>
-            </ScrollEffectContainer>
+
+            <div className="materials__container__photo">
+              <img src={photo2} alt="Example of Mago3d materials" />
+            </div>
           </div>
         </ScrollEffectContainer>
         <ScrollEffectContainer
