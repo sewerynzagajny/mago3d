@@ -42,7 +42,7 @@ export default function ScrollEffectContainer({
         if (entry.isIntersecting && imagesLoaded === totalImages) {
           setIsVisible(true);
           if (typeof flag === "function") {
-            flag();
+            flag(true);
           }
           onAllImagesLoaded();
         }

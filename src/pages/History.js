@@ -2,8 +2,8 @@
 import Navigation from "../components/Navigation";
 import CookieBanner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
-import photo1 from "../assets//history/history-1.webp";
-import photo2 from "../assets//history/history-2.webp";
+import photo1 from "../assets/history/history-1.webp";
+import photo2 from "../assets/history/history-2.webp";
 import Footer from "../components/Footer";
 
 export default function History() {
