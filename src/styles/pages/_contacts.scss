@@ -4,7 +4,7 @@
   &__container {
     @extend %container-style;
 
-    .contact__container__photo {
+    &__photo {
       min-width: 16rem;
       width: 70%;
       height: auto;
@@ -76,7 +76,7 @@
           "photo"
           "text";
 
-        & > .contact__container__form--image:nth-of-type(1) {
+        & > .photo:nth-of-type(1) {
           grid-area: photo;
         }
         & > .contact__container__form:nth-of-type(1) {

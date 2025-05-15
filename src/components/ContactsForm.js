@@ -244,6 +244,9 @@ export default function ContactsForm({ className = "", color }) {
             <li
               key={i}
               className={`${className}__contact-form--form-group__file-list--item `}
+              style={{
+                opacity: loading ? 0.5 : 1,
+              }}
             >
               <div>
                 <ShortenFilename>{file.name}</ShortenFilename> (
@@ -251,7 +254,12 @@ export default function ContactsForm({ className = "", color }) {
               </div>
               <div
                 className={`${className}__contact-form--form-group__file-list--item--close `}
-                onClick={() => handleRemoveFile(i)}
+                onClick={() => !loading && handleRemoveFile(i)}
+                style={{
+                  cursor: loading ? "not-allowed" : "pointer",
+                  opacity: loading ? 0.5 : 1,
+                }}
+                aria-disabled={loading}
               >
                 {" "}
                 x

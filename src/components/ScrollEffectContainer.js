@@ -98,11 +98,7 @@ export default function ScrollEffectContainer({
   }
 
   return (
-    <div
-      className={`scroll-effect-container ${className}`}
-      style={containerStyle}
-      ref={containerRef}
-    >
+    <div className={className} style={containerStyle} ref={containerRef}>
       {mapChildrenWithOnLoad(children)}
     </div>
   );

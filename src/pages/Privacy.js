@@ -76,7 +76,7 @@ export default function Privacy() {
             wcześniej poprosisz o ich usunięcie.
           </p>
 
-          <h2>6. Odbiorcy danych</h2>
+          <h3 className="heading-tertiary-privacy">6. Odbiorcy danych</h3>
           <p>
             Dane mogą być przekazywane podmiotom wspierającym nas technicznie
             (np. dostawcy hostingu <strong>HostingHouse.pl</strong>), wyłącznie

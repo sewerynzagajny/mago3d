@@ -3,6 +3,11 @@
     display: flex;
     flex-direction: column;
 
+    min-width: 55rem;
+    @media only screen and (max-width: 52rem) {
+      min-width: auto;
+    }
+
     gap: 5rem;
     // justify-content: center;
     // text-align: center;

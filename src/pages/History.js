@@ -11,7 +11,7 @@ export default function History() {
     <section className="history">
       <Navigation />
       <ScrollEffectContainer
-        totalImages={2}
+        totalImages={0}
         threshold={0}
         animationTime={0.6}
         animationTransform="translateY(2rem)"
@@ -31,11 +31,23 @@ export default function History() {
               względu na niską opłacalność, czasochłonność oraz rychłe narodziny
               synka, zacząłem szukać nowego zajęcia.
             </p>
-            <div className="history__container__photo photo-frame photo">
+            <ScrollEffectContainer
+              totalImages={1}
+              threshold={0}
+              animationTime={0.6}
+              animationTransform="translateY(0)"
+              rootMargin="50%"
+              className="history__container__photo photo-frame photo"
+            >
               <figure>
                 <img src={photo1} alt="Example of Mago3d history" />
               </figure>
-            </div>
+            </ScrollEffectContainer>
+            {/* <div className="history__container__photo photo-frame photo">
+              <figure>
+                <img src={photo1} alt="Example of Mago3d history" />
+              </figure>
+            </div> */}
 
             <p className="history__container__content paragraph">
               Chciałem czegoś, co pozwoli mi pracować z domu i jednocześnie
@@ -71,14 +83,26 @@ export default function History() {
               optymizmem patrzymy w przyszłość i nieustannie pracujemy nad
               nowymi pomysłami.
             </p>
-            <div
+            <ScrollEffectContainer
+              totalImages={1}
+              threshold={0}
+              animationTime={0.6}
+              animationTransform="translateY(0)"
+              rootMargin="50%"
+              className="history__container__photo photo-frame text-2_photo-1-left photo"
+            >
+              <figure>
+                <img src={photo2} alt="Example of Mago3d history" />
+              </figure>
+            </ScrollEffectContainer>
+            {/* <div
               className="history__container__photo photo-frame text-2_photo-1-left photo"
               // style={{ gridRow: "3/ 5", gridColumn: "2/-1" }}
             >
               <figure>
                 <img src={photo2} alt="Example of Mago3d history" />
               </figure>
-            </div>
+            </div> */}
           </div>
           <p className="history__container__content--signature">
             Pozdrawiamy serdecznie i zapraszamy do zakupów!

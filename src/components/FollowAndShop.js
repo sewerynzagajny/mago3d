@@ -21,7 +21,7 @@ export default function FollowAndShop({ className = "" }) {
       </li>
       <li>
         <a
-          href="https://www.instagram.com/mago3d.pl/"
+          href="https://www.instagram.com/ma.go3d"
           className={`${className}__follow-and-shop--link--instagram`}
           target="_blank"
           rel="noopener noreferrer"
