@@ -33,9 +33,9 @@ export default function App() {
 
   const hideVideoProps = isMobile
     ? {
-        hideVideoScaleX: 0.165,
-        hideVideoScaleY: 0.165,
-        hideVideoTranslateX: "-50vw",
+        hideVideoScaleX: 0.12,
+        hideVideoScaleY: 0.12,
+        hideVideoTranslateX: "-10vw",
         hideVideoTranslateY: "-50vh",
       }
     : {
@@ -101,8 +101,6 @@ export default function App() {
                 videoWebmPathMobile={videoWebmMobile}
                 animationTime={firstLoadPageVideoTime}
                 hideVideoTime={0.8}
-                hideVideoScaleX={0.165}
-                hideVideoScaleY={0.165}
                 hideVideotransformOriginX={"0%"}
                 hideVideotransformOriginY={"0%"}
                 mobileBreakpoint={560}
