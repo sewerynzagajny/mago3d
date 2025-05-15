@@ -26,7 +26,7 @@ import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const firstLoadPageVideoTime = 1.7;
+  const firstLoadPageVideoTime = 1.7; // Czas trwania animacji w sekundach
   const headerRef = useRef(null); // Tworzymy referencję do nagłówka
 
   // Custom hook to handle scrolling to anchor
@@ -88,7 +88,8 @@ export default function App() {
                 hideVideoScaleX={0.165}
                 hideVideoScaleY={0.165}
                 hideVideoTranslateX={"-10vw"}
-                hideVideoTranslateY={"1vh"}
+                hideVideoTranslateY={"-10vh"}
+                // hideVideoTranslateY={"-1vh"}
                 hideVideotransformOriginX={"0%"}
                 hideVideotransformOriginY={"0%"}
                 mobileBreakpoint={560}
