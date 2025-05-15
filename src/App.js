@@ -29,6 +29,22 @@ export default function App() {
   const firstLoadPageVideoTime = 1.7; // Czas trwania animacji w sekundach
   const headerRef = useRef(null); // Tworzymy referencję do nagłówka
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 560; // Twój breakpoint
+
+  const hideVideoProps = isMobile
+    ? {
+        hideVideoScaleX: 0.165,
+        hideVideoScaleY: 0.165,
+        hideVideoTranslateX: "-50vw",
+        hideVideoTranslateY: "-50vh",
+      }
+    : {
+        hideVideoScaleX: 0.165,
+        hideVideoScaleY: 0.165,
+        hideVideoTranslateX: "-10vw",
+        hideVideoTranslateY: "-1vh",
+      };
+
   // Custom hook to handle scrolling to anchor
   function ScrollToTopOrAnchor() {
     const location = useLocation();
@@ -87,13 +103,11 @@ export default function App() {
                 hideVideoTime={0.8}
                 hideVideoScaleX={0.165}
                 hideVideoScaleY={0.165}
-                hideVideoTranslateX={"-10vw"}
-                hideVideoTranslateY={"-10vh"}
-                // hideVideoTranslateY={"-1vh"}
                 hideVideotransformOriginX={"0%"}
                 hideVideotransformOriginY={"0%"}
                 mobileBreakpoint={560}
                 onVideoLoaded={() => setVideoLoaded(true)}
+                {...hideVideoProps}
               />
               {videoLoaded && (
                 <>
