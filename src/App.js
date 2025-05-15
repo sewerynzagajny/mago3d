@@ -33,8 +33,8 @@ export default function App() {
 
   const hideVideoProps = isMobile
     ? {
-        hideVideoScaleX: 0.12,
-        hideVideoScaleY: 0.12,
+        hideVideoScaleX: 0.1,
+        hideVideoScaleY: 0.1,
         hideVideoTranslateX: "-10vw",
         hideVideoTranslateY: "-50vh",
       }
