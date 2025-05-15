@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Btn({
   children,
@@ -8,7 +8,18 @@ export default function Btn({
   loading,
   onClick,
   href,
+  to,
+  as,
+  ...rest
 }) {
+  if (to && as === Link) {
+    return (
+      <Link to={to} className={className} {...rest}>
+        {children}
+      </Link>
+    );
+  }
+
   if (href) {
     return (
       <a
@@ -16,6 +27,7 @@ export default function Btn({
         className={`${className} ${hrefClassName}`}
         target="_blank"
         rel="noopener noreferrer"
+        {...rest}
       >
         {children}
       </a>
@@ -28,6 +40,7 @@ export default function Btn({
       className={className}
       type={type}
       disabled={loading}
+      {...rest}
     >
       {children}
     </button>

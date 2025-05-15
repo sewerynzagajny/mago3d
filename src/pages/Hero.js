@@ -1,4 +1,3 @@
-import React from "react";
 import Btn from "../components/Btn";
 import { Link } from "react-router-dom";
 
@@ -15,12 +14,9 @@ export default function Hero() {
           pasują do Twojego stylu. <br /> Sprawdź naszą ofertę! */}
           Tworzymy unikalne produkty i akcesoria, które zaskarbiły sobie uznanie
           wielu zadowolonych klientów. <br /> Sprawdź naszą ofertę.
-        </p>
-        <Btn>
-          {" "}
-          <Link to="/asortyment" className="hero__btn">
-            Zobacz Produkty!
-          </Link>
+        </p>{" "}
+        <Btn className=" btn hero__btn" as={Link} to="/asortyment">
+          Zobacz Produkty!
         </Btn>
       </div>
     </section>

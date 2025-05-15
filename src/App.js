@@ -9,6 +9,8 @@ import FirstLoadPageVideo from "./components/FirstLoadPageVideo";
 // import logo from "./assets/logo.png";
 import videoMp4 from "./assets/logo-video.mp4";
 import videoWebm from "./assets/logo-video.webm";
+import videoMp4Mobile from "./assets/logo-video-mobile.mp4";
+import videoWebmMobile from "./assets/logo-video-mobile.webm";
 import poster from "./assets/black-background.png";
 import Navigation from "./components/Navigation";
 import Hero from "./pages/Hero";
@@ -76,9 +78,11 @@ export default function App() {
               <FirstLoadPageVideo
                 key={videoLoaded ? "video-hidden" : "video-visible"}
                 videoPath={videoMp4}
+                videoPathMobile={videoMp4Mobile}
                 videoType={"mp4"}
                 posterPath={poster}
                 videoWebmPath={videoWebm}
+                videoWebmPathMobile={videoWebmMobile}
                 animationTime={firstLoadPageVideoTime}
                 hideVideoTime={0.8}
                 hideVideoScaleX={0.165}
@@ -87,6 +91,7 @@ export default function App() {
                 hideVideoTranslateY={"1vh"}
                 hideVideotransformOriginX={"0%"}
                 hideVideotransformOriginY={"0%"}
+                mobileBreakpoint={560}
                 onVideoLoaded={() => setVideoLoaded(true)}
               />
               {videoLoaded && (

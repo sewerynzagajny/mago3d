@@ -19,11 +19,9 @@ const videoContent = {
 };
 
 FirstLoadPageVideo.propTypes = {
-  videoPath: PropTypes.string.isRequired, // desktop
-  videoPathMobile: PropTypes.string, // mobile
+  videoPath: PropTypes.string.isRequired,
   videoType: PropTypes.string.isRequired,
   videoWebmPath: PropTypes.string,
-  videoWebmPathMobile: PropTypes.string,
   animationTime: PropTypes.number,
   hideVideoTime: PropTypes.number,
   hideVideoScaleX: PropTypes.number,
@@ -33,16 +31,12 @@ FirstLoadPageVideo.propTypes = {
   onVideoLoaded: PropTypes.func.isRequired,
   hideVideotransformOriginX: PropTypes.string,
   hideVideotransformOriginY: PropTypes.string,
-  posterPath: PropTypes.string,
-  mobileBreakpoint: PropTypes.number, // px
 };
 
 export default function FirstLoadPageVideo({
   videoPath,
-  videoPathMobile,
   videoType,
   videoWebmPath,
-  videoWebmPathMobile,
   posterPath,
   animationTime = 3,
   hideVideoTime = 0.8,
@@ -53,18 +47,8 @@ export default function FirstLoadPageVideo({
   hideVideotransformOriginX = "50%",
   hideVideotransformOriginY = "50%",
   onVideoLoaded,
-  mobileBreakpoint = 768,
 }) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  // Wybierz wersję mobilną lub desktopową na podstawie szerokości okna
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth <= mobileBreakpoint;
-  const selectedVideoPath =
-    isMobile && videoPathMobile ? videoPathMobile : videoPath;
-  const selectedWebmPath =
-    isMobile && videoWebmPathMobile ? videoWebmPathMobile : videoWebmPath;
-
   useEffect(() => {
     const hideVideo = {
       opacity: 0,
@@ -90,7 +74,9 @@ export default function FirstLoadPageVideo({
             ".first-load-page-video"
           );
           if (parentElement) {
-            parentElement.style.display = "none";
+            if (parentElement) {
+              parentElement.style.display = "none";
+            }
           }
         }, hideVideoTime * 1000 + 100);
       }, animationTime * 1000);
@@ -121,12 +107,10 @@ export default function FirstLoadPageVideo({
         autoPlay
         muted
         playsInline
-        poster={posterPath} // nie zmieniamy poster!
+        poster={posterPath} // Ścieżka do obrazu zastępczego
       >
-        <source src={selectedVideoPath} type={`video/${videoType}`} />
-        {selectedWebmPath && (
-          <source src={selectedWebmPath} type={`video/${videoType}`} />
-        )}
+        <source src={videoPath} type={`video/${videoType}`} />
+        {videoWebmPath && <source src={videoWebmPath} type="video/webm" />}
         Your browser is not supported!
       </video>
     </div>
