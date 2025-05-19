@@ -51,14 +51,7 @@
       height: auto;
       padding: 2.4rem;
 
-      background-image: linear-gradient(
-        135deg,
-        $background-color,
-        $background-color-darekr,
-        $black
-      );
-      background-size: 200% 200%;
-      animation: gradientShift 10s ease infinite;
+      @extend %animated-gradient-bg;
 
       &--image {
         width: 100%;

@@ -3,7 +3,74 @@
 
   &__container {
     @extend %container-style;
-    height: 100vh;
+    // height: 100vh;
+
+    &__products {
+      &__item {
+        transition: all 0.3s ease-in-out;
+        &__content {
+          padding: 2rem 2rem 2rem;
+          @extend %animated-gradient-bg;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          &__img {
+            width: 80%;
+            height: 80%;
+
+            overflow: hidden;
+            justify-self: center;
+            align-self: center;
+
+            border-radius: 0.5rem;
+
+            &--photo {
+              width: 100%;
+              height: 100%;
+
+              transition: all 0.3s ease-in-out;
+              object-fit: cover;
+              object-position: center;
+              display: block;
+            }
+          }
+          &--text-product {
+            // margin-top: 1.2rem;
+            font-size: 2rem;
+            font-weight: $font-strong;
+            // color: $black;
+          }
+
+          &--text-price {
+            // font-size: 1.6rem;
+            font-weight: $font-stronger;
+            color: $font-color-primary;
+            // font-size: 2rem;
+          }
+
+          &--btn {
+            width: 60%;
+            height: 4rem;
+            padding: 0;
+            // justify-self: center;
+            align-self: center;
+            font-size: 1.6rem;
+            &:last-child {
+              margin-top: 1.2rem;
+            }
+          }
+        }
+        &:hover {
+          transform: translateY(-0.4rem);
+          // transform: scale(1.05);
+          // box-shadow: 0 0 12px #50fa7b80;
+          img {
+            transform: scale(1.04);
+          }
+        }
+      }
+    }
 
     &__btns {
       margin-top: 14.8rem;
