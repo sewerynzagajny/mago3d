@@ -2,6 +2,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
+import Product from "../components/Product";
 import Btn from "../components/Btn";
 import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
 import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
@@ -14,9 +15,9 @@ const products = [
   {
     name: "Podstawka pod Thermomix TM5 TM6 TSv3",
     colors: [
-      { name: "czarny", photo: TSv3MainPhotoBlack },
-      { name: "biały", photo: TSv3MainPhotoWhite },
-      { name: "szary", photo: TSv3MainPhotoGrey },
+      { name: "czarny", nameEn: "black", photo: TSv3MainPhotoBlack },
+      { name: "biały", nameEn: "white", photo: TSv3MainPhotoWhite },
+      { name: "szary", nameEn: "grey", photo: TSv3MainPhotoGrey },
     ],
     price: 109.0,
     get priceStringPl() {
@@ -28,7 +29,11 @@ const products = [
   },
   {
     name: "Podstawka pod Thermomix TM5 TM6 TSv4",
-    color: ["czarny", "biały", "szary"],
+    colors: [
+      { name: "czarny", nameEn: "black", photo: TSv3MainPhotoBlack },
+      { name: "biały", nameEn: "white", photo: TSv3MainPhotoWhite },
+      { name: "szary", nameEn: "grey", photo: TSv3MainPhotoGrey },
+    ],
     price: 109.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
@@ -39,7 +44,11 @@ const products = [
   },
   {
     name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-    color: ["czarny", "biały", "szary"],
+    colors: [
+      { name: "czarny", nameEn: "black", photo: TSv3MainPhotoBlack },
+      { name: "biały", nameEn: "white", photo: TSv3MainPhotoWhite },
+      { name: "szary", nameEn: "grey", photo: TSv3MainPhotoGrey },
+    ],
     price: 189.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
@@ -49,7 +58,6 @@ const products = [
     },
   },
 ];
-const [standTSv3, standTSv4, standTSv4PRO] = products;
 
 export default function Assortment() {
   return (
@@ -69,65 +77,15 @@ export default function Assortment() {
           </h3>
 
           <div className="assortment__container__products grid-3-col_assortment">
-            <div className="assortment__container__products__item frame">
-              <div className="assortment__container__products__item__content">
-                <ScrollEffectContainer
-                  totalImages={1}
-                  threshold={0}
-                  animationTime={0.6}
-                  animationTransform="translateY(0rem)"
-                  rootMargin="50%"
-                  className="assortment__container__products__item__content__img"
-                >
-                  {" "}
-                  <img
-                    className="assortment__container__products__item__content__img--photo"
-                    alt="product of Mago3d"
-                    src={standTSv3.colors[0].photo}
-                  />
-                </ScrollEffectContainer>
-
-                <p className="assortment__container__products__item__content--text-product">
-                  {standTSv3.name}
-                </p>
-                <p className="assortment__container__products__item__content--text-price">
-                  {standTSv3.priceStringPl}{" "}
-                </p>
-                <p className="assortment__container__products__item__content--text-color">
-                  Kolor:{" "}
-                  {standTSv3.colors.map((color, index) => (
-                    <span
-                      key={index}
-                      className="assortment__container__products__item__content--text-color--color"
-                    >
-                      {color.name}
-                      {index < standTSv3.colors.length - 1 ? ", " : ""}
-                    </span>
-                  ))}
-                </p>
-                <Btn className="btn assortment__container__products__item__content--btn">
-                  Szczegóły
-                </Btn>
-                <Btn className="btn assortment__container__products__item__content--btn">
-                  Kup
-                </Btn>
-              </div>
-            </div>
-            <div className="assortment__container__products__item frame">
-              <div className="assortment__container__products__item__content">
-                test
-              </div>
-            </div>
-            <div className="assortment__container__products__item frame">
-              <div className="assortment__container__products__item__content">
-                test
-              </div>
-            </div>
-            <div className="assortment__container__products__item frame">
-              <div className="assortment__container__products__item__content">
-                test
-              </div>
-            </div>
+            <>
+              {products.map((product, i) => (
+                <Product
+                  key={i}
+                  product={product}
+                  className="assortment__container__products__item"
+                />
+              ))}
+            </>
           </div>
 
           <div className="assortment__container__btns">

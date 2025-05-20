@@ -7,7 +7,7 @@
 
     &__products {
       &__item {
-        transition: all 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         &__content {
           padding: 2rem 2rem 2rem;
           @extend %animated-gradient-bg;
@@ -29,7 +29,7 @@
               width: 100%;
               height: 100%;
 
-              transition: all 0.3s ease-in-out;
+              // transition: all 0.3s ease-in-out;
               object-fit: cover;
               object-position: center;
               display: block;
@@ -43,13 +43,38 @@
           }
 
           &--text-price {
-            // font-size: 1.6rem;
             font-weight: $font-stronger;
             color: $font-color-primary;
-            // font-size: 2rem;
+          }
+
+          &--text-color {
+            gap: 2rem;
+            display: flex;
+
+            align-items: center;
+
+            &--item {
+              width: 2rem;
+              height: 2rem;
+              border-radius: 0.5rem;
+              border: 0.2rem solid $font-color-primary;
+              color: $font-color-primary;
+              font-weight: $font-stronger;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              // padding-bottom: 1.8rem;
+              // background-color: $color-white;
+
+              &--marker {
+                padding: 0.2rem;
+              }
+            }
           }
 
           &--btn {
+            margin-top: 1rem;
             width: 60%;
             height: 4rem;
             padding: 0;
@@ -62,12 +87,12 @@
           }
         }
         &:hover {
-          transform: translateY(-0.4rem);
-          // transform: scale(1.05);
-          // box-shadow: 0 0 12px #50fa7b80;
-          img {
-            transform: scale(1.04);
-          }
+          // transform: translateY(-0.4rem);
+          transform: scale(1.01);
+          box-shadow: 0 0 1.2rem #399539;
+          // img {
+          //   transform: scale(1.04);
+          // }
         }
       }
     }
