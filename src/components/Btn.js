@@ -27,6 +27,7 @@ export default function Btn({
         className={`${className} ${hrefClassName}`}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={onClick}
         {...rest}
       >
         {children}

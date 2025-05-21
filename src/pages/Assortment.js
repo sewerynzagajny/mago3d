@@ -87,7 +87,7 @@ export default function Assortment() {
               ))}
             </>
           </div>
-
+          {/* 
           <div className="assortment__container__btns">
             <Btn
               className="btn btn_href assortment__container__btns__shop-btn"
@@ -108,7 +108,7 @@ export default function Assortment() {
                 Allegro
               </span>
             </Btn>
-          </div>
+          </div> */}
         </ScrollEffectContainer>
       </div>
       <Footer />
