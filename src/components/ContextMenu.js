@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 export default function ContextMenu({ visible, position, onClose, children }) {
   const menuRef = useRef(null);
@@ -24,7 +25,7 @@ export default function ContextMenu({ visible, position, onClose, children }) {
 
   if (!visible) return null;
 
-  return (
+  const menu = (
     <div
       ref={menuRef}
       style={{
@@ -32,10 +33,26 @@ export default function ContextMenu({ visible, position, onClose, children }) {
         top: position.y,
         left: position.x,
         zIndex: 1000,
-        transform: "translate(-44.8%, -50%)",
+        transform: "translate(-50%, -100%)",
       }}
     >
       {children}
     </div>
   );
+
+  // return (
+  //   <div
+  //     ref={menuRef}
+  //     style={{
+  //       position: "absolute",
+  //       top: position.y,
+  //       left: position.x,
+  //       zIndex: 1000,
+  //       transform: "translate(-44.8%, -50%)",
+  //     }}
+  //   >
+  //     {children}
+  //   </div>
+  // );
+  return createPortal(menu, document.body);
 }

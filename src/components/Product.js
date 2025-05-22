@@ -5,7 +5,55 @@ import ContextMenu from "./ContextMenu";
 import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
 import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
 
-export default function Product({ product, className = "" }) {
+export default function Product({
+  product,
+  className = "",
+  onMenuChange,
+  style,
+}) {
+  // const shoppingPlatforms = product.shoppingPlatform || [
+  //   {
+  //     name: "Etsy",
+  //     link: "https://www.etsy.com/pl/shop/MaGo3dPL",
+  //     icon: (
+  //       <EtsyIcon className="assortment__container__btns__shop-btn--link" />
+  //     ),
+  //     textClass: "assortment__container__btns__shop-btn--text-etsy",
+  //   },
+  //   {
+  //     name: "Allegro",
+  //     link: "https://allegro.pl/uzytkownik/MaGo3d",
+  //     icon: (
+  //       <AllegroIcon className="assortment__container__btns__shop-btn--link" />
+  //     ),
+  //     textClass: "assortment__container__btns__shop-btn--text-allegro",
+  //   },
+  //   {
+  //     name: "MaGo3d",
+  //     link: "http://localhost:3000/kontakt",
+  //     icon: (
+  //       <EtsyIcon className="assortment__container__btns__shop-btn--link" />
+  //     ),
+  //     textClass: "assortment__container__btns__shop-btn--text-etsy",
+  //   },
+  // ];
+
+  const iconMap = {
+    Etsy: <EtsyIcon className="assortment__container__btns__shop-btn--link" />,
+    Allegro: (
+      <AllegroIcon className="assortment__container__btns__shop-btn--link" />
+    ),
+    MaGo3D: (
+      <EtsyIcon className="assortment__container__btns__shop-btn--link" />
+    ),
+  };
+
+  const textClassMap = {
+    Etsy: "assortment__container__btns__shop-btn--text-etsy",
+    Allegro: "assortment__container__btns__shop-btn--text-allegro",
+    MaGo3D: "assortment__container__btns__shop-btn--text-etsy",
+  };
+
   const [chooseColor, setChooseColor] = useState(
     product.colors?.[0]?.nameEn || "black"
   );
@@ -20,23 +68,55 @@ export default function Product({ product, className = "" }) {
 
   const selectedColor = product.colors?.find((c) => c.nameEn === chooseColor);
 
+  const basePlatforms =
+    selectedColor?.shoppingPlatform || product.shoppingPlatform || [];
+
+  const hasMaGo3D = basePlatforms.some((p) => p.name === "MaGo3D");
+  const shoppingPlatforms = [
+    ...basePlatforms.map((platform) => ({
+      ...platform,
+      icon: iconMap[platform.name] || null,
+      textClass: textClassMap[platform.name] || "",
+    })),
+    ...(!hasMaGo3D
+      ? [
+          {
+            name: "MaGo3D",
+            link: "http://localhost:3000/kontakt",
+            icon: iconMap["MaGo3D"],
+            textClass: textClassMap["MaGo3D"],
+          },
+        ]
+      : []),
+  ];
+
   function handleBuyClick(e) {
     e.preventDefault();
-    const rect = itemRef.current.getBoundingClientRect();
+    // const rect = itemRef.current.getBoundingClientRect();
+    // setMenuPosition({
+    //   x: e.clientX - rect.left,
+    //   y: e.clientY - rect.top,
+    // });
     setMenuPosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: e.clientX + window.scrollX,
+      y: e.clientY + window.scrollY,
     });
     setMenuVisible(true);
+    if (onMenuChange) onMenuChange(true); // Przekazanie wartości do rodzica
+  }
+
+  function handleCloseMenu() {
+    setMenuVisible(false);
+    if (onMenuChange) onMenuChange(false); // powiadom rodzica
   }
 
   return (
     <div
-      className={`${className}__item${menuVisible ? " is-active" : ""}`}
+      className={`${className}__item `}
       ref={itemRef}
-      style={{ position: "relative" }}
+      style={{ position: "relative", ...style }}
     >
-      <div className={`${className} frame`}>
+      <div className={`${className} frame ${menuVisible ? " is-active" : ""}`}>
         <div className={`${className}__content`}>
           <ScrollEffectContainer
             totalImages={1}
@@ -95,50 +175,33 @@ export default function Product({ product, className = "" }) {
       <ContextMenu
         visible={menuVisible}
         position={menuPosition}
-        onClose={() => setMenuVisible(false)}
+        onClose={handleCloseMenu}
       >
         <div
           className="assortment__container__btns"
-          onClick={() => setMenuVisible(false)}
+          onClick={() => {
+            setMenuVisible(false);
+            onMenuChange(false);
+          }}
+          style={{ opacity: 1 }} // Ustawienie opacity na 1, aby menu było widoczne
         >
-          <Btn
-            className="btn assortment__container__btns__shop-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              setMenuVisible(false);
-              setTimeout(() => {
-                window.open(
-                  "https://www.etsy.com/pl/shop/MaGo3dPL",
-                  "_blank",
-                  "noopener,noreferrer"
-                );
-              }, 50); // 50 ms wystarczy, możesz dać nawet 10-30 ms
-            }}
-          >
-            <EtsyIcon className="assortment__container__btns__shop-btn--link" />
-            <span className="assortment__container__btns__shop-btn--text-etsy">
-              Etsy
-            </span>
-          </Btn>
-          <Btn
-            className="btn assortment__container__btns__shop-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              setMenuVisible(false);
-              setTimeout(() => {
-                window.open(
-                  "https://allegro.pl/uzytkownik/MaGo3d",
-                  "_blank",
-                  "noopener,noreferrer"
-                );
-              }, 50); // 50 ms wystarczy, możesz dać nawet 10-30 ms
-            }}
-          >
-            <AllegroIcon className="assortment__container__btns__shop-btn--link" />
-            <span className="assortment__container__btns__shop-btn--text-allegro">
-              Allegro
-            </span>
-          </Btn>
+          {shoppingPlatforms.map((platform) => (
+            <Btn
+              key={platform.name}
+              className="btn assortment__container__btns__shop-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setMenuVisible(false);
+                onMenuChange(false);
+                setTimeout(() => {
+                  window.open(platform.link, "_blank", "noopener,noreferrer");
+                }, 50);
+              }}
+            >
+              {platform.icon}
+              <span className={platform.textClass}>{platform.name}</span>
+            </Btn>
+          ))}
         </div>
       </ContextMenu>
     </div>

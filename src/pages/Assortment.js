@@ -1,65 +1,16 @@
+import { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import Product from "../components/Product";
-import Btn from "../components/Btn";
-import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
-import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
-
-import TSv3MainPhotoBlack from "../assets/assortment/TSv3/main_black.jpg";
-import TSv3MainPhotoWhite from "../assets/assortment/TSv3/main_white.jpg";
-import TSv3MainPhotoGrey from "../assets/assortment/TSv3/main_grey.jpg";
-
-const products = [
-  {
-    name: "Podstawka pod Thermomix TM5 TM6 TSv3",
-    colors: [
-      { name: "czarny", nameEn: "black", photo: TSv3MainPhotoBlack },
-      { name: "biały", nameEn: "white", photo: TSv3MainPhotoWhite },
-      { name: "szary", nameEn: "grey", photo: TSv3MainPhotoGrey },
-    ],
-    price: 109.0,
-    get priceStringPl() {
-      return this.price.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-  {
-    name: "Podstawka pod Thermomix TM5 TM6 TSv4",
-    colors: [
-      { name: "czarny", nameEn: "black", photo: TSv3MainPhotoBlack },
-      { name: "biały", nameEn: "white", photo: TSv3MainPhotoWhite },
-      { name: "szary", nameEn: "grey", photo: TSv3MainPhotoGrey },
-    ],
-    price: 109.0,
-    get priceStringPl() {
-      return this.price.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-  {
-    name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-    colors: [
-      { name: "czarny", nameEn: "black", photo: TSv3MainPhotoBlack },
-      { name: "biały", nameEn: "white", photo: TSv3MainPhotoWhite },
-      { name: "szary", nameEn: "grey", photo: TSv3MainPhotoGrey },
-    ],
-    price: 189.0,
-    get priceStringPl() {
-      return this.price.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-];
+import { products } from "../data/products";
+// import Btn from "../components/Btn";
+// import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
+// import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
 
 export default function Assortment() {
+  const [onMenuVisible, setOnMenuVisible] = useState(false);
   return (
     <section className="assortment">
       <Navigation />
@@ -78,11 +29,28 @@ export default function Assortment() {
 
           <div className="assortment__container__products grid-3-col_assortment">
             <>
+              {/* Nakładka blokująca interakcje */}
+              {onMenuVisible && (
+                <div
+                  style={{
+                    position: "absolute",
+                    zIndex: 10,
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: "rgba(255,255,255,0)",
+                    cursor: "pointer",
+                  }}
+                />
+              )}
               {products.map((product, i) => (
                 <Product
                   key={i}
                   product={product}
                   className="assortment__container__products__item"
+                  onMenuChange={setOnMenuVisible}
+                  style={onMenuVisible ? { opacity: "0.4" } : {}}
                 />
               ))}
             </>
