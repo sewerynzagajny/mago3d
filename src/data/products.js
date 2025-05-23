@@ -17,6 +17,16 @@ const TSv4ProPhotos = {
   grey: require("../assets/assortment/TSv4Pro/main_grey.webp"),
 };
 
+const ResoWallPhotos = {
+  black: require("../assets/assortment/ResoWall/main_black.webp"),
+};
+const ResoDeskPhotos = {
+  black: require("../assets/assortment/ResoDesk/main_black.webp"),
+};
+const ResoDeskDuoPhotos = {
+  black: require("../assets/assortment/ResoDeskDuo/main_black.webp"),
+};
+
 export const products = [
   {
     name: "Podstawka pod Thermomix TM5 TM6 TSv3",
@@ -158,6 +168,87 @@ export const products = [
       },
     ],
     price: 189.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "ResoWall – Ekspozytor na Resoraki Hot Wheels",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: ResoWallPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1863827561/wall-mounting-display-stand-support?ref=shop_home_feat_3&sts=1&logging_key=8a154a9ba996d195b59a5f730e66461c6d45854f%3A1863827561",
+          },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-organizer-karty-resoraki-hot-wheels-itp-nascienny-17161511948",
+          },
+        ],
+      },
+    ],
+    price: 139.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "ResoDesk – Ekspozytor na Resoraki Hot Wheels",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: ResoDeskPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1741719137/display-stand-support-shelf-storage-for?ref=shop_home_feat_2&sts=1&logging_key=91925d2e7d8dc391b180d0f908f5036afc81217d%3A1741719137&variation0=4537491028",
+          },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-polka-na-karty-resoraki-hot-wheels-itp-pojedynczy-15702815032",
+          },
+        ],
+      },
+    ],
+    price: 89.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "ResoDesk Duo – Ekspozytor na Resoraki Hot Wheels (2x)",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: ResoDeskDuoPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1741719137/display-stand-support-shelf-storage-for?ref=shop_home_feat_2&sts=1&logging_key=91925d2e7d8dc391b180d0f908f5036afc81217d%3A1741719137&variation0=4537491032",
+          },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-polka-na-karty-resoraki-hot-wheels-itp-podwojny-15727339316",
+          },
+        ],
+      },
+    ],
+    price: 119.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",

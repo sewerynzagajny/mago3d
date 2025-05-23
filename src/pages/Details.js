@@ -19,7 +19,7 @@ export default function Details() {
         >
           <h2 className="heading-secondary">Szczegóły</h2>
           <h3 className="heading-tertiary">
-            <q>Pracujemy nad tym aby zapewnić najlepsze wrażenia</q>{" "}
+            <q>Pracujemy nad tym, aby zapewnić najlepsze wrażenia</q>{" "}
             <span style={{ fontStyle: "normal" }}>🛠️</span>
           </h3>
           <div
@@ -31,7 +31,7 @@ export default function Details() {
             }}
           >
             {" "}
-            <Btn className=" btn" as={Link} to="/asortyment">
+            <Btn className="btn hero__btn" as={Link} to="/asortyment">
               Powrót
             </Btn>
           </div>
