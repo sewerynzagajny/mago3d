@@ -23,6 +23,7 @@ import Contact from "./pages/Contacts";
 import Assortment from "./pages/Assortment";
 import Privacy from "./pages/Privacy";
 import CookieBanner from "./components/CookieBanner";
+import Details from "./pages/Details";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -129,6 +130,7 @@ export default function App() {
         <Route path="/kontakt" element={<Contact />} />
         <Route path="/asortyment" element={<Assortment />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/szczegoly" element={<Details />} />
         {/* Nowa podstrona */}
         {/* <Route path="/new-page" element={<NewPage />} /> */}
       </Routes>

@@ -2,8 +2,10 @@ import { useState, useRef } from "react";
 import Btn from "./Btn";
 import ScrollEffectContainer from "./ScrollEffectContainer";
 import ContextMenu from "./ContextMenu";
+import { Link } from "react-router-dom";
 import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
 import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
+import { ReactComponent as MaGo3dIcon } from "../svg/mago3d.svg";
 
 export default function Product({
   product,
@@ -43,15 +45,15 @@ export default function Product({
     Allegro: (
       <AllegroIcon className="assortment__container__btns__shop-btn--link" />
     ),
-    MaGo3D: (
-      <EtsyIcon className="assortment__container__btns__shop-btn--link" />
+    MaGo3d: (
+      <MaGo3dIcon className="assortment__container__btns__shop-btn--link" />
     ),
   };
 
   const textClassMap = {
     Etsy: "assortment__container__btns__shop-btn--text-etsy",
     Allegro: "assortment__container__btns__shop-btn--text-allegro",
-    MaGo3D: "assortment__container__btns__shop-btn--text-etsy",
+    MaGo3d: "assortment__container__btns__shop-btn--text-mago3d",
   };
 
   const [chooseColor, setChooseColor] = useState(
@@ -71,20 +73,20 @@ export default function Product({
   const basePlatforms =
     selectedColor?.shoppingPlatform || product.shoppingPlatform || [];
 
-  const hasMaGo3D = basePlatforms.some((p) => p.name === "MaGo3D");
+  const hasMaGo3d = basePlatforms.some((p) => p.name === "MaGo3d");
   const shoppingPlatforms = [
     ...basePlatforms.map((platform) => ({
       ...platform,
       icon: iconMap[platform.name] || null,
       textClass: textClassMap[platform.name] || "",
     })),
-    ...(!hasMaGo3D
+    ...(!hasMaGo3d
       ? [
           {
-            name: "MaGo3D",
-            link: "http://localhost:3000/kontakt",
-            icon: iconMap["MaGo3D"],
-            textClass: textClassMap["MaGo3D"],
+            name: "MaGo3d",
+            link: `${window.location.origin}/kontakt`,
+            icon: iconMap["MaGo3d"],
+            textClass: textClassMap["MaGo3d"],
           },
         ]
       : []),
@@ -128,7 +130,7 @@ export default function Product({
           >
             <img
               className={`${className}__content__img--photo`}
-              alt="product of Mago3d"
+              alt="product of MaGo3d"
               src={selectedColor?.photo || ""}
             />
           </ScrollEffectContainer>
@@ -163,7 +165,13 @@ export default function Product({
               ))}
             </div>
           </div>
-          <Btn className={`btn ${className}__content--btn`}>Szczegóły</Btn>
+          <Btn
+            className={`btn ${className}__content--btn`}
+            as={Link}
+            to="/szczegoly"
+          >
+            Szczegóły
+          </Btn>
           <Btn
             className={`btn ${className}__content--btn`}
             onClick={handleBuyClick}

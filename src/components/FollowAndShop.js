@@ -2,8 +2,10 @@ import { ReactComponent as FacebookIcon } from "../svg/logo-facebook.svg";
 import { ReactComponent as InstagramIcon } from "../svg/logo-instagram.svg";
 import { ReactComponent as TiktokIcon } from "../svg/logo-tiktok.svg";
 import { ReactComponent as YoutubeIcon } from "../svg/logo-youtube.svg";
+import { ReactComponent as MaGo3dIcon } from "../svg/mago3d.svg";
 import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
 import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
+import { Link } from "react-router-dom";
 
 export default function FollowAndShop({ className = "" }) {
   return (
@@ -51,6 +53,21 @@ export default function FollowAndShop({ className = "" }) {
         >
           <YoutubeIcon className="icon-follow-and-shop" />
         </a>
+      </li>
+
+      <li>
+        <Link to="/asortyment">
+          <MaGo3dIcon className="icon-follow-and-shop" />
+        </Link>
+        {/* <a
+          href={`${window.location.origin}/asortyment`}
+          className={`${className}__follow-and-shop--link--mago3d`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Kupuj na MaGo3d"
+        >
+          <MaGo3dIcon className="icon-follow-and-shop" />
+        </a> */}
       </li>
 
       <li>
