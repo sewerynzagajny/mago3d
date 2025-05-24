@@ -36,49 +36,63 @@
               min-height: 22rem;
             }
             @media only screen and (max-width: 35rem) {
-              min-height: 44rem;
-            }
-            @media only screen and (max-width: 34rem) {
+              // min-height: 44rem;
               min-height: 40rem;
             }
+            @media only screen and (max-width: 34rem) {
+              // min-height: 40rem;
+              min-height: 38rem;
+            }
             @media only screen and (max-width: 32rem) {
-              min-height: 39rem;
-            }
-            @media only screen and (max-width: 31rem) {
-              min-height: 37rem;
-            }
-            @media only screen and (max-width: 30rem) {
+              // min-height: 39rem;
               min-height: 36rem;
             }
+            @media only screen and (max-width: 31rem) {
+              // min-height: 37rem;
+              min-height: 34rem;
+            }
+            @media only screen and (max-width: 30rem) {
+              // min-height: 36rem;
+              min-height: 32rem;
+            }
             @media only screen and (max-width: 28rem) {
-              min-height: 33rem;
-            }
-
-            @media only screen and (max-width: 27rem) {
-              min-height: 31rem;
-            }
-
-            @media only screen and (max-width: 26rem) {
+              // min-height: 33rem;
               min-height: 30rem;
             }
 
-            @media only screen and (max-width: 25rem) {
+            @media only screen and (max-width: 27rem) {
+              // min-height: 31rem;
               min-height: 28rem;
             }
+
+            @media only screen and (max-width: 26rem) {
+              // min-height: 30rem;
+              min-height: 26rem;
+            }
+
+            @media only screen and (max-width: 25rem) {
+              // min-height: 28rem;
+              min-height: 24rem;
+            }
             @media only screen and (max-width: 24rem) {
-              min-height: 27rem;
-            }
-            @media only screen and (max-width: 23rem) {
-              min-height: 25rem;
-            }
-            @media only screen and (max-width: 22rem) {
+              // min-height: 27rem;
               min-height: 23rem;
             }
+            @media only screen and (max-width: 23rem) {
+              // min-height: 25rem;
+              min-height: 21rem;
+            }
+            @media only screen and (max-width: 22rem) {
+              // min-height: 23rem;
+              min-height: 20rem;
+            }
             @media only screen and (max-width: 21rem) {
-              min-height: 22rem;
+              // min-height: 22rem;
+              min-height: 19rem;
             }
             @media only screen and (max-width: 20rem) {
-              min-height: 21rem;
+              // min-height: 21rem;
+              min-height: 18rem;
             }
 
             overflow: hidden;
