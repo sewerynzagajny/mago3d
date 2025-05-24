@@ -27,9 +27,33 @@ const ResoDeskDuoPhotos = {
   black: require("../assets/assortment/ResoDeskDuo/main_black.webp"),
 };
 
+const PegHoldPhotos = {
+  black: require("../assets/assortment/PegHold/main_black.webp"),
+  white: require("../assets/assortment/PegHold/main_white.webp"),
+};
+
+const AquaTrayPhotos = {
+  white: require("../assets/assortment/AquaTray/main_white.webp"),
+};
+
+const PegGlowFPhotos = {
+  black: require("../assets/assortment/PegGlowF/main_black.webp"),
+  white: require("../assets/assortment/PegGlowF/main_white.webp"),
+};
+
+const PegGlowTPhotos = {
+  black: require("../assets/assortment/PegGlowT/main_black.webp"),
+  white: require("../assets/assortment/PegGlowT/main_white.webp"),
+};
+
+const PegWavePhotos = {
+  black: require("../assets/assortment/PegWave/main_black.webp"),
+  white: require("../assets/assortment/PegWave/main_white.webp"),
+};
+
 export const products = [
   {
-    name: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    name: "TSv3 – Podstawka pod Thermomix TM5/TM6",
     colors: [
       {
         name: "czarny",
@@ -86,7 +110,7 @@ export const products = [
     },
   },
   {
-    name: "Podstawka pod Thermomix TM5 TM6 TSv4",
+    name: "TSv4 – Podstawka pod Thermomix TM5/TM6",
     colors: [
       {
         name: "czarny",
@@ -131,7 +155,7 @@ export const products = [
     },
   },
   {
-    name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
+    name: "TSv4PRO – Podstawka pod Thermomix TM5/TM6",
     colors: [
       {
         name: "czarny",
@@ -249,6 +273,169 @@ export const products = [
       },
     ],
     price: 119.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "AquaTray – Ociekacz pod Zlew IKEA Havsen",
+    colors: [
+      {
+        name: "biały",
+        nameEn: "white",
+        photo: AquaTrayPhotos.white,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1560620914/ikea-havsen-ociekacz-drainer?ref=shop_home_active_3&crt=1&sts=1&logging_key=4b2e31b9019b1e1fb3cd0889fa85529dd6e0e7fa%3A1560620914",
+          },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/ociekacz-tacka-pod-zlew-ikea-havsen-oslona-przed-zamakaniem-blatu-bialy-15610899313",
+          },
+        ],
+      },
+    ],
+    price: 49.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "PegHold – Uchwyty do Ekspozycji typu LEGO na Tablicę IKEA Skadis (9x)",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: PegHoldPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1671729171/ikea-skadis-pegboard-lego-icons-10329?ref=shop_home_active_6&sts=1&logging_key=cbcc4d534732f0fea6c52b5b8b77450c936997ed%3A1671729171&variation0=4254877844",
+          },
+        ],
+      },
+      {
+        name: "biały",
+        nameEn: "white",
+        photo: PegHoldPhotos.white,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1671729171/ikea-skadis-pegboard-lego-icons-10329?ref=shop_home_active_6&sts=1&logging_key=cbcc4d534732f0fea6c52b5b8b77450c936997ed%3A1671729171&variation0=4275188231",
+          },
+        ],
+      },
+    ],
+    price: 66.73,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "PegGlow F – Uchwyt do Lampy Forsa na Tablicę IKEA Skadis",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: PegGlowFPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1560634338/ikea-skadis-pegboard-forsa-lamp-mount?ref=shop_home_active_1&crt=1&sts=1&logging_key=06b8e8c06d8e7d43c50d2449bd670dd04093606e%3A1560634338&variation0=4284167339",
+          },
+        ],
+      },
+      {
+        name: "biały",
+        nameEn: "white",
+        photo: PegGlowFPhotos.white,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1560634338/ikea-skadis-pegboard-forsa-lamp-mount?ref=shop_home_active_1&crt=1&sts=1&logging_key=06b8e8c06d8e7d43c50d2449bd670dd04093606e%3A1560634338&variation0=4284167341",
+          },
+        ],
+      },
+    ],
+    price: 26.69,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "PegGlow T – Uchwyt do Lampy Tertial  na Tablicę IKEA Skadis",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: PegGlowTPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1560644314/ikea-skadis-pegboard-tertail-lamp-mount?ref=shop_home_active_4&sts=1&logging_key=5cd22173e64a6e383d07c2448abe1321ba42dc08%3A1560644314&variation0=3883325660",
+          },
+        ],
+      },
+      {
+        name: "biały",
+        nameEn: "white",
+        photo: PegGlowTPhotos.white,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1560644314/ikea-skadis-pegboard-tertail-lamp-mount?ref=shop_home_active_4&sts=1&logging_key=5cd22173e64a6e383d07c2448abe1321ba42dc08%3A1560644314&variation0=3883325658",
+          },
+        ],
+      },
+    ],
+    price: 37.98,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    name: "PegWave – Wieszak na Słuchawki do Tablicy IKEA Skadis",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: PegWavePhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1642764508/ikea-skadis-pegboard-headphone-gaming?ref=shop_home_active_10&sts=1&logging_key=7909892dc0ce11ead0403111f0394cdf3cc65592%3A1642764508&variation0=4199194574",
+          },
+        ],
+      },
+      {
+        name: "biały",
+        nameEn: "white",
+        photo: PegWavePhotos.white,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/1642764508/ikea-skadis-pegboard-headphone-gaming?ref=shop_home_active_10&sts=1&logging_key=7909892dc0ce11ead0403111f0394cdf3cc65592%3A1642764508&variation0=4199194576",
+          },
+        ],
+      },
+    ],
+    price: 34.41,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",

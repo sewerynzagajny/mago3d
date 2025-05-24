@@ -17,16 +17,69 @@
           flex-direction: column;
           gap: 1rem;
           border-radius: 1rem;
+          flex: 1 1 auto;
 
           &__img {
             width: 80%;
             height: 80%;
+            min-height: 25rem;
+            @media only screen and (max-width: 66rem) {
+              min-height: 22rem;
+            }
+            @media only screen and (max-width: 52rem) {
+              min-height: 32rem;
+            }
+            @media only screen and (max-width: 48.2rem) {
+              min-height: 28rem;
+            }
+            @media only screen and (max-width: 41.2rem) {
+              min-height: 22rem;
+            }
+            @media only screen and (max-width: 35rem) {
+              min-height: 44rem;
+            }
+            @media only screen and (max-width: 34rem) {
+              min-height: 40rem;
+            }
+            @media only screen and (max-width: 30rem) {
+              min-height: 36rem;
+            }
+            @media only screen and (max-width: 28rem) {
+              min-height: 33rem;
+            }
+
+            @media only screen and (max-width: 27rem) {
+              min-height: 31rem;
+            }
+
+            @media only screen and (max-width: 26rem) {
+              min-height: 30rem;
+            }
+
+            @media only screen and (max-width: 25rem) {
+              min-height: 28rem;
+            }
+            @media only screen and (max-width: 24rem) {
+              min-height: 27rem;
+            }
+            @media only screen and (max-width: 23rem) {
+              min-height: 25rem;
+            }
+            @media only screen and (max-width: 22rem) {
+              min-height: 23rem;
+            }
+            @media only screen and (max-width: 21rem) {
+              min-height: 22rem;
+            }
+            @media only screen and (max-width: 20rem) {
+              min-height: 21rem;
+            }
 
             overflow: hidden;
             justify-self: center;
             align-self: center;
 
-            border-radius: 0.5rem;
+            // border-radius: 1rem;
 
             &--photo {
               width: 100%;
@@ -40,9 +93,17 @@
           }
           &--text-product {
             // margin-top: 1.2rem;
-            font-size: 2rem;
+            // font-size: 2rem;
             font-weight: $font-strong;
             // color: $black;
+            min-height: 8rem;
+            // display: flex; // wyśrodkowanie pionowe i poziome
+            // align-items: center;
+            @media only screen and (max-width: 35rem) {
+              min-height: auto;
+              // grid-template-columns: repeat(2, 1fr);
+              // column-gap: 3.6rem;
+            }
           }
 
           &--text-price {

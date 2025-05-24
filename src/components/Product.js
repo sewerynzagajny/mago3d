@@ -114,7 +114,7 @@ export default function Product({
 
   return (
     <div
-      className={`${className}__item `}
+      // className={`${className} `}
       ref={itemRef}
       style={{ position: "relative", ...style }}
     >
