@@ -41,6 +41,12 @@
             @media only screen and (max-width: 34rem) {
               min-height: 40rem;
             }
+            @media only screen and (max-width: 32rem) {
+              min-height: 39rem;
+            }
+            @media only screen and (max-width: 31rem) {
+              min-height: 37rem;
+            }
             @media only screen and (max-width: 30rem) {
               min-height: 36rem;
             }
@@ -101,6 +107,7 @@
             // align-items: center;
             @media only screen and (max-width: 35rem) {
               min-height: auto;
+              font-size: 2rem;
               // grid-template-columns: repeat(2, 1fr);
               // column-gap: 3.6rem;
             }
