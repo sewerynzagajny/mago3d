@@ -53,7 +53,7 @@ const PegWavePhotos = {
 
 export const products = [
   {
-    name: "TSv3 – Podstawka pod Thermomix TM5/TM6",
+    name: "Podstawka pod Thermomix TM5 TM6 TSv3",
     colors: [
       {
         name: "czarny",
@@ -110,7 +110,7 @@ export const products = [
     },
   },
   {
-    name: "TSv4 – Podstawka pod Thermomix TM5/TM6",
+    name: "Podstawka pod Thermomix TM5 TM6 TSv4",
     colors: [
       {
         name: "czarny",
@@ -155,7 +155,7 @@ export const products = [
     },
   },
   {
-    name: "TSv4PRO – Podstawka pod Thermomix TM5/TM6",
+    name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
     colors: [
       {
         name: "czarny",
@@ -200,7 +200,8 @@ export const products = [
     },
   },
   {
-    name: "ResoWall – Ekspozytor na Resoraki Hot Wheels",
+    name: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    maxWords: 3,
     colors: [
       {
         name: "czarny",
@@ -227,7 +228,8 @@ export const products = [
     },
   },
   {
-    name: "ResoDesk – Ekspozytor na Resoraki Hot Wheels",
+    name: "Stojak Ekspozytor nabiurkowy pojedynczy na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
+    maxWords: 4,
     colors: [
       {
         name: "czarny",
@@ -254,7 +256,8 @@ export const products = [
     },
   },
   {
-    name: "ResoDesk Duo – Ekspozytor na Resoraki Hot Wheels (2x)",
+    name: "Stojak Ekspozytor nabiurkowy podwójny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
+    maxWords: 4,
     colors: [
       {
         name: "czarny",
@@ -281,7 +284,8 @@ export const products = [
     },
   },
   {
-    name: "AquaTray – Ociekacz pod Zlew IKEA Havsen",
+    name: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    maxWords: 5,
     colors: [
       {
         name: "biały",
@@ -308,7 +312,8 @@ export const products = [
     },
   },
   {
-    name: "PegHold – Uchwyty do Ekspozycji typu LEGO na Tablicę IKEA Skadis (9x)",
+    name: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS ",
+    maxWords: 9,
     colors: [
       {
         name: "czarny",
@@ -342,7 +347,8 @@ export const products = [
     },
   },
   {
-    name: "PegGlow F – Uchwyt do Lampy Forsa na Tablicę IKEA Skadis",
+    name: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
+    maxWords: 9,
     colors: [
       {
         name: "czarny",
@@ -376,7 +382,8 @@ export const products = [
     },
   },
   {
-    name: "PegGlow T – Uchwyt do Lampy Tertial  na Tablicę IKEA Skadis",
+    name: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL ",
+    maxWords: 9,
     colors: [
       {
         name: "czarny",
@@ -410,7 +417,8 @@ export const products = [
     },
   },
   {
-    name: "PegWave – Wieszak na Słuchawki do Tablicy IKEA Skadis",
+    name: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
+    maxWords: 7,
     colors: [
       {
         name: "czarny",

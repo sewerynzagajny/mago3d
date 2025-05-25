@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-com.svg";
 import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
 import { ReactComponent as MaGo3dIcon } from "../svg/mago3d.svg";
+import ShortenTitle from "./ShortenTitle";
 
 export default function Product({
   product,
@@ -135,9 +136,11 @@ export default function Product({
             />
           </ScrollEffectContainer>
 
-          <p className={`${className}__content--text-product`}>
-            {product.name}
-          </p>
+          <div className={`${className}__content--text-product`}>
+            <ShortenTitle wordsNumber={product.maxWords}>
+              {product.name}
+            </ShortenTitle>
+          </div>
           <p className={`${className}__content--text-price`}>
             {product.priceStringPl}
           </p>
