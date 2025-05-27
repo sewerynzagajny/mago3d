@@ -10,7 +10,12 @@ export default function ShortenTitle({ children, wordsNumber }) {
     if (typeof filename !== "string" || words.length <= wordsNumber) {
       return filename;
     }
-    return words.slice(0, wordsNumber).join(" ");
+    // return words.slice(0, wordsNumber).join(" ");
+    if (wordsNumber) {
+      return words.slice(0, wordsNumber).join(" ") + "...";
+    } else {
+      return words.slice(0, wordsNumber).join(" ");
+    }
   }
 
   useEffect(() => {

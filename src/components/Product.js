@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Btn from "./Btn";
 import ScrollEffectContainer from "./ScrollEffectContainer";
 import ContextMenu from "./ContextMenu";
@@ -7,6 +7,7 @@ import { ReactComponent as AllegroIcon } from "../svg/full-shoping-cart-svgrepo-
 import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
 import { ReactComponent as MaGo3dIcon } from "../svg/mago3d.svg";
 import ShortenTitle from "./ShortenTitle";
+import OrderModal from "./OrderModal";
 
 export default function Product({
   product,
@@ -63,7 +64,27 @@ export default function Product({
 
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+
+  const [orderModalVisible, setOrderModalVisible] = useState(false);
+
   const itemRef = useRef(null); // Dodaj ref
+  const [anchorRect, setAnchorRect] = useState(null);
+
+  useEffect(() => {
+    function updateRect() {
+      if (orderModalVisible && itemRef.current) {
+        setAnchorRect(itemRef.current.getBoundingClientRect());
+      }
+    }
+
+    window.addEventListener("resize", updateRect);
+    window.addEventListener("scroll", updateRect);
+
+    return () => {
+      window.removeEventListener("resize", updateRect);
+      window.removeEventListener("scroll", updateRect);
+    };
+  }, [orderModalVisible]);
 
   if (!product || !product.colors) {
     return null; // lub wyświetl komunikat o błędzie
@@ -92,6 +113,13 @@ export default function Product({
         ]
       : []),
   ];
+
+  function openOrderModal() {
+    if (itemRef.current) {
+      setAnchorRect(itemRef.current.getBoundingClientRect());
+    }
+    setOrderModalVisible(true);
+  }
 
   function handleBuyClick(e) {
     e.preventDefault();
@@ -205,7 +233,13 @@ export default function Product({
                 setMenuVisible(false);
                 onMenuChange(false);
                 setTimeout(() => {
-                  window.open(platform.link, "_blank", "noopener,noreferrer");
+                  platform.name === "MaGo3d"
+                    ? openOrderModal()
+                    : window.open(
+                        platform.link,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
                 }, 50);
               }}
             >
@@ -215,6 +249,17 @@ export default function Product({
           ))}
         </div>
       </ContextMenu>
+      <OrderModal
+        visible={orderModalVisible}
+        onClose={() => setOrderModalVisible(false)}
+        product={product}
+        selectedColor={chooseColor}
+        colors={product.colors}
+        onColorChange={setChooseColor}
+        price={product.priceStringPl.replace(",", ".")}
+        // anchorRef={itemRef}
+        anchorRect={anchorRect}
+      />
     </div>
   );
 }

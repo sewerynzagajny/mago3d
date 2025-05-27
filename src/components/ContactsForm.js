@@ -188,6 +188,7 @@ export default function ContactsForm({ className = "", color }) {
           className={`${loading ? "loading" : ""}`}
           type="text"
           id="name"
+          autoComplete="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Imię i nazwisko"
@@ -201,6 +202,7 @@ export default function ContactsForm({ className = "", color }) {
           className={`${loading ? "loading" : ""}`}
           type="email"
           id="email"
+          autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Adres e-mail"
