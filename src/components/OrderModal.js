@@ -31,7 +31,9 @@ export default function OrderModal({
 
   if (!visible) return null;
 
-  const totalPrice = (parseFloat(price) * quantity).toLocaleString("pl-PL", {
+  const totalPrice = (
+    parseFloat(price.replace(",", ".")) * quantity
+  ).toLocaleString("pl-PL", {
     style: "currency",
     currency: "PLN",
   });
