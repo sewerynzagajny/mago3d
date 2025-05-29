@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import axios from "axios";
 import ColorChooser from "./ColorChooser";
 import ShortenTitle from "./ShortenTitle";
 import Btn from "./Btn";
+import Spinner from "./Spinner";
 
 export default function OrderModal({
   visible,
   onClose,
   product,
   selectedColor,
-  colors,
   onColorChange,
   price,
   anchorRect, // przekazuj rect kafelka, jeśli chcesz pozycjonować modal względem kafelka
@@ -19,6 +20,18 @@ export default function OrderModal({
   const [email, setEmail] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [heightOffset, setHeightOffset] = useState("3rem");
+  const [loading, setIsLoading] = useState(false);
+  const honeypotRef = useRef(null); // Ref do ukrytego pola honeypot
+
+  useEffect(() => {
+    if (!visible) {
+      setName("");
+      setEmail("");
+      setQuantity(1);
+      // Jeśli chcesz resetować kolor:
+      // onColorChange("black");
+    }
+  }, [visible]);
 
   useEffect(() => {
     function handleResize() {
@@ -37,6 +50,51 @@ export default function OrderModal({
     style: "currency",
     currency: "PLN",
   });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // Sprawdź honeypot field
+    if (honeypotRef.current && honeypotRef.current.value) {
+      console.warn("Bot wykryty! Formularz został zablokowany.");
+      return;
+    }
+
+    setIsLoading(true); // Ustaw stan ładowania na true
+    // Tutaj możesz dodać logikę wysyłania zamówienia
+    const message = `Składam zamówienie: ${quantity}x ${product.name} (${selectedColor})`;
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/send-email.php`, formData, {
+        // .post("http://localhost:5000/send-email", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((_response) => {
+        alert(
+          `Zamówienie złożone: ${quantity}x ${product.name} (${selectedColor})`
+        );
+        setName("");
+        setEmail("");
+        setQuantity(1);
+        setIsLoading(false);
+        onClose(); // Ustaw isLoading na false po sukcesie
+      })
+      .catch((error) => {
+        console.error("Błąd podczas wysyłania wiadomości:", error);
+        alert("Wystąpił błąd podczas wysyłania wiadomości.");
+        setIsLoading(false);
+        onClose(); // Ustaw isLoading na false po błędzie
+      });
+
+    // onClose();
+  }
 
   // Wylicz pozycję modala względem anchorRect (kafelka)
   const modalStyle = anchorRect
@@ -86,13 +144,13 @@ export default function OrderModal({
                 type="text"
                 id="honeypot"
                 name="honeypot"
-                // ref={honeypotRef}
+                ref={honeypotRef}
                 style={{ display: "none" }}
                 tabIndex="-1"
                 autoComplete="off"
               />
               <input
-                // className={`${loading ? "loading" : ""}`}
+                className={`${loading ? "loading" : ""}`}
                 type="text"
                 id="name"
                 autoComplete="name"
@@ -100,13 +158,13 @@ export default function OrderModal({
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Imię i nazwisko"
                 required
-                // disabled={loading}
+                disabled={loading}
               />
               <label htmlFor="name">Imię i nazwisko</label>
             </div>
             <div className="order-modal__content__form__header--form-group">
               <input
-                // className={`${loading ? "loading" : ""}`}
+                className={`${loading ? "loading" : ""}`}
                 type="email"
                 id="email"
                 autoComplete="email"
@@ -114,7 +172,7 @@ export default function OrderModal({
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Adres e-mail"
                 required
-                // disabled={loading}
+                disabled={loading}
               />
               <label htmlFor="email">Adres e-mail</label>
             </div>
@@ -133,10 +191,12 @@ export default function OrderModal({
             colors={product.colors}
             selectedColor={selectedColor}
             onColorChange={onColorChange}
+            disabled={loading}
+            className={`${loading ? "loading" : ""}`}
           />
           <div className="order-modal__content__form--quantity">
             <div className="order-modal__content__form--quantity--btns-q">
-              <label>Ilość: </label>
+              <span>Ilość: </span>
               {/* <select
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
@@ -151,19 +211,25 @@ export default function OrderModal({
               <div className="order-modal__content__form--quantity--btns-q">
                 {" "}
                 <button
-                  className="order-modal__content__form--quantity--btns-q--btn-quantity"
+                  className={`order-modal__content__form--quantity--btns-q--btn-quantity ${
+                    loading ? "loading" : ""
+                  }`}
                   type="button"
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                   // style={{ marginLeft: 6 }}
+                  disabled={loading}
                 >
                   -
                 </button>
                 <span style={{ width: "1.2rem" }}>{quantity}</span>
                 <button
                   // style={{ marginLeft: 6 }}
-                  className="order-modal__content__form--quantity--btns-q--btn-quantity"
+                  className={`order-modal__content__form--quantity--btns-q--btn-quantity ${
+                    loading ? "loading" : ""
+                  }`}
                   type="button"
                   onClick={() => setQuantity((q) => Math.min(20, q + 1))}
+                  disabled={loading}
                 >
                   +
                 </button>
@@ -172,25 +238,19 @@ export default function OrderModal({
           </div>
 
           <Btn
-            className="btn order-modal__content__form--btn"
+            className={`btn order-modal__content__form--btn  ${
+              loading ? "loading" : ""
+            }`}
             // onClick={handleSubmit}
             type="submit"
+            disabled={loading}
           >
-            Zamów
+            {loading ? <Spinner /> : "Zamów"}
           </Btn>
         </form>
       </div>
     </div>
   );
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    // Tutaj możesz dodać logikę wysyłania zamówienia
-    alert(
-      `Zamówienie złożone: ${name}, ${email}, ${quantity}x ${product.name} (${selectedColor})`
-    );
-    onClose();
-  }
 
   return (
     <>

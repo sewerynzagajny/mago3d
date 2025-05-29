@@ -244,8 +244,12 @@
         width: 60%;
         height: 4rem;
         padding: 0;
-        // justify-self: center;
+        justify-self: center;
+        text-align: center;
         align-self: center;
+        display: flex; // Dodaj to
+        align-items: center; // Dodaj to
+        justify-content: center;
       }
     }
   }
