@@ -134,6 +134,7 @@ export default function ContactsForm({ className = "", color }) {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("message", message);
+    formData.append("type", "contact");
     // files.forEach((file) => formData.append("attachments", file)); nodejs
     files.forEach((file) => formData.append("attachments[]", file)); // PHP
 

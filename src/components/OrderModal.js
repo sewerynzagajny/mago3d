@@ -62,12 +62,13 @@ export default function OrderModal({
 
     setIsLoading(true); // Ustaw stan ładowania na true
     // Tutaj możesz dodać logikę wysyłania zamówienia
-    const message = `Składam zamówienie: ${quantity}x ${product.name} (${selectedColor})`;
+    const message = `Składam zamówienie: ${quantity}x ${product.name} (${selectedColor}), cena: ${totalPrice}`;
 
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
     formData.append("message", message);
+    formData.append("type", "order");
 
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/send-email.php`, formData, {
@@ -78,7 +79,7 @@ export default function OrderModal({
       })
       .then((_response) => {
         alert(
-          `Zamówienie złożone: ${quantity}x ${product.name} (${selectedColor})`
+          `Zamówienie złożone: ${quantity}x ${product.name} (${selectedColor}), cena: ${totalPrice}.`
         );
         setName("");
         setEmail("");
