@@ -53,7 +53,9 @@ const PegWavePhotos = {
 
 export const products = [
   {
+    id: 1,
     name: "Podstawka pod Thermomix TM5 TM6 TSv3",
+
     colors: [
       {
         name: "czarny",
@@ -110,6 +112,7 @@ export const products = [
     },
   },
   {
+    id: 2,
     name: "Podstawka pod Thermomix TM5 TM6 TSv4",
     colors: [
       {
@@ -155,6 +158,7 @@ export const products = [
     },
   },
   {
+    id: 3,
     name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
     colors: [
       {
@@ -200,6 +204,7 @@ export const products = [
     },
   },
   {
+    id: 4,
     name: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
     maxWords: 3,
     colors: [
@@ -228,6 +233,7 @@ export const products = [
     },
   },
   {
+    id: 5,
     name: "Stojak Ekspozytor nabiurkowy pojedynczy na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
     maxWords: 4,
     colors: [
@@ -256,6 +262,7 @@ export const products = [
     },
   },
   {
+    id: 6,
     name: "Stojak Ekspozytor nabiurkowy podwójny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
     maxWords: 4,
     colors: [
@@ -284,6 +291,7 @@ export const products = [
     },
   },
   {
+    id: 7,
     name: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
     maxWords: 5,
     colors: [
@@ -312,8 +320,9 @@ export const products = [
     },
   },
   {
+    id: 8,
     name: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS ",
-    maxWords: 9,
+    maxWords: 7,
     colors: [
       {
         name: "czarny",
@@ -347,8 +356,9 @@ export const products = [
     },
   },
   {
+    id: 9,
     name: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
-    maxWords: 9,
+    maxWords: 7,
     colors: [
       {
         name: "czarny",
@@ -382,8 +392,9 @@ export const products = [
     },
   },
   {
+    id: 10,
     name: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL ",
-    maxWords: 9,
+    maxWords: 7,
     colors: [
       {
         name: "czarny",
@@ -417,8 +428,9 @@ export const products = [
     },
   },
   {
+    id: 11,
     name: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
-    maxWords: 7,
+    maxWords: 5,
     colors: [
       {
         name: "czarny",

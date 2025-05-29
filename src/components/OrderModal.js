@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import ColorChooser from "./ColorChooser";
+import ShortenTitle from "./ShortenTitle";
+import Btn from "./Btn";
 
 export default function OrderModal({
   visible,
@@ -10,14 +13,28 @@ export default function OrderModal({
   onColorChange,
   price,
   anchorRect, // przekazuj rect kafelka, jeśli chcesz pozycjonować modal względem kafelka
+  modalRef, // przekazuj ref, jeśli chcesz mieć dostęp do modala
 }) {
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [heightOffset, setHeightOffset] = useState("3rem");
+
+  useEffect(() => {
+    function handleResize() {
+      setHeightOffset(window.innerWidth <= 640 ? "2.5rem" : "3rem");
+    }
+    handleResize(); // ustaw na starcie
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   if (!visible) return null;
 
-  const totalPrice = (parseFloat(price) * quantity).toFixed(2);
+  const totalPrice = (parseFloat(price) * quantity).toLocaleString("pl-PL", {
+    style: "currency",
+    currency: "PLN",
+  });
 
   // Wylicz pozycję modala względem anchorRect (kafelka)
   const modalStyle = anchorRect
@@ -25,106 +42,100 @@ export default function OrderModal({
         position: "absolute",
         top: anchorRect.top + window.scrollY,
         left: anchorRect.left + window.scrollX,
-        zIndex: 10001,
+        width: anchorRect.width,
+        // height: anchorRect.height,
+        zIndex: 101,
       }
     : {
         position: "fixed",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        zIndex: 10001,
+        zIndex: 101,
       };
 
   // Overlay na całą stronę
-  const overlay = (
-    <div
-      className="order-modal__overlay"
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        background: "rgba(0,0,0,0.4)",
-        zIndex: 10000,
-      }}
-      onClick={onClose}
-    />
-  );
+  const overlay = <div className="order-modal__overlay" />;
 
   // Modal
   const modal = (
-    <div style={modalStyle}>
+    <div ref={modalRef} style={modalStyle} className=" order-modal frame">
+      <button
+        className="order-modal__close"
+        onClick={onClose}
+        aria-label="Zamknij"
+      >
+        ×
+      </button>
       <div
         className="order-modal__content"
-        style={{
-          background: "#fff",
-          padding: 32,
-          borderRadius: 12,
-          minWidth: 320,
-          maxWidth: 400,
-          boxShadow: "0 2px 16px rgba(0,0,0,0.2)",
-        }}
         onClick={(e) => e.stopPropagation()}
+        style={
+          anchorRect
+            ? { height: `calc(${anchorRect.height}px - ${heightOffset})` }
+            : undefined
+        }
       >
-        <h2>Zamów produkt</h2>
-        <div style={{ marginBottom: 12 }}>
-          <label>
-            Imię:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%" }}
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <label>
-            Nazwisko:
-            <input
-              type="text"
-              value={surname}
-              onChange={(e) => setSurname(e.target.value)}
-              style={{ width: "100%" }}
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <strong>Produkt:</strong> {product.name}
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <strong>Cena za sztukę:</strong> {price} zł
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <strong>Kolor:</strong>
-          <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
-            {colors.map((color) => (
-              <button
-                key={color.nameEn}
-                onClick={() => onColorChange(color.nameEn)}
-                style={{
-                  background: color.nameEn,
-                  border:
-                    selectedColor === color.nameEn
-                      ? "2px solid #333"
-                      : "1px solid #ccc",
-                  width: 28,
-                  height: 28,
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                }}
-                title={color.name}
-              >
-                {selectedColor === color.nameEn ? "✓" : ""}
-              </button>
-            ))}
+        <form onSubmit={handleSubmit} className="order-modal__content__form">
+          <div className="order-modal__content__form__header">
+            <h4 className="heading-fourth-order">Zamówienie</h4>
+            <div className="order-modal__content__form__header--form-group">
+              <input
+                type="text"
+                id="honeypot"
+                name="honeypot"
+                // ref={honeypotRef}
+                style={{ display: "none" }}
+                tabIndex="-1"
+                autoComplete="off"
+              />
+              <input
+                // className={`${loading ? "loading" : ""}`}
+                type="text"
+                id="name"
+                autoComplete="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Imię i nazwisko"
+                required
+                // disabled={loading}
+              />
+              <label htmlFor="name">Imię i nazwisko</label>
+            </div>
+            <div className="order-modal__content__form__header--form-group">
+              <input
+                // className={`${loading ? "loading" : ""}`}
+                type="email"
+                id="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Adres e-mail"
+                required
+                // disabled={loading}
+              />
+              <label htmlFor="email">Adres e-mail</label>
+            </div>
           </div>
-        </div>
-        <div style={{ marginBottom: 12 }}>
-          <label>
-            Ilość:
-            <select
+
+          <div className="order-modal__content__form--text-product">
+            <ShortenTitle wordsNumber={product.maxWords}>
+              {product.name}
+            </ShortenTitle>
+          </div>
+          <div className="order-modal__content__form--text-price ">
+            {totalPrice}
+          </div>
+
+          <ColorChooser
+            colors={product.colors}
+            selectedColor={selectedColor}
+            onColorChange={onColorChange}
+          />
+          <div className="order-modal__content__form--quantity">
+            <div className="order-modal__content__form--quantity--btns-q">
+              <label>Ilość: </label>
+              {/* <select
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
               style={{ marginLeft: 8 }}
@@ -134,32 +145,50 @@ export default function OrderModal({
                   {num}
                 </option>
               ))}
-            </select>
-          </label>
-        </div>
-        <div style={{ marginBottom: 16 }}>
-          <strong>Łączna cena:</strong> {totalPrice} zł
-        </div>
-        <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-          <button className="btn" onClick={onClose}>
-            Anuluj
-          </button>
-          <button
-            className="btn"
-            style={{ background: "#1a8d1a", color: "#fff" }}
-            onClick={() => {
-              alert(
-                `Zamówienie wysłane!\n${name} ${surname}, ${quantity}x ${product.name} (${selectedColor})`
-              );
-              onClose();
-            }}
+            </select> */}
+              <div className="order-modal__content__form--quantity--btns-q">
+                {" "}
+                <button
+                  className="order-modal__content__form--quantity--btns-q--btn-quantity"
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  // style={{ marginLeft: 6 }}
+                >
+                  -
+                </button>
+                <span style={{ width: "1.2rem" }}>{quantity}</span>
+                <button
+                  // style={{ marginLeft: 6 }}
+                  className="order-modal__content__form--quantity--btns-q--btn-quantity"
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.min(20, q + 1))}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <Btn
+            className="btn order-modal__content__form--btn"
+            // onClick={handleSubmit}
+            type="submit"
           >
-            Zamawiam
-          </button>
-        </div>
+            Zamów
+          </Btn>
+        </form>
       </div>
     </div>
   );
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // Tutaj możesz dodać logikę wysyłania zamówienia
+    alert(
+      `Zamówienie złożone: ${name}, ${email}, ${quantity}x ${product.name} (${selectedColor})`
+    );
+    onClose();
+  }
 
   return (
     <>

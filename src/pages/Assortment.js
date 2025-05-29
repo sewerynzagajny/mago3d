@@ -11,6 +11,7 @@ import { products } from "../data/products";
 
 export default function Assortment() {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
+  const [orderModalProductId, setOrderModalProductId] = useState(null);
   return (
     <section className="assortment">
       <Navigation />
@@ -30,7 +31,7 @@ export default function Assortment() {
           <div className="assortment__container__products grid-3-col_assortment">
             <>
               {/* Nakładka blokująca interakcje */}
-              {onMenuVisible && (
+              {(onMenuVisible || orderModalProductId !== null) && (
                 <div
                   style={{
                     position: "absolute",
@@ -42,6 +43,7 @@ export default function Assortment() {
                     background: "rgba(255,255,255,0)",
                     // cursor: "pointer",
                   }}
+                  onClick={() => setOrderModalProductId(null)}
                 />
               )}
               {products.map((product, i) => (
@@ -50,7 +52,15 @@ export default function Assortment() {
                   product={product}
                   className="assortment__container__products__item"
                   onMenuChange={setOnMenuVisible}
-                  style={onMenuVisible ? { opacity: "0.4" } : {}}
+                  setOrderModalVisible={(visible) =>
+                    setOrderModalProductId(visible ? product.id : null)
+                  }
+                  orderModalVisible={orderModalProductId === product.id}
+                  style={
+                    onMenuVisible || orderModalProductId !== null
+                      ? { opacity: "0.4" }
+                      : {}
+                  }
                 />
               ))}
             </>

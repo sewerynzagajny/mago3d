@@ -8,12 +8,15 @@ import { ReactComponent as EtsyIcon } from "../svg/etsy-logo-svgrepo-com.svg";
 import { ReactComponent as MaGo3dIcon } from "../svg/mago3d.svg";
 import ShortenTitle from "./ShortenTitle";
 import OrderModal from "./OrderModal";
+import ColorChooser from "./ColorChooser";
 
 export default function Product({
   product,
   className = "",
   onMenuChange,
   style,
+  setOrderModalVisible,
+  orderModalVisible,
 }) {
   // const shoppingPlatforms = product.shoppingPlatform || [
   //   {
@@ -65,10 +68,25 @@ export default function Product({
   const [menuVisible, setMenuVisible] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
 
-  const [orderModalVisible, setOrderModalVisible] = useState(false);
+  // const [orderModalVisible, setOrderModalVisible] = useState(false);
 
   const itemRef = useRef(null); // Dodaj ref
   const [anchorRect, setAnchorRect] = useState(null);
+  const modalRef = useRef(null);
+
+  // Zamknięcie modala po kliknięciu poza oknem
+  useEffect(() => {
+    if (!orderModalVisible) return;
+
+    function handleClickOutside(e) {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        setOrderModalVisible(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [orderModalVisible, setOrderModalVisible]);
 
   useEffect(() => {
     function updateRect() {
@@ -118,7 +136,7 @@ export default function Product({
     if (itemRef.current) {
       setAnchorRect(itemRef.current.getBoundingClientRect());
     }
-    setOrderModalVisible(true);
+    if (setOrderModalVisible) setOrderModalVisible(true);
   }
 
   function handleBuyClick(e) {
@@ -172,30 +190,11 @@ export default function Product({
           <p className={`${className}__content--text-price`}>
             {product.priceStringPl}
           </p>
-          <div className={`${className}__content--text-color`}>
-            <div>Kolor: </div>
-            <div className={`${className}__content--text-color`}>
-              {product.colors.map((color) => (
-                <button
-                  onClick={() => {
-                    setChooseColor(color.nameEn);
-                  }}
-                  style={{
-                    backgroundColor: color.nameEn,
-                  }}
-                  key={color.nameEn}
-                  className={`${className}__content--text-color--item`}
-                  title={color.name}
-                >
-                  <div
-                    className={`${className}__content--text-color--item--marker`}
-                  >
-                    {chooseColor === color.nameEn ? "✓" : ""}
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
+          <ColorChooser
+            colors={product.colors}
+            selectedColor={chooseColor}
+            onColorChange={setChooseColor}
+          />
           <Btn
             className={`btn ${className}__content--btn`}
             as={Link}
@@ -256,9 +255,9 @@ export default function Product({
         selectedColor={chooseColor}
         colors={product.colors}
         onColorChange={setChooseColor}
-        price={product.priceStringPl.replace(",", ".")}
-        // anchorRef={itemRef}
+        price={product.priceStringPl}
         anchorRect={anchorRect}
+        modalRef={modalRef} // przekazujemy ref do OrderModa
       />
     </div>
   );

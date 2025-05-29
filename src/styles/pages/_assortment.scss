@@ -133,32 +133,6 @@
             color: $font-color-primary;
           }
 
-          &--text-color {
-            gap: 2rem;
-            display: flex;
-
-            align-items: center;
-
-            &--item {
-              width: 2rem;
-              height: 2rem;
-              border-radius: 0.5rem;
-              border: 0.2rem solid $font-color-primary;
-              color: $font-color-primary;
-              font-weight: $font-stronger;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              // padding-bottom: 1.8rem;
-              // background-color: $color-white;
-
-              &--marker {
-                padding: 0.2rem;
-              }
-            }
-          }
-
           & a {
             display: flex;
             font-size: 1.6rem;
@@ -257,7 +231,7 @@
   @media only screen and (max-width: 60rem) {
     top: 52%;
   }
-  @media only screen and (max-width: 52rem) {
+  @media only screen and (max-width: 53rem) {
     top: 58%;
   }
   @media only screen and (max-width: 48.2rem) {
