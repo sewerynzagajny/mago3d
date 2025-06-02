@@ -70,8 +70,13 @@ export default function OrderModal({
     formData.append("message", message);
     formData.append("type", "order");
 
+    const backendUrl =
+      window.location.hostname === "druki3d.com"
+        ? process.env.REACT_APP_BACKEND_URL_DRUKI
+        : process.env.REACT_APP_BACKEND_URL_MAGO;
+
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/send-email.php`, formData, {
+      .post(`${backendUrl}/send-email.php`, formData, formData, {
         // .post("http://localhost:5000/send-email", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
