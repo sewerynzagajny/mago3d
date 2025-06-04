@@ -56,7 +56,10 @@ export default function FollowAndShop({ className = "" }) {
       </li>
 
       <li>
-        <Link to="/asortyment">
+        <Link
+          to="/asortyment"
+          className={`${className}__follow-and-shop--link--mago3d`}
+        >
           <MaGo3dIcon className="icon-follow-and-shop" />
         </Link>
         {/* <a

@@ -78,7 +78,7 @@ export const products = [
         ],
       },
     ],
-    price: 218.55,
+    price: 199.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
