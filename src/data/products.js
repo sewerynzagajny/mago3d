@@ -51,7 +51,41 @@ const PegWavePhotos = {
   white: require("../assets/assortment/PegWave/main_white.webp"),
 };
 
+const AdapterAntilopPhotos = {
+  white: require("../assets/assortment/AdapterAntilop/main_white.webp"),
+};
+
 export const products = [
+  {
+    id: 12,
+    name: "Adaptery z kółkami do krzesełka dziecięcego IKEA Antilop z kółkami obrotowymi i hamulcem",
+    maxWords: 5,
+    badge: "new",
+    colors: [
+      {
+        name: "biały",
+        nameEn: "white",
+        photo: AdapterAntilopPhotos.white,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/4315151343/adapters-with-wheels-for-ikea-antilop?ref=shop_home_active_1&sts=1&logging_key=5eb0465c91d902ae487909ff705dfcab9cef7e6c%3A4315151343",
+          },
+          // {
+          //   name: "Allegro",
+          //   link: "https://allegro.pl/oferta/ociekacz-tacka-pod-zlew-ikea-havsen-oslona-przed-zamakaniem-blatu-bialy-15610899313",
+          // },
+        ],
+      },
+    ],
+    price: 218.55,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
   {
     id: 1,
     name: "Podstawka pod Thermomix TM5 TM6 TSv3",

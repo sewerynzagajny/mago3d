@@ -166,6 +166,10 @@ export default function Product({
       style={{ position: "relative", ...style }}
     >
       <div className={`${className} frame ${menuVisible ? " is-active" : ""}`}>
+        {/* Pasek NOWOŚĆ tylko jeśli badge === "new" */}
+        {product.badge === "new" && (
+          <div className="product-badge--new">NOWOŚĆ</div>
+        )}
         <div className={`${className}__content`}>
           <ScrollEffectContainer
             totalImages={1}
