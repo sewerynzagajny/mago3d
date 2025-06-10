@@ -24,6 +24,7 @@ import Assortment from "./pages/Assortment";
 import Privacy from "./pages/Privacy";
 import CookieBanner from "./components/CookieBanner";
 import Details from "./pages/Details";
+import Tsv3 from "./pages/assortyment/Tsv3";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -131,6 +132,10 @@ export default function App() {
         <Route path="/asortyment" element={<Assortment />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/szczegoly" element={<Details />} />
+        <Route
+          path="/szczegoly/druki-3d/podstawka-pod-thermomix-tM5-tM6-tSv3"
+          element={<Tsv3 />}
+        />
         {/* Nowa podstrona */}
         {/* <Route path="/new-page" element={<NewPage />} /> */}
       </Routes>

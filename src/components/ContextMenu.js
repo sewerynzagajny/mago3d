@@ -1,8 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export default function ContextMenu({ visible, position, onClose, children }) {
+export default function ContextMenu({
+  visible,
+  anchorRect,
+  onClose,
+  children,
+}) {
   const menuRef = useRef(null);
+  const [menuTop, setMenuTop] = useState(0);
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -23,17 +29,48 @@ export default function ContextMenu({ visible, position, onClose, children }) {
     };
   }, [visible, onClose]);
 
-  if (!visible) return null;
+  // if (!visible || !anchorRect) return null;
+
+  useEffect(() => {
+    if (!visible || !anchorRect) return;
+
+    function updateMenuTop() {
+      const menuHeight = menuRef.current?.offsetHeight || 0;
+      // Ustawiamy top tak, by dół menu był przy dolnej krawędzi kafelka (plus ewentualny margines, np. -8)
+      setMenuTop(
+        anchorRect.top +
+          window.scrollY +
+          anchorRect.height -
+          anchorRect.height / 7 -
+          menuHeight
+      );
+    }
+
+    updateMenuTop();
+    window.addEventListener("resize", updateMenuTop);
+    window.addEventListener("scroll", updateMenuTop);
+
+    return () => {
+      window.removeEventListener("resize", updateMenuTop);
+      window.removeEventListener("scroll", updateMenuTop);
+    };
+  }, [visible, anchorRect, children]);
+
+  if (!visible || !anchorRect) return null;
 
   const menu = (
     <div
       ref={menuRef}
       style={{
         position: "absolute",
-        top: position.y,
-        left: position.x,
-        zIndex: 1000,
-        transform: "translate(-50%, -100%)",
+        top: menuTop,
+        left: anchorRect.left + window.scrollX + anchorRect.width / 2,
+        // top: position.y
+        // left: position.x,
+
+        zIndex: 100,
+        transform: "translateX(-50%)",
+        // transition: "top 0.1s",
       }}
     >
       {children}

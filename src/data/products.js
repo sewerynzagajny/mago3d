@@ -58,7 +58,7 @@ const AdapterAntilopPhotos = {
 export const products = [
   {
     id: 12,
-    name: "Adaptery z kółkami do krzesełka dziecięcego IKEA Antilop z kółkami obrotowymi i hamulcem",
+    name: "Adapter z kółkami pod fotelik krzesełko IKEA Antilop - moduł rozbudowujący",
     maxWords: 5,
     badge: "new",
     colors: [
@@ -71,14 +71,14 @@ export const products = [
             name: "Etsy",
             link: "https://www.etsy.com/pl/listing/4315151343/adapters-with-wheels-for-ikea-antilop?ref=shop_home_active_1&sts=1&logging_key=5eb0465c91d902ae487909ff705dfcab9cef7e6c%3A4315151343",
           },
-          // {
-          //   name: "Allegro",
-          //   link: "https://allegro.pl/oferta/ociekacz-tacka-pod-zlew-ikea-havsen-oslona-przed-zamakaniem-blatu-bialy-15610899313",
-          // },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy-17612155556",
+          },
         ],
       },
     ],
-    price: 199.0,
+    price: 159.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",

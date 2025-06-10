@@ -29,41 +29,39 @@ export default function Assortment() {
           </h3>
 
           <div className="assortment__container__products grid-3-col_assortment">
-            <>
-              {/* Nakładka blokująca interakcje */}
-              {(onMenuVisible || orderModalProductId !== null) && (
-                <div
-                  style={{
-                    position: "absolute",
-                    zIndex: 10,
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    background: "rgba(255,255,255,0)",
-                    // cursor: "pointer",
-                  }}
-                  onClick={() => setOrderModalProductId(null)}
-                />
-              )}
-              {products.map((product, i) => (
-                <Product
-                  key={i}
-                  product={product}
-                  className="assortment__container__products__item"
-                  onMenuChange={setOnMenuVisible}
-                  setOrderModalVisible={(visible) =>
-                    setOrderModalProductId(visible ? product.id : null)
-                  }
-                  orderModalVisible={orderModalProductId === product.id}
-                  style={
-                    onMenuVisible || orderModalProductId !== null
-                      ? { opacity: "0.4" }
-                      : {}
-                  }
-                />
-              ))}
-            </>
+            {/* Nakładka blokująca interakcje */}
+            {(onMenuVisible || orderModalProductId !== null) && (
+              <div
+                style={{
+                  position: "absolute",
+                  zIndex: 10,
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(255,255,255,0)",
+                  // cursor: "pointer",
+                }}
+                onClick={() => setOrderModalProductId(null)}
+              />
+            )}
+            {products.map((product, i) => (
+              <Product
+                key={i}
+                product={product}
+                className="assortment__container__products__item"
+                onMenuChange={setOnMenuVisible}
+                setOrderModalVisible={(visible) =>
+                  setOrderModalProductId(visible ? product.id : null)
+                }
+                orderModalVisible={orderModalProductId === product.id}
+                style={
+                  onMenuVisible || orderModalProductId !== null
+                    ? { opacity: "0.4" }
+                    : {}
+                }
+              />
+            ))}
           </div>
           {/* 
           <div className="assortment__container__btns">

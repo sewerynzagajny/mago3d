@@ -17,6 +17,7 @@ export default function Product({
   style,
   setOrderModalVisible,
   orderModalVisible,
+  inDetails = false, // czy w szczegółach
 }) {
   // const shoppingPlatforms = product.shoppingPlatform || [
   //   {
@@ -66,7 +67,8 @@ export default function Product({
   );
 
   const [menuVisible, setMenuVisible] = useState(false);
-  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+  // const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+  const [menuAnchorRect, setMenuAnchorRect] = useState(null);
 
   // const [orderModalVisible, setOrderModalVisible] = useState(false);
 
@@ -103,6 +105,23 @@ export default function Product({
       window.removeEventListener("scroll", updateRect);
     };
   }, [orderModalVisible]);
+
+  useEffect(() => {
+    function updateMenuRect() {
+      if (menuVisible && itemRef.current) {
+        setMenuAnchorRect(itemRef.current.getBoundingClientRect());
+      }
+    }
+    if (menuVisible) {
+      window.addEventListener("resize", updateMenuRect);
+      window.addEventListener("scroll", updateMenuRect);
+      updateMenuRect();
+    }
+    return () => {
+      window.removeEventListener("resize", updateMenuRect);
+      window.removeEventListener("scroll", updateMenuRect);
+    };
+  }, [menuVisible]);
 
   if (!product || !product.colors) {
     return null; // lub wyświetl komunikat o błędzie
@@ -141,15 +160,14 @@ export default function Product({
 
   function handleBuyClick(e) {
     e.preventDefault();
-    // const rect = itemRef.current.getBoundingClientRect();
+
+    if (itemRef.current) {
+      setMenuAnchorRect(itemRef.current.getBoundingClientRect());
+    }
     // setMenuPosition({
-    //   x: e.clientX - rect.left,
-    //   y: e.clientY - rect.top,
+    //   x: e.clientX + window.scrollX,
+    //   y: e.clientY + window.scrollY,
     // });
-    setMenuPosition({
-      x: e.clientX + window.scrollX,
-      y: e.clientY + window.scrollY,
-    });
     setMenuVisible(true);
     if (onMenuChange) onMenuChange(true); // Przekazanie wartości do rodzica
   }
@@ -163,7 +181,11 @@ export default function Product({
     <div
       // className={`${className} `}
       ref={itemRef}
-      style={{ position: "relative", ...style }}
+      style={{
+        visibility: orderModalVisible ? "hidden" : "visible",
+        position: "relative",
+        ...style,
+      }}
     >
       <div className={`${className} frame ${menuVisible ? " is-active" : ""}`}>
         {/* Pasek NOWOŚĆ tylko jeśli badge === "new" */}
@@ -187,7 +209,7 @@ export default function Product({
           </ScrollEffectContainer>
 
           <div className={`${className}__content--text-product`}>
-            <ShortenTitle wordsNumber={product.maxWords}>
+            <ShortenTitle wordsNumber={product.maxWords} inDetails={inDetails}>
               {product.name}
             </ShortenTitle>
           </div>
@@ -199,13 +221,16 @@ export default function Product({
             selectedColor={chooseColor}
             onColorChange={setChooseColor}
           />
+
           <Btn
             className={`btn ${className}__content--btn`}
             as={Link}
             to="/szczegoly"
+            style={inDetails ? { visibility: "hidden" } : undefined}
           >
             Szczegóły
           </Btn>
+
           <Btn
             className={`btn ${className}__content--btn`}
             onClick={handleBuyClick}
@@ -216,7 +241,8 @@ export default function Product({
       </div>
       <ContextMenu
         visible={menuVisible}
-        position={menuPosition}
+        // position={menuPosition}
+        anchorRect={menuAnchorRect}
         onClose={handleCloseMenu}
       >
         <div
