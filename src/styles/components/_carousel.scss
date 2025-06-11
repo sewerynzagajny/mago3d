@@ -14,11 +14,11 @@
     gap: 4rem;
     justify-content: center;
     align-items: center;
+    min-height: 55rem;
 
     &__item {
-      width: 40%;
-      height: 40%;
-      min-height: 50rem;
+      width: 65%;
+      height: 65%;
       // display: flex;
       justify-content: center;
       align-items: center;
@@ -57,11 +57,6 @@
   }
 
   &__media {
-    // width: 100%;
-    // height: 100%;
-    // object-fit: cover;
-    // border-radius: 1rem;
-
     &--image {
       width: 100%;
       height: 100%;
@@ -91,6 +86,37 @@
   //     background-color: #717171;
   //   }
   // }
+
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    // @extend %section-background;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 3rem;
+      font-size: 3.6rem;
+      color: $font-color-text;
+      transition: all 0.3s;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10001;
+
+      &:hover {
+        color: $font-color-primary;
+      }
+    }
+  }
 }
 
 .carousel__thumbnails {
@@ -130,7 +156,7 @@
 @keyframes fadeInSlide {
   from {
     opacity: 0;
-    transform: translateY(40px) scale(0.98);
+    transform: translateY(4rem) scale(0.98);
   }
   to {
     opacity: 1;

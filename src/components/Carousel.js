@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-export default function Carousel({ items }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function Carousel({
+  items,
+  onItemClick,
+  initialIndex = 0,
+  isModal = false,
+}) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    setCurrentIndex(initialIndex);
+  }, [initialIndex]);
 
   function nextItem() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -15,7 +24,7 @@ export default function Carousel({ items }) {
   }
 
   return (
-    <div className="carousel">
+    <div className={`carousel${isModal ? " carousel--modal" : ""}`}>
       <div className="carousel__main-view">
         <button
           className="carousel__main-view__button carousel__button--prev"
@@ -24,9 +33,12 @@ export default function Carousel({ items }) {
         >
           &#10094;
         </button>
-        <div className="carousel__main-view__item ">
+        <div
+          className="carousel__main-view__item "
+          onClick={() => onItemClick && onItemClick(currentIndex)}
+        >
           {items[currentIndex].type === "video" ? (
-            <div className="video-frame">
+            <div className="video-carousel-frame">
               <figure>
                 <video
                   controls
@@ -35,6 +47,15 @@ export default function Carousel({ items }) {
                   loop
                   muted
                   playsInline
+                  style={
+                    isModal
+                      ? {
+                          maxHeight: "98vh",
+
+                          height: "auto",
+                        }
+                      : {}
+                  }
                 >
                   <source src={items[currentIndex].src} type="video/mp4" />
                   Twoja przeglądarka nie obsługuje wideo.
@@ -42,12 +63,22 @@ export default function Carousel({ items }) {
               </figure>
             </div>
           ) : (
-            <div className="photo-frame">
+            <div className="photo-carousel-frame">
               <figure>
                 <img
                   src={items[currentIndex].src}
                   alt={items[currentIndex].alt}
                   className="carousel__media--image"
+                  style={
+                    isModal
+                      ? {
+                          transform: "none", // Optional: zoom effect
+                          maxHeight: "98vh",
+
+                          height: "auto",
+                        }
+                      : {}
+                  }
                 />
               </figure>
             </div>
@@ -62,14 +93,20 @@ export default function Carousel({ items }) {
           <span className="carousel__button--icon">&#10095;</span>
         </button>
       </div>
-      <div className="carousel__thumbnails">
+      <div
+        className="carousel__thumbnails"
+        style={isModal ? { padding: "0 2rem" } : {}}
+      >
         {items.map((item, idx) => (
           <button
             key={idx}
             className={`carousel__thumbnail${
               idx === currentIndex ? " active" : ""
             }`}
-            onClick={() => setCurrentIndex(idx)}
+            onClick={() => {
+              setCurrentIndex(idx);
+              // if (onItemClick && !isModal) onItemClick(idx);
+            }}
             aria-label={`Przejdź do slajdu ${idx + 1}`}
             tabIndex={0}
           >
@@ -102,4 +139,7 @@ Carousel.propTypes = {
       alt: PropTypes.string,
     })
   ).isRequired,
+  onItemClick: PropTypes.func,
+  initialIndex: PropTypes.number,
+  isModal: PropTypes.bool,
 };

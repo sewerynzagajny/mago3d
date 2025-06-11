@@ -27,7 +27,6 @@ const items = [
     src: require("../../assets/assortment/TSv3/4.jpg"),
     alt: "Podstawka pod Thermomix TSv3 ",
   },
-
   {
     type: "image",
     src: require("../../assets/assortment/TSv3/6.jpg"),
@@ -38,7 +37,6 @@ const items = [
     src: require("../../assets/assortment/TSv3/7.jpg"),
     alt: "Podstawka pod Thermomix TSv3 ",
   },
-
   {
     type: "video",
     src: require("../../assets/assortment/TSv3/8.mp4"),
@@ -49,6 +47,8 @@ const items = [
 export default function Tsv3() {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
   const [orderModalProductId, setOrderModalProductId] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
 
   return (
     <>
@@ -68,13 +68,38 @@ export default function Tsv3() {
                   width: "100%",
                   height: "100%",
                   background: "rgba(0,0,0,0.4)",
-
                   // cursor: "pointer",
                 }}
                 onClick={() => setOrderModalProductId(null)}
               />
             )}
-            <Carousel items={items} />
+            <Carousel
+              items={items}
+              onItemClick={(idx) => {
+                setModalIndex(idx);
+                setModalOpen(true);
+              }}
+            />
+            {/* MODAL */}
+            {modalOpen && (
+              <div className="carousel__modal">
+                <button
+                  className="carousel__modal__close-btn"
+                  onClick={() => setModalOpen(false)}
+                  aria-label="Zamknij"
+                >
+                  &times;
+                </button>
+                <div>
+                  <Carousel
+                    items={items}
+                    initialIndex={modalIndex}
+                    isModal
+                    onItemClick={null}
+                  />
+                </div>
+              </div>
+            )}
             <div className="details__sticky-product">
               <Product
                 key={1}
@@ -92,6 +117,83 @@ export default function Tsv3() {
                     : {}
                 }
               />
+            </div>
+            <div className="details__container__content__text">
+              <p>
+                Podstawka pod Thermomix TSv3 to idealne rozwiązanie dla osób
+                ceniących sobie porządek i estetykę w kuchni. Dzięki niej Twój
+                Thermomix będzie zawsze na swoim miejscu, a Ty zyskasz więcej
+                przestrzeni roboczej.
+              </p>
+              <p>
+                Wykonana z wysokiej jakości materiałów, podstawka jest trwała i
+                łatwa do czyszczenia. Jej nowoczesny design sprawia, że
+                doskonale komponuje się z każdym wnętrzem.
+              </p>
+              <p>
+                Dzięki podstawce pod Thermomix TSv3 możesz cieszyć się wygodą i
+                funkcjonalnością, które ułatwią Ci codzienne gotowanie.
+              </p>
+              <p>
+                Podstawka pod Thermomix TSv3 to idealne rozwiązanie dla osób
+                ceniących sobie porządek i estetykę w kuchni. Dzięki niej Twój
+                Thermomix będzie zawsze na swoim miejscu, a Ty zyskasz więcej
+                przestrzeni roboczej.
+              </p>
+              <p>
+                Wykonana z wysokiej jakości materiałów, podstawka jest trwała i
+                łatwa do czyszczenia. Jej nowoczesny design sprawia, że
+                doskonale komponuje się z każdym wnętrzem.
+              </p>
+              <p>
+                Dzięki podstawce pod Thermomix TSv3 możesz cieszyć się wygodą i
+                funkcjonalnością, które ułatwią Ci codzienne gotowanie.
+              </p>
+              <p>
+                Podstawka pod Thermomix TSv3 to idealne rozwiązanie dla osób
+                ceniących sobie porządek i estetykę w kuchni. Dzięki niej Twój
+                Thermomix będzie zawsze na swoim miejscu, a Ty zyskasz więcej
+                przestrzeni roboczej.
+              </p>
+              <p>
+                Wykonana z wysokiej jakości materiałów, podstawka jest trwała i
+                łatwa do czyszczenia. Jej nowoczesny design sprawia, że
+                doskonale komponuje się z każdym wnętrzem.
+              </p>
+              <p>
+                Dzięki podstawce pod Thermomix TSv3 możesz cieszyć się wygodą i
+                funkcjonalnością, które ułatwią Ci codzienne gotowanie.
+              </p>
+              <p>
+                Podstawka pod Thermomix TSv3 to idealne rozwiązanie dla osób
+                ceniących sobie porządek i estetykę w kuchni. Dzięki niej Twój
+                Thermomix będzie zawsze na swoim miejscu, a Ty zyskasz więcej
+                przestrzeni roboczej.
+              </p>
+              <p>
+                Wykonana z wysokiej jakości materiałów, podstawka jest trwała i
+                łatwa do czyszczenia. Jej nowoczesny design sprawia, że
+                doskonale komponuje się z każdym wnętrzem.
+              </p>
+              <p>
+                Dzięki podstawce pod Thermomix TSv3 możesz cieszyć się wygodą i
+                funkcjonalnością, które ułatwią Ci codzienne gotowanie.
+              </p>
+              <p>
+                Podstawka pod Thermomix TSv3 to idealne rozwiązanie dla osób
+                ceniących sobie porządek i estetykę w kuchni. Dzięki niej Twój
+                Thermomix będzie zawsze na swoim miejscu, a Ty zyskasz więcej
+                przestrzeni roboczej.
+              </p>
+              <p>
+                Wykonana z wysokiej jakości materiałów, podstawka jest trwała i
+                łatwa do czyszczenia. Jej nowoczesny design sprawia, że
+                doskonale komponuje się z każdym wnętrzem.
+              </p>
+              <p>
+                Dzięki podstawce pod Thermomix TSv3 możesz cieszyć się wygodą i
+                funkcjonalnością, które ułatwią Ci codzienne gotowanie.
+              </p>{" "}
             </div>
           </div>
         </div>
