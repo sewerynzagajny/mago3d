@@ -72,7 +72,7 @@ export default function Carousel({
                   style={
                     isModal
                       ? {
-                          transform: "none", // Optional: zoom effect
+                          transform: "none",
                           maxHeight: "98vh",
 
                           height: "auto",
