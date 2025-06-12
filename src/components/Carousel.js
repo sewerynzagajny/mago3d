@@ -10,6 +10,7 @@ export default function Carousel({
   isModal = false,
   zoomed = false,
   onResetZoom,
+  onClose,
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
@@ -23,6 +24,58 @@ export default function Carousel({
   useEffect(() => {
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (!isModal) {
+        if (
+          (e.key === "Enter" || e.key === "NumpadEnter") &&
+          typeof onItemClick === "function"
+        ) {
+          onItemClick(currentIndex); // otwórz modal z aktualnym indeksem
+          return;
+        }
+        if (e.key === "ArrowRight") {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+          setDrag({ x: 0, y: 0 });
+          if (onResetZoom) onResetZoom();
+        }
+        if (e.key === "ArrowLeft") {
+          setCurrentIndex(
+            (prevIndex) => (prevIndex - 1 + items.length) % items.length
+          );
+          setDrag({ x: 0, y: 0 });
+          if (onResetZoom) onResetZoom();
+        }
+        return;
+      }
+      if (e.key === "Escape" && onClose) {
+        onClose();
+      }
+      if (e.key === "ArrowRight") {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+        setDrag({ x: 0, y: 0 });
+        if (onResetZoom) onResetZoom();
+      }
+      if (e.key === "ArrowLeft") {
+        setCurrentIndex(
+          (prevIndex) => (prevIndex - 1 + items.length) % items.length
+        );
+        setDrag({ x: 0, y: 0 });
+        if (onResetZoom) onResetZoom();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [
+    isModal,
+    items.length,
+    onClose,
+    setDrag,
+    onResetZoom,
+    currentIndex,
+    onItemClick,
+  ]);
 
   function nextItem() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);

@@ -118,6 +118,10 @@ export default function Tsv3() {
                     onItemClick={() => setZoomed((z) => !z)}
                     zoomed={zoomed}
                     onResetZoom={() => setZoomed(false)}
+                    onClose={() => {
+                      setModalOpen(false);
+                      setZoomed(false);
+                    }}
                   />
                 </div>
               </div>
