@@ -125,6 +125,47 @@ export default function Carousel({
           }}
           onMouseUp={() => setDragging(false)}
           onMouseLeave={() => setDragging(false)}
+          onTouchStart={(e) => {
+            if (!zoomed) return;
+            if (e.touches.length !== 1) return;
+
+            setDragging(true);
+            dragStart.current = {
+              x: e.touches[0].clientX,
+              y: e.touches[0].clientY,
+            };
+            dragOrigin.current = { x: drag.x, y: drag.y };
+          }}
+          onTouchMove={(e) => {
+            if (!zoomed || !dragging) return;
+            if (e.touches.length !== 1) return;
+
+            const container = mainViewRef.current;
+            if (!container) return;
+
+            const rect = container.getBoundingClientRect();
+            const containerWidth = rect.width;
+            const containerHeight = rect.height;
+
+            const imgWidth = containerWidth * scale;
+            const imgHeight = containerHeight * scale;
+
+            const maxX = (imgWidth - containerWidth) / 2;
+            const maxY = (imgHeight - containerHeight) / 2;
+
+            let nextX =
+              dragOrigin.current.x +
+              (e.touches[0].clientX - dragStart.current.x);
+            let nextY =
+              dragOrigin.current.y +
+              (e.touches[0].clientY - dragStart.current.y);
+
+            nextX = clamp(nextX, -maxX, maxX);
+            nextY = clamp(nextY, -maxY, maxY);
+
+            setDrag({ x: nextX, y: nextY });
+          }}
+          onTouchEnd={() => setDragging(false)}
           style={{
             ...cursorStyle,
             cursor: zoomed ? "grabbing" : cursorStyle.cursor,
