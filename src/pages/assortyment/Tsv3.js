@@ -49,6 +49,17 @@ export default function Tsv3() {
   const [orderModalProductId, setOrderModalProductId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
+
+  function handleModalClick(e) {
+    // Nie powiększaj jeśli kliknięto w przycisk zamykania lub miniaturę lub strzałki
+    if (
+      e.target.classList.contains("carousel__modal") ||
+      (e.target.classList.contains("carousel__main-view") && zoomed)
+    ) {
+      setZoomed(false);
+    }
+  }
 
   return (
     <>
@@ -78,14 +89,23 @@ export default function Tsv3() {
               onItemClick={(idx) => {
                 setModalIndex(idx);
                 setModalOpen(true);
+                setZoomed(false); // reset powiększenia przy otwarciu
               }}
             />
             {/* MODAL */}
             {modalOpen && (
-              <div className="carousel__modal">
+              <div
+                className={`carousel__modal${
+                  zoomed ? " carousel__modal--zoomed" : ""
+                }`}
+                onClick={handleModalClick}
+              >
                 <button
                   className="carousel__modal__close-btn"
-                  onClick={() => setModalOpen(false)}
+                  onClick={() => {
+                    setModalOpen(false);
+                    setZoomed(false);
+                  }}
                   aria-label="Zamknij"
                 >
                   &times;
@@ -95,7 +115,9 @@ export default function Tsv3() {
                     items={items}
                     initialIndex={modalIndex}
                     isModal
-                    onItemClick={null}
+                    onItemClick={() => setZoomed((z) => !z)}
+                    zoomed={zoomed}
+                    onResetZoom={() => setZoomed(false)}
                   />
                 </div>
               </div>
