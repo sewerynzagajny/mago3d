@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import CarouselMedia from "./CarouselMedia";
-import UseDragZoom from "./UseDragZoom"; // Importujemy hook do drag/zoom
+import useDragZoom from "../hooks/useDragZoom"; // Importujemy hook do drag/zoom
+import useSwipe from "../hooks/useSwipe";
 
 export default function Carousel({
   items,
@@ -19,7 +20,7 @@ export default function Carousel({
 
   // Hook drag/zoom
   const { drag, dragging, handleStart, handleMove, handleEnd, setDrag } =
-    UseDragZoom({ zoomed, scale, mainViewRef });
+    useDragZoom({ zoomed, scale, mainViewRef });
 
   useEffect(() => {
     setCurrentIndex(initialIndex);
@@ -96,6 +97,18 @@ export default function Carousel({
       ? { cursor: "zoom-in" }
       : {};
 
+  const swipe = useSwipe({
+    onSwipeLeft: () => {
+      nextItem();
+      if (onResetZoom) onResetZoom();
+    },
+    onSwipeRight: () => {
+      prevItem();
+      if (onResetZoom) onResetZoom();
+    },
+    enabled: !isModal || (isModal && !zoomed),
+  });
+
   return (
     <div
       className={`carousel${isModal ? " carousel--modal" : ""}${
@@ -137,14 +150,20 @@ export default function Carousel({
           onMouseUp={handleEnd}
           onMouseLeave={handleEnd}
           onTouchStart={(e) => {
-            if (!zoomed || e.touches.length !== 1) return;
-            handleStart(e.touches[0].clientX, e.touches[0].clientY);
+            swipe.handleTouchStart(e);
+            if (isModal && zoomed && e.touches.length === 1) {
+              handleStart(e.touches[0].clientX, e.touches[0].clientY);
+            }
           }}
           onTouchMove={(e) => {
-            if (!zoomed || !dragging || e.touches.length !== 1) return;
-            handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            if (isModal && zoomed && dragging && e.touches.length === 1) {
+              handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
           }}
-          onTouchEnd={handleEnd}
+          onTouchEnd={(e) => {
+            swipe.handleTouchEnd(e);
+            if (isModal && zoomed) handleEnd();
+          }}
           style={{
             ...cursorStyle,
             cursor: zoomed ? "grabbing" : cursorStyle.cursor,

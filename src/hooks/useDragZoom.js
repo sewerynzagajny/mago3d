@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export default function UseDragZoom({ zoomed, scale, mainViewRef }) {
+export default function useDragZoom({ zoomed, scale, mainViewRef }) {
   const [drag, setDrag] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const dragStart = useRef({ x: 0, y: 0 });
