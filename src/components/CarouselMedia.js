@@ -29,6 +29,7 @@ export default function CarouselMedia({
               loop
               muted
               playsInline
+              preload="none"
               style={{
                 ...(isModal
                   ? {
@@ -66,6 +67,7 @@ export default function CarouselMedia({
       <div className={isModal ? "" : "photo-carousel-frame"}>
         <figure>
           <img
+            loading="lazy"
             src={item.src}
             alt={item.alt}
             className={`carousel__media--image${

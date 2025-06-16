@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import PropTypes from "prop-types";
 import CarouselMedia from "./CarouselMedia";
 import useDragZoom from "../hooks/useDragZoom"; // Importujemy hook do drag/zoom
@@ -15,12 +15,19 @@ export default function Carousel({
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
+  const [fade, setFade] = useState(false);
+
   const scale = 1.7;
   const mainViewRef = useRef(null);
 
   // Hook drag/zoom
   const { drag, dragging, handleStart, handleMove, handleEnd, setDrag } =
     useDragZoom({ zoomed, scale, mainViewRef });
+
+  // Ustaw fade na true przy pierwszym renderze
+  useEffect(() => {
+    setFade(true);
+  }, []);
 
   useEffect(() => {
     setCurrentIndex(initialIndex);
@@ -79,15 +86,21 @@ export default function Carousel({
   ]);
 
   function nextItem() {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+    goToSlide((currentIndex + 1) % items.length);
     setDrag({ x: 0, y: 0 });
   }
 
   function prevItem() {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + items.length) % items.length
-    );
+    goToSlide((currentIndex - 1 + items.length) % items.length);
     setDrag({ x: 0, y: 0 });
+  }
+
+  function goToSlide(newIndex) {
+    setFade(false); // reset animacji
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+      setFade(true); // uruchom animację po zmianie
+    }, 10);
   }
 
   const cursorStyle =
@@ -131,7 +144,7 @@ export default function Carousel({
         </button>
         <div
           ref={mainViewRef}
-          className="carousel__main-view__item"
+          className={`carousel__main-view__item${fade ? " fade-in" : ""}`}
           onClick={(e) => {
             if (onItemClick && !zoomed) {
               onItemClick(currentIndex);
@@ -203,7 +216,7 @@ export default function Carousel({
               idx === currentIndex ? " active" : ""
             }`}
             onClick={() => {
-              setCurrentIndex(idx);
+              goToSlide(idx);
               setDrag({ x: 0, y: 0 });
               if (onResetZoom) onResetZoom();
             }}
