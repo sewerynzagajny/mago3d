@@ -145,10 +145,6 @@ export default function Carousel({
       if (onResetZoom) onResetZoom();
     },
     enabled: !isModal || (isModal && !zoomed),
-    // Dodaj więcej restrykcyjne ustawienia
-    threshold: 80, // zwiększ próg przesunięcia z domyślnych ~50px do 80px
-    velocityThreshold: 0.5, // wymagaj większej prędkości ruchu
-    preventDefaultTouchAction: false, // nie blokuj domyślnych akcji touch
   });
 
   return (
@@ -161,16 +157,19 @@ export default function Carousel({
       onDragStart={(e) => e.preventDefault()}
     >
       <div className="carousel__main-view">
-        <button
-          className="carousel__main-view__button carousel__button--prev"
-          onClick={() => {
-            prevItem();
-            if (onResetZoom) onResetZoom();
-          }}
-          aria-label="Poprzedni"
-        >
-          &#10094;
-        </button>
+        {!isTouchDevice() && (
+          <button
+            className="carousel__main-view__button carousel__button--prev"
+            onClick={() => {
+              prevItem();
+              if (onResetZoom) onResetZoom();
+            }}
+            aria-label="Poprzedni"
+          >
+            &#10094;
+          </button>
+        )}
+
         <div
           ref={mainViewRef}
           className={`carousel__main-view__item${fade ? " fade-in" : ""}`}
@@ -232,16 +231,18 @@ export default function Carousel({
             />
           </div>
         </div>
-        <button
-          className="carousel__main-view__button carousel__button--next"
-          onClick={() => {
-            nextItem();
-            if (onResetZoom) onResetZoom();
-          }}
-          aria-label="Następny"
-        >
-          <span className="carousel__button--icon">&#10095;</span>
-        </button>
+        {!isTouchDevice() && (
+          <button
+            className="carousel__main-view__button carousel__button--next"
+            onClick={() => {
+              nextItem();
+              if (onResetZoom) onResetZoom();
+            }}
+            aria-label="Następny"
+          >
+            <span className="carousel__button--icon">&#10095;</span>
+          </button>
+        )}
       </div>
       <div
         className="carousel__thumbnails"

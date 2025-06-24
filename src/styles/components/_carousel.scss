@@ -17,6 +17,12 @@
       gap: 1.6rem;
     }
 
+    // Specjalne style dla urządzeń dotykowych
+    @media (pointer: coarse) {
+      gap: 0.5rem;
+      padding: 0 0.5rem;
+    }
+
     &__item {
       width: 65%;
       height: 65%;
@@ -25,6 +31,12 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+
+      // Na urządzeniach dotykowych - pełna szerokość
+      @media (pointer: coarse) {
+        width: 95%;
+        height: 80%;
+      }
 
       &.fade-in {
         animation: fadeInSlide 0.2s cubic-bezier(0.4, 0, 0.2, 1);
