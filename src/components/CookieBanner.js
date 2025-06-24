@@ -1,8 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Btn from "./Btn";
 
-export default function CookieBanner() {
+export default function CookieBanner({ onVisibilityChange, onHeightChange }) {
   const [isVisible, setIsVisible] = useState(null); // początkowo nie wiadomo
+  const bannerRef = useRef(null);
+
+  useEffect(() => {
+    if (onVisibilityChange) onVisibilityChange(isVisible);
+    if (onHeightChange && isVisible && bannerRef.current) {
+      onHeightChange(bannerRef.current.offsetHeight);
+    }
+    if (onHeightChange && !isVisible) {
+      onHeightChange(0);
+    }
+  }, [isVisible, onVisibilityChange, onHeightChange]);
+
+  // Aktualizuj wysokość przy zmianie rozmiaru okna
+  useEffect(() => {
+    function handleResize() {
+      if (onHeightChange && isVisible && bannerRef.current) {
+        onHeightChange(bannerRef.current.offsetHeight);
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isVisible, onHeightChange]);
 
   useEffect(() => {
     const cookieConsent = localStorage.getItem("cookieConsent");
@@ -14,6 +36,10 @@ export default function CookieBanner() {
       setIsVisible(false); // nie pokazuj
     }
   }, []);
+
+  useEffect(() => {
+    if (onVisibilityChange) onVisibilityChange(isVisible);
+  }, [isVisible, onVisibilityChange]);
 
   function handleAccept() {
     localStorage.setItem("cookieConsent", "accepted");
@@ -29,7 +55,7 @@ export default function CookieBanner() {
   if (isVisible === null || !isVisible) return null;
 
   return (
-    <div className="cookie-banner">
+    <div className="cookie-banner" ref={bannerRef}>
       <p className="cookie-banner__text">
         Ta strona używa plików cookie, aby zapewnić najlepsze wrażenia.{" "}
         <a className="cookie-banner__text--link" href="/privacy">

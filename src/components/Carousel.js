@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, use } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import CarouselMedia from "./CarouselMedia";
 import useDragZoom from "../hooks/useDragZoom"; // Importujemy hook do drag/zoom

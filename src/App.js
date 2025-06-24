@@ -25,6 +25,7 @@ import Privacy from "./pages/Privacy";
 import CookieBanner from "./components/CookieBanner";
 import Details from "./pages/Details";
 import Tsv3 from "./pages/assortyment/Tsv3";
+import Test from "./pages/Test";
 
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -126,6 +127,7 @@ export default function App() {
           }
         />
         {/* Podstrona Historia */}
+        <Route path="/test" element={<Test />} />
         <Route path="/historia" element={<History />} />
         <Route path="/materialy" element={<Materials />} />
         <Route path="/kontakt" element={<Contact />} />

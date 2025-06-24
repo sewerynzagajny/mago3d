@@ -9,7 +9,6 @@ import { ReactComponent as MaGo3dIcon } from "../svg/mago3d.svg";
 import ShortenTitle from "./ShortenTitle";
 import OrderModal from "./OrderModal";
 import ColorChooser from "./ColorChooser";
-import useIsMobile from "../hooks/useIsMobile";
 
 export default function Product({
   product,
@@ -76,17 +75,6 @@ export default function Product({
   const itemRef = useRef(null); // Dodaj ref
   const [anchorRect, setAnchorRect] = useState(null);
   const modalRef = useRef(null);
-
-  // Mobile detection
-  const isMobile = useIsMobile();
-  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setIsMobile(window.innerWidth <= 600);
-  //   }
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
 
   // Zamknięcie modala po kliknięciu poza oknem
   useEffect(() => {
@@ -163,11 +151,6 @@ export default function Product({
       : []),
   ];
 
-  // Dodaj klasę horizontal-mobile na NAJZEWNĘTRZNYM divie
-  const rootClass =
-    // (className ? className + " " : "") +
-    inDetails && isMobile ? "horizontal-mobile " : "";
-
   function openOrderModal() {
     if (itemRef.current) {
       setAnchorRect(itemRef.current.getBoundingClientRect());
@@ -197,26 +180,16 @@ export default function Product({
   return (
     <div
       // className={`${className} `}
-      className={rootClass}
       ref={itemRef}
       style={{
         visibility: orderModalVisible ? "hidden" : "visible",
-        display: inDetails && isMobile && orderModalVisible ? "none" : "",
         position: "relative",
         ...style,
       }}
     >
-      {/* OVERLAY PRZYCIEMNIAJĄCY */}
-      {(menuVisible || orderModalVisible) && (
-        <div className="product-overlay"></div>
-      )}
-      <div
-        className={`${className} frame ${
-          menuVisible && !(inDetails && isMobile) ? " is-active" : ""
-        }`}
-      >
-        {/* Pasek NOWOŚĆ tylko jeśli badge === "new" i NIE jesteśmy w poziomej wersji */}
-        {product.badge === "new" && !(inDetails && isMobile) && (
+      <div className={`${className} frame ${menuVisible ? " is-active" : ""}`}>
+        {/* Pasek NOWOŚĆ tylko jeśli badge === "new" */}
+        {product.badge === "new" && (
           <div className="product-badge--new">NOWOŚĆ</div>
         )}
         <div className={`${className}__content`}>
@@ -235,53 +208,28 @@ export default function Product({
             />
           </ScrollEffectContainer>
 
-          {/* Nazwa produktu tylko jeśli NIE jesteśmy w poziomej wersji mobilnej */}
-          {!(inDetails && isMobile) && (
-            <div className={`${className}__content--text-product`}>
-              <ShortenTitle
-                wordsNumber={product.maxWords}
-                inDetails={inDetails}
-              >
-                {product.name}
-              </ShortenTitle>
-            </div>
-          )}
+          <div className={`${className}__content--text-product`}>
+            <ShortenTitle wordsNumber={product.maxWords} inDetails={inDetails}>
+              {product.name}
+            </ShortenTitle>
+          </div>
+          <p className={`${className}__content--text-price`}>
+            {product.priceStringPl}
+          </p>
+          <ColorChooser
+            colors={product.colors}
+            selectedColor={chooseColor}
+            onColorChange={setChooseColor}
+          />
 
-          {inDetails && isMobile ? (
-            <div>
-              <p className={`${className}__content--text-price`}>
-                {product.priceStringPl}
-              </p>
-              <ColorChooser
-                colors={product.colors}
-                selectedColor={chooseColor}
-                onColorChange={setChooseColor}
-              />
-            </div>
-          ) : (
-            <>
-              <p className={`${className}__content--text-price`}>
-                {product.priceStringPl}
-              </p>
-              <ColorChooser
-                colors={product.colors}
-                selectedColor={chooseColor}
-                onColorChange={setChooseColor}
-              />
-            </>
-          )}
-
-          {/* Przycisk SZCZEGÓŁY tylko jeśli NIE jesteśmy w poziomej wersji mobilnej */}
-          {!(inDetails && isMobile) && (
-            <Btn
-              className={`btn ${className}__content--btn`}
-              as={Link}
-              to="/szczegoly"
-              style={inDetails ? { visibility: "hidden" } : undefined}
-            >
-              Szczegóły
-            </Btn>
-          )}
+          <Btn
+            className={`btn ${className}__content--btn`}
+            as={Link}
+            to="/szczegoly"
+            style={inDetails ? { visibility: "hidden" } : undefined}
+          >
+            Szczegóły
+          </Btn>
 
           <Btn
             className={`btn ${className}__content--btn`}
@@ -338,7 +286,7 @@ export default function Product({
         colors={product.colors}
         onColorChange={setChooseColor}
         price={product.priceStringPl}
-        anchorRect={!inDetails || !isMobile ? anchorRect : undefined}
+        anchorRect={anchorRect}
         modalRef={modalRef} // przekazujemy ref do OrderModa
       />
     </div>

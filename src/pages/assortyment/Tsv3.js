@@ -6,6 +6,7 @@ import Carousel from "../../components/Carousel";
 import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const items = [
   {
@@ -51,6 +52,9 @@ export default function Tsv3() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
   const [zoomed, setZoomed] = useState(false);
+  const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
+  const [cookieBannerHeight, setCookieBannerHeight] = useState(0);
+  const isMobile = useIsMobile();
 
   function handleModalClick(e) {
     // Nie powiększaj jeśli kliknięto w przycisk zamykania lub miniaturę lub strzałki
@@ -101,24 +105,27 @@ export default function Tsv3() {
                 }}
               />
 
-              <div className="details__sticky-product">
-                <Product
-                  key={1}
-                  product={products[1]}
-                  className="assortment__container__products__item"
-                  onMenuChange={setOnMenuVisible}
-                  inDetails={true}
-                  setOrderModalVisible={(visible) =>
-                    setOrderModalProductId(visible ? products[1].id : null)
-                  }
-                  orderModalVisible={orderModalProductId === products[1].id}
-                  style={
-                    onMenuVisible || orderModalProductId !== null
-                      ? { opacity: "0.8" }
-                      : {}
-                  }
-                />
-              </div>
+              {/* Karta w gridzie tylko na desktopie */}
+              {!isMobile && (
+                <div className="details__sticky-product">
+                  <Product
+                    key={1}
+                    product={products[1]}
+                    className="details__container__products__item"
+                    onMenuChange={setOnMenuVisible}
+                    inDetails={true}
+                    setOrderModalVisible={(visible) =>
+                      setOrderModalProductId(visible ? products[1].id : null)
+                    }
+                    orderModalVisible={orderModalProductId === products[1].id}
+                    style={
+                      onMenuVisible || orderModalProductId !== null
+                        ? { opacity: "0.8" }
+                        : {}
+                    }
+                  />
+                </div>
+              )}
               <div className="details__container__content__text">
                 <p>
                   Podstawka pod Thermomix TSv3 to idealne rozwiązanie dla osób
@@ -199,6 +206,33 @@ export default function Tsv3() {
             </div>
           </div>
         </ScrollEffectContainer>
+        {/* Karta na dole ekranu tylko na mobile */}
+        {isMobile && (
+          <div
+            className={`sticky-bottom-mobile${
+              cookieBannerVisible ? " sticky-above-cookie" : ""
+            }`}
+            style={
+              cookieBannerVisible
+                ? { bottom: cookieBannerHeight }
+                : { bottom: 0 }
+              // { marginBottom: cookieBannerHeight } // wyżej niż baner, padding na baner
+              // : {}
+            }
+          >
+            <Product
+              key={1}
+              product={products[1]}
+              className="details__container__products__item"
+              onMenuChange={setOnMenuVisible}
+              inDetails={true}
+              setOrderModalVisible={(visible) =>
+                setOrderModalProductId(visible ? products[1].id : null)
+              }
+              orderModalVisible={orderModalProductId === products[1].id}
+            />
+          </div>
+        )}
         {/* MODAL */}
         {modalOpen && (
           <div
@@ -235,7 +269,10 @@ export default function Tsv3() {
         )}
       </section>
       <Footer />
-      <CookieBaner />
+      <CookieBaner
+        onVisibilityChange={setCookieBannerVisible}
+        onHeightChange={setCookieBannerHeight}
+      />
     </>
   );
 }

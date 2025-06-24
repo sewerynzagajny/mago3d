@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Btn from "./Btn";
-import ScrollEffectContainer from "./ScrollEffectContainer";
+import Btn from "../Btn";
+import ScrollEffectContainer from "../ScrollEffectContainer";
 
 export default function Product({ product, className = "" }) {
   const [chooseColor, setChooseColor] = useState(
