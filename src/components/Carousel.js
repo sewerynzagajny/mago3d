@@ -16,13 +16,32 @@ export default function Carousel({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
   const [fade, setFade] = useState(false);
+  const [containerHeight, setContainerHeight] = useState(0); // Nowy stan
 
   const scale = 1.7;
   const mainViewRef = useRef(null);
+  const mediaContainerRef = useRef(null);
 
   // Hook drag/zoom
   const { drag, dragging, handleStart, handleMove, handleEnd, setDrag } =
     useDragZoom({ zoomed, scale, mainViewRef });
+
+  // Obserwuj wysokość elementów
+  useEffect(() => {
+    if (mediaContainerRef.current) {
+      const observer = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          const height = entry.contentRect.height;
+          if (height > 0) {
+            setContainerHeight(height);
+          }
+        }
+      });
+
+      observer.observe(mediaContainerRef.current);
+      return () => observer.disconnect();
+    }
+  }, [currentIndex]);
 
   // Ustaw fade na true przy pierwszym renderze
   useEffect(() => {
@@ -183,16 +202,20 @@ export default function Carousel({
             pointerEvents: "auto",
           }}
         >
-          <CarouselMedia
-            item={items[currentIndex]}
-            zoomed={zoomed}
-            dragging={dragging}
-            drag={drag}
-            scale={scale}
-            origin={origin}
-            isModal={isModal}
-            cursorStyle={cursorStyle}
-          />
+          <div ref={mediaContainerRef}>
+            {" "}
+            {/* Nowy wrapper */}
+            <CarouselMedia
+              item={items[currentIndex]}
+              zoomed={zoomed}
+              dragging={dragging}
+              drag={drag}
+              scale={scale}
+              origin={origin}
+              isModal={isModal}
+              cursorStyle={cursorStyle}
+            />
+          </div>
         </div>
         <button
           className="carousel__main-view__button carousel__button--next"

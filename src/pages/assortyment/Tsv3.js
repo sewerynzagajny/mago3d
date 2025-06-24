@@ -56,6 +56,24 @@ export default function Tsv3() {
   const [cookieBannerHeight, setCookieBannerHeight] = useState(0);
   const isMobile = useIsMobile();
 
+  // Dodaj useEffect do blokowania przewijania
+  const { useEffect } = require("react");
+
+  useEffect(() => {
+    if (modalOpen) {
+      // Zablokuj przewijanie
+      document.body.style.overflow = "hidden";
+    } else {
+      // Przywróć przewijanie
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup - przywróć przewijanie gdy komponent się odmontuje
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modalOpen]);
+
   function handleModalClick(e) {
     // Nie powiększaj jeśli kliknięto w przycisk zamykania lub miniaturę lub strzałki
     if (
