@@ -73,15 +73,12 @@ input[type="reset"] {
   input[type="button"],
   input[type="submit"],
   input[type="reset"],
-  .btn {
-    &:active {
+  .carousel__main-view__button {
+    &:active,
+    &:focus {
       transform: none !important;
       box-shadow: none !important;
-      opacity: 0.8; // Lekkie przyciemnienie zamiast znikania
-    }
-
-    &:focus {
-      outline: none !important;
+      background-color: $font-color-text !important;
     }
   }
 }

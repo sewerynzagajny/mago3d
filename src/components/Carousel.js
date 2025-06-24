@@ -17,11 +17,16 @@ export default function Carousel({
   const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
   const [fade, setFade] = useState(false);
   // eslint-disable-next-line no-unused-vars
-  const [containerHeight, setContainerHeight] = useState(0); // Nowy stan
+  const [containerHeight, setContainerHeight] = useState(0);
 
   const scale = 1.7;
   const mainViewRef = useRef(null);
   const mediaContainerRef = useRef(null);
+
+  // Funkcja sprawdzająca czy urządzenie ma ekran dotykowy
+  function isTouchDevice() {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }
 
   // Hook drag/zoom
   const { drag, dragging, handleStart, handleMove, handleEnd, setDrag } =
@@ -126,7 +131,7 @@ export default function Carousel({
   const cursorStyle =
     isModal && zoomed
       ? { cursor: "grab" }
-      : isModal
+      : isModal && !isTouchDevice()
       ? { cursor: "zoom-in" }
       : {};
 
@@ -140,6 +145,10 @@ export default function Carousel({
       if (onResetZoom) onResetZoom();
     },
     enabled: !isModal || (isModal && !zoomed),
+    // Dodaj więcej restrykcyjne ustawienia
+    threshold: 80, // zwiększ próg przesunięcia z domyślnych ~50px do 80px
+    velocityThreshold: 0.5, // wymagaj większej prędkości ruchu
+    preventDefaultTouchAction: false, // nie blokuj domyślnych akcji touch
   });
 
   return (
@@ -166,6 +175,11 @@ export default function Carousel({
           ref={mainViewRef}
           className={`carousel__main-view__item${fade ? " fade-in" : ""}`}
           onClick={(e) => {
+            // Wyłącz zoom na urządzeniach dotykowych
+            if (isTouchDevice() && isModal) {
+              return;
+            }
+
             if (onItemClick && !zoomed) {
               onItemClick(currentIndex);
             } else if (zoomed && isModal) {
