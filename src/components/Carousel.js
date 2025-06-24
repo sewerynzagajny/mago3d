@@ -16,6 +16,7 @@ export default function Carousel({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
   const [fade, setFade] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [containerHeight, setContainerHeight] = useState(0); // Nowy stan
 
   const scale = 1.7;
