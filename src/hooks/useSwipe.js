@@ -4,8 +4,8 @@ export default function useSwipe({
   onSwipeLeft,
   onSwipeRight,
   enabled = true,
-  threshold = 120, // domyślnie wyższa wartość
-  velocityThreshold = 0.8, // domyślnie wyższa prędkość
+  threshold = 90, // domyślnie wyższa wartość
+  velocityThreshold = 0.6, // domyślnie wyższa prędkość
   preventDefaultTouchAction = false,
 }) {
   const touchStartX = useRef(null);
