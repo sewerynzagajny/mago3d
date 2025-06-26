@@ -69,15 +69,13 @@ export default function Carousel({
           onItemClick(currentIndex); // otwórz modal z aktualnym indeksem
           return;
         }
-        if (e.key === "ArrowRight") {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+        if (e.key === "ArrowRight" && currentIndex < items.length - 1) {
+          setCurrentIndex((prevIndex) => prevIndex + 1);
           setDrag({ x: 0, y: 0 });
           if (onResetZoom) onResetZoom();
         }
-        if (e.key === "ArrowLeft") {
-          setCurrentIndex(
-            (prevIndex) => (prevIndex - 1 + items.length) % items.length
-          );
+        if (e.key === "ArrowLeft" && currentIndex > 0) {
+          setCurrentIndex((prevIndex) => prevIndex - 1);
           setDrag({ x: 0, y: 0 });
           if (onResetZoom) onResetZoom();
         }
@@ -86,18 +84,30 @@ export default function Carousel({
       if (e.key === "Escape" && onClose) {
         onClose();
       }
-      if (e.key === "ArrowRight") {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+
+      if (e.key === "ArrowRight" && currentIndex < items.length - 1) {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
         setDrag({ x: 0, y: 0 });
         if (onResetZoom) onResetZoom();
       }
-      if (e.key === "ArrowLeft") {
-        setCurrentIndex(
-          (prevIndex) => (prevIndex - 1 + items.length) % items.length
-        );
+      if (e.key === "ArrowLeft" && currentIndex > 0) {
+        setCurrentIndex((prevIndex) => prevIndex - 1);
         setDrag({ x: 0, y: 0 });
         if (onResetZoom) onResetZoom();
       }
+
+      // if (e.key === "ArrowRight") {
+      //   setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+      //   setDrag({ x: 0, y: 0 });
+      //   if (onResetZoom) onResetZoom();
+      // }
+      // if (e.key === "ArrowLeft") {
+      //   setCurrentIndex(
+      //     (prevIndex) => (prevIndex - 1 + items.length) % items.length
+      //   );
+      //   setDrag({ x: 0, y: 0 });
+      //   if (onResetZoom) onResetZoom();
+      // }
     }
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
