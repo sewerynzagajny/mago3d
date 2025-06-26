@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 export default function useSwipe({
   onSwipeLeft,
@@ -7,11 +7,32 @@ export default function useSwipe({
   threshold = 90, // domyślnie wyższa wartość
   velocityThreshold = 0.6, // domyślnie wyższa prędkość
   preventDefaultTouchAction = false,
-  preventVerticalScroll = true,
+  preventPageScroll = true,
 }) {
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
   const touchStartTime = useRef(null);
+  const isSwiping = useRef(false);
+
+  // Blokuj scroll całej strony gdy aktywny swipe
+  useEffect(() => {
+    if (!preventPageScroll) return;
+
+    const preventScroll = (e) => {
+      if (isSwiping.current) {
+        e.preventDefault();
+      }
+    };
+
+    // Dodaj listenery na document
+    document.addEventListener("touchmove", preventScroll, { passive: false });
+    document.addEventListener("wheel", preventScroll, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchmove", preventScroll);
+      document.removeEventListener("wheel", preventScroll);
+    };
+  }, [preventPageScroll]);
 
   function handleTouchStart(e) {
     if (!enabled || e.touches.length !== 1) return;
@@ -23,6 +44,11 @@ export default function useSwipe({
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
     touchStartTime.current = Date.now();
+
+    // Oznacz że rozpoczyna się swipe
+    if (preventPageScroll) {
+      isSwiping.current = true;
+    }
   }
 
   function handleTouchMove(e) {
@@ -30,23 +56,12 @@ export default function useSwipe({
 
     if (preventDefaultTouchAction) {
       e.preventDefault();
-      return;
-    }
-    // Blokuj tylko pionowy scroll jeśli włączone
-    if (preventVerticalScroll && touchStartX.current !== null) {
-      const currentX = e.touches[0].clientX;
-      const currentY = e.touches[0].clientY;
-      const dx = Math.abs(currentX - touchStartX.current);
-      const dy = Math.abs(currentY - touchStartY.current);
-
-      // Jeśli ruch jest bardziej poziomy, blokuj scroll
-      if (dx > dy && dx > 10) {
-        e.preventDefault();
-      }
     }
   }
 
   function handleTouchEnd(e) {
+    // Reset flag dla scroll strony
+    isSwiping.current = false;
     if (
       !enabled ||
       touchStartX.current === null ||

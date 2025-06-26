@@ -162,6 +162,7 @@ export default function Carousel({
       if (onResetZoom) onResetZoom();
     },
     enabled: !isModal || (isModal && !zoomed),
+    preventPageScroll: true,
   });
 
   return (
@@ -219,6 +220,7 @@ export default function Carousel({
             }
           }}
           onTouchMove={(e) => {
+            swipe.handleTouchMove(e);
             if (isModal && zoomed && dragging && e.touches.length === 1) {
               handleMove(e.touches[0].clientX, e.touches[0].clientY);
             }
