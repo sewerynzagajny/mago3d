@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import CarouselMedia from "./CarouselMedia";
 import useDragZoom from "../hooks/useDragZoom"; // Importujemy hook do drag/zoom
 import useSwipe from "../hooks/useSwipe";
+import ScrollableThumbnails from "./ScrollableThumbnails";
 
 export default function Carousel({
   items,
@@ -128,6 +129,12 @@ export default function Carousel({
     }, 10);
   }
 
+  function handleThumbnailClick(idx) {
+    goToSlide(idx);
+    setDrag({ x: 0, y: 0 });
+    if (onResetZoom) onResetZoom();
+  }
+
   const cursorStyle =
     isModal && zoomed
       ? { cursor: "grab" }
@@ -244,41 +251,12 @@ export default function Carousel({
           </button>
         )}
       </div>
-      <div
-        className="carousel__thumbnails"
-        style={isModal ? { padding: "0 2rem" } : {}}
-      >
-        {items.map((item, idx) => (
-          <button
-            key={idx}
-            className={`carousel__thumbnail${
-              idx === currentIndex ? " active" : ""
-            }`}
-            onClick={() => {
-              goToSlide(idx);
-              setDrag({ x: 0, y: 0 });
-              if (onResetZoom) onResetZoom();
-            }}
-            aria-label={`Przejdź do slajdu ${idx + 1}`}
-            tabIndex={0}
-          >
-            {item.type === "video" ? (
-              <video
-                className="carousel__thumbnail-media"
-                src={item.src}
-                muted
-                preload="metadata"
-              />
-            ) : (
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="carousel__thumbnail-media"
-              />
-            )}
-          </button>
-        ))}
-      </div>
+      <ScrollableThumbnails
+        items={items}
+        currentIndex={currentIndex}
+        onThumbnailClick={handleThumbnailClick}
+        isModal={isModal}
+      />
     </div>
   );
 }
