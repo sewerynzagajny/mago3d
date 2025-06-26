@@ -7,6 +7,7 @@ export default function useSwipe({
   threshold = 90, // domyślnie wyższa wartość
   velocityThreshold = 0.6, // domyślnie wyższa prędkość
   preventDefaultTouchAction = false,
+  preventVerticalScroll = true,
 }) {
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
@@ -29,6 +30,19 @@ export default function useSwipe({
 
     if (preventDefaultTouchAction) {
       e.preventDefault();
+      return;
+    }
+    // Blokuj tylko pionowy scroll jeśli włączone
+    if (preventVerticalScroll && touchStartX.current !== null) {
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const dx = Math.abs(currentX - touchStartX.current);
+      const dy = Math.abs(currentY - touchStartY.current);
+
+      // Jeśli ruch jest bardziej poziomy, blokuj scroll
+      if (dx > dy && dx > 10) {
+        e.preventDefault();
+      }
     }
   }
 
