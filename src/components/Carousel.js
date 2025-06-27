@@ -162,6 +162,7 @@ export default function Carousel({
       if (onResetZoom) onResetZoom();
     },
     enabled: !isModal || (isModal && !zoomed),
+    isModal: isModal,
     preventPageScroll: true,
   });
 

@@ -4,8 +4,11 @@ export default function useSwipe({
   onSwipeLeft,
   onSwipeRight,
   enabled = true,
-  threshold = 90, // domyślnie wyższa wartość
-  velocityThreshold = 0.6, // domyślnie wyższa prędkość
+  threshold = 50, // domyślnie niższa wartość
+  velocityThreshold = 0.3, // domyślnie niższa prędkość
+  modalThreshold = 90, // wyższa wartość dla modali
+  modalVelocityThreshold = 0.6, // wyższa prędkość dla modali
+  isModal = false, // czy to modal
   preventDefaultTouchAction = false,
   preventPageScroll = true,
 }) {
@@ -14,6 +17,12 @@ export default function useSwipe({
   const touchStartTime = useRef(null);
   const isSwiping = useRef(false);
   const isHorizontalSwipe = useRef(false);
+
+  // Wybierz odpowiednie progi na podstawie typu
+  const activeThreshold = isModal ? modalThreshold : threshold;
+  const activeVelocityThreshold = isModal
+    ? modalVelocityThreshold
+    : velocityThreshold;
 
   // Blokuj scroll całej strony gdy aktywny swipe
   useEffect(() => {
