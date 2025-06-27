@@ -211,7 +211,7 @@
     height: 3.5rem;
     font-size: 1.6rem;
     cursor: pointer;
-    z-index: 100;
+    z-index: 10;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -237,10 +237,10 @@
       right: 2rem;
     }
 
-    // // Ukryj przyciski na urządzeniach dotykowych
-    // @media (pointer: coarse) {
-    //   display: none;
-    // }
+    // Ukryj przyciski na urządzeniach dotykowych
+    @media (pointer: coarse) {
+      display: none;
+    }
 
     // // Ukryj też na bardzo małych ekranach
     // @media only screen and (max-width: 48rem) {

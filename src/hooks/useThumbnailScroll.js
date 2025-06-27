@@ -14,14 +14,6 @@ export default function useThumbnailScroll(itemsCount, itemWidth = 120) {
 
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
 
-      // DEBUG - dodaj do konsoli
-      console.log("Hook debug:", {
-        scrollLeft,
-        scrollWidth,
-        clientWidth,
-        needsScroll: scrollWidth > clientWidth,
-      });
-
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
     };
@@ -53,7 +45,6 @@ export default function useThumbnailScroll(itemsCount, itemWidth = 120) {
       if (!containerRef.current) return;
 
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      console.log("Delayed check:", { scrollWidth, clientWidth });
 
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);

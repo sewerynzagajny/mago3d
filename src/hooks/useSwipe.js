@@ -13,13 +13,14 @@ export default function useSwipe({
   const touchStartY = useRef(null);
   const touchStartTime = useRef(null);
   const isSwiping = useRef(false);
+  const isHorizontalSwipe = useRef(false);
 
   // Blokuj scroll całej strony gdy aktywny swipe
   useEffect(() => {
     if (!preventPageScroll) return;
 
     const preventScroll = (e) => {
-      if (isSwiping.current) {
+      if (isSwiping.current && isHorizontalSwipe.current) {
         e.preventDefault();
       }
     };
@@ -46,22 +47,33 @@ export default function useSwipe({
     touchStartTime.current = Date.now();
 
     // Oznacz że rozpoczyna się swipe
-    if (preventPageScroll) {
-      isSwiping.current = true;
-    }
+    isSwiping.current = true;
+    isHorizontalSwipe.current = false; // reset
   }
 
   function handleTouchMove(e) {
-    if (!enabled) return;
+    if (!enabled || !isSwiping.current) return;
 
-    if (preventDefaultTouchAction) {
-      e.preventDefault();
+    if (touchStartX.current !== null && touchStartY.current !== null) {
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const dx = Math.abs(currentX - touchStartX.current);
+      const dy = Math.abs(currentY - touchStartY.current);
+
+      // Sprawdź czy to poziomy ruch (większe przesunięcie w poziomie)
+      if (dx > 15 || dy > 15) {
+        // próg aktywacji
+        isHorizontalSwipe.current = dx > dy;
+      }
     }
   }
 
   function handleTouchEnd(e) {
-    // Reset flag dla scroll strony
+    // Reset wszystkich flag
+    const wasHorizontalSwipe = isHorizontalSwipe.current;
     isSwiping.current = false;
+    isHorizontalSwipe.current = false;
+
     if (
       !enabled ||
       touchStartX.current === null ||
@@ -69,10 +81,6 @@ export default function useSwipe({
       touchStartTime.current === null
     )
       return;
-
-    if (preventDefaultTouchAction) {
-      e.preventDefault();
-    }
 
     const dx = e.changedTouches[0].clientX - touchStartX.current;
     const dy = e.changedTouches[0].clientY - touchStartY.current;
@@ -88,7 +96,8 @@ export default function useSwipe({
     if (
       Math.abs(dx) > threshold &&
       velocity > velocityThreshold &&
-      isHorizontal
+      isHorizontal &&
+      wasHorizontalSwipe
     ) {
       if (dx < 0 && onSwipeLeft) onSwipeLeft();
       if (dx > 0 && onSwipeRight) onSwipeRight();
