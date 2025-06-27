@@ -34,7 +34,6 @@ export default function useSwipe({
       }
     };
 
-    // Dodaj listenery na document
     document.addEventListener("touchmove", preventScroll, { passive: false });
     document.addEventListener("wheel", preventScroll, { passive: false });
 
@@ -55,9 +54,8 @@ export default function useSwipe({
     touchStartY.current = e.touches[0].clientY;
     touchStartTime.current = Date.now();
 
-    // Oznacz że rozpoczyna się swipe
     isSwiping.current = true;
-    isHorizontalSwipe.current = false; // reset
+    isHorizontalSwipe.current = false;
   }
 
   function handleTouchMove(e) {
@@ -69,16 +67,13 @@ export default function useSwipe({
       const dx = Math.abs(currentX - touchStartX.current);
       const dy = Math.abs(currentY - touchStartY.current);
 
-      // Sprawdź czy to poziomy ruch (większe przesunięcie w poziomie)
       if (dx > 15 || dy > 15) {
-        // próg aktywacji
         isHorizontalSwipe.current = dx > dy;
       }
     }
   }
 
   function handleTouchEnd(e) {
-    // Reset wszystkich flag
     const wasHorizontalSwipe = isHorizontalSwipe.current;
     isSwiping.current = false;
     isHorizontalSwipe.current = false;
@@ -95,16 +90,13 @@ export default function useSwipe({
     const dy = e.changedTouches[0].clientY - touchStartY.current;
     const deltaTime = Date.now() - touchStartTime.current;
 
-    // Oblicz prędkość (piksele na milisekundę)
     const velocity = Math.abs(dx) / deltaTime;
-
-    // Sprawdź czy ruch jest bardziej poziomy niż pionowy
     const isHorizontal = Math.abs(dx) > Math.abs(dy);
 
-    // Wymagaj odpowiedniego przesunięcia I prędkości I ruchu poziomego
+    // Użyj aktywnych progów
     if (
-      Math.abs(dx) > threshold &&
-      velocity > velocityThreshold &&
+      Math.abs(dx) > activeThreshold &&
+      velocity > activeVelocityThreshold &&
       isHorizontal &&
       wasHorizontalSwipe
     ) {
@@ -112,7 +104,6 @@ export default function useSwipe({
       if (dx > 0 && onSwipeRight) onSwipeRight();
     }
 
-    // Reset wartości
     touchStartX.current = null;
     touchStartY.current = null;
     touchStartTime.current = null;
