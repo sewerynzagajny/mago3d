@@ -376,3 +376,76 @@
 //     padding: 1.2rem;
 //   }
 // }
+
+// Na szybko do zmian
+.details__container__content__text {
+  line-height: 1.6;
+}
+
+.details__container__content__text h4 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $font-color-primary-litle-dark;
+  margin: 1.5rem 0 1rem 0;
+  text-align: center;
+}
+
+.details__container__content__text h5 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: $font-color-primary-litle-dark;
+  margin: 1.2rem 0 0.8rem 0;
+  border-bottom: 2px solid $font-color-primary-darker;
+  padding-bottom: 0.3rem;
+}
+
+.details__container__content__text p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.details__container__content__text strong {
+  font-weight: 600;
+  color: $font-color-primary-litle-dark;
+}
+
+/* Style dla emoji i symboli */
+.details__container__content__text p:has(➡️),
+.details__container__content__text p:has(✅),
+.details__container__content__text p:has(❇️) {
+  padding-left: 1rem;
+  position: relative;
+}
+
+/* Zwiększ odstępy między sekcjami */
+.details__container__content__text p:last-child {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+/* Style dla ostrzeżeń bezpieczeństwa */
+.details__container__content__text p:has(⚠️) {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  font-weight: 500;
+}
+
+/* Responsive design */
+// @media (max-width: 768px) {
+//   .details__container__content__text h4 {
+//     font-size: 1.1rem;
+//   }
+
+//   .details__container__content__text h5 {
+//     font-size: 1rem;
+//   }
+
+//   .details__container__content__text p {
+//     font-size: 0.9rem;
+//   }
+// }

@@ -47,6 +47,11 @@ export default function Product({
   //   },
   // ];
 
+  // Generuj link do szczegółów na podstawie slug
+  const detailsLink = product.slug
+    ? `/szczegoly/druki-3d/${product.slug}`
+    : "/szczegoly";
+
   const iconMap = {
     Etsy: <EtsyIcon className="assortment__container__btns__shop-btn--link" />,
     Allegro: (
@@ -276,7 +281,7 @@ export default function Product({
             <Btn
               className={`btn ${className}__content--btn`}
               as={Link}
-              to="/szczegoly"
+              to={detailsLink}
               style={inDetails ? { visibility: "hidden" } : undefined}
             >
               Szczegóły

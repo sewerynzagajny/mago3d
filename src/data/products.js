@@ -59,6 +59,8 @@ export const products = [
   {
     id: 12,
     name: "Adapter z kółkami pod fotelik krzesełko IKEA Antilop - moduł rozbudowujący",
+    slug: "adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy",
+    component: "AdapterAntilop",
     maxWords: 5,
     badge: "new",
     colors: [
