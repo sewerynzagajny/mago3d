@@ -21,7 +21,7 @@ export default function CarouselMedia({
         <div className={isModal ? "" : "video-carousel-frame"}>
           <figure>
             <video
-              controls
+              // controls
               className={`carousel__media--video${
                 zoomed ? " carousel__media--zoomed" : ""
               }`}
@@ -29,7 +29,9 @@ export default function CarouselMedia({
               loop
               muted
               playsInline
-              preload="none"
+              // preload="none"
+              preload="metadata"
+              // poster={item.poster}
               style={{
                 ...(isModal
                   ? {
