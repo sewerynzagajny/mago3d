@@ -31,7 +31,7 @@ export default function CarouselMedia({
               playsInline
               // preload="none"
               preload="metadata"
-              // poster={item.poster}
+              poster={item.poster}
               style={{
                 ...(isModal
                   ? {

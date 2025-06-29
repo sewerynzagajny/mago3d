@@ -47,6 +47,7 @@ const items = [
   {
     type: "video",
     src: require("../../assets/assortment/AdapterAntilop/movie.mp4"),
+    poster: require("../../assets/assortment/AdapterAntilop/poster.webp"),
     alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
 ];
@@ -156,8 +157,8 @@ export default function AdapterAntilop({ productId = 12 }) {
               )}
               <div className="details__container__content__text">
                 <h4>
-                  ⭐Adaptery z kółkami obrotowymi z hamulcem do Fotelika IKEA
-                  Antilop, Bezpieczne i Wygodne!⭐
+                  ⭐ Adaptery z kółkami obrotowymi z hamulcem do Fotelika IKEA
+                  Antilop, Bezpieczne i Wygodne! ⭐
                 </h4>
 
                 <p>
@@ -179,28 +180,29 @@ export default function AdapterAntilop({ productId = 12 }) {
                   <strong>Cechy produktu:</strong>
                 </h5>
                 <p>
-                  ➡️<strong>Kolor:</strong> Eleganckie białe adaptery z czarnymi
-                  kółkami – idealnie komponują się z fotelikiem Antilop.
+                  ➡️ <strong>Kolor:</strong> Eleganckie białe adaptery z
+                  czarnymi kółkami – idealnie komponują się z fotelikiem
+                  Antilop.
                 </p>
                 <p>
-                  ➡️<strong>Obrotowe kółka:</strong> Cztery podwójnie
+                  ➡️ <strong>Obrotowe kółka:</strong> Cztery podwójnie
                   łożyskowane kółka o wytrzymałości na obciążenie do 25 kg
                   każde, zapewniają płynne i ciche przesuwanie, nawet na różnych
                   powierzchniach (parkiet, płytki, dywan).
                 </p>
                 <p>
-                  ➡️<strong>Bezpieczeństwo:</strong> Każde kółko wyposażone jest
-                  w hamulec, dzięki czemu fotelik pozostaje stabilny i
+                  ➡️ <strong>Bezpieczeństwo:</strong> Każde kółko wyposażone
+                  jest w hamulec, dzięki czemu fotelik pozostaje stabilny i
                   bezpieczny, gdy tego potrzebujesz.
                 </p>
                 <p>
-                  ➡️<strong>Łatwy montaż:</strong> Adaptery są zaprojektowane
+                  ➡️ <strong>Łatwy montaż:</strong> Adaptery są zaprojektowane
                   tak, aby idealnie pasowały do nóżek fotelika Antilop –
                   instalacja zajmuje tylko chwilę, a kluczyk potrzebny do
                   montażu znajduje się w zestawie!
                 </p>
                 <p>
-                  ➡️<strong>Wygoda:</strong> Przesuwanie fotelika z dzieckiem
+                  ➡️ <strong>Wygoda:</strong> Przesuwanie fotelika z dzieckiem
                   nigdy nie było prostsze – oszczędź sobie wysiłku i zadbaj o
                   komfort malucha.
                 </p>
@@ -209,16 +211,15 @@ export default function AdapterAntilop({ productId = 12 }) {
                   <strong>Dlaczego warto wybrać nasze adaptery?</strong>
                 </h5>
                 <p>
-                  ✅Wykonane z wysokiej jakości materiałów, które zapewniają
+                  ✅ Wykonane z wysokiej jakości materiałów, które zapewniają
                   trwałość i bezpieczeństwo.
                   <br />
-                  ✅Testowane pod kątem stabilności – możesz mieć pewność, że
+                  ✅ Testowane pod kątem stabilności – możesz mieć pewność, że
                   fotelik z dzieckiem jest bezpieczny.
                   <br />
-                  ✅Idealne dla rodziców, którzy cenią sobie praktyczne i
+                  ✅ Idealne dla rodziców, którzy cenią sobie praktyczne i
                   estetyczne rozwiązania.
-                  <br />
-                  ✅Łatwe w utrzymaniu w czystości - adaptery wykonane z
+                  <br />✅ Łatwe w utrzymaniu w czystości - adaptery wykonane z
                   tworzywa typu pet które dopuszczone jest do kontaktu z
                   żywnością ora wykazuje łatwość w czyszczeniu wszystkimi
                   popularnymi detergentami.
@@ -228,7 +229,7 @@ export default function AdapterAntilop({ productId = 12 }) {
                   <strong>Co zawiera zestaw?</strong>
                 </h5>
                 <p>
-                  ❇️4 adaptery z obrotowymi kółkami (z hamulcami).
+                  ❇️ 4 adaptery z obrotowymi kółkami (z hamulcami).
                   <br />
                   ❇️ Śruby imbusowe
                   <br />
@@ -240,15 +241,15 @@ export default function AdapterAntilop({ productId = 12 }) {
                 <h5>
                   <strong>Wymiary i kompatybilność:</strong>
                 </h5>
-                <p>⭐Adaptery pasują wyłącznie do fotelika IKEA Antilop!</p>
+                <p>⭐ Adaptery pasują wyłącznie do fotelika IKEA Antilop!</p>
 
                 <h5>
                   <strong>Bezpieczeństwo:</strong>
                 </h5>
                 <p>
-                  ⚠️Pomimo fantastycznej funkcjonalności adapterów oraz
+                  ⚠️ Pomimo fantastycznej funkcjonalności adapterów oraz
                   wbudowanym hamulcom, pamiętaj, aby nigdy nie zostawiać dziecka
-                  samego w foteliku.⚠️❗❗❗
+                  samego w foteliku. ⚠️❗❗❗
                 </p>
                 <p>
                   Poza tymi wszystkimi zaletami wymienionymi wcześniej, jest
