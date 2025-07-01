@@ -17,8 +17,8 @@ const TSv4ProPhotos = {
   grey: require("../assets/assortment/TSv4PRO/main_grey.webp"),
 };
 
-const ResoWallPhotos = {
-  black: require("../assets/assortment/ResoWall/main_black.webp"),
+const HWSv24SPhotos = {
+  black: require("../assets/assortment/HWSv24S/main_black.webp"),
 };
 const ResoDeskPhotos = {
   black: require("../assets/assortment/ResoDesk/main_black.webp"),
@@ -255,12 +255,16 @@ export const products = [
   {
     id: 4,
     name: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    fullname:
+      "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    slug: "stojak-ekspozytor-naścienny-na-karty-resoraki-hot-wheels-matchbox-majorette-hwsv24s",
+    component: "HWSv24S",
     maxWords: 3,
     colors: [
       {
         name: "czarny",
         nameEn: "black",
-        photo: ResoWallPhotos.black,
+        photo: HWSv24SPhotos.black,
         shoppingPlatform: [
           {
             name: "Etsy",
