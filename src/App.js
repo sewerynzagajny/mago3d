@@ -27,12 +27,13 @@ import Details from "./pages/Details";
 // import Tsv3 from "./pages/assortyment/Tsv3";
 import Test from "./pages/Test";
 import AdapterAntilop from "./pages/assortyment/AdapterAntilop";
+import TSv3 from "./pages/assortyment/TSv3"; // Importujemy komponent TSv3
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
 const componentMap = {
   AdapterAntilop: AdapterAntilop,
-  // Tsv3: Tsv3,
+  TSv3: TSv3,
   // Dodaj inne komponenty według potrzeb
 };
 

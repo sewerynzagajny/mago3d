@@ -59,6 +59,8 @@ export const products = [
   {
     id: 12,
     name: "Adapter z kółkami pod fotelik krzesełko IKEA Antilop - moduł rozbudowujący",
+    fullname:
+      "Adapter z kółkami pod fotelik krzesełko IKEA Antilop - moduł rozbudowujący",
     slug: "adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy",
     component: "AdapterAntilop",
     maxWords: 5,
@@ -91,7 +93,10 @@ export const products = [
   {
     id: 1,
     name: "Podstawka pod Thermomix TM5 TM6 TSv3",
-
+    fullname:
+      "Podstawka deska tacka z kółkami pod Thermomix Termomiks TM5 TM6 TSv3",
+    slug: "podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv3",
+    component: "TSv3",
     colors: [
       {
         name: "czarny",

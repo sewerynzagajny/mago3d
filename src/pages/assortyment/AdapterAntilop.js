@@ -22,33 +22,33 @@ const items = [
   {
     type: "image",
     src: require("../../assets/assortment/AdapterAntilop/3.webp"),
-    alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
+    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
   {
     type: "image",
     src: require("../../assets/assortment/AdapterAntilop/4.webp"),
-    alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
+    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
   {
     type: "image",
     src: require("../../assets/assortment/AdapterAntilop/6.webp"),
-    alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
+    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
   {
     type: "image",
     src: require("../../assets/assortment/AdapterAntilop/7.webp"),
-    alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
+    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
   {
     type: "image",
     src: require("../../assets/assortment/AdapterAntilop/8.webp"),
-    alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
+    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
   {
     type: "video",
     src: require("../../assets/assortment/AdapterAntilop/movie.mp4"),
     poster: require("../../assets/assortment/AdapterAntilop/poster.webp"),
-    alt: "PAdapter z kółkami pod fotelik, krzesełko IKEA Antilop",
+    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function AdapterAntilop({ productId = 12 }) {
         >
           <div className="details__container">
             <h2 className="heading-secondary">Szczegóły</h2>
-            <h3 className="heading-tertiary">{product.name} </h3>
+            <h3 className="heading-tertiary">{product.fullname} </h3>
             <div className="details__container__content ">
               {(onMenuVisible || orderModalProductId !== null) && (
                 <div
