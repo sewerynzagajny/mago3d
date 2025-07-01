@@ -24,16 +24,19 @@ import Assortment from "./pages/Assortment";
 import Privacy from "./pages/Privacy";
 import CookieBanner from "./components/CookieBanner";
 import Details from "./pages/Details";
-// import Tsv3 from "./pages/assortyment/Tsv3";
 import Test from "./pages/Test";
 import AdapterAntilop from "./pages/assortyment/AdapterAntilop";
 import TSv3 from "./pages/assortyment/TSv3"; // Importujemy komponent TSv3
+import TSv4 from "./pages/assortyment/TSv4"; // Importujemy komponent TSv3
+import TSv4PRO from "./pages/assortyment/TSv4PRO";
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
 const componentMap = {
   AdapterAntilop: AdapterAntilop,
   TSv3: TSv3,
+  TSv4: TSv4,
+  TSv4PRO: TSv4PRO,
   // Dodaj inne komponenty według potrzeb
 };
 

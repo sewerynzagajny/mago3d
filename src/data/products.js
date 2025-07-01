@@ -12,9 +12,9 @@ const TSv4Photos = {
 };
 
 const TSv4ProPhotos = {
-  black: require("../assets/assortment/TSv4Pro/main_black.webp"),
-  white: require("../assets/assortment/TSv4Pro/main_white.webp"),
-  grey: require("../assets/assortment/TSv4Pro/main_grey.webp"),
+  black: require("../assets/assortment/TSv4PRO/main_black.webp"),
+  white: require("../assets/assortment/TSv4PRO/main_white.webp"),
+  grey: require("../assets/assortment/TSv4PRO/main_grey.webp"),
 };
 
 const ResoWallPhotos = {
@@ -155,6 +155,10 @@ export const products = [
   {
     id: 2,
     name: "Podstawka pod Thermomix TM5 TM6 TSv4",
+    fullname:
+      "Podstawka deska tacka z kółkami pod Thermomix Termomiks TM5 TM6 TSv4",
+    slug: "podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv4",
+    component: "TSv4",
     colors: [
       {
         name: "czarny",
@@ -201,6 +205,10 @@ export const products = [
   {
     id: 3,
     name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
+    fullname:
+      "Podstawka deska tacka z kółkami pod Thermomix Termomiks TM5 TM6 TSv4PRO",
+    slug: "podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv4pro",
+    component: "TSv4PRO",
     colors: [
       {
         name: "czarny",

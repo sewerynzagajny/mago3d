@@ -11,62 +11,57 @@ import useIsMobile from "../../hooks/useIsMobile";
 const items = [
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/1.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/1.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/2.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/2.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/3.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/3.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/4.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/4.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/5.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/5.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/6.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/6.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/7.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/7.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/8.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/8.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/9.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/9.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/TSv3/10.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "video",
-    src: require("../../assets/assortment/TSv3/movie.mp4"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
+    src: require("../../assets/assortment/TSv4PRO/10.webp"),
+    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
   },
 ];
 
-export default function TSv3({ productId = 1 }) {
+export default function TSv4PRO({ productId = 3 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
   const [orderModalProductId, setOrderModalProductId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -79,7 +74,7 @@ export default function TSv3({ productId = 1 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 1);
+    products.find((p) => p.id === 3);
 
   // Dodaj useEffect do blokowania przewijania
   const { useEffect } = require("react");
@@ -171,7 +166,7 @@ export default function TSv3({ productId = 1 }) {
               )}
               <div className="details__container__content__text">
                 <h4>
-                  ⭐ Podstawka deska TSv3 z kółkami pod Vorwerk Thermomix®
+                  ⭐ Podstawka deska TSv4PRO z kółkami pod Vorwerk Thermomix®
                   Termomiks TM5 i TM6 ⭐
                 </h4>
 
@@ -192,11 +187,11 @@ export default function TSv3({ productId = 1 }) {
                   ➡️ <strong>2 w 1 –</strong> do podnoszenia i przesuwania.
                 </p>
                 <p>
-                  ➡️ <strong>Wymiary:</strong> dł. 249mm x szer: 254mm x wys:
+                  ➡️ <strong>Wymiary:</strong> dł. 310mm x szer: 254mm x wys:
                   40mm (z podkładkami).
                 </p>
                 <p>
-                  ➡️ <strong>Waga:</strong> 220g.
+                  ➡️ <strong>Waga:</strong> 450g.
                 </p>
 
                 <h5>
@@ -212,7 +207,7 @@ export default function TSv3({ productId = 1 }) {
                   wymiennik ciepła pod Thermomixem ułatwiając jego chłodzenie.
                 </p>
                 <p>
-                  ✅ <strong>Lekka i wytrzymała konstrukcja:</strong> Ok. 220
+                  ✅ <strong>Lekka i wytrzymała konstrukcja:</strong> Ok. 450
                   gram wagi dzięki optymalizacji poprzez druk 3d i ażurową
                   konstrukcję wewnątrz doskonale radzi sobie z obciążeniami
                   statycznymi jak i dynamicznymi wynikającymi z pracy
@@ -227,7 +222,9 @@ export default function TSv3({ productId = 1 }) {
                   ✅ <strong>Jest praktyczna i ergonomiczna:</strong> Łatwo się
                   myje popularnymi detergentami, nie pęka jak drewno, a dzięki
                   swojemu kształtowi i kółeczkom pomaga w zachowaniu czystości w
-                  kuchni.
+                  kuchni oraz wygodnym i bezpiecznym przestawianiu Thermomixa po
+                  blacie kuchennym, a w razie potrzeby nawet po płycie
+                  indukcyjnej.
                 </p>
                 <p>
                   ✅ <strong>Możliwość podnoszenia:</strong> Nóżki oraz
@@ -251,8 +248,8 @@ export default function TSv3({ productId = 1 }) {
                 <p>
                   ✅ <strong>Wygodna:</strong> Podstawka jest po prostu wygodna,
                   chwalona przez użytkowników, którzy uczestniczyli w procesie
-                  jej testowania, jak i klientów którzy wyrazili swoje
-                  zadowolenie w opiniach o produkcie.
+                  jej testowania, jak i klientów którzy zakupili ją przed
+                  oficjalnym uruchomieniem sprzedaży.
                 </p>
                 <p>
                   ✅ <strong>Uniwersalna:</strong> Podstawka pasuje zarówno do
@@ -299,8 +296,8 @@ export default function TSv3({ productId = 1 }) {
                   <strong>Prawa autorskie:</strong>
                 </h5>
                 <p>
-                  ⚠️Podstawka TSv3 jest zastrzeżonym wzorem wspólnotowym i jest
-                  chroniona prawem autorskim. ⚠️
+                  ⚠️Podstawka TSv4PRO jest zastrzeżonym wzorem wspólnotowym i
+                  jest chroniona prawem autorskim. ⚠️
                 </p>
 
                 <h5>
