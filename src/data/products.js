@@ -321,6 +321,10 @@ export const products = [
   {
     id: 6,
     name: "Stojak Ekspozytor nabiurkowy podwójny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
+    fullname:
+      "Stojak Ekspozytor nabiurkowy podwójny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
+    slug: "stojak-ekspozytor-nabiurkowy-podwójny-na-karty-resoraki-hot-wheels-matchbox-majorette-hwsv48",
+    component: "HWSv48",
     maxWords: 4,
     colors: [
       {

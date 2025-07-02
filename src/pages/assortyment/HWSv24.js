@@ -186,16 +186,13 @@ export default function HWSv24({ productId = 5 }) {
                 <p>
                   ✅ <strong>Wymiary:</strong> Wysokość stojaka to aż 1m.
                 </p>
+
                 <p>
-                  ✅ <strong>Łatwy montaż:</strong> Dzięki owalnym otworom
-                  montażowym bardzo łatwo dopasować rozstaw do posiadanych kart.
-                </p>
-                <p>
-                  ✅ <strong>Adaptacyjność::</strong> Dzięki aluminiowym
-                  profilom oraz budowie samych mocowań, stojak można w dowolny
-                  sposób modyfikować pod posiadane w kolekcji karty, nie ma
-                  znaczenia czy masz karty Premium, Main, czy np. Team
-                  Transport, stojaki można dopasować do każdych z nich!
+                  ✅ <strong>Adaptacyjność:</strong> Dzięki aluminiowym profilom
+                  oraz budowie samych mocowań, stojak można w dowolny sposób
+                  modyfikować pod posiadane w kolekcji karty, nie ma znaczenia
+                  czy masz karty Premium, Main, czy np. Team Transport, stojaki
+                  można dopasować do każdych z nich!
                 </p>
                 <p>
                   ✅ <strong>Wygląd:</strong> Stojaki są w kolorze czarnym przez
