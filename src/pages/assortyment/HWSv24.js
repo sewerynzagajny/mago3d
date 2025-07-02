@@ -11,37 +11,37 @@ import useIsMobile from "../../hooks/useIsMobile";
 const items = [
   {
     type: "image",
-    src: require("../../assets/assortment/HWSv24S/1.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    src: require("../../assets/assortment/HWSv24/1.webp"),
+    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/HWSv24S/2.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    src: require("../../assets/assortment/HWSv24/2.webp"),
+    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/HWSv24S/3.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    src: require("../../assets/assortment/HWSv24/3.webp"),
+    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/HWSv24S/4.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    src: require("../../assets/assortment/HWSv24/4.webp"),
+    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/HWSv24S/6.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    src: require("../../assets/assortment/HWSv24/6.webp"),
+    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/HWSv24S/7.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
+    src: require("../../assets/assortment/HWSv24/7.webp"),
+    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
   },
 ];
 
-export default function HWSv24S({ productId = 4 }) {
+export default function HWSv24({ productId = 5 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
   const [orderModalProductId, setOrderModalProductId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -54,7 +54,7 @@ export default function HWSv24S({ productId = 4 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 4);
+    products.find((p) => p.id === 5);
 
   // Dodaj useEffect do blokowania przewijania
   const { useEffect } = require("react");
@@ -166,20 +166,16 @@ export default function HWSv24S({ productId = 4 }) {
                 <p>
                   Już nie musisz upychać swojej kolekcji kart Hot Wheels lub
                   innych firm w pudełkach! Właśnie powstał produkt który pozwoli
-                  na eleganckie wyeksponowanie Twojej kolekcji na ścianach,
-                  frontach meblowych i gdziekolwiek sobie tylko wymarzysz.
+                  na eleganckie wyeksponowanie Twojej kolekcji na biurku, szafce
+                  lub komodzie.
                 </p>
 
                 <h5>
                   <strong>Zalety:</strong>
                 </h5>
                 <p>
-                  ✅ <strong>Mocowanie:</strong> Wygodne mocowanie do ścian za
-                  pomocą kołków dołączonych w zestawie, frontów meblowych, drzwi
-                  i w sumie gdziekolwiek jeszcze można wymyślić (potrzebne są
-                  małe wkręty 3x16 lub podobne z łbem kulistym lub taśma
-                  dwustronna choć przy dużym ciężarze kart trzeba wybrać
-                  naprawdę mocną i solidną taśmę).
+                  ✅ <strong>Mocowanie:</strong> Wygodne mocowanie do biurek i
+                  komód za pomocą zacisków lub wkrętów meblowych.
                 </p>
                 <p>
                   ✅ <strong>Pojemność:</strong> Jeden stojak może pomieścić
@@ -199,69 +195,61 @@ export default function HWSv24S({ productId = 4 }) {
                   profilom oraz budowie samych mocowań, stojak można w dowolny
                   sposób modyfikować pod posiadane w kolekcji karty, nie ma
                   znaczenia czy masz karty Premium, Main, czy np. Team
-                  Transport, stojaki można dopasować do każdych z nich! Profile
-                  aluminiowe również łatwo przyciąć zwykłym brzeszczotem przez
-                  co ilość ograniczeń montażu maleje prawie do zera!
+                  Transport, stojaki można dopasować do każdych z nich!
                 </p>
                 <p>
                   ✅ <strong>Wygląd:</strong> Stojaki są w kolorze czarnym przez
-                  co elegancko podkreślają karty i nie rzucają się w oczy, same
-                  mocowania również są ledwie widoczne.
+                  co elegancko podkreślają karty i nie rzucają się w oczy.
                 </p>
                 <p>
-                  ✅ <strong>Ochrona kart:</strong> Innowacyjność stojaków
-                  polega na tym, że cały ciężar kart nie opiera się na kartoniku
-                  najniższej karty ale na plastikowym protektorze w którym jest
-                  autko - jest to możliwe dzięki specjalnemu wzmocnieniu z
-                  filcem, które dodatkowo jest dopasowane do kąta samego
-                  protektora (patrz zdjęcia).
+                  ✅ <strong>Stabilność:</strong> Pomimo wysokości stojaki są
+                  bardzo stabilne.
                 </p>
                 <p>
                   ✅ <strong>Materiały:</strong> Stojaki wykonane są z
                   malowanych proszkowo profili aluminiowych, mocowań z tworzywa
-                  PETG, do zamówień dołączamy również kołki i wkręty jak na
-                  zdjęciu.
+                  PETG, oraz stalowych (ocynkowanych) śrubek, nakrętek i
+                  podkładek, do zamówień dołączamy również podkładki filcowe
+                  oraz gumki recepturki w kolorze czarnym.
                 </p>
 
                 <h5>
-                  <strong>W skład 2 kompletnych stojaków wchodzą:</strong>
+                  <strong>W skład 1 szt. kompletnego stojaka wchodzą:</strong>
                 </h5>
                 <p>
-                  ❇️ Profile aluminiowe szt. 8 (0,5mb każdy).
+                  ❇️ Profile aluminiowe szt. 4 (0,5mb każdy).
                   <br />
                   ❇️ Mocowania.
                   <br />
                   ❇️ Łączniki.
                   <br />
-                  ❇️ Kołki.
+                  ❇️ Elementy złaczne.
                   <br />
-                  ❇️ Wkręty z płaskim łbem.
+                  ❇️ Gumki.
+                  <br />
+                  ❇️ Podkładki.
                   <br />
                   ❇️ Instrukcja montażu.
-                </p>
-
-                <h5>
-                  <strong>Prawa autorskie:</strong>
-                </h5>
-                <p>
-                  ⚠️ Ekspozytor naścienny HWSv24S jest zastrzeżonym wzorem
-                  wspólnotowym i jest chroniony prawem autorskim. Posiadamy
-                  wyłączne prawo do oferowania, wytwarzania i wprowadzania do
-                  obrotu w.w. wzoru na terenie UE. ⚠️
                 </p>
                 <h5>
                   <strong>Recenzja:</strong>
                 </h5>
                 <p>
+                  ⭐ Nasz stojak został już przetestowany przez kilku
+                  kolekcjonerów, poniżej znajduje się film - krótka recenzja
+                  jednego z nich:
+                </p>
+                <p>
                   ➡️{" "}
                   <a
-                    href="https://www.tiktok.com/@hotboomerwheel/video/7480970508897455382?lang=pl-PL"
+                    href="https://www.tiktok.com/@collectorshavenpl/video/7371454336729124128"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Zobacz recenzję na TikTok
                   </a>
                 </p>
+
                 <p>
                   <strong>
                     Pozdrawiamy serdecznie i zapraszamy do zakupów!

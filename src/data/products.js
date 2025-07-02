@@ -20,11 +20,11 @@ const TSv4ProPhotos = {
 const HWSv24SPhotos = {
   black: require("../assets/assortment/HWSv24S/main_black.webp"),
 };
-const ResoDeskPhotos = {
-  black: require("../assets/assortment/ResoDesk/main_black.webp"),
+const HWSv24Photos = {
+  black: require("../assets/assortment/HWSv24/main_black.webp"),
 };
-const ResoDeskDuoPhotos = {
-  black: require("../assets/assortment/ResoDeskDuo/main_black.webp"),
+const HWSv48Photos = {
+  black: require("../assets/assortment/HWSv48/main_black.webp"),
 };
 
 const PegHoldPhotos = {
@@ -288,12 +288,16 @@ export const products = [
   {
     id: 5,
     name: "Stojak Ekspozytor nabiurkowy pojedynczy na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
+    fullname:
+      "Stojak Ekspozytor nabiurkowy pojedynczy na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24",
+    slug: "stojak-ekspozytor-nabiurkowy-pojedynczy-na-karty-resoraki-hot-wheels-matchbox-majorette-hwsv24",
+    component: "HWSv24",
     maxWords: 4,
     colors: [
       {
         name: "czarny",
         nameEn: "black",
-        photo: ResoDeskPhotos.black,
+        photo: HWSv24Photos.black,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -322,7 +326,7 @@ export const products = [
       {
         name: "czarny",
         nameEn: "black",
-        photo: ResoDeskDuoPhotos.black,
+        photo: HWSv48Photos.black,
         shoppingPlatform: [
           {
             name: "Etsy",

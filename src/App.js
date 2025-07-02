@@ -29,7 +29,8 @@ import AdapterAntilop from "./pages/assortyment/AdapterAntilop";
 import TSv3 from "./pages/assortyment/TSv3"; // Importujemy komponent TSv3
 import TSv4 from "./pages/assortyment/TSv4"; // Importujemy komponent TSv3
 import TSv4PRO from "./pages/assortyment/TSv4PRO";
-import HWSv24S from "./pages/assortyment/HWSv24S"; // Importujemy komponent HWSv24S
+import HWSv24S from "./pages/assortyment/HWSv24S";
+import HWSv24 from "./pages/assortyment/HWSv24"; // Importujemy komponent HWSv24S
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
@@ -40,6 +41,7 @@ const componentMap = {
   TSv4PRO: TSv4PRO,
   HWSv24S: HWSv24S, // Dodajemy komponent HWSv24S do mapy
   // Dodaj inne komponenty według potrzeb
+  HWSv24: HWSv24, // Dodajemy komponent HWSv24 do mapy
 };
 
 export default function App() {

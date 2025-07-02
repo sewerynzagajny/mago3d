@@ -435,6 +435,18 @@
   font-weight: 500;
 }
 
+.details__container__content__text a {
+  color: $font-color-primary;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken($font-color-primary, 20%);
+    text-decoration: none;
+  }
+}
+
 /* Responsive design */
 // @media (max-width: 768px) {
 //   .details__container__content__text h4 {
