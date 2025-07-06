@@ -55,7 +55,45 @@ const AdapterAntilopPhotos = {
   white: require("../assets/assortment/AdapterAntilop/main_white.webp"),
 };
 
+const F1Photos = {
+  black: require("../assets/assortment/F1/main_black.webp"),
+};
+
 export const products = [
+  {
+    id: 13,
+    name: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    fullname:
+      "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    slug: "stojak-mocowanie-podstawka-obrotowana-lego-icons-71049-samochody-wyścigowe-f1",
+    component: "F1",
+    maxWords: 6,
+    badge: "new",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: F1Photos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/4330369366/stand-base-stick-on-lego-minifigures?ref=shop_home_active_1&sts=1&logging_key=5499573baf382eb7156281ca1cfeef9696b1337e%3A4330369366",
+          },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/stojak-mocowanie-podst-obrotowa-na-lego-icons-71049-samochody-wyscigowe-f1-17689454402",
+          },
+        ],
+      },
+    ],
+    price: 14.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
   {
     id: 12,
     name: "Adapter z kółkami pod fotelik krzesełko IKEA Antilop - moduł rozbudowujący",
