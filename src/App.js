@@ -32,6 +32,7 @@ import TSv4PRO from "./pages/assortyment/TSv4PRO";
 import HWSv24S from "./pages/assortyment/HWSv24S";
 import HWSv24 from "./pages/assortyment/HWSv24";
 import HWSv48 from "./pages/assortyment/HWSv48"; // Importujemy komponent HWSv24S
+import F1 from "./pages/assortyment/F1"; // Importujemy komponent F1
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
@@ -44,6 +45,7 @@ const componentMap = {
   // Dodaj inne komponenty według potrzeb
   HWSv24: HWSv24, // Dodajemy komponent HWSv24 do mapy
   HWSv48: HWSv48, // Dodajemy komponent HWSv48 do mapy
+  F1: F1, // Dodajemy komponent F1 do mapy
 };
 
 export default function App() {
