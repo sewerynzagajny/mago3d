@@ -295,7 +295,7 @@ export default function AdapterAntilop({ productId = 13 }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Zobacz jak wygląda na żywo na filmie:
+                    Zobacz jak wygląda na żywo na filmie
                   </a>
                   <p></p>
                 </p>
