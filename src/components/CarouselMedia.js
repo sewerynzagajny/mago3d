@@ -35,7 +35,7 @@ export default function CarouselMedia({
               style={{
                 ...(isModal
                   ? {
-                      maxHeight: zoomed ? "auto" : "98vh",
+                      maxHeight: zoomed ? "auto" : "calc(100vh - 12rem)",
                       width: "100%",
                       transform: zoomed
                         ? `scale(${scale}) translate(${drag.x / scale}px, ${
@@ -78,7 +78,7 @@ export default function CarouselMedia({
             style={{
               ...(isModal
                 ? {
-                    maxHeight: zoomed ? "auto" : "98vh",
+                    maxHeight: zoomed ? "auto" : "calc(100vh - 12rem)",
                     width: "100%",
                     transform: zoomed
                       ? `scale(${scale}) translate(${drag.x / scale}px, ${

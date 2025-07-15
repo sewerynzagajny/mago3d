@@ -79,12 +79,17 @@ export default function ScrollableThumbnails({
               // />
               <div className="carousel__thumbnail-video">
                 {item.poster ? (
-                  <img
-                    src={item.poster}
-                    alt={item.alt}
-                    className="carousel__thumbnail-media"
-                    style={{ objectPosition: thumbnailObjectPosition }}
-                  />
+                  <>
+                    <img
+                      src={item.poster}
+                      alt={item.alt}
+                      className="carousel__thumbnail-media"
+                      style={{ objectPosition: thumbnailObjectPosition }}
+                    />
+                    <div className="carousel__thumbnail-play-overlay">
+                      <span>▶</span>
+                    </div>
+                  </>
                 ) : (
                   <div className="carousel__thumbnail-placeholder">
                     <span>▶</span>

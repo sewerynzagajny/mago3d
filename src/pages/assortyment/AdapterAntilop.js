@@ -47,7 +47,7 @@ const items = [
   {
     type: "video",
     src: require("../../assets/assortment/AdapterAntilop/movie.mp4"),
-    poster: require("../../assets/assortment/AdapterAntilop/poster.webp"),
+    poster: require("../../assets/assortment/AdapterAntilop/movie-thumbnail.webp"),
     alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
   },
 ];

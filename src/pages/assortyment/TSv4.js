@@ -62,6 +62,7 @@ const items = [
   {
     type: "video",
     src: require("../../assets/assortment/TSv3/movie.mp4"),
+    poster: require("../../assets/assortment/TSv3/movie-thumbnail.webp"),
     alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
   },
 ];
