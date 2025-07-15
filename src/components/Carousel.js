@@ -13,6 +13,7 @@ export default function Carousel({
   zoomed = false,
   onResetZoom,
   onClose,
+  thumbnailObjectPosition = "bottom center",
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
@@ -269,6 +270,7 @@ export default function Carousel({
         currentIndex={currentIndex}
         onThumbnailClick={handleThumbnailClick}
         isModal={isModal}
+        thumbnailObjectPosition={thumbnailObjectPosition}
       />
     </div>
   );

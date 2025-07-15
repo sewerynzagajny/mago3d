@@ -6,6 +6,7 @@ export default function ScrollableThumbnails({
   currentIndex,
   onThumbnailClick,
   isModal = false,
+  thumbnailObjectPosition = "bottom center",
 }) {
   const {
     containerRef,
@@ -82,6 +83,7 @@ export default function ScrollableThumbnails({
                     src={item.poster}
                     alt={item.alt}
                     className="carousel__thumbnail-media"
+                    style={{ objectPosition: thumbnailObjectPosition }}
                   />
                 ) : (
                   <div className="carousel__thumbnail-placeholder">
@@ -94,6 +96,7 @@ export default function ScrollableThumbnails({
                 src={item.src}
                 alt={item.alt}
                 className="carousel__thumbnail-media"
+                style={{ objectPosition: thumbnailObjectPosition }}
               />
             )}
           </button>

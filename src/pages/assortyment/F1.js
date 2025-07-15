@@ -142,6 +142,7 @@ export default function AdapterAntilop({ productId = 13 }) {
 
               <Carousel
                 items={items}
+                thumbnailObjectPosition={product.thumbnailObjectPosition}
                 onItemClick={(idx) => {
                   setModalIndex(idx);
                   setModalOpen(true);
@@ -355,6 +356,7 @@ export default function AdapterAntilop({ productId = 13 }) {
             <div>
               <Carousel
                 items={items}
+                thumbnailObjectPosition={product.thumbnailObjectPosition}
                 initialIndex={modalIndex}
                 isModal
                 onItemClick={() => setZoomed((z) => !z)}

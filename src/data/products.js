@@ -69,6 +69,7 @@ export const products = [
     component: "F1",
     maxWords: 6,
     badge: "new",
+    thumbnailObjectPosition: "center center",
     colors: [
       {
         name: "czarny",

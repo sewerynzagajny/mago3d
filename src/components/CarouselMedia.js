@@ -30,8 +30,8 @@ export default function CarouselMedia({
               muted
               playsInline
               // preload="none"
-              preload="metadata"
-              poster={item.poster}
+              preload="auto"
+              // poster={item.poster}
               style={{
                 ...(isModal
                   ? {
