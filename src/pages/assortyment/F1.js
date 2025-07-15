@@ -62,7 +62,7 @@ const items = [
   {
     type: "video",
     src: require("../../assets/assortment/F1/movie.mp4"),
-    // poster: require("../../assets/assortment/AdapterAntilop/poster.webp"),
+    poster: require("../../assets/assortment/F1/movie-thumbnail.webp"),
     alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
   },
 ];
@@ -297,7 +297,6 @@ export default function AdapterAntilop({ productId = 13 }) {
                   >
                     Zobacz jak wygląda na żywo na filmie
                   </a>
-                  <p></p>
                 </p>
                 <p>
                   <strong>

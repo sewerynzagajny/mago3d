@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import useThumbnailScroll from "../hooks/useThumbnailScroll";
 
 export default function ScrollableThumbnails({
@@ -13,6 +14,31 @@ export default function ScrollableThumbnails({
     scrollLeft,
     scrollRight,
   } = useThumbnailScroll(items.length);
+
+  const thumbnailRefs = useRef([]);
+
+  // Przewiń do aktywnej miniatury przy zmianie currentIndex
+  useEffect(() => {
+    const activeThumbnail = thumbnailRefs.current[currentIndex];
+    if (activeThumbnail && containerRef.current) {
+      const container = containerRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+      // Sprawdź czy miniatura jest poza widokiem
+      const isOutOfView =
+        thumbnailRect.left < containerRect.left ||
+        thumbnailRect.right > containerRect.right;
+
+      if (isOutOfView) {
+        activeThumbnail.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }
+  }, [currentIndex, containerRef]);
 
   return (
     <div
@@ -35,6 +61,7 @@ export default function ScrollableThumbnails({
         {items.map((item, idx) => (
           <button
             key={idx}
+            ref={(el) => (thumbnailRefs.current[idx] = el)}
             className={`carousel__thumbnail${
               idx === currentIndex ? " active" : ""
             }`}
@@ -43,12 +70,25 @@ export default function ScrollableThumbnails({
             tabIndex={0}
           >
             {item.type === "video" ? (
-              <video
-                className="carousel__thumbnail-media"
-                src={item.src}
-                muted
-                preload="metadata"
-              />
+              // <video
+              //   className="carousel__thumbnail-media"
+              //   src={item.src}
+              //   muted
+              //   preload="metadata"
+              // />
+              <div className="carousel__thumbnail-video">
+                {item.poster ? (
+                  <img
+                    src={item.poster}
+                    alt={item.alt}
+                    className="carousel__thumbnail-media"
+                  />
+                ) : (
+                  <div className="carousel__thumbnail-placeholder">
+                    <span>▶</span>
+                  </div>
+                )}
+              </div>
             ) : (
               <img
                 src={item.src}
