@@ -212,7 +212,7 @@ export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
                   ➡️ <strong>Kompatybilność:</strong> IKEA Skadis + LEGO.
                 </p>
                 <h5>
-                  <strong>Zalety</strong>
+                  <strong>Zalety:</strong>
                 </h5>
                 <p>
                   ✅ <strong>Unikalny wygląd</strong> – Kwiaty LEGO w połączeniu

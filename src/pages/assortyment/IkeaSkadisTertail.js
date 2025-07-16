@@ -11,42 +11,52 @@ import useIsMobile from "../../hooks/useIsMobile";
 const items = [
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/1.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    src: require("../../assets/assortment/IkeaSkadisTertail/1.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/2.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    src: require("../../assets/assortment/IkeaSkadisTertail/2.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/3.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
+    src: require("../../assets/assortment/IkeaSkadisTertail/3.webp"),
   },
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/4.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    src: require("../../assets/assortment/IkeaSkadisTertail/4.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/6.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    src: require("../../assets/assortment/IkeaSkadisTertail/5.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/7.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    src: require("../../assets/assortment/IkeaSkadisTertail/6.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/8.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    src: require("../../assets/assortment/IkeaSkadisTertail/7.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
+  },
+  {
+    type: "image",
+    src: require("../../assets/assortment/IkeaSkadisTertail/8.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
+  },
+  {
+    type: "image",
+    src: require("../../assets/assortment/IkeaSkadisTertail/9.webp"),
+    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
   },
 ];
 
-export default function IkeaHavsenDrainer({ productId = 7 }) {
+export default function IkeaSkadisTertail({ productId = 10 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
   const [orderModalProductId, setOrderModalProductId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -59,7 +69,7 @@ export default function IkeaHavsenDrainer({ productId = 7 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 12);
+    products.find((p) => p.id === 13);
 
   // Dodaj useEffect do blokowania przewijania
   const { useEffect } = require("react");
@@ -121,6 +131,7 @@ export default function IkeaHavsenDrainer({ productId = 7 }) {
 
               <Carousel
                 items={items}
+                thumbnailObjectPosition={product.thumbnailObjectPosition}
                 onItemClick={(idx) => {
                   setModalIndex(idx);
                   setModalOpen(true);
@@ -150,68 +161,89 @@ export default function IkeaHavsenDrainer({ productId = 7 }) {
                 </div>
               )}
               <div className="details__container__content__text">
-                <h4>⭐ OCIEKACZ pod zlew IKEA HAVSEN ⭐</h4>
-
+                <h4>
+                  ⭐ Uchwyt do lampy IKEA TERTIAL na tablicę perforowaną IKEA
+                  SKADIS ⭐
+                </h4>
+                <p>
+                  <strong>
+                    Prosty sposób na więcej miejsca i lepszą organizację! ❤️
+                  </strong>
+                </p>
+                <p>
+                  ⭐ Jeśli korzystasz z lampy IKEA TERTIAL oraz systemu tablic
+                  perforowanych IKEA SKADIS, ten uchwyt będzie dla Ciebie
+                  idealnym rozwiązaniem.
+                </p>
+                <p>
+                  Dzięki niemu bez problemu zamocujesz lampę bezpośrednio na
+                  tablicy, zyskując wolne miejsce na biurku i lepszą organizację
+                  swojej przestrzeni.
+                </p>
                 <h5>
                   <strong>Cechy produktu:</strong>
                 </h5>
                 <p>
-                  ➡️ <strong>Kolor:</strong> Biały.
+                  ➡️ <strong>Zestaw zawiera:</strong> 1 uchwyt kompatybilny z
+                  lampą IKEA TERTIAL i tablicą IKEA SKADIS.
                 </p>
                 <p>
-                  ➡️ <strong>Materiał:</strong> PET-G (dopuszczony do kontaktu z
-                  żywnością).
+                  ➡️ <strong>Kolor:</strong> Czarny/Biały.
                 </p>
                 <p>
-                  ➡️ <strong>Wymiary:</strong> Długość: 180mm x Szerokość: 160mm
-                  x Wysokość: 27mm.
+                  ➡️ <strong>Materiał:</strong> PET-G (trwały, odporny na
+                  promieniowanie UV, wytrzymalszy od PLA).
                 </p>
-
+                <p>
+                  ➡️ <strong>Wymiary:</strong> Szerokość: 90mm x Wysokość: 35mm
+                  x Głębokość: 53mm.
+                </p>
                 <h5>
-                  <strong>Specyfikacja ociekacza na zlew IKEA Havsen:</strong>
+                  <strong>Zalety:</strong>
                 </h5>
                 <p>
-                  ✅ Pasuje do zlewów jedno i dwukomorowych (wym. zlewu
-                  jednokomorowego.: 62x48cm), (wym. zlewu dwukomorowego.:
-                  82x48cm).
+                  ✅ <strong>Idealne dopasowanie</strong> – Otwór montażowy
+                  został zaprojektowany specjalnie do trzpienia lampy TERTIAL.
+                  Uchwyt trzyma ją stabilnie, bez luzów, a obrót lampy działa
+                  płynnie.
                 </p>
                 <p>
-                  ✅ Produkt nowy wykonany w technologii druku 3d. Sprawdzony w
-                  działaniu tak w domu jak i sklepie IKEA.
+                  ✅ <strong>Lekkość i wytrzymałość</strong> – Ażurowa
+                  konstrukcja wewnętrzna zapewnia optymalną wytrzymałość przy
+                  niskiej wadze.
                 </p>
-
+                ✅ <strong>Łatwy montaż</strong> – Uchwyt mocuje się
+                bezpośrednio do tablicy SKADIS przy pomocy solidnych haczyków –
+                bez wiercenia, bez śrubek, bez kombinowania. Wystarczy wsunąć,
+                zahaczyć, zamocować lampę.
                 <p>
-                  ✅ Ociekacz pozwala chronić blat przed zamakaniem/chlapaniem
-                  podczas używania baterii zlewowej. Rowki pozwalają skuteczniej
-                  odprowadzać wodę lub pozostawić coś do wyschnięcia.
+                  ✅ <strong>Mocne zaczepy</strong> – Elementy mocujące do
+                  tablicy Skadis drukowane są z pełnym wypełnieniem (100%), co
+                  gwarantuje solidność i długą żywotność.
                 </p>
-
+                <p>
+                  ✅ <strong>Wielofunkcyjność</strong> – Uchwyt może również
+                  służyć do łączenia dwóch tablic SKADIS od góry – świetnie się
+                  do tego nadaje (widoczne na zdjęciach).
+                </p>
+                <p>
+                  ✅ <strong>Estetyka i porządek</strong> – Mocując lampę na
+                  tablicy, odzyskujesz cenne miejsce na blacie, a całość wygląda
+                  schludnie i nowocześnie.
+                </p>
                 <h5>
-                  <strong>Uwagi:</strong>
+                  <strong>Dla kogo?</strong>
                 </h5>
                 <p>
-                  ⚠️ Ociekacz należy myć tylko pod ciepłą letnią wodą ogólnie
-                  dostępnymi płynami i detergentami.
+                  ❇️ Dla osób, które chcą mieć więcej przestrzeni na biurku.
                 </p>
                 <p>
-                  ⚠️ Nie należy myć go w zmywarce z powodu możliwości jego
-                  uszkodzenia.
+                  ❇️ Dla tych, którzy cenią praktyczne rozwiązania i porządek.
                 </p>
-
-                <h5>
-                  <strong>Jak to działa:</strong>
-                </h5>
                 <p>
-                  ➡️{" "}
-                  <a
-                    href="https://www.youtube.com/watch?v=EumumsWpAqM"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Zobacz jak to działa na filmie
-                  </a>
+                  ❇️ Dla użytkowników systemu SKADIS, którzy chcą jeszcze lepiej
+                  go wykorzystać.
                 </p>
-
                 <p>
                   <strong>
                     Pozdrawiamy serdecznie i zapraszamy do zakupów!
@@ -269,6 +301,7 @@ export default function IkeaHavsenDrainer({ productId = 7 }) {
             <div>
               <Carousel
                 items={items}
+                thumbnailObjectPosition={product.thumbnailObjectPosition}
                 initialIndex={modalIndex}
                 isModal
                 onItemClick={() => setZoomed((z) => !z)}

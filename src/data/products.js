@@ -27,23 +27,23 @@ const HWSv48Photos = {
   black: require("../assets/assortment/HWSv48/main_black.webp"),
 };
 
-const PegHoldPhotos = {
-  black: require("../assets/assortment/PegHold/main_black.webp"),
-  white: require("../assets/assortment/PegHold/main_white.webp"),
+const IkeaSkadisLegoTinyPlantsPhotos = {
+  black: require("../assets/assortment/IkeaSkadisLegoTinyPlants/main_black.webp"),
+  white: require("../assets/assortment/IkeaSkadisLegoTinyPlants/main_white.webp"),
 };
 
 const IkeaHavsenDrainerPhotos = {
   white: require("../assets/assortment/IkeaHavsenDrainer/main_white.webp"),
 };
 
-const PegGlowFPhotos = {
-  black: require("../assets/assortment/PegGlowF/main_black.webp"),
-  white: require("../assets/assortment/PegGlowF/main_white.webp"),
+const IkeaSkadisForsaPhotos = {
+  black: require("../assets/assortment/IkeaSkadisForsa/main_black.webp"),
+  white: require("../assets/assortment/IkeaSkadisForsa/main_white.webp"),
 };
 
-const PegGlowTPhotos = {
-  black: require("../assets/assortment/PegGlowT/main_black.webp"),
-  white: require("../assets/assortment/PegGlowT/main_white.webp"),
+const IkeaSkadisTertailPhotos = {
+  black: require("../assets/assortment/IkeaSkadisTertail/main_black.webp"),
+  white: require("../assets/assortment/IkeaSkadisTertail/main_white.webp"),
 };
 
 const PegWavePhotos = {
@@ -396,6 +396,7 @@ export const products = [
     fullname: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
     slug: "ociekacz-na-zlew-ikea-havsen-ikea-havsen-drainer",
     component: "IkeaHavsenDrainer",
+    thumbnailObjectPosition: "center center",
     maxWords: 5,
     colors: [
       {
@@ -434,7 +435,7 @@ export const products = [
       {
         name: "czarny",
         nameEn: "black",
-        photo: PegHoldPhotos.black,
+        photo: IkeaSkadisLegoTinyPlantsPhotos.black,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -445,7 +446,7 @@ export const products = [
       {
         name: "biały",
         nameEn: "white",
-        photo: PegHoldPhotos.white,
+        photo: IkeaSkadisLegoTinyPlantsPhotos.white,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -465,12 +466,17 @@ export const products = [
   {
     id: 9,
     name: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
+    fullname:
+      "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
+    slug: "uchwyt-na-lampe-ikea-forsa-pod-tablice-ikea-skadis-ikea-skadis-forsa",
+    component: "IkeaSkadisForsa",
     maxWords: 7,
+    thumbnailObjectPosition: "center center",
     colors: [
       {
         name: "czarny",
         nameEn: "black",
-        photo: PegGlowFPhotos.black,
+        photo: IkeaSkadisForsaPhotos.black,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -481,7 +487,7 @@ export const products = [
       {
         name: "biały",
         nameEn: "white",
-        photo: PegGlowFPhotos.white,
+        photo: IkeaSkadisForsaPhotos.white,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -501,12 +507,17 @@ export const products = [
   {
     id: 10,
     name: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL ",
+    fullname:
+      "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
+    slug: "uchwyt-na-lampe-ikea-tertail-pod-tablice-ikea-skadis-ikea-skadis-tertail",
+    component: "IkeaSkadisTertail",
     maxWords: 7,
+    thumbnailObjectPosition: "center center",
     colors: [
       {
         name: "czarny",
         nameEn: "black",
-        photo: PegGlowTPhotos.black,
+        photo: IkeaSkadisTertailPhotos.black,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -517,7 +528,7 @@ export const products = [
       {
         name: "biały",
         nameEn: "white",
-        photo: PegGlowTPhotos.white,
+        photo: IkeaSkadisTertailPhotos.white,
         shoppingPlatform: [
           {
             name: "Etsy",

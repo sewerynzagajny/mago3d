@@ -239,7 +239,7 @@ export default function AdapterAntilop({ productId = 12 }) {
                 </p>
 
                 <h5>
-                  <strong>Wymiary i kompatybilność:</strong>
+                  <strong>Kompatybilność:</strong>
                 </h5>
                 <p>⭐ Adaptery pasują wyłącznie do fotelika IKEA Antilop!</p>
 
