@@ -34,6 +34,7 @@ import HWSv24 from "./pages/assortyment/HWSv24";
 import HWSv48 from "./pages/assortyment/HWSv48"; // Importujemy komponent HWSv24S
 import F1 from "./pages/assortyment/F1"; // Importujemy komponent F1
 import IkeaHavsenDrainer from "./pages/assortyment/IkeaHavsenDrainer"; // Importujemy komponent IkeaHavsenDrainer
+import IkeaSkadisLegoTinyPlants from "./pages/assortyment/IkeaSkadisLegoTinyPlants"; // Importujemy komponent IkeaSkadisLegoTinyPlants
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
@@ -42,6 +43,7 @@ const componentMap = {
   TSv3: TSv3,
   TSv4: TSv4,
   IkeaHavsenDrainer: IkeaHavsenDrainer,
+  IkeaSkadisLegoTinyPlants: IkeaSkadisLegoTinyPlants,
   TSv4PRO: TSv4PRO,
   HWSv24S: HWSv24S, // Dodajemy komponent HWSv24S do mapy
   // Dodaj inne komponenty według potrzeb

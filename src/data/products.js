@@ -425,6 +425,10 @@ export const products = [
   {
     id: 8,
     name: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS ",
+    fullname:
+      "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
+    slug: "uchwyt-na-male-roslinki-lego-pod-tablice-ikea-skadis-ikea-skadis-lego-tiny-plants",
+    component: "IkeaSkadisLegoTinyPlants",
     maxWords: 7,
     colors: [
       {

@@ -11,63 +11,63 @@ import useIsMobile from "../../hooks/useIsMobile";
 const items = [
   {
     type: "image",
-    src: require("../../assets/assortment/F1/1.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/1.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/2.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/2.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-    src: require("../../assets/assortment/F1/3.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/3.webp"),
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/4.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/4.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/6.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/5.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/5.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/6.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/7.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/7.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/8.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/8.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/9.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/9.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "image",
-    src: require("../../assets/assortment/F1/10.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/10.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
   {
     type: "video",
-    src: require("../../assets/assortment/F1/movie.mp4"),
-    poster: require("../../assets/assortment/F1/movie-thumbnail.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
+    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/movie.mp4"),
+    poster: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/movie-thumbnail.webp"),
+    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
   },
 ];
 
-export default function F1({ productId = 13 }) {
+export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
   const [orderModalProductId, setOrderModalProductId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -173,131 +173,82 @@ export default function F1({ productId = 13 }) {
               )}
               <div className="details__container__content__text">
                 <h4>
-                  ⭐ Stojak / Ekspozytor samoprzylepny na LEGO Minifigurki F1 -
-                  71049 ⭐
+                  ⭐ Uchwyty na kwiaty LEGO Icons 10329 do tablicy IKEA Skadis
+                  ⭐
                 </h4>
-
                 <p>
                   <strong>
-                    Elegancka Wystawa Twojej Kolekcji w prawie każdym miejscu!
-                    Wprowadź Swoje Bolidy F1 na Wyższy Poziom! ❤️
+                    Dodaj charakteru swojej tablicy perforowanej! ❤️
                   </strong>
                 </p>
                 <p>
-                  ⭐Prezentujemy wysokiej jakości stojak zaprojektowany
-                  specjalnie dla minifigurek LEGO Kolekcjonerskie Bolidy F1
-                  (71049).
+                  ⭐ Specjalnie zaprojektowane uchwyty pozwolą Ci w elegancki
+                  sposób zamocować kwiaty LEGO Icons 10329 na Twojej tablicy. To
+                  świetny sposób, aby ożywić przestrzeń wokół siebie, a przy
+                  okazji sprytnie zagospodarować niewykorzystane miejsce na
+                  Skadis.
                 </p>
                 <p>
-                  {" "}
-                  Idealny dla fanów Formuły 1® i kolekcjonerów. Ten stojak
-                  pozwoli Ci wyeksponować swoje 12 unikalnych bolidów w sposób
-                  elegancki i zorganizowany. Niezależnie od tego, czy budujesz
-                  całą kolekcję, czy chcesz pochwalić się pojedynczymi sztukami,
-                  nasz stojak to must-have dla każdego kreatywnego entuzjasty
-                  LEGO!
+                  Dzięki kolorowym kwiatom LEGO Twoja przestrzeń stanie się
+                  przytulniejsza, bardziej osobista i estetyczna. Taki akcent
+                  nie tylko poprawi Ci humor, ale również będzie ciekawym
+                  elementem aranżacyjnym – zarówno w domu, jak i w biurze.
                 </p>
-
                 <h5>
                   <strong>Cechy produktu:</strong>
                 </h5>
                 <p>
-                  ➡️ <strong>Dedykowany Design:</strong> Perfekcyjnie dopasowany
-                  do minifigurek LEGO 71049.
+                  ➡️ <strong>Zestaw zawiera:</strong> 9 sztuk uchwytów
+                  kompatybilnych z LEGO Icons 10329.
                 </p>
                 <p>
-                  ➡️ <strong>Wytrzymałość:</strong> Wykonany z trwałych
-                  materiałów.
+                  ➡️ <strong>Kolor:</strong> Czarny/Biały.
                 </p>
                 <p>
-                  ➡️ <strong>Konstrukcja:</strong> Stojak składa się z dwóch
-                  części: samoprzylepnej obrotowej oraz podstawki.
+                  ➡️ <strong>Materiał:</strong> PETG (odporny na UV, bardziej
+                  wytrzymały niż PLA).
                 </p>
                 <p>
-                  ➡️ <strong>Estetyka:</strong> Minimalistyczny, czarne
-                  wykończenie, które podkreśla kolory bolidów i pasuje do
-                  nowoczesnych wnętrz.
-                </p>
-                <p>
-                  ➡️ <strong>Możliwości:</strong> Dzięki zastosowaniu solidnej
-                  taśmy dwustronnej stojak można przykleić w prawie każdym
-                  wybranym miejscu, a dzięki dwuczęściowej konstrukcji
-                  możliwości ekspozycji stają się przeogromne!
-                </p>
-
-                <h5>
-                  <strong>Potencjał</strong>
-                </h5>
-                <p>
-                  ✅ Można np. ustawić kolekcję w dowolnej pozycji na
-                  podstawowych czarnych podstawkach lub podstawki pomalować,
-                  dodać trochę trawki modelarskiej aby zrobić imitację toru
-                  F1...
-                  <br />
-                  ✅ Można zdjąć podstawki i bolidy F1 LEGO 71049 ustawić na
-                  samej obrotowej części...
-                  <br />
-                  ✅ Można stworzyć imitację toru F1 z bolidami i przykleić ją
-                  np. do ściany...
-                  <br />✅ Albo zaaranżować jeszcze inaczej :) Możliwości jest
-                  naprawdę wiele!
-                </p>
-
-                <h5>
-                  <strong>Dlaczego Warto Wybrać Nasz Stojak?</strong>
-                </h5>
-                <p>
-                  ❇️ <strong>Ekspozycja Kolekcji:</strong> Wiele ciekawych
-                  możliwości eksponowania kolekcji.
-                </p>
-                <p>
-                  ❇️ <strong>Łatwy Montaż:</strong> Gotowy do użycia od razu po
-                  wyjęciu z opakowania – nie wymaga klejenia ani dodatkowych
-                  narzędzi. Wystarczy odkleić folię ochronną z taśmy dwustronnej
-                  i przykleić w wybranym miejscu.
-                </p>
-                <p>
-                  ❇️ <strong>Uniwersalność:</strong> Nie musisz mieć całej
-                  kolekcji aby pochwalić się bolidami, stojaki sprzedawane są
-                  pojedynczo więc kupujesz tyle ile potrzebujesz.
-                </p>
-                <p>
-                  ❇️ <strong>Prezent dla Kreatywnych Pasjonatów:</strong> Nasze
-                  stojaki są również świetnym prezentem nie tylko dla pasjonatów
-                  ale również kreatywnych twórców którzy mogą uwolnić wodze
-                  fantazji przy przerabianiu podstawek po bolidy F1 LEGO.
-                </p>
-                <p>
-                  ❇️ <strong>Polska produkcja:</strong> Wszystkie nasze produkty
-                  wykonywane są w kraju.
-                </p>
-
-                <h5>
-                  <strong>Prawa autorskie:</strong>
-                </h5>
-                <p>
-                  ⚠️Ekspozytor SLMF1 jest zastrzeżonym wzorem wspólnotowym i
-                  jest chroniony prawem autorskim. Posiadamy wyłączne prawo do
-                  oferowania, wytwarzania i wprowadzania do obrotu w.w. wzoru na
-                  terenie UE ⚠️
+                  ➡️ <strong>Kompatybilność:</strong> IKEA Skadis + LEGO.
                 </p>
                 <h5>
-                  <strong>Inne:</strong>
+                  <strong>Zalety</strong>
                 </h5>
                 <p>
-                  ❗ Zestaw klocków widoczny na zdjęciach oraz przerobione
-                  podstawki nie są częścią oferty. Użyto ich tylko w celach
-                  pokazowych.❗
+                  ✅ <strong>Unikalny wygląd</strong> – Kwiaty LEGO w połączeniu
+                  z tablicą Skadis wyglądają oryginalnie i przyciągają wzrok.
                 </p>
                 <p>
-                  ➡️{" "}
-                  <a
-                    href="https://www.youtube.com/shorts/UDHBvWkt3F8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Zobacz jak wygląda na żywo na filmie
-                  </a>
+                  ✅ <strong>Porządek i estetyka</strong> – Wykorzystujesz puste
+                  miejsca na tablicy, a jednocześnie zyskujesz przyjemny akcent
+                  wizualny.
+                </p>
+                ✅ <strong> Łatwy montaż</strong> – Montaż nie wymaga żadnych
+                narzędzi, wystarczy zahaczyć uchwyt na perforacji Skadis.
+                <p>
+                  ✅ <strong>Idealny na prezent</strong> – Ciekawy pomysł na
+                  walentynki, urodziny lub po prostu drobny upominek dla
+                  miłośnika LEGO.
+                </p>
+                <p>
+                  ✅ <strong>Solidne wykonanie</strong> – Wydrukowane z PETG,
+                  tworzywa dużo trwalszego niż klasyczny PLA. Odporne na
+                  promieniowanie UV – nawet po latach nie stracą swojego koloru.
+                </p>
+                <h5>
+                  <strong>Dla kogo?</strong>
+                </h5>
+                <p>
+                  ❇️ Dla osób, które chcą ozdobić swoje biuro lub dom w
+                  oryginalny sposób.
+                </p>
+                <p>
+                  ❇️ Dla kolekcjonerów LEGO, którzy szukają nowych sposobów
+                  ekspozycji swoich zestawów.
+                </p>
+                <p>
+                  ❇️ Dla tych, którzy lubią mieć porządek, ale jednocześnie
+                  cenią kreatywne i designerskie rozwiązania.
                 </p>
                 <p>
                   <strong>
