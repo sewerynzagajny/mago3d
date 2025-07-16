@@ -46,9 +46,9 @@ const IkeaSkadisTertailPhotos = {
   white: require("../assets/assortment/IkeaSkadisTertail/main_white.webp"),
 };
 
-const PegWavePhotos = {
-  black: require("../assets/assortment/PegWave/main_black.webp"),
-  white: require("../assets/assortment/PegWave/main_white.webp"),
+const IkeaSkadisHeadphonePhotos = {
+  black: require("../assets/assortment/IkeaSkadisHeadphone/main_black.webp"),
+  white: require("../assets/assortment/IkeaSkadisHeadphone/main_white.webp"),
 };
 
 const AdapterAntilopPhotos = {
@@ -548,12 +548,17 @@ export const products = [
   {
     id: 11,
     name: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
+    fullname:
+      "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
+    slug: "uchwyt-na-sluchawki-pod-tablice-ikea-skadis-ikea-skadis-headphone",
+    component: "IkeaSkadisHeadphone",
+    thumbnailObjectPosition: "center center",
     maxWords: 5,
     colors: [
       {
         name: "czarny",
         nameEn: "black",
-        photo: PegWavePhotos.black,
+        photo: IkeaSkadisHeadphonePhotos.black,
         shoppingPlatform: [
           {
             name: "Etsy",
@@ -564,7 +569,7 @@ export const products = [
       {
         name: "biały",
         nameEn: "white",
-        photo: PegWavePhotos.white,
+        photo: IkeaSkadisHeadphonePhotos.white,
         shoppingPlatform: [
           {
             name: "Etsy",
