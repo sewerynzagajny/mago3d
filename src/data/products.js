@@ -32,8 +32,8 @@ const PegHoldPhotos = {
   white: require("../assets/assortment/PegHold/main_white.webp"),
 };
 
-const AquaTrayPhotos = {
-  white: require("../assets/assortment/AquaTray/main_white.webp"),
+const IkeaHavsenDrainerPhotos = {
+  white: require("../assets/assortment/IkeaHavsenDrainer/main_white.webp"),
 };
 
 const PegGlowFPhotos = {
@@ -393,12 +393,15 @@ export const products = [
   {
     id: 7,
     name: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    fullname: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    slug: "ociekacz-na-zlew-ikea-havsen-ikea-havsen-drainer",
+    component: "IkeaHavsenDrainer",
     maxWords: 5,
     colors: [
       {
         name: "biały",
         nameEn: "white",
-        photo: AquaTrayPhotos.white,
+        photo: IkeaHavsenDrainerPhotos.white,
         shoppingPlatform: [
           {
             name: "Etsy",
