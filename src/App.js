@@ -38,6 +38,7 @@ import IkeaSkadisLegoTinyPlants from "./pages/assortyment/IkeaSkadisLegoTinyPlan
 import IkeaSkadisForsa from "./pages/assortyment/IkeaSkadisForsa"; // Importujemy komponent IkeaSkadisForsa
 import IkeaSkadisTertail from "./pages/assortyment/IkeaSkadisTertail";
 import IkeaSkadisHeadphone from "./pages/assortyment/IkeaSkadisHeadphone";
+import HWSv12NS from "./pages/assortyment/HWSv12NS"; // Importujemy komponent HWSv12NS
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
@@ -56,6 +57,7 @@ const componentMap = {
   HWSv24: HWSv24, // Dodajemy komponent HWSv24 do mapy
   HWSv48: HWSv48, // Dodajemy komponent HWSv48 do mapy
   F1: F1, // Dodajemy komponent F1 do mapy
+  HWSv12NS: HWSv12NS, // Dodajemy komponent HWSv12NS do mapy
 };
 
 export default function App() {

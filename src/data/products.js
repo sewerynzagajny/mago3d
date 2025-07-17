@@ -27,6 +27,10 @@ const HWSv48Photos = {
   black: require("../assets/assortment/HWSv48/main_black.webp"),
 };
 
+const HWSv12NSPhotos = {
+  black: require("../assets/assortment/HWSv12NS/main_black.webp"),
+};
+
 const IkeaSkadisLegoTinyPlantsPhotos = {
   black: require("../assets/assortment/IkeaSkadisLegoTinyPlants/main_black.webp"),
   white: require("../assets/assortment/IkeaSkadisLegoTinyPlants/main_white.webp"),
@@ -60,6 +64,37 @@ const F1Photos = {
 };
 
 export const products = [
+  {
+    id: 14,
+    name: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
+    fullname:
+      "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
+    slug: "stojak-ekspozytor-organizer-hot-wheels-rlc-itp-samoprzylepny-nabiurkowy",
+    component: "HWSv12NS",
+    maxWords: 6,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: HWSv12NSPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/stojak-ekspozytor-organizer-hot-wheels-rlc-itp-samoprzylepny-nabiurkowy-17719766335",
+          },
+        ],
+      },
+    ],
+    price: 79.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
   {
     id: 13,
     name: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
