@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,65 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/1.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/2.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/3.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/4.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/5.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/6.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/7.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/8.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/9.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv3/10.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-  {
-    type: "video",
-    src: require("../../assets/assortment/TSv3/movie.mp4"),
-    poster: require("../../assets/assortment/TSv3/movie-thumbnail.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv3",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function TSv3({ productId = 1 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -82,8 +25,79 @@ export default function TSv3({ productId = 1 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 1);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv3/10.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "video",
+      src: require("../../assets/assortment/TSv3/movie.mp4"),
+      poster: require("../../assets/assortment/TSv3/movie-thumbnail.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Podstawka z kółkami pod Thermomix TM5 TM6 TSv3 | MaGo3d",
+    description:
+      "Podstawka z kółkami pod Thermomix TM5 TM6 TSv3. Lekka konstrukcja, idealne dopasowanie, możliwość przesuwania. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -112,6 +126,7 @@ export default function TSv3({ productId = 1 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -190,7 +205,7 @@ export default function TSv3({ productId = 1 }) {
                   ➡️ <strong>Kolor:</strong> Czarny/Biały/Szary.
                 </p>
                 <p>
-                  ➡️ <strong>2 w 1 –</strong> do podnoszenia i przesuwania.
+                  ➡️ <strong>2 w 1 -</strong> do podnoszenia i przesuwania.
                 </p>
                 <p>
                   ➡️ <strong>Wymiary:</strong> dł. 249mm x szer: 254mm x wys:
@@ -238,7 +253,7 @@ export default function TSv3({ productId = 1 }) {
                 <p>
                   ✅ <strong>Możliwość przesuwania:</strong> Jako jedyna
                   dostępna na rynku podstawka posiada gumowe kółka umieszczone
-                  na tylnich nóżkach – wystarczy lekko unieść przód podstawki z
+                  na tylnich nóżkach - wystarczy lekko unieść przód podstawki z
                   Themromixem do góry aby wygodnie przesunąć urządzenie w
                   wybrane miejsce, zapewniając tym samym ochronę położonej w
                   tylnych stopkach wrażliwej wagi.

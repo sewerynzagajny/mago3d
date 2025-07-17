@@ -427,8 +427,8 @@ export const products = [
   },
   {
     id: 7,
-    name: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-    fullname: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
+    name: "Ociekacz na zlew IKEA Havsen - Ikea Havsen Drainer",
+    fullname: "Ociekacz na zlew IKEA Havsen - Ikea Havsen Drainer",
     slug: "ociekacz-na-zlew-ikea-havsen-ikea-havsen-drainer",
     component: "IkeaHavsenDrainer",
     thumbnailObjectPosition: "center center",
@@ -460,9 +460,9 @@ export const products = [
   },
   {
     id: 8,
-    name: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS ",
+    name: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS - IKEA SKADIS LEGO TINY PLANTS ",
     fullname:
-      "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
+      "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS - IKEA SKADIS LEGO TINY PLANTS",
     slug: "uchwyt-na-male-roslinki-lego-pod-tablice-ikea-skadis-ikea-skadis-lego-tiny-plants",
     component: "IkeaSkadisLegoTinyPlants",
     maxWords: 7,
@@ -500,9 +500,9 @@ export const products = [
   },
   {
     id: 9,
-    name: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
+    name: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS - IKEA SKADIS FORSA",
     fullname:
-      "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
+      "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS - IKEA SKADIS FORSA",
     slug: "uchwyt-na-lampe-ikea-forsa-pod-tablice-ikea-skadis-ikea-skadis-forsa",
     component: "IkeaSkadisForsa",
     maxWords: 7,
@@ -541,9 +541,9 @@ export const products = [
   },
   {
     id: 10,
-    name: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL ",
+    name: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS - IKEA SKADIS TERTAIL ",
     fullname:
-      "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
+      "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS - IKEA SKADIS TERTAIL",
     slug: "uchwyt-na-lampe-ikea-tertail-pod-tablice-ikea-skadis-ikea-skadis-tertail",
     component: "IkeaSkadisTertail",
     maxWords: 7,
@@ -582,9 +582,9 @@ export const products = [
   },
   {
     id: 11,
-    name: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
+    name: "Uchwyt na słuchawki pod tablicę IEKA SKADIS - IKEA SKADIS HEADPHONE",
     fullname:
-      "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
+      "Uchwyt na słuchawki pod tablicę IEKA SKADIS - IKEA SKADIS HEADPHONE",
     slug: "uchwyt-na-sluchawki-pod-tablice-ikea-skadis-ikea-skadis-headphone",
     component: "IkeaSkadisHeadphone",
     thumbnailObjectPosition: "center center",

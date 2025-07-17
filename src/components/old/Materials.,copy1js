@@ -36,7 +36,7 @@ export default function Materials() {
                 <strong>PETG</strong> to wytrzymały, elastyczny filament łączący
                 zalety <strong>PLA</strong> i <strong>ABS</strong>. Jest odporny
                 na uderzenia, temperaturę (do <strong>ok. 80°C)</strong> i
-                chemikalia, a przy tym łatwy w druku – nie wymaga podgrzewanej
+                chemikalia, a przy tym łatwy w druku - nie wymaga podgrzewanej
                 komory. Idealny na funkcjonalne części, pojemniki czy prototypy.
                 Mniej kruchy niż <strong>PLA</strong>, ale nieco trudniejszy w
                 obróbce (np. szlifowaniu). <strong>PETG</strong> nadaje się do
@@ -52,7 +52,7 @@ export default function Materials() {
                 PLA (Kwas polimlekowy)
               </li>
               <li className="materials__container__content--text-list">
-                <strong>PLA</strong> to najpopularniejszy filament w druku 3D –
+                <strong>PLA</strong> to najpopularniejszy filament w druku 3D -
                 biodegradowalny, wykonany z odnawialnych źródeł (np. kukurydzy).
                 Łatwy w druku, nie wydziela szkodliwych zapachów, wymaga niskiej
                 temperatury (<strong>ok. 190-220°C</strong>). Świetny na modele
@@ -84,14 +84,14 @@ export default function Materials() {
           <div className="grid-2-col-materials grid-center-justify u-margin-bottom-medium">
             <p className="materials__container__content--text all-line u-text-justify">
               <span className="company-name">
-                FDM (Fused Deposition Modeling – Modelowanie metodą stapiania i
+                FDM (Fused Deposition Modeling - Modelowanie metodą stapiania i
                 osadzania)
               </span>{" "}
               to najpopularniejsza technologia druku 3D, oparta na nakładaniu
               warstw roztopionego filamentu (np. PLA, PETG, ABS) przez
               podgrzewaną dyszę. Materiał jest wyciskany na stół roboczy, gdzie
               zastyga, tworząc model warstwa po warstwie. Prosta, tania i
-              wszechstronna – idealna dla hobbystów i prototypowania. Wymaga
+              wszechstronna - idealna dla hobbystów i prototypowania. Wymaga
               precyzyjnej kalibracji (temperatura, prędkość), a jakość zależy od
               ustawień i filamentu. Ograniczenia to widoczne warstwy i mniejsza
               precyzja w porównaniu do żywic (SLA).

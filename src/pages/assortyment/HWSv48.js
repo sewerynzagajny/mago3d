@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,34 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv48/1.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv48/2.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv48/3.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv48/4.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv48/5.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv48",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function HWSv48({ productId = 6 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -51,8 +25,48 @@ export default function HWSv48({ productId = 6 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 6);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv48/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv48/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv48/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv48/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv48/5.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Stojak na Hot Wheels HWSv48 podwójny | MaGo3d",
+    description:
+      "Stojak na Hot Wheels HWSv48 podwójny. Pojemność 48 kart, mocowanie do biurka, aluminiowe profile. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -81,6 +95,7 @@ export default function HWSv48({ productId = 6 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer

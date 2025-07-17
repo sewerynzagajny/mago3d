@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,65 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/1.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/2.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/3.webp"),
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/4.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/5.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/6.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/7.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/8.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/9.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/10.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-  {
-    type: "video",
-    src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/movie.mp4"),
-    poster: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/movie-thumbnail.webp"),
-    alt: "Uchwyt na małe roślinki LEGO pod tablicę IEKA SKADIS – IKEA SKADIS LEGO TINY PLANTS",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -80,10 +23,81 @@ export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 13);
+    products.find((p) => p.id === 8);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      alt: imageAlt,
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/3.webp"),
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/10.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "video",
+      src: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/movie.mp4"),
+      poster: require("../../assets/assortment/IkeaSkadisLegoTinyPlants/movie-thumbnail.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Uchwyty na kwiaty LEGO Icons 10329 do tablicy IKEA SKADIS | MaGo3d",
+    description:
+      "Uchwyty na kwiaty LEGO Icons 10329 do tablicy IKEA SKADIS. 9 sztuk uchwytów, łatwy montaż, PETG odporny na UV. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -112,6 +126,7 @@ export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -192,7 +207,7 @@ export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
                   Dzięki kolorowym kwiatom LEGO Twoja przestrzeń stanie się
                   przytulniejsza, bardziej osobista i estetyczna. Taki akcent
                   nie tylko poprawi Ci humor, ale również będzie ciekawym
-                  elementem aranżacyjnym – zarówno w domu, jak i w biurze.
+                  elementem aranżacyjnym - zarówno w domu, jak i w biurze.
                 </p>
                 <h5>
                   <strong>Cechy produktu:</strong>
@@ -215,25 +230,27 @@ export default function IkeaSkadisLegoTinyPlants({ productId = 8 }) {
                   <strong>Zalety:</strong>
                 </h5>
                 <p>
-                  ✅ <strong>Unikalny wygląd</strong> – Kwiaty LEGO w połączeniu
+                  ✅ <strong>Unikalny wygląd</strong> - Kwiaty LEGO w połączeniu
                   z tablicą Skadis wyglądają oryginalnie i przyciągają wzrok.
                 </p>
                 <p>
-                  ✅ <strong>Porządek i estetyka</strong> – Wykorzystujesz puste
+                  ✅ <strong>Porządek i estetyka</strong> - Wykorzystujesz puste
                   miejsca na tablicy, a jednocześnie zyskujesz przyjemny akcent
                   wizualny.
                 </p>
-                ✅ <strong> Łatwy montaż</strong> – Montaż nie wymaga żadnych
-                narzędzi, wystarczy zahaczyć uchwyt na perforacji Skadis.
                 <p>
-                  ✅ <strong>Idealny na prezent</strong> – Ciekawy pomysł na
+                  ✅ <strong> Łatwy montaż</strong> - Montaż nie wymaga żadnych
+                  narzędzi, wystarczy zahaczyć uchwyt na perforacji Skadis.
+                </p>
+                <p>
+                  ✅ <strong>Idealny na prezent</strong> - Ciekawy pomysł na
                   walentynki, urodziny lub po prostu drobny upominek dla
                   miłośnika LEGO.
                 </p>
                 <p>
-                  ✅ <strong>Solidne wykonanie</strong> – Wydrukowane z PETG,
+                  ✅ <strong>Solidne wykonanie</strong> - Wydrukowane z PETG,
                   tworzywa dużo trwalszego niż klasyczny PLA. Odporne na
-                  promieniowanie UV – nawet po latach nie stracą swojego koloru.
+                  promieniowanie UV - nawet po latach nie stracą swojego koloru.
                 </p>
                 <h5>
                   <strong>Dla kogo?</strong>

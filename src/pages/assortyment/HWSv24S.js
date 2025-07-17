@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,39 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv24S/1.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv24S/2.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv24S/3.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv24S/4.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv24S/6.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv24S/7.webp"),
-    alt: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function HWSv24S({ productId = 4 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -56,8 +25,52 @@ export default function HWSv24S({ productId = 4 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 4);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv24S/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv24S/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv24S/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv24S/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv24S/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv24S/7.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Stojak na Hot Wheels HWSv24S naścienny | MaGo3d",
+    description:
+      "Stojak na Hot Wheels HWSv24S naścienny. Mocowanie do ścian, pojemność 24 karty, aluminiowe profile. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -86,6 +99,7 @@ export default function HWSv24S({ productId = 4 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer

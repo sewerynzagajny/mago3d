@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,59 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/1.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/2.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
-  },
-  {
-    type: "image",
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA",
-    src: require("../../assets/assortment/IkeaSkadisForsa/3.webp"),
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/4.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/5.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/6.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/7.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/8.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/9.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisForsa/10.webp"),
-    alt: "Uchwyt na lampę IKEA FORSA pod tablicę IEKA SKADIS – IKEA SKADIS FORSA  ",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function IkeaSkadisForsa({ productId = 9 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -74,10 +23,75 @@ export default function IkeaSkadisForsa({ productId = 9 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 13);
+    products.find((p) => p.id === 9);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisForsa/10.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Uchwyt na lampę IKEA FORSA do tablicy SKADIS | MaGo3d",
+    description:
+      "Uchwyt na lampę IKEA FORSA do tablicy SKADIS. Łatwy montaż, solidne zaczepy, minimalistyczny design. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -106,6 +120,7 @@ export default function IkeaSkadisForsa({ productId = 9 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -207,32 +222,34 @@ export default function IkeaSkadisForsa({ productId = 9 }) {
                   <strong>Zalety:</strong>
                 </h5>
                 <p>
-                  ✅ <strong>Idealne dopasowanie</strong> – Otwór montażowy
+                  ✅ <strong>Idealne dopasowanie</strong> - Otwór montażowy
                   uchwytu został zaprojektowany specjalnie pod średnicę
                   trzpienia lampy FORSA. Lampa trzyma się pewnie, bez luzów, a
                   jednocześnie obraca się z odpowiednim oporem.
                 </p>
                 <p>
-                  ✅ <strong>Lekkość i wytrzymałość</strong> – Ażurowa
+                  ✅ <strong>Lekkość i wytrzymałość</strong> - Ażurowa
                   konstrukcja wewnętrzna zapewnia optymalną wytrzymałość przy
                   niskiej wadze.
                 </p>
-                ✅ <strong>Łatwy montaż</strong> – Uchwyt mocuje się
-                bezpośrednio do tablicy SKADIS przy pomocy solidnych haczyków –
-                bez wiercenia, bez śrubek, bez kombinowania. Wystarczy wsunąć,
-                zahaczyć, zamocować lampę.
                 <p>
-                  ✅ <strong>Mocne zaczepy</strong> – Elementy mocujące do
+                  ✅ <strong>Łatwy montaż</strong> - Uchwyt mocuje się
+                  bezpośrednio do tablicy SKADIS przy pomocy solidnych haczyków
+                  - bez wiercenia, bez śrubek, bez kombinowania. Wystarczy
+                  wsunąć, zahaczyć, zamocować lampę.
+                </p>
+                <p>
+                  ✅ <strong>Mocne zaczepy</strong> - Elementy mocujące do
                   tablicy Skadis drukowane są z pełnym wypełnieniem (100%), co
                   gwarantuje solidność i długą żywotność.
                 </p>
                 <p>
-                  ✅ <strong>Porządek i wygoda</strong> – Lampę można zamontować
+                  ✅ <strong>Porządek i wygoda</strong> - Lampę można zamontować
                   bezpośrednio na tablicy, dzięki czemu nie zajmuje miejsca na
                   biurku.
                 </p>
                 <p>
-                  ✅ <strong>Estetyczny wygląd</strong> – Nowoczesny,
+                  ✅ <strong>Estetyczny wygląd</strong> - Nowoczesny,
                   minimalistyczny design dobrze komponuje się z systemem Skadis
                   i lampą FORSA.
                 </p>

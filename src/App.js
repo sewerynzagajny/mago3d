@@ -165,7 +165,7 @@ export default function App() {
         <Route path="/materialy" element={<Materials />} />
         <Route path="/kontakt" element={<Contact />} />
         <Route path="/asortyment" element={<Assortment />} />
-        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/polityka-prywatnosci" element={<Privacy />} />
         <Route path="/szczegoly" element={<Details />} />
 
         {/* Dynamiczne generowanie tras dla szczegółów produktów */}

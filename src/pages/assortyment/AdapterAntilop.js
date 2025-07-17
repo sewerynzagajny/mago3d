@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,50 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/1.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/2.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/3.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/4.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/6.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/7.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/AdapterAntilop/8.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-  {
-    type: "video",
-    src: require("../../assets/assortment/AdapterAntilop/movie.mp4"),
-    poster: require("../../assets/assortment/AdapterAntilop/movie-thumbnail.webp"),
-    alt: "Adapter z kółkami pod fotelik, krzesełko IKEA Antilop",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function AdapterAntilop({ productId = 12 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -67,8 +25,67 @@ export default function AdapterAntilop({ productId = 12 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 12);
 
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/AdapterAntilop/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "video",
+      src: require("../../assets/assortment/AdapterAntilop/movie.mp4"),
+      poster: require("../../assets/assortment/AdapterAntilop/movie-thumbnail.webp"),
+      alt: imageAlt,
+    },
+  ];
+
   // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // const { useEffect } = require("react");
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Adapter z kółkami do fotelika IKEA Antilop | MaGo3d",
+    description:
+      "Adapter z kółkami do fotelika IKEA Antilop. Bezpieczny, wygodny, łatwy w montażu. Sprawdź ofertę MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -97,6 +114,7 @@ export default function AdapterAntilop({ productId = 12 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -173,7 +191,7 @@ export default function AdapterAntilop({ productId = 12 }) {
                   Oferujemy praktyczne i stylowe adaptery z kółkami, które
                   idealnie pasują do fotelika IKEA Antilop. Dzięki nim z
                   łatwością przesuniesz fotelik z dzieckiem w dowolne miejsce w
-                  domu – bez konieczności podnoszenia!
+                  domu - bez konieczności podnoszenia!
                 </p>
 
                 <h5>
@@ -181,7 +199,7 @@ export default function AdapterAntilop({ productId = 12 }) {
                 </h5>
                 <p>
                   ➡️ <strong>Kolor:</strong> Eleganckie białe adaptery z
-                  czarnymi kółkami – idealnie komponują się z fotelikiem
+                  czarnymi kółkami - idealnie komponują się z fotelikiem
                   Antilop.
                 </p>
                 <p>
@@ -197,13 +215,13 @@ export default function AdapterAntilop({ productId = 12 }) {
                 </p>
                 <p>
                   ➡️ <strong>Łatwy montaż:</strong> Adaptery są zaprojektowane
-                  tak, aby idealnie pasowały do nóżek fotelika Antilop –
+                  tak, aby idealnie pasowały do nóżek fotelika Antilop -
                   instalacja zajmuje tylko chwilę, a kluczyk potrzebny do
                   montażu znajduje się w zestawie!
                 </p>
                 <p>
                   ➡️ <strong>Wygoda:</strong> Przesuwanie fotelika z dzieckiem
-                  nigdy nie było prostsze – oszczędź sobie wysiłku i zadbaj o
+                  nigdy nie było prostsze - oszczędź sobie wysiłku i zadbaj o
                   komfort malucha.
                 </p>
 
@@ -214,7 +232,7 @@ export default function AdapterAntilop({ productId = 12 }) {
                   ✅ Wykonane z wysokiej jakości materiałów, które zapewniają
                   trwałość i bezpieczeństwo.
                   <br />
-                  ✅ Testowane pod kątem stabilności – możesz mieć pewność, że
+                  ✅ Testowane pod kątem stabilności - możesz mieć pewność, że
                   fotelik z dzieckiem jest bezpieczny.
                   <br />
                   ✅ Idealne dla rodziców, którzy cenią sobie praktyczne i

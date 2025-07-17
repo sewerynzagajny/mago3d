@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,59 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/1.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/2.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/3.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/4.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/5.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/6.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/7.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/8.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/9.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/TSv4PRO/10.webp"),
-    alt: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function TSv4PRO({ productId = 3 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -76,8 +25,73 @@ export default function TSv4PRO({ productId = 3 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 3);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/TSv4PRO/10.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Podstawka z kółkami pod Thermomix TM5 TM6 TSv4PRO | MaGo3d",
+    description:
+      "Podstawka z kółkami pod Thermomix TM5 TM6 TSv4PRO. Wzmocniona konstrukcja, idealne dopasowanie, możliwość przesuwania. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -106,6 +120,7 @@ export default function TSv4PRO({ productId = 3 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -184,7 +199,7 @@ export default function TSv4PRO({ productId = 3 }) {
                   ➡️ <strong>Kolor:</strong> Czarny/Biały/Szary.
                 </p>
                 <p>
-                  ➡️ <strong>2 w 1 –</strong> do podnoszenia i przesuwania.
+                  ➡️ <strong>2 w 1 -</strong> do podnoszenia i przesuwania.
                 </p>
                 <p>
                   ➡️ <strong>Wymiary:</strong> dł. 310mm x szer: 254mm x wys:
@@ -234,7 +249,7 @@ export default function TSv4PRO({ productId = 3 }) {
                 <p>
                   ✅ <strong>Możliwość przesuwania:</strong> Jako jedyna
                   dostępna na rynku podstawka posiada gumowe kółka umieszczone
-                  na tylnich nóżkach – wystarczy lekko unieść przód podstawki z
+                  na tylnich nóżkach - wystarczy lekko unieść przód podstawki z
                   Themromixem do góry aby wygodnie przesunąć urządzenie w
                   wybrane miejsce, zapewniając tym samym ochronę położonej w
                   tylnych stopkach wrażliwej wagi.

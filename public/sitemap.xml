@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mago3d.pl/</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/asortyment</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/kontakt</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/materialy</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <!-- Produkty -->
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawa-pod-termomiks-tm5-tm6-tsv3</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawa-pod-termomiks-tm5-tm6-tsv4pro</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <!-- Dodaj pozostałe produkty -->
+</urlset>

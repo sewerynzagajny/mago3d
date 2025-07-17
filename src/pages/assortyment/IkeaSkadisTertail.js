@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,54 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/1.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/2.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
-  },
-  {
-    type: "image",
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL",
-    src: require("../../assets/assortment/IkeaSkadisTertail/3.webp"),
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/4.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/5.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/6.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/7.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/8.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisTertail/9.webp"),
-    alt: "Uchwyt na lampę IKEA TERTAIL pod tablicę IEKA SKADIS – IKEA SKADIS TERTAIL  ",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function IkeaSkadisTertail({ productId = 10 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -69,10 +23,70 @@ export default function IkeaSkadisTertail({ productId = 10 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 13);
+    products.find((p) => p.id === 10);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      alt: imageAlt,
+      src: require("../../assets/assortment/IkeaSkadisTertail/3.webp"),
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisTertail/9.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Uchwyt na lampę IKEA TERTIAL do tablicy SKADIS | MaGo3d",
+    description:
+      "Uchwyt na lampę IKEA TERTIAL do tablicy SKADIS. Idealne dopasowanie, łatwy montaż, lekkość i wytrzymałość. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -101,6 +115,7 @@ export default function IkeaSkadisTertail({ productId = 10 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -202,32 +217,32 @@ export default function IkeaSkadisTertail({ productId = 10 }) {
                   <strong>Zalety:</strong>
                 </h5>
                 <p>
-                  ✅ <strong>Idealne dopasowanie</strong> – Otwór montażowy
+                  ✅ <strong>Idealne dopasowanie</strong> - Otwór montażowy
                   został zaprojektowany specjalnie do trzpienia lampy TERTIAL.
                   Uchwyt trzyma ją stabilnie, bez luzów, a obrót lampy działa
                   płynnie.
                 </p>
                 <p>
-                  ✅ <strong>Lekkość i wytrzymałość</strong> – Ażurowa
+                  ✅ <strong>Lekkość i wytrzymałość</strong> - Ażurowa
                   konstrukcja wewnętrzna zapewnia optymalną wytrzymałość przy
                   niskiej wadze.
                 </p>
-                ✅ <strong>Łatwy montaż</strong> – Uchwyt mocuje się
-                bezpośrednio do tablicy SKADIS przy pomocy solidnych haczyków –
+                ✅ <strong>Łatwy montaż</strong> - Uchwyt mocuje się
+                bezpośrednio do tablicy SKADIS przy pomocy solidnych haczyków -
                 bez wiercenia, bez śrubek, bez kombinowania. Wystarczy wsunąć,
                 zahaczyć, zamocować lampę.
                 <p>
-                  ✅ <strong>Mocne zaczepy</strong> – Elementy mocujące do
+                  ✅ <strong>Mocne zaczepy</strong> - Elementy mocujące do
                   tablicy Skadis drukowane są z pełnym wypełnieniem (100%), co
                   gwarantuje solidność i długą żywotność.
                 </p>
                 <p>
-                  ✅ <strong>Wielofunkcyjność</strong> – Uchwyt może również
-                  służyć do łączenia dwóch tablic SKADIS od góry – świetnie się
+                  ✅ <strong>Wielofunkcyjność</strong> - Uchwyt może również
+                  służyć do łączenia dwóch tablic SKADIS od góry - świetnie się
                   do tego nadaje (widoczne na zdjęciach).
                 </p>
                 <p>
-                  ✅ <strong>Estetyka i porządek</strong> – Mocując lampę na
+                  ✅ <strong>Estetyka i porządek</strong> - Mocując lampę na
                   tablicy, odzyskujesz cenne miejsce na blacie, a całość wygląda
                   schludnie i nowocześnie.
                 </p>

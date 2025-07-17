@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,44 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/1.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/2.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/3.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/4.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/6.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/7.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaHavsenDrainer/8.webp"),
-    alt: "Ociekacz na zlew IKEA Havsen – Ikea Havsen Drainer",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function IkeaHavsenDrainer({ productId = 7 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -59,10 +23,60 @@ export default function IkeaHavsenDrainer({ productId = 7 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 12);
+    products.find((p) => p.id === 7);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaHavsenDrainer/8.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Ociekacz na zlew IKEA Havsen | MaGo3d",
+    description:
+      "Ociekacz na zlew IKEA Havsen - Ikea Havsen Drainer. Pasuje do zlewów jedno i dwukomorowych. Druk 3D w technologii PET-G. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -91,6 +105,7 @@ export default function IkeaHavsenDrainer({ productId = 7 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer

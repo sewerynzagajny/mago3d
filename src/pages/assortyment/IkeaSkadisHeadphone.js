@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,59 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/1.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/2.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
-  },
-  {
-    type: "image",
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/3.webp"),
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/4.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/5.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/6.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/7.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/8.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/9.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/IkeaSkadisHeadphone/10.webp"),
-    alt: "Uchwyt na słuchawki pod tablicę IEKA SKADIS – IKEA SKADIS HEADPHONE  ",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function IkeaSkadisHeadphone({ productId = 11 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -76,8 +25,73 @@ export default function IkeaSkadisHeadphone({ productId = 11 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 13);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/3.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/IkeaSkadisHeadphone/10.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Uchwyt na słuchawki do tablicy IKEA SKADIS | MaGo3d",
+    description:
+      "Uchwyt na słuchawki do tablicy IKEA SKADIS. Stabilne mocowanie na 3 zaczepy, minimalistyczny design. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -106,6 +120,7 @@ export default function IkeaSkadisHeadphone({ productId = 11 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -208,26 +223,26 @@ export default function IkeaSkadisHeadphone({ productId = 11 }) {
                   <strong>Zalety:</strong>
                 </h5>
                 <p>
-                  ✅ <strong>Stabilne mocowanie na 3 zaczepy</strong> – Uchwyt
+                  ✅ <strong>Stabilne mocowanie na 3 zaczepy</strong> - Uchwyt
                   został zaprojektowany z trzema pinami montażowymi, które
                   gwarantują maksymalną stabilność, nawet przy cięższych,
                   profesjonalnych słuchawkach.
                 </p>
                 <p>
-                  ✅ <strong>Duża powierzchnia podparcia</strong> – Dzięki
+                  ✅ <strong>Duża powierzchnia podparcia</strong> - Dzięki
                   przemyślanej konstrukcji uchwyt dobrze rozkłada nacisk
                   słuchawek, co zapobiega odkształceniom pałąka.
                 </p>
-                ✅ <strong>Łatwy montaż</strong> – Wystarczy wpiąć uchwyt w
-                tablicę Skadis. Montaż trwa kilka sekund – bez śrubek, bez
+                ✅ <strong>Łatwy montaż</strong> - Wystarczy wpiąć uchwyt w
+                tablicę Skadis. Montaż trwa kilka sekund - bez śrubek, bez
                 klejenia, bez wiercenia.
                 <p>
-                  ✅ <strong>Porządek i ergonomia</strong> – Koniec z
+                  ✅ <strong>Porządek i ergonomia</strong> - Koniec z
                   przewracającymi się słuchawkami na biurku! Wszystko ma swoje
                   miejsce.
                 </p>
                 <p>
-                  ✅ <strong>Nowoczesny wygląd</strong> – Minimalistyczny
+                  ✅ <strong>Nowoczesny wygląd</strong> - Minimalistyczny
                   design, który doskonale pasuje do systemu SKADIS i
                   nowoczesnych wnętrz.
                 </p>

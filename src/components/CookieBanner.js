@@ -58,7 +58,7 @@ export default function CookieBanner({ onVisibilityChange, onHeightChange }) {
     <div className="cookie-banner" ref={bannerRef}>
       <p className="cookie-banner__text">
         Ta strona używa plików cookie, aby zapewnić najlepsze wrażenia.{" "}
-        <a className="cookie-banner__text--link" href="/privacy">
+        <a className="cookie-banner__text--link" href="/polityka-prywatnosci">
           Polityka Prywatności
         </a>
       </p>

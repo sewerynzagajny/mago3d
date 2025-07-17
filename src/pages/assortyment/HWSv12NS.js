@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,64 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/1.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/2.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-    src: require("../../assets/assortment/HWSv12NS/3.webp"),
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/4.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/5.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/6.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/7.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/8.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/9.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/10.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/HWSv12NS/11.webp"),
-    alt: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function HWSv12NS({ productId = 14 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -79,10 +23,80 @@ export default function HWSv12NS({ productId = 14 }) {
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
-    products.find((p) => p.id === 13);
+    products.find((p) => p.id === 14);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      alt: imageAlt,
+      src: require("../../assets/assortment/HWSv12NS/3.webp"),
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/10.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/HWSv12NS/11.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Stojak na Hot Wheels nabiurkowy HWSv12NS | MaGo3d",
+    description:
+      "Stojak na Hot Wheels nabiurkowy HWSv12NS. Samoprzylepny, na karty i gablotki RLC. Aluminiowe profile, łatwy montaż. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -111,6 +125,7 @@ export default function HWSv12NS({ productId = 14 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -248,10 +263,10 @@ export default function HWSv12NS({ productId = 14 }) {
                   <strong>Prawa autorskie:</strong>
                 </h5>
                 <p>
-                  ⚠️Ekspozytor nabiurkowy HWSv12NS jest zastrzeżonym wzorem
-                  wspólnotowym i jest chroniony prawem autorskim. Posiadamy
-                  wyłączne prawo do oferowania, wytwarzania i wprowadzania do
-                  obrotu w.w. wzoru na terenie UE ⚠️
+                  ⚠️Ekspozytor nabiurkowy samoprzylepny HWSv12NS jest
+                  zastrzeżonym wzorem wspólnotowym i jest chroniony prawem
+                  autorskim. Posiadamy wyłączne prawo do oferowania, wytwarzania
+                  i wprowadzania do obrotu w.w. wzoru na terenie UE ⚠️
                 </p>
 
                 <p>

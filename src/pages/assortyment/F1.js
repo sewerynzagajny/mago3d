@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import CookieBaner from "../../components/CookieBanner";
@@ -7,65 +7,8 @@ import Product from "../../components/Product";
 import { products } from "../../data/products";
 import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
-
-const items = [
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/1.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/2.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-    src: require("../../assets/assortment/F1/3.webp"),
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/4.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/6.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/5.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/7.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/8.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/9.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "image",
-    src: require("../../assets/assortment/F1/10.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-  {
-    type: "video",
-    src: require("../../assets/assortment/F1/movie.mp4"),
-    poster: require("../../assets/assortment/F1/movie-thumbnail.webp"),
-    alt: "Stojak Mocowanie Podst. obrotowa na LEGO ICONS 71049 Samochody Wyścigowe F1",
-  },
-];
+import SEOHead from "../../components/SEOHead";
+import { generateProductUrl, siteConfig } from "../../config/siteConfig";
 
 export default function F1({ productId = 13 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -82,8 +25,79 @@ export default function F1({ productId = 13 }) {
     products.find((p) => p.id === productId) ||
     products.find((p) => p.id === 13);
 
-  // Dodaj useEffect do blokowania przewijania
-  const { useEffect } = require("react");
+  // Automatyczny alt text
+  const imageAlt = `${product.fullname} - MaGo3d`;
+
+  const items = [
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/1.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/2.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      alt: imageAlt,
+      src: require("../../assets/assortment/F1/3.webp"),
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/4.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/6.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/5.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/7.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/8.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/9.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "image",
+      src: require("../../assets/assortment/F1/10.webp"),
+      alt: imageAlt,
+    },
+    {
+      type: "video",
+      src: require("../../assets/assortment/F1/movie.mp4"),
+      poster: require("../../assets/assortment/F1/movie-thumbnail.webp"),
+      alt: imageAlt,
+    },
+  ];
+
+  // SEO dane
+  const pageUrl = generateProductUrl(product.slug);
+  const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
+
+  const seoData = {
+    title: "Stojak na LEGO F1 Bolidy 71049 | MaGo3d",
+    description:
+      "Stojak na LEGO F1 Bolidy 71049. Obrotowa podstawka, samoprzylepna, elegancka ekspozycja kolekcji. Sprawdź w MaGo3d!",
+    canonicalUrl: pageUrl,
+    ogImage: ogImage,
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -112,6 +126,7 @@ export default function F1({ productId = 13 }) {
 
   return (
     <>
+      <SEOHead {...seoData} productData={product} />
       <section className="details">
         <Navigation />
         <ScrollEffectContainer
@@ -252,7 +267,7 @@ export default function F1({ productId = 13 }) {
                 </p>
                 <p>
                   ❇️ <strong>Łatwy Montaż:</strong> Gotowy do użycia od razu po
-                  wyjęciu z opakowania – nie wymaga klejenia ani dodatkowych
+                  wyjęciu z opakowania - nie wymaga klejenia ani dodatkowych
                   narzędzi. Wystarczy odkleić folię ochronną z taśmy dwustronnej
                   i przykleić w wybranym miejscu.
                 </p>
