@@ -1,30 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Strona główna -->
   <url>
     <loc>https://mago3d.pl/</loc>
     <lastmod>2025-01-17</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
+  <!-- Asortyment -->
   <url>
     <loc>https://mago3d.pl/asortyment</loc>
     <lastmod>2025-01-17</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
+  <!-- Kontakt -->
   <url>
     <loc>https://mago3d.pl/kontakt</loc>
     <lastmod>2025-01-17</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <!-- Materiały -->
   <url>
     <loc>https://mago3d.pl/materialy</loc>
     <lastmod>2025-01-17</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-  <!-- Produkty -->
+  <!-- Historia -->
+  <url>
+    <loc>https://mago3d.pl/historia</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <!-- Polityka prywatności -->
+  <url>
+    <loc>https://mago3d.pl/polityka-prywatnosci</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.5</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <!-- Produkty z asortymentu -->
+    <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/stojak-ekspozytor-organizer-hot-wheels-rlc-itp-samoprzylepny-nabiurkowy</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+   <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/stojak-mocowanie-podstawka-obrotowana-lego-icons-71049-samochody-wyścigowe-f1</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
   <url>
     <loc>https://mago3d.pl/szczegoly/druki-3d/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy</loc>
     <lastmod>2025-01-17</lastmod>
@@ -32,13 +62,67 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawa-pod-termomiks-tm5-tm6-tsv3</loc>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv3</loc>
     <lastmod>2025-01-17</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawa-pod-termomiks-tm5-tm6-tsv4pro</loc>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv4o</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv4pro</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/stojak-ekspozytor-naścienny-na-karty-resoraki-hot-wheels-matchbox-majorette-hwsv24s</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+   <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/stojak-ekspozytor-nabiurkowy-pojedynczy-na-karty-resoraki-hot-wheels-matchbox-majorette-hwsv24</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+    <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/stojak-ekspozytor-nabiurkowy-podwójny-na-karty-resoraki-hot-wheels-matchbox-majorette-hwsv48</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/ociekacz-na-zlew-ikea-havsen-ikea-havsen-drainer</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+   <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/uchwyt-na-male-roslinki-lego-pod-tablice-ikea-skadis-ikea-skadis-lego-tiny-plants</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/uchwyt-na-lampe-ikea-forsa-pod-tablice-ikea-skadis-ikea-skadis-forsa</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+   <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/uchwyt-na-lampe-ikea-tertail-pod-tablice-ikea-skadis-ikea-skadis-tertail</loc>
+    <lastmod>2025-01-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+     <url>
+    <loc>https://mago3d.pl/szczegoly/druki-3d/uchwyt-na-sluchawki-pod-tablice-ikea-skadis-ikea-skadis-headphone</loc>
     <lastmod>2025-01-17</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
