@@ -9,6 +9,8 @@ import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
 import SEOHead from "../../components/SEOHead";
 import { generateProductUrl, siteConfig } from "../../config/siteConfig";
+import Btn from "../../components/Btn";
+import { useNavigate } from "react-router-dom";
 
 export default function IkeaSkadisHeadphone({ productId = 11 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -19,7 +21,7 @@ export default function IkeaSkadisHeadphone({ productId = 11 }) {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
   const [cookieBannerHeight, setCookieBannerHeight] = useState(0);
   const isMobile = useIsMobile();
-
+  const navigate = useNavigate();
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
     products.find((p) => p.id === productId) ||
@@ -107,6 +109,16 @@ export default function IkeaSkadisHeadphone({ productId = 11 }) {
       document.body.style.overflow = "unset";
     };
   }, [modalOpen]);
+
+  function handleGoBack() {
+    // Sprawdź czy user ma poprzednią stronę w historii
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      // Fallback - przekieruj na asortyment
+      navigate("/asortyment");
+    }
+  }
 
   function handleModalClick(e) {
     // Nie powiększaj jeśli kliknięto w przycisk zamykania lub miniaturę lub strzałki
@@ -263,6 +275,12 @@ export default function IkeaSkadisHeadphone({ productId = 11 }) {
                     Pozdrawiamy serdecznie i zapraszamy do zakupów!
                   </strong>
                 </p>
+                <div className="return-btn-container">
+                  {" "}
+                  <Btn className="btn" onClick={handleGoBack}>
+                    Powrót
+                  </Btn>
+                </div>
               </div>
             </div>
           </div>

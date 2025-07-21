@@ -10,7 +10,7 @@ export const siteConfig = {
   },
 
   seo: {
-    defaultTitle: "MaGo3d - Profesjonalny druk 3D",
+    defaultTitle: "MaGo3d - Kreatywna pracownia druku 3d",
     titleSeparator: " | ",
     defaultDescription:
       "Profesjonalny druk 3D najwyższej jakości. Podstawki pod Thermomix, adaptery IKEA, stojaki Hot Wheels. Sprawdź ofertę MaGo3d!",

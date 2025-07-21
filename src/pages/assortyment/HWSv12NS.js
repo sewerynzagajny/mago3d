@@ -9,6 +9,8 @@ import ScrollEffectContainer from "../../components/ScrollEffectContainer";
 import useIsMobile from "../../hooks/useIsMobile";
 import SEOHead from "../../components/SEOHead";
 import { generateProductUrl, siteConfig } from "../../config/siteConfig";
+import Btn from "../../components/Btn";
+import { useNavigate } from "react-router-dom";
 
 export default function HWSv12NS({ productId = 14 }) {
   const [onMenuVisible, setOnMenuVisible] = useState(false);
@@ -19,6 +21,7 @@ export default function HWSv12NS({ productId = 14 }) {
   const [cookieBannerVisible, setCookieBannerVisible] = useState(false);
   const [cookieBannerHeight, setCookieBannerHeight] = useState(0);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   // Znajdź produkt na podstawie ID lub użyj domyślnego
   const product =
@@ -120,6 +123,16 @@ export default function HWSv12NS({ productId = 14 }) {
       (e.target.classList.contains("carousel__main-view") && zoomed)
     ) {
       setZoomed(false);
+    }
+  }
+
+  function handleGoBack() {
+    // Sprawdź czy user ma poprzednią stronę w historii
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      // Fallback - przekieruj na asortyment
+      navigate("/asortyment");
     }
   }
 
@@ -274,6 +287,12 @@ export default function HWSv12NS({ productId = 14 }) {
                     Pozdrawiamy serdecznie i zapraszamy do zakupów!
                   </strong>
                 </p>
+                <div className="return-btn-container">
+                  {" "}
+                  <Btn className="btn" onClick={handleGoBack}>
+                    Powrót
+                  </Btn>
+                </div>
               </div>
             </div>
           </div>

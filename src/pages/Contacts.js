@@ -15,7 +15,7 @@ import SEOHead from "../components/SEOHead";
 
 export default function Contact() {
   const seoData = {
-    title: "Kontakt - MaGo3d | Drukarnia 3D",
+    title: "Kontakt - MaGo3d | Kreatywna pracownia druku 3d",
     description:
       "Skontaktuj się z MaGo3d. Profesjonalne doradztwo, szybka obsługa, możliwość zakupu bezpośrednio. Formularz kontaktowy i dane firmy.",
     canonicalUrl: "https://mago3d.pl/kontakt",
