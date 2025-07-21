@@ -62,8 +62,114 @@ const AdapterAntilopPhotos = {
 const F1Photos = {
   black: require("../assets/assortment/F1/main_black.webp"),
 };
+const przedluzkaPhotos = {
+  black: require("../assets/assortment/Przedluzka/main_black.webp"),
+};
+
+const USBConnectPhotos = {
+  black: require("../assets/assortment/USBConnect/main_black.webp"),
+};
+
+const WypelnienieGablotekPhotos = {
+  black: require("../assets/assortment/WypelnienieGablotek/main_black.webp"),
+};
+
+const HWSv12OGPhotos = {
+  black: require("../assets/assortment/HWSv12OG/main_black.webp"),
+};
 
 export const products = [
+  {
+    id: 18,
+    name: "Ekspozytor gablotek z oświetleniem do aut kolekcjonerskich 1:64 PREMIUM RLC",
+    fullname:
+      "Ekspozytor gablotek z oświetleniem do aut kolekcjonerskich 1:64 PREMIUM RLC",
+    slug: "ekspozytor-gablotek-z-oswietleniem-do-aut-kolekcjonerskich-1-64-premium-rlc",
+    component: "HWSv12OG",
+    maxWords: 6,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: HWSv12OGPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/ekspozytor-gablotek-z-oswietleniem-do-aut-kolekcjonerskich-1-64-premium-rlc-17725943401",
+          },
+        ],
+      },
+    ],
+    price: 59.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    id: 17,
+    name: "Wypełnienie ekspozytora gablotek pod gablotki Hot Wheels RLC",
+    fullname: "Wypełnienie ekspozytora gablotek pod gablotki Hot Wheels RLC",
+    slug: "wypelnienie-ekspozytora-gablotek-pod-gablotki-hot-wheels-rlc",
+    component: "WypelnienieGablotek",
+    maxWords: 5,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: WypelnienieGablotekPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/wypelnienie-ekspozytora-gablotek-pod-gablotki-hot-wheels-rlc-17726353778",
+          },
+        ],
+      },
+    ],
+    price: 18.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    id: 16,
+    name: "Zestaw podłączeniowy USB do gablotek LED i oświetlenia kart LED",
+    fullname: "Zestaw podłączeniowy USB do gablotek LED i oświetlenia kart LED",
+    slug: "zestaw-podlaczeniowy-usb-do-gablotek-led-i-oswietlenia-kart-led",
+    component: "USBConnect",
+    maxWords: 5,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: USBConnectPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/zestaw-podlaczeniowy-usb-do-gablotek-led-i-oswietlenia-kart-led-17726278869",
+          },
+        ],
+      },
+    ],
+    price: 29.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
   {
     id: 14,
     name: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
@@ -157,6 +263,37 @@ export const products = [
       },
     ],
     price: 159.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    id: 15,
+    name: "Przedłużka rozszerzenie 0,5m ekspozytora na karty gablotki Hot Wheels, RLC",
+    fullname:
+      "Przedłużka rozszerzenie 0,5m ekspozytora na karty gablotki Hot Wheels, RLC",
+    slug: "przedluzka-rozszerzenie-0-5m-ekspozytora-na-karty-gablotki-hot-wheels-rlc",
+    component: "Przedluzka",
+    maxWords: 5,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: przedluzkaPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/przedluzka-rozszerzenie-0-5m-ekspozytora-na-karty-gablotki-hot-wheels-rlc-17719863545",
+          },
+        ],
+      },
+    ],
+    price: 22.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",

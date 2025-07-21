@@ -39,6 +39,10 @@ import IkeaSkadisForsa from "./pages/assortyment/IkeaSkadisForsa"; // Importujem
 import IkeaSkadisTertail from "./pages/assortyment/IkeaSkadisTertail";
 import IkeaSkadisHeadphone from "./pages/assortyment/IkeaSkadisHeadphone";
 import HWSv12NS from "./pages/assortyment/HWSv12NS"; // Importujemy komponent HWSv12NS
+import Przedluzka from "./pages/assortyment/Przedluzka";
+import USBConnect from "./pages/assortyment/USBConnect";
+import WypelnienieGablotek from "./pages/assortyment/WypelnienieGablotek";
+import HWSv12OG from "./pages/assortyment/HWSv12OG"; // Importujemy komponent HWSv12OG
 import { products } from "./data/products"; // Importujemy dane produktów
 
 // Mapa komponentów
@@ -58,6 +62,10 @@ const componentMap = {
   HWSv48: HWSv48, // Dodajemy komponent HWSv48 do mapy
   F1: F1, // Dodajemy komponent F1 do mapy
   HWSv12NS: HWSv12NS, // Dodajemy komponent HWSv12NS do mapy
+  Przedluzka: Przedluzka, // Dodajemy komponent Przedłuzka do mapy
+  USBConnect: USBConnect, // Dodajemy komponent USBConnect do mapy
+  WypelnienieGablotek: WypelnienieGablotek, // Dodajemy komponent WypelnienieGablotek do mapy
+  HWSv12OG: HWSv12OG, // Dodajemy komponent HWSv12OG do mapy
 };
 
 export default function App() {
