@@ -53,9 +53,9 @@ export default function WypelnienieGablotek({ productId = 17 }) {
   const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
 
   const seoData = {
-    title: "Przedłużka 0,5m do stojaków Hot Wheels z łącznikami | MaGo3d",
+    title: "Wypełnienie ekspozytora gablotek Hot Wheels RLC | MaGo3d",
     description:
-      "Przedłużka długości 0,5m z łącznikami pasująca do wszystkich stojaków MaGo3d. Zestaw zawiera 2 profile aluminiowe i 2 łączniki. Sprawdź!",
+      "Specjalne wypełnienie ekspozytorów gablotek do Hot Wheels RLC. Idealne dopasowanie gablotki RLC. Sprawdź w MaGo3d!",
     canonicalUrl: pageUrl,
     ogImage: ogImage,
   };

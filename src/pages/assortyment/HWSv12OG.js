@@ -89,9 +89,9 @@ export default function HWSv12OG({ productId = 18 }) {
   const ogImage = `${siteConfig.domain}${product.colors[0].photo}`;
 
   const seoData = {
-    title: "Stojak na Hot Wheels nabiurkowy HWSv12OG | MaGo3d",
+    title: "Ekspozytor gablotek z oświetleniem Hot Wheels RLC 1:64 | MaGo3d",
     description:
-      "Stojak na Hot Wheels nabiurkowy HWSv12OG. Samoprzylepny, na karty i gablotki RLC. Aluminiowe profile, łatwy montaż. Sprawdź w MaGo3d!",
+      "Ekspozytor gablotek z oświetleniem LED do aut kolekcjonerskich 1:64. Obsługuje Hot Wheels RLC, Inno64, TimeMicro. 56cm LED + tło. MaGo3d!",
     canonicalUrl: pageUrl,
     ogImage: ogImage,
   };
