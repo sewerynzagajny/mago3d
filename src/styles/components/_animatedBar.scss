@@ -1,0 +1,43 @@
+.scrolling-text {
+  // background: $background-color-dark;
+  background: $black;
+  color: $font-color-primary;
+  overflow: hidden;
+}
+
+.scrolling-text_inner {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  // font-size: 3rem;
+  font-size: 4.4rem;
+  font-weight: $font-stronger;
+  font-family: $font-primary;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.scrolling-text_inner.direction-left > div {
+  animation: marquee-left 20s linear infinite;
+}
+
+.scrolling-text_inner > div {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.scrolling-text__item {
+  padding: 0 3.2rem;
+  font-weight: $font-stronger;
+  // line-height: 1.2
+  line-height: 2;
+  word-spacing: 2rem;
+  letter-spacing: -0.025em;
+  color: $font-color-primary;
+  text-shadow: 0 0 1rem $btn-color-neon;
+}
+
+.scrolling-text__item:empty {
+  display: none;
+}

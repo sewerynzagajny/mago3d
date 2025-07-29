@@ -1,19 +1,19 @@
 .header {
-  background: none;
+  // background: none;
 
   position: relative;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none; // blokuje kliknięcia
-  user-select: none; // blokuje zaznaczanie
-
+  // opacity: 0;
+  // visibility: hidden;
+  // pointer-events: none; // blokuje kliknięcia
+  // user-select: none; // blokuje zaznaczanie
+  background: url("../../assets/hero.jpg") no-repeat center center/cover;
   height: 100vh;
 }
 
-.header-visible {
-  background: url("../../assets/hero.jpg") no-repeat center center/cover;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto; // zezwala na kliknięcia
-  user-select: auto; // zezwala na zaznaczanie
-}
+// .header-visible {
+//   background: url("../../assets/hero.jpg") no-repeat center center/cover;
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: auto; // zezwala na kliknięcia
+//   user-select: auto; // zezwala na zaznaczanie
+// }

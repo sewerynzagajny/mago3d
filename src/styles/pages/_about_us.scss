@@ -1,46 +1,62 @@
 .about-us {
-  padding: 3.2rem 0 3.2rem 0;
-  @extend %section-background;
+  padding: 0 0 3.2rem 0;
+  // height: 300rem;
 
-  &__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto;
-    max-width: 120rem;
-    gap: 1rem;
+  &__mission {
+    @extend %section-background;
+  }
 
-    &__picture {
-      // background-image: url("../../assets/abaut-us_picture.jpg");
-      // background-size: cover; /* Ustawia obrazek tak, aby pokrywał cały element */
-      // background-position: center; /* Ustawia obrazek na środku */
-      // background-repeat: no-repeat;
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      gap: 2rem;
-
-      &__item {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-      }
-      &__item--large {
-        width: 50%;
-        height: auto;
-        grid-column: 3 / span 4;
-        grid-row: 1 / span 4;
-      }
-
-      &__item--small {
-        width: 50%;
-        height: auto;
-        grid-column: 4 / span 3;
-        grid-row: 3 / span 3;
-      }
+  &__choose-us {
+    &::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: linear-gradient(
+          rgba(34, 34, 34, 0.6),
+          rgba(34, 34, 34, 0.6)
+        ),
+        url(../../assets/about_us/background1.webp);
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: -1;
+      // animation: fadeInSlide 1s ease-in-out forwards;
     }
 
+    &__list {
+      text-align: justify;
+
+      &--item {
+        font-weight: $font-strong;
+        // color: $font-color-primary;
+        margin-bottom: 1.6rem;
+
+        &::marker {
+          color: $font-color-primary; // kolor kropek
+        }
+
+        a {
+          color: $font-color-primary;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: darken($font-color-primary, 20%);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__container {
+    @extend %container-style;
+
     &__content {
-      padding-left: 16rem;
+      text-align: justify;
     }
   }
 }

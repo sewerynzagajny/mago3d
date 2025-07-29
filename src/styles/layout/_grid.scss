@@ -59,6 +59,56 @@
   }
 }
 
+.grid-2-col-about-us {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4.8rem;
+  row-gap: 4.8rem;
+  align-items: center;
+
+  @media only screen and (max-width: 60rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-2-col-about-us2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4.8rem;
+  row-gap: 4.8rem;
+  align-items: center;
+
+  // Pierwszy element - pierwszy wiersz, pierwsza kolumna
+  & > div:nth-child(1) {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  // Drugi element - drugi wiersz, druga kolumna
+  & > div:nth-child(2) {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  // Trzeci element - trzeci wiersz, pierwsza kolumna
+  & > div:nth-child(3) {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  // Czwarty element - czwarty wiersz, druga kolumna
+  & > div:nth-child(4) {
+    grid-area: 4 / 2 / 5 / 3;
+  }
+
+  @media only screen and (max-width: 60rem) {
+    grid-template-columns: 1fr;
+    & > div:nth-child(1),
+    & > div:nth-child(2),
+    & > div:nth-child(3),
+    & > div:nth-child(4) {
+      grid-area: auto;
+    }
+  }
+}
+
 .grid-2-col-0_5-2-materials,
 .grid-2-col-0_5-2-contact {
   display: grid;

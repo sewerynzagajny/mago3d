@@ -71,7 +71,7 @@ const componentMap = {
 export default function App() {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const firstLoadPageVideoTime = 1.7; // Czas trwania animacji w sekundach
-  const headerRef = useRef(null); // Tworzymy referencję do nagłówka
+  const pageRef = useRef(null); // Tworzymy referencję do nagłówka
 
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 560; // Twój breakpoint
 
@@ -96,10 +96,10 @@ export default function App() {
 
     // Obsługa opóźnionego pokazania nagłówka po starcie
     useEffect(() => {
-      if (!headerRef.current) return;
+      if (!pageRef.current) return;
 
       const timeout = setTimeout(() => {
-        headerRef.current.classList.add("header-visible");
+        pageRef.current.classList.add("page-visible");
       }, (firstLoadPageVideoTime * 1000) / 2);
 
       return () => clearTimeout(timeout);
@@ -134,7 +134,7 @@ export default function App() {
         <Route
           path="/"
           element={
-            <>
+            <div>
               <FirstLoadPageVideo
                 key={videoLoaded ? "video-hidden" : "video-visible"}
                 videoPath={videoMp4}
@@ -152,8 +152,8 @@ export default function App() {
                 {...hideVideoProps}
               />
               {videoLoaded && (
-                <>
-                  <Header ref={headerRef}>
+                <div ref={pageRef} className="page-container">
+                  <Header>
                     <Navigation />
                     <Hero />
                     <CookieBanner />
@@ -162,9 +162,9 @@ export default function App() {
                     <AboutUs />
                   </main>
                   <Footer />
-                </>
+                </div>
               )}
-            </>
+            </div>
           }
         />
         {/* Podstrona Historia */}
