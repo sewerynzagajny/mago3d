@@ -3,7 +3,7 @@ import photo1 from "../../assets/about_us/about-us-1.webp";
 
 export default function Mission({ className = "" }) {
   return (
-    <div className={`${className}__mission`}>
+    <div id="o-nas" className={`${className}__mission`}>
       <ScrollEffectContainer
         totalImages={0}
         threshold={0.1}

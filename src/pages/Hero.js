@@ -26,9 +26,14 @@ export default function Hero() {
             Tworzymy unikalne produkty i akcesoria, które zaskarbiły sobie
             uznanie wielu zadowolonych klientów. <br /> Sprawdź naszą ofertę.
           </p>{" "}
-          <Btn className=" btn hero__btn" as={Link} to="/asortyment">
-            Zobacz Produkty!
-          </Btn>
+          <div className="hero__buttons">
+            <Btn className=" btn hero__btn" as={Link} to="/asortyment">
+              Zobacz Produkty!
+            </Btn>
+            <Btn className=" btn hero__btn" as={Link} to="/#o-nas">
+              O nas &darr;
+            </Btn>
+          </div>
         </div>
       </section>
     </>

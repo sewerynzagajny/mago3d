@@ -114,7 +114,12 @@ export default function App() {
       } else if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          // element.scrollIntoView({ behavior: "smooth" });
+          const offsetTop = element.offsetTop - 100; // Offset 100px od górnego elementu
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth",
+          });
         }
       } else if (!hash) {
         window.scrollTo({ top: 0, behavior: "smooth" });
