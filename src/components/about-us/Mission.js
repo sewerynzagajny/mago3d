@@ -13,7 +13,7 @@ export default function Mission({ className = "" }) {
       >
         <div className={`${className}__container`}>
           <h2 className="heading-secondary">O nas</h2>
-          <h3 className="heading-tertiary">Idea i nasze misja</h3>
+          <h3 className="heading-tertiary">Idea i nasza misja</h3>
           <div className="grid-2-col-about-us grid-center-justify u-margin-bottom-medium">
             <p className={`${className}__container__content all-line`}>
               {" "}

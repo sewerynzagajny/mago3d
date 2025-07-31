@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CookieBaner from "../components/CookieBanner";
@@ -8,8 +8,20 @@ import videomp4 from "../assets/materials/video-materials-1.mp4";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import { debounce } from "lodash";
 import SEOHead from "../components/SEOHead";
+import { useNavigationType } from "react-router-dom";
 
 export default function Materials() {
+  // Klucz specyficzny dla tej strony
+  const FLAG_KEY = "materials-page-flag";
+  const navigationType = useNavigationType();
+  if (typeof window !== "undefined" && navigationType !== "POP") {
+    sessionStorage.removeItem(FLAG_KEY);
+  }
+
+  const [pageVisited, setPageVisited] = useState(() => {
+    const savedFlag = sessionStorage.getItem(FLAG_KEY);
+    return savedFlag === "true";
+  });
   const [flag, setFlag] = useState(false);
   const [rootMargin, setRootMargin] = useState("220px");
   const rootMarginMobile = "150%";
@@ -36,6 +48,50 @@ export default function Materials() {
       text: "Widoczne warstwy w porównaniu do SLA (żywicy)",
     },
   ];
+
+  // useEffect(() => {
+  //   if (navigationType !== "POP") {
+  //     sessionStorage.removeItem(FLAG_KEY);
+  //     setPageVisited(false);
+  //     setFlag(false);
+  //   }
+  // }, [navigationType]);
+
+  // Zapisz flagę do sessionStorage gdy się zmieni
+  useEffect(() => {
+    if (pageVisited) {
+      sessionStorage.setItem(FLAG_KEY, "true");
+    }
+  }, [pageVisited]);
+
+  // Wyczyść flagę przy opuszczeniu strony (nowa nawigacja)
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      const navigationEntry = performance.getEntriesByType("navigation")[0];
+      if (navigationEntry && navigationEntry.type !== "back_forward") {
+        sessionStorage.removeItem(FLAG_KEY);
+      }
+    };
+
+    // Lepsze rozwiązanie - użyj Page Visibility API
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        // Sprawdź czy użytkownik opuszcza stronę przez nawigację
+        const navigation = performance.getEntriesByType("navigation")[0];
+        if (navigation && navigation.type !== "back_forward") {
+          sessionStorage.removeItem(FLAG_KEY);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   useEffect(() => {
     const updateRootMargin = () => {
@@ -181,41 +237,65 @@ export default function Materials() {
                   </video>
                 </figure>
               </div>
-              <div className="second-column content">
-                <ScrollEffectContainer
-                  totalImages={0}
-                  threshold={0}
-                  animationTime={0.3}
-                  animationTransform="translateY(2rem)"
-                  // rootMargin="-320px"
-                  rootMargin={rootMargin}
-                  flag={() => setFlag(true)}
-                >
+              {!pageVisited ? (
+                <div className="second-column content">
+                  <ScrollEffectContainer
+                    totalImages={0}
+                    threshold={0}
+                    animationTime={0.3}
+                    animationTransform="translateY(2rem)"
+                    // rootMargin="-320px"
+                    rootMargin={rootMargin}
+                    flag={() => {
+                      setFlag(true);
+                      setTimeout(() => {
+                        setPageVisited(true);
+                      }, 1600);
+                    }}
+                  >
+                    <h1 className="heading-fourth">Kluczowe cechy</h1>
+                  </ScrollEffectContainer>
+                  {flag && (
+                    <ul className="materials__container__content">
+                      {listItems.map((item, index) => (
+                        <ScrollEffectContainer
+                          key={index}
+                          totalImages={0}
+                          threshold={0}
+                          animationTime={0.3}
+                          animationTransform="translateY(6rem)"
+                          animationDelay={(index + 1) * 0.4}
+                          rootMargin={rootMarginMobile}
+                        >
+                          <li className="materials__container__content--list">
+                            {item.title}
+                          </li>
+                          <li className="materials__container__content--text-list u-margin-bottom-xsmall">
+                            {item.text}
+                          </li>
+                        </ScrollEffectContainer>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ) : (
+                <div className="second-column content">
                   <h1 className="heading-fourth">Kluczowe cechy</h1>
-                </ScrollEffectContainer>
-                {flag && (
+
                   <ul className="materials__container__content">
                     {listItems.map((item, index) => (
-                      <ScrollEffectContainer
-                        key={index}
-                        totalImages={0}
-                        threshold={0}
-                        animationTime={0.3}
-                        animationTransform="translateY(6rem)"
-                        animationDelay={(index + 1) * 0.4}
-                        rootMargin={rootMarginMobile}
-                      >
+                      <>
                         <li className="materials__container__content--list">
                           {item.title}
                         </li>
                         <li className="materials__container__content--text-list u-margin-bottom-xsmall">
                           {item.text}
                         </li>
-                      </ScrollEffectContainer>
+                      </>
                     ))}
                   </ul>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </ScrollEffectContainer>
         </div>
