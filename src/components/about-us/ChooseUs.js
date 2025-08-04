@@ -112,7 +112,7 @@ export default function ChooseUs({ className = "" }) {
         setRootMargin2("-100px");
       } else if (window.innerWidth <= 960) {
         setRootMargin1("-260px");
-        setRootMargin1("-260px");
+        setRootMargin2("-260px");
       } else if (window.innerWidth <= 1216) {
         setRootMargin1("-300px");
         setRootMargin2("-300px");

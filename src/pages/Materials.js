@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CookieBaner from "../components/CookieBanner";
@@ -8,19 +8,42 @@ import videomp4 from "../assets/materials/video-materials-1.mp4";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import { debounce } from "lodash";
 import SEOHead from "../components/SEOHead";
-import { useNavigationType } from "react-router-dom";
+import { useLocation, useNavigationType } from "react-router-dom";
 
 export default function Materials() {
   // Klucz specyficzny dla tej strony
   const FLAG_KEY = "materials-page-flag";
   const navigationType = useNavigationType();
-  if (typeof window !== "undefined" && navigationType !== "POP") {
-    sessionStorage.removeItem(FLAG_KEY);
-  }
+  const location = useLocation();
+
+  // Funkcja do sprawdzania czy to nawigacja wstecz/wprzód
+  const isBackForwardNavigation = useCallback(() => {
+    if (typeof window === "undefined") return false;
+
+    // Sprawdź useNavigationType
+    if (navigationType === "POP") return true;
+
+    // Sprawdź performance API
+    const navigationEntry = performance.getEntriesByType("navigation")[0];
+    if (navigationEntry && navigationEntry.type === "back_forward") return true;
+
+    // Dla PUSH i REPLACE - zawsze traktuj jako nową nawigację
+    return false;
+  }, [navigationType]);
+
+  // Czyszczenie flag przy nowej nawigacji (nie back/forward)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!isBackForwardNavigation()) {
+        sessionStorage.removeItem(FLAG_KEY);
+      }
+    }
+  }, [location.pathname, isBackForwardNavigation]);
 
   const [pageVisited, setPageVisited] = useState(() => {
+    if (typeof window === "undefined") return false;
     const savedFlag = sessionStorage.getItem(FLAG_KEY);
-    return savedFlag === "true";
+    return savedFlag === "true" && isBackForwardNavigation();
   });
   const [flag, setFlag] = useState(false);
   const [rootMargin, setRootMargin] = useState("220px");
@@ -64,34 +87,34 @@ export default function Materials() {
     }
   }, [pageVisited]);
 
-  // Wyczyść flagę przy opuszczeniu strony (nowa nawigacja)
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      const navigationEntry = performance.getEntriesByType("navigation")[0];
-      if (navigationEntry && navigationEntry.type !== "back_forward") {
-        sessionStorage.removeItem(FLAG_KEY);
-      }
-    };
+  // // Wyczyść flagę przy opuszczeniu strony (nowa nawigacja)
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     const navigationEntry = performance.getEntriesByType("navigation")[0];
+  //     if (navigationEntry && navigationEntry.type !== "back_forward") {
+  //       sessionStorage.removeItem(FLAG_KEY);
+  //     }
+  //   };
 
-    // Lepsze rozwiązanie - użyj Page Visibility API
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        // Sprawdź czy użytkownik opuszcza stronę przez nawigację
-        const navigation = performance.getEntriesByType("navigation")[0];
-        if (navigation && navigation.type !== "back_forward") {
-          sessionStorage.removeItem(FLAG_KEY);
-        }
-      }
-    };
+  //   // Lepsze rozwiązanie - użyj Page Visibility API
+  //   const handleVisibilityChange = () => {
+  //     if (document.visibilityState === "hidden") {
+  //       // Sprawdź czy użytkownik opuszcza stronę przez nawigację
+  //       const navigation = performance.getEntriesByType("navigation")[0];
+  //       if (navigation && navigation.type !== "back_forward") {
+  //         sessionStorage.removeItem(FLAG_KEY);
+  //       }
+  //     }
+  //   };
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    window.addEventListener("beforeunload", handleBeforeUnload);
+  //   document.addEventListener("visibilitychange", handleVisibilityChange);
+  //   window.addEventListener("beforeunload", handleBeforeUnload);
 
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
+  //     window.removeEventListener("beforeunload", handleBeforeUnload);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const updateRootMargin = () => {
@@ -285,14 +308,14 @@ export default function Materials() {
 
                   <ul className="materials__container__content">
                     {listItems.map((item, index) => (
-                      <>
+                      <React.Fragment key={index}>
                         <li className="materials__container__content--list">
                           {item.title}
                         </li>
                         <li className="materials__container__content--text-list u-margin-bottom-xsmall">
                           {item.text}
                         </li>
-                      </>
+                      </React.Fragment>
                     ))}
                   </ul>
                 </div>
