@@ -15,6 +15,9 @@
   font-family: $font-primary;
   padding: 2rem 0;
   overflow: hidden;
+  //
+  flex-shrink: 0;
+  min-width: 100%;
 }
 
 .scrolling-text_inner.direction-left > div {
