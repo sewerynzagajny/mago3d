@@ -15,19 +15,19 @@
   font-family: $font-primary;
   padding: 2rem 0;
   overflow: hidden;
-  //
-  flex-shrink: 0;
   min-width: 100%;
-}
-
-.scrolling-text_inner.direction-left > div {
-  animation: marquee-left 20s linear infinite;
 }
 
 .scrolling-text_inner > div {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  width: max-content;
+}
+
+.scrolling-text_inner.direction-left > div {
+  animation: marquee-left 20s linear infinite;
+  will-change: transform;
 }
 
 .scrolling-text__item {
