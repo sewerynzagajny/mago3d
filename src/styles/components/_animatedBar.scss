@@ -16,11 +16,6 @@
   padding: 2rem 0;
   overflow: hidden;
   min-width: 100%;
-  // Dodaj te właściwości dla płynniejszej animacji
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
 
 .scrolling-text_inner > div {
@@ -28,16 +23,10 @@
   align-items: center;
   flex-shrink: 0;
   width: max-content;
-  // Dodaj te właściwości
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .scrolling-text_inner.direction-left > div {
   animation: marquee-left 20s linear infinite;
-  // Dodaj dla lepszej wydajności na mobilnych
-  animation-fill-mode: both;
 }
 
 .scrolling-text__item {
@@ -48,11 +37,7 @@
   word-spacing: 2rem;
   letter-spacing: -0.025em;
   color: $font-color-primary;
-  // text-shadow: 0 0 1rem $btn-color-neon;
-  //
-  // Dodaj dla lepszej wydajności renderowania
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 0 1rem $btn-color-neon;
 }
 
 .scrolling-text__item:empty {
