@@ -15,7 +15,7 @@
   font-family: $font-primary;
   padding: 2rem 0;
   overflow: hidden;
-  min-width: 200%;
+  min-width: 100%;
 }
 
 .scrolling-text_inner > div {
@@ -26,8 +26,10 @@
 }
 
 .scrolling-text_inner.direction-left > div {
-  animation: marquee-left 10s linear infinite;
-  will-change: transform;
+  animation: marquee-left 20s linear infinite;
+  // will-change: transform;
+  // backface-visibility: hidden;
+  // transform-style: preserve-3d;
 }
 
 .scrolling-text__item {
