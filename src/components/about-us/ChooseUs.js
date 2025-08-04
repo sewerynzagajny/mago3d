@@ -53,7 +53,8 @@ export default function ChooseUs({ className = "" }) {
 
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(false);
-  const [rootMargin, setRootMargin] = useState("220px");
+  const [rootMargin1, setRootMargin1] = useState("220px");
+  const [rootMargin2, setRootMargin2] = useState("220px");
   const rootMarginMobile = "150%";
 
   const chooseUsListItems = [
@@ -107,13 +108,17 @@ export default function ChooseUs({ className = "" }) {
   useEffect(() => {
     const updateRootMargin = () => {
       if (window.innerWidth <= 832) {
-        setRootMargin("-10px");
+        setRootMargin1("-80px");
+        setRootMargin2("-100px");
       } else if (window.innerWidth <= 960) {
-        setRootMargin("-260px");
+        setRootMargin1("-260px");
+        setRootMargin1("-260px");
       } else if (window.innerWidth <= 1216) {
-        setRootMargin("-300px");
+        setRootMargin1("-300px");
+        setRootMargin2("-300px");
       } else {
-        setRootMargin("-320px");
+        setRootMargin1("-320px");
+        setRootMargin2("-320px");
       }
     };
 
@@ -141,7 +146,7 @@ export default function ChooseUs({ className = "" }) {
                 threshold={0}
                 animationTime={0.3}
                 animationTransform="translateY(2rem)"
-                rootMargin={rootMargin}
+                rootMargin={rootMargin1}
                 flag={() => {
                   setFlag1(true);
                   setTimeout(() => {
@@ -204,7 +209,7 @@ export default function ChooseUs({ className = "" }) {
                 threshold={0}
                 animationTime={0.3}
                 animationTransform="translateY(2rem)"
-                rootMargin={rootMargin}
+                rootMargin={rootMargin2}
                 flag={() => {
                   setFlag2(true);
                   setTimeout(() => {
@@ -268,7 +273,7 @@ export default function ChooseUs({ className = "" }) {
               animationTime={0.6}
               animationDelay={2.4}
               animationTransform="translateY(2rem)"
-              // rootMargin="-50%"
+              rootMargin={rootMarginMobile}
             >
               <div className="u-text-line-center">
                 <Btn className="btn hero__btn" as={Link} to="/kontakt">

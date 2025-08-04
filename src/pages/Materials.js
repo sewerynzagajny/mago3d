@@ -96,7 +96,8 @@ export default function Materials() {
   useEffect(() => {
     const updateRootMargin = () => {
       if (window.innerWidth <= 832) {
-        setRootMargin("-10px");
+        // setRootMargin("-10px");
+        setRootMargin("-80px");
       } else if (window.innerWidth <= 960) {
         setRootMargin("-260px");
       } else if (window.innerWidth <= 1216) {
