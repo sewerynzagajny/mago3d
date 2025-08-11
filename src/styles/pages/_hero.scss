@@ -68,9 +68,9 @@
     gap: 2.4rem;
     flex-wrap: wrap;
 
-    @media only screen and (max-width: 40rem) {
-      justify-content: center;
-    }
+    // @media only screen and (max-width: 40rem) {
+    //   justify-content: center;
+    // }
   }
 
   &__btn {

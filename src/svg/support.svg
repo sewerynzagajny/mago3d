@@ -1,0 +1,10 @@
+<!-- Wsparcie po sprzedaży (headset / support) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" aria-label="Wsparcie po sprzedaży">
+  <g fill="none" stroke="#52d552" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 13v-1a8 8 0 0 1 16 0v1" />
+    <rect x="3.2" y="13.5" width="3.6" height="3.6" rx="0.9" />
+    <rect x="17.2" y="13.5" width="3.6" height="3.6" rx="0.9" />
+    <path d="M8 10v1" />
+    <path d="M16 10v1" />
+  </g>
+</svg>

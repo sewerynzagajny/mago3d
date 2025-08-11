@@ -1,0 +1,7 @@
+<!-- Druk i kontrola jakości (check / shield) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" aria-label="Kontrola jakości">
+  <g fill="none" stroke="#52d552" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2 L20 5v6c0 5-4 9-8 9s-8-4-8-9V5z" />
+    <path d="M9.2 12.5l1.8 1.5 3.8-4" />
+  </g>
+</svg>

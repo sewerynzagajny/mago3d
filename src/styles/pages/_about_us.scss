@@ -1,5 +1,5 @@
 .about-us {
-  padding: 0 0 3.2rem 0;
+  // padding: 0 0 3.2rem 0;
   // height: 300rem;
 
   &__mission {
@@ -7,7 +7,9 @@
   }
 
   &__choose-us {
-    min-height: 80rem;
+    // padding-bottom: 3.2rem;
+    // min-height: 80rem;
+    min-height: 94.6rem;
     &::before {
       content: "";
       position: fixed;
@@ -59,5 +61,15 @@
     &__content {
       text-align: justify;
     }
+  }
+  &__how-we-work {
+    // height: 100vh;
+    // width: 100vw;
+    background-image: url(../../assets/about_us/background2.webp);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    // animation: fadeInSlide 1s ease-in-out forwards;
   }
 }
