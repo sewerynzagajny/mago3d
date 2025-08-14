@@ -9,7 +9,8 @@
   &__choose-us {
     // padding-bottom: 3.2rem;
     // min-height: 80rem;
-    min-height: 94.6rem;
+    // min-height: 94.6rem;
+    min-height: 120rem;
     &::before {
       content: "";
       position: fixed;
@@ -72,16 +73,4 @@
     z-index: -1;
     // animation: fadeInSlide 1s ease-in-out forwards;
   }
-}
-
-.is-hidden {
-  opacity: 0;
-  transform: translateY(3rem);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
