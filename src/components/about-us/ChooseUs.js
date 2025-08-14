@@ -116,7 +116,7 @@ export default function ChooseUs({ className = "" }) {
         setRootMargin1("-80px");
         setRootMargin2("-100px");
         // Dla landscape użyj mniejszej wartości rootMargin
-        setRootMarginMobile(isLandscape ? "0%" : "150%");
+        setRootMarginMobile(isLandscape ? "-50%" : "150%");
       } else if (window.innerWidth <= 960) {
         setRootMargin1("-260px");
         setRootMargin2("-260px");
