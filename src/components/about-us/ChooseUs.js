@@ -55,7 +55,8 @@ export default function ChooseUs({ className = "" }) {
   const [flag2, setFlag2] = useState(false);
   const [rootMargin1, setRootMargin1] = useState("220px");
   const [rootMargin2, setRootMargin2] = useState("220px");
-  const rootMarginMobile = "150%";
+  // const rootMarginMobile = "150%";
+  const [rootMarginMobile, setRootMarginMobile] = useState("150%");
 
   const chooseUsListItems = [
     {
@@ -107,9 +108,15 @@ export default function ChooseUs({ className = "" }) {
 
   useEffect(() => {
     const updateRootMargin = () => {
+      // Sprawdź czy to orientacja landscape na mobile
+      const isLandscape =
+        window.innerHeight < window.innerWidth && window.innerWidth <= 832;
+
       if (window.innerWidth <= 832) {
         setRootMargin1("-80px");
         setRootMargin2("-100px");
+        // Dla landscape użyj mniejszej wartości rootMargin
+        setRootMarginMobile(isLandscape ? "50%" : "150%");
       } else if (window.innerWidth <= 960) {
         setRootMargin1("-260px");
         setRootMargin2("-260px");
