@@ -1,14 +1,16 @@
 .hero {
-  // padding: 9.2rem 14.6rem;
-  padding: 11.2rem 14.6rem;
+  // padding: 11.2rem 14.6rem;
+  padding: 12.2rem 14.6rem 11.2rem;
   // height: 100vh;
   min-height: calc(100vh - 10rem);
 
   @media only screen and (max-width: 78rem) {
-    padding: 11.2rem 9.6rem;
+    // padding: 11.2rem 9.6rem;
+    padding: 12.2rem 9.6rem 11.2rem;
   }
   @media only screen and (max-width: 40rem) {
-    padding: 11.2rem 3.2rem;
+    // padding: 11.2rem 3.2rem;
+    padding: 12.2rem 3.2rem 11.2rem;
   }
 
   &__title {
