@@ -171,7 +171,7 @@ export default function ChooseUs({ className = "" }) {
                       totalImages={0}
                       threshold={0}
                       animationTime={0.3}
-                      animationTransform="translateY(6rem)"
+                      animationTransform="translateY(2rem)"
                       animationDelay={(index + 1) * 0.4}
                       rootMargin={rootMarginMobile}
                     >
@@ -234,7 +234,7 @@ export default function ChooseUs({ className = "" }) {
                       totalImages={0}
                       threshold={0}
                       animationTime={0.3}
-                      animationTransform="translateY(6rem)"
+                      animationTransform="translateY(2rem)"
                       animationDelay={(index + 1) * 0.4}
                       rootMargin={rootMarginMobile}
                     >
