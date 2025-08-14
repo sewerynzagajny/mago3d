@@ -294,7 +294,7 @@
 //   );
 // }
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ScrollEffectContainer from "../ScrollEffectContainer";
 import { debounce } from "lodash";
 import { useLocation, useNavigationType, Link } from "react-router-dom";
@@ -311,38 +311,36 @@ export default function ChooseUs({ className = "" }) {
     if (typeof window === "undefined") return false;
     if (navigationType === "POP") return true;
     const navigationEntry = performance.getEntriesByType("navigation")[0];
-    return navigationEntry?.type === "back_forward" || false;
+    if (navigationEntry && navigationEntry.type === "back_forward") return true;
+    return false;
   }, [navigationType]);
 
   useEffect(() => {
-    if (!isBackForwardNavigation()) {
+    if (typeof window !== "undefined" && !isBackForwardNavigation()) {
       sessionStorage.removeItem(FLAG_KEY_1);
       sessionStorage.removeItem(FLAG_KEY_2);
     }
   }, [location.pathname, isBackForwardNavigation]);
 
   const [pageVisited1, setPageVisited1] = useState(() => {
-    const savedFlag = sessionStorage.getItem(FLAG_KEY_1);
-    return savedFlag === "true" && isBackForwardNavigation();
+    if (typeof window === "undefined") return false;
+    return (
+      sessionStorage.getItem(FLAG_KEY_1) === "true" && isBackForwardNavigation()
+    );
   });
+
   const [pageVisited2, setPageVisited2] = useState(() => {
-    const savedFlag = sessionStorage.getItem(FLAG_KEY_2);
-    return savedFlag === "true" && isBackForwardNavigation();
+    if (typeof window === "undefined") return false;
+    return (
+      sessionStorage.getItem(FLAG_KEY_2) === "true" && isBackForwardNavigation()
+    );
   });
 
   const [flag1, setFlag1] = useState(false);
   const [flag2, setFlag2] = useState(false);
-  const [rootMargin1, setRootMargin1] = useState("-320px");
-  const [rootMargin2, setRootMargin2] = useState("-320px");
+  const [rootMargin1, setRootMargin1] = useState("220px");
+  const [rootMargin2, setRootMargin2] = useState("220px");
   const rootMarginMobile = "150%";
-
-  const [height1, setHeight1] = useState(null);
-  const [height2, setHeight2] = useState(null);
-  const [heightBtn, setHeightBtn] = useState(null);
-
-  const refList1 = useRef(null);
-  const refList2 = useRef(null);
-  const refBtn = useRef(null);
 
   const chooseUsListItems = [
     {
@@ -368,6 +366,7 @@ export default function ChooseUs({ className = "" }) {
   useEffect(() => {
     if (pageVisited1) sessionStorage.setItem(FLAG_KEY_1, "true");
   }, [pageVisited1]);
+
   useEffect(() => {
     if (pageVisited2) sessionStorage.setItem(FLAG_KEY_2, "true");
   }, [pageVisited2]);
@@ -394,13 +393,6 @@ export default function ChooseUs({ className = "" }) {
     return () => window.removeEventListener("resize", debouncedUpdate);
   }, []);
 
-  // Pomiar wysokości po pierwszym renderze
-  useEffect(() => {
-    if (refList1.current) setHeight1(refList1.current.offsetHeight);
-    if (refList2.current) setHeight2(refList2.current.offsetHeight);
-    if (refBtn.current) setHeightBtn(refBtn.current.offsetHeight);
-  }, []);
-
   return (
     <div className={`${className}__choose-us`}>
       <div className={`${className}__container`}>
@@ -423,36 +415,32 @@ export default function ChooseUs({ className = "" }) {
               >
                 <h3 className="heading-tertiary">Dlaczego warto nas wybrać?</h3>
               </ScrollEffectContainer>
-
-              <div style={{ height: height1 || "auto" }}>
-                {flag1 && (
-                  <ul
-                    ref={refList1}
-                    className={`${className}__choose-us__list`}
-                  >
-                    {chooseUsListItems.map((item, index) => (
-                      <ScrollEffectContainer
-                        key={index}
-                        totalImages={0}
-                        threshold={0}
-                        animationTime={0.3}
-                        animationTransform="translateY(6rem)"
-                        animationDelay={(index + 1) * 0.4}
-                        rootMargin={rootMarginMobile}
-                      >
-                        <li className={`${className}__choose-us__list--item`}>
-                          {item.text}
-                          {item.linkText && item.linkUrl && (
-                            <a href={item.linkUrl} rel="noopener noreferrer">
-                              {item.linkText}
-                            </a>
-                          )}
-                        </li>
-                      </ScrollEffectContainer>
-                    ))}
-                  </ul>
-                )}
-              </div>
+              {flag1 ? (
+                <ul className={`${className}__choose-us__list`}>
+                  {chooseUsListItems.map((item, index) => (
+                    <ScrollEffectContainer
+                      key={index}
+                      totalImages={0}
+                      threshold={0}
+                      animationTime={0.3}
+                      animationTransform="translateY(6rem)"
+                      animationDelay={(index + 1) * 0.4}
+                      rootMargin={rootMarginMobile}
+                    >
+                      <li className={`${className}__choose-us__list--item`}>
+                        {item.text}
+                        {item.linkText && item.linkUrl && (
+                          <a href={item.linkUrl} rel="noopener noreferrer">
+                            {item.linkText}
+                          </a>
+                        )}
+                      </li>
+                    </ScrollEffectContainer>
+                  ))}
+                </ul>
+              ) : (
+                <div style={{ height: "12rem" }} /> // placeholder
+              )}
             </div>
           ) : (
             <div>
@@ -491,36 +479,32 @@ export default function ChooseUs({ className = "" }) {
               >
                 <h3 className="heading-tertiary">Czym się zajmujemy?</h3>
               </ScrollEffectContainer>
-
-              <div style={{ height: height2 || "auto" }}>
-                {flag2 && (
-                  <ul
-                    ref={refList2}
-                    className={`${className}__choose-us__list`}
-                  >
-                    {WeDoListItems.map((item, index) => (
-                      <ScrollEffectContainer
-                        key={index}
-                        totalImages={0}
-                        threshold={0}
-                        animationTime={0.3}
-                        animationTransform="translateY(6rem)"
-                        animationDelay={(index + 1) * 0.4}
-                        rootMargin={rootMarginMobile}
-                      >
-                        <li className={`${className}__choose-us__list--item`}>
-                          {item.text}
-                          {item.linkText && item.linkUrl && (
-                            <a href={item.linkUrl} rel="noopener noreferrer">
-                              {item.linkText}
-                            </a>
-                          )}
-                        </li>
-                      </ScrollEffectContainer>
-                    ))}
-                  </ul>
-                )}
-              </div>
+              {flag2 ? (
+                <ul className={`${className}__choose-us__list`}>
+                  {WeDoListItems.map((item, index) => (
+                    <ScrollEffectContainer
+                      key={index}
+                      totalImages={0}
+                      threshold={0}
+                      animationTime={0.3}
+                      animationTransform="translateY(6rem)"
+                      animationDelay={(index + 1) * 0.4}
+                      rootMargin={rootMarginMobile}
+                    >
+                      <li className={`${className}__choose-us__list--item`}>
+                        {item.text}
+                        {item.linkText && item.linkUrl && (
+                          <a href={item.linkUrl} rel="noopener noreferrer">
+                            {item.linkText}
+                          </a>
+                        )}
+                      </li>
+                    </ScrollEffectContainer>
+                  ))}
+                </ul>
+              ) : (
+                <div style={{ height: "10rem" }} /> // placeholder
+              )}
             </div>
           ) : (
             <div>
@@ -546,24 +530,24 @@ export default function ChooseUs({ className = "" }) {
 
         {/* Przycisk */}
         {!pageVisited2 ? (
-          <div style={{ height: heightBtn || "auto" }}>
-            {flag2 && (
-              <ScrollEffectContainer
-                totalImages={0}
-                threshold={0}
-                animationTime={0.6}
-                animationDelay={2.4}
-                animationTransform="translateY(2rem)"
-                rootMargin={rootMarginMobile}
-              >
-                <div ref={refBtn} className="u-text-line-center">
-                  <Btn className="btn hero__btn" as={Link} to="/kontakt">
-                    Skontaktuj się z nami!
-                  </Btn>
-                </div>
-              </ScrollEffectContainer>
-            )}
-          </div>
+          flag2 ? (
+            <ScrollEffectContainer
+              totalImages={0}
+              threshold={0}
+              animationTime={0.6}
+              animationDelay={2.4}
+              animationTransform="translateY(2rem)"
+              rootMargin={rootMarginMobile}
+            >
+              <div className="u-text-line-center">
+                <Btn className="btn hero__btn" as={Link} to="/kontakt">
+                  Skontaktuj się z nami!
+                </Btn>
+              </div>
+            </ScrollEffectContainer>
+          ) : (
+            <div style={{ height: "5rem" }} /> // placeholder
+          )
         ) : (
           <div className="u-text-line-center">
             <Btn className="btn hero__btn" as={Link} to="/kontakt">
