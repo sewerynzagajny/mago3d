@@ -57,6 +57,12 @@
 
   &__container {
     @extend %container-style;
+    @media only screen and (max-width: 76rem) {
+      padding-top: 6.4rem !important;
+    }
+    @media only screen and (max-width: 60rem) {
+      padding-top: 6.4rem !important;
+    }
 
     &__content {
       text-align: justify;

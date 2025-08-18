@@ -1,8 +1,10 @@
 <!-- Dobór materiałów (filament) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" aria-label="Dobór materiałów">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 14 24" width="48" height="48" aria-label="Dobór materiałów">
   <g fill="none" stroke="#52d552" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="8" r="4.2" />
     <path d="M8 12.2v3.8a1.8 1.8 0 0 0 1.8 1.8h4.4A1.8 1.8 0 0 0 16 16v-3.8" />
     <path d="M12 4v1.6" />
   </g>
 </svg>
+
+<!--  viewBox="0 0 24 24"-->

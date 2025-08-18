@@ -34,7 +34,7 @@ export default function HowWeWork({ className = "" }) {
           >
             <div className="1-col background">
               <div className="flex-how-we-work u-margin-bottom-xsmall">
-                <ChatIcon className="icon-follow-and-shop" />
+                <ChatIcon className="icon-how-we-work " />
                 <h4 className="heading-fourth-secondary ">Konsultacja</h4>
               </div>
 
@@ -45,7 +45,7 @@ export default function HowWeWork({ className = "" }) {
                 Łącząymy Twoje oczekiwania z naszym doświadczeniem.
               </p>
               <div className="flex-how-we-work u-margin-bottom-xsmall">
-                <CadIcon className="icon-follow-and-shop" />
+                <CadIcon className="icon-how-we-work " />
                 <h4 className="heading-fourth-secondary ">Projektowanie</h4>
               </div>
               <p
@@ -55,7 +55,7 @@ export default function HowWeWork({ className = "" }) {
                 drukujemy prototyp, by dopracować każdy detal przed produkcją.
               </p>
               <div className="flex-how-we-work u-margin-bottom-xsmall">
-                <FilamentIcon className="icon-follow-and-shop" />
+                <FilamentIcon className="icon-how-we-work " />
                 <h4 className="heading-fourth-secondary ">Dobór technologii</h4>
               </div>
               <p className={`${className}__container__content u-font-strong`}>
@@ -74,7 +74,7 @@ export default function HowWeWork({ className = "" }) {
           >
             <div className="2-col background">
               <div className="flex-how-we-work u-margin-bottom-xsmall">
-                <CheckIcon className="icon-follow-and-shop" />
+                <CheckIcon className="icon-how-we-work " />
                 <h4 className="heading-fourth-secondary ">Kontrola jakości</h4>
               </div>
               <p
@@ -84,7 +84,7 @@ export default function HowWeWork({ className = "" }) {
                 wymiary, powierzchnię oraz funkcjonalność.
               </p>
               <div className="flex-how-we-work u-margin-bottom-xsmall">
-                <PackageIcon className="icon-follow-and-shop" />
+                <PackageIcon className="icon-how-we-work " />
                 <h4 className="heading-fourth-secondary ">Wysyłka</h4>
               </div>
               <p
@@ -94,7 +94,7 @@ export default function HowWeWork({ className = "" }) {
                 bezpiecznie i wysyłamy pod wskazany adres.
               </p>
               <div className="flex-how-we-work u-margin-bottom-xsmall">
-                <SupportIcon className="icon-follow-and-shop" />
+                <SupportIcon className="icon-how-we-work " />
                 <h4 className="heading-fourth-secondary ">Wsparcie</h4>
               </div>
               <p className={`${className}__container__content u-font-strong`}>

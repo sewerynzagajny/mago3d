@@ -1,5 +1,5 @@
 <!-- Projektowanie (model 3D / cube) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" aria-label="Projektowanie">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 24 24" width="48" height="48" aria-label="Projektowanie">
   <g fill="none" stroke="#52d552" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 2 L20 6.5 V15.5 L12 20 L4 15.5 V6.5 Z" />
     <path d="M12 2 V12" />
@@ -7,3 +7,5 @@
     <path d="M4 6.5 L12 11" />
   </g>
 </svg>
+
+<!-- viewBox="0 0 24 24" -->
