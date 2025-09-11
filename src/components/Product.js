@@ -190,7 +190,10 @@ export default function Product({
     //   x: e.clientX + window.scrollX,
     //   y: e.clientY + window.scrollY,
     // });
-    setMenuVisible(true);
+    setTimeout(() => {
+      setMenuVisible(true);
+    }, 60);
+
     if (onMenuChange) onMenuChange(true); // Przekazanie wartości do rodzica
   }
 

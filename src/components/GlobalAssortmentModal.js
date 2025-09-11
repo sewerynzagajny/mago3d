@@ -3,8 +3,10 @@ import { useLocation } from "react-router-dom";
 import AssortmentModal from "./AssortmentModal";
 import ProductList from "./ProductList";
 import { ReactComponent as ShopIcon } from "../svg//shopping-bag.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function GlobalAssortmentModal() {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const [onMenuVisible, setOnMenuVisible] = useState(false);
   const [orderModalProductId, setOrderModalProductId] = useState(null);
@@ -46,7 +48,13 @@ export default function GlobalAssortmentModal() {
             ? " assortment-modal-btn--open"
             : ""
         }`}
-        onClick={() => setVisible((prev) => !prev)}
+        onClick={() => {
+          if (window.innerWidth <= 576) {
+            navigate("/asortyment");
+          } else {
+            setVisible((prev) => !prev);
+          }
+        }}
         aria-label="Pokaż asortyment"
       >
         <span className={`icon-store${visible ? " icon-hidden" : ""}`}>
