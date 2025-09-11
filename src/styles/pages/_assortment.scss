@@ -341,3 +341,10 @@
 //   pointer-events: none;
 //   z-index: 2;
 // }
+
+.assortment-modal {
+  scrollbar-width: none; /* Firefox */
+}
+.assortment-modal::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}

@@ -1,0 +1,47 @@
+.global-assortment-modal {
+  position: relative;
+}
+
+.modal-overlay {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  transition: opacity 0.3s;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.assortment-modal-btn {
+  position: fixed;
+  top: 14rem;
+  right: 4.8rem;
+  z-index: 1000;
+  background: $font-color-primary;
+  opacity: 0.7;
+  height: 4rem;
+  width: 4rem;
+  border: none;
+  border-radius: 10rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  &--hidden {
+    right: -100vw;
+  }
+  &--open {
+    right: 30%;
+  }
+}

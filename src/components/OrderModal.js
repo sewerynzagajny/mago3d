@@ -105,7 +105,7 @@ export default function OrderModal({
         left: anchorRect.left + window.scrollX,
         width: anchorRect.width,
         // height: anchorRect.height,
-        zIndex: 101,
+        zIndex: 999,
       }
     : {
         position: "fixed",

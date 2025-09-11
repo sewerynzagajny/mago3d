@@ -68,7 +68,8 @@ export default function ContextMenu({
         // top: position.y
         // left: position.x,
 
-        zIndex: 100,
+        // zIndex: 100,
+        zIndex: 999,
         transform: "translateX(-50%)",
         // transition: "top 0.1s",
       }}

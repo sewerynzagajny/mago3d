@@ -3,7 +3,8 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CookieBaner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
-import Product from "../components/Product";
+// import Product from "../components/Product";
+import ProductList from "../components/ProductList";
 import { products } from "../data/products";
 import SEOHead from "../components/SEOHead";
 import { generateAssortmentUrl, siteConfig } from "../config/siteConfig";
@@ -62,41 +63,12 @@ export default function Assortment() {
               <q>Lista naszych produktów</q>
             </h3>
 
-            <div className="assortment__container__products grid-3-col_assortment">
-              {/* Nakładka blokująca interakcje */}
-              {(onMenuVisible || orderModalProductId !== null) && (
-                <div
-                  style={{
-                    position: "absolute",
-                    zIndex: 10,
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    background: "rgba(255,255,255,0)",
-                    // cursor: "pointer",
-                  }}
-                  onClick={() => setOrderModalProductId(null)}
-                />
-              )}
-              {products.map((product, i) => (
-                <Product
-                  key={i}
-                  product={product}
-                  className="assortment__container__products__item"
-                  onMenuChange={setOnMenuVisible}
-                  setOrderModalVisible={(visible) =>
-                    setOrderModalProductId(visible ? product.id : null)
-                  }
-                  orderModalVisible={orderModalProductId === product.id}
-                  style={
-                    onMenuVisible || orderModalProductId !== null
-                      ? { opacity: "0.4" }
-                      : {}
-                  }
-                />
-              ))}
-            </div>
+            <ProductList
+              onMenuVisible={onMenuVisible}
+              setOnMenuVisible={setOnMenuVisible}
+              orderModalProductId={orderModalProductId}
+              setOrderModalProductId={setOrderModalProductId}
+            />
             {/* 
           <div className="assortment__container__btns">
           <Btn

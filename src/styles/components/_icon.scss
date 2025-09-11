@@ -25,3 +25,35 @@
   display: block;
   // vertical-align: middle;
 }
+
+.icon-shopping-bag {
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
+.icon-store,
+.icon-close {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+  opacity: 1;
+  pointer-events: none;
+
+  &-dimations {
+    font-size: 3.6rem;
+  }
+}
+
+.icon-hidden {
+  opacity: 0;
+}
+
+.icon-close {
+  opacity: 0;
+}
+
+.icon-close.icon-visible {
+  opacity: 1;
+}

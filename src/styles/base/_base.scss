@@ -38,3 +38,7 @@ video {
   pointer-events: none;
   user-select: none;
 }
+
+.scroll-locked {
+  overflow: hidden !important;
+}

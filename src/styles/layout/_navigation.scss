@@ -8,11 +8,12 @@
   padding: 1rem 6rem 0.5rem 6rem;
   background-color: transparent;
   transition: background-color 0.3s ease;
-  z-index: 1000;
+  z-index: 990;
   width: 100%;
 
   &--with-background {
     background-color: rgba($black, 0.7);
+    z-index: 1000;
   }
 
   &__logo img {

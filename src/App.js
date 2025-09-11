@@ -44,6 +44,7 @@ import USBConnect from "./pages/assortyment/USBConnect";
 import WypelnienieGablotek from "./pages/assortyment/WypelnienieGablotek";
 import HWSv12OG from "./pages/assortyment/HWSv12OG"; // Importujemy komponent HWSv12OG
 import { products } from "./data/products"; // Importujemy dane produktów
+import GlobalAssortmentModal from "./components/GlobalAssortmentModal";
 
 // Mapa komponentów
 const componentMap = {
@@ -134,6 +135,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTopOrAnchor />
+      <GlobalAssortmentModal />
       <Routes>
         {/* Główna strona */}
         <Route
@@ -158,6 +160,7 @@ export default function App() {
               />
               {videoLoaded && (
                 <div ref={pageRef} className="page-container">
+                  {/* <GlobalAssortmentModal inRouter={false} /> */}
                   <Header>
                     <Navigation />
                     <Hero />
