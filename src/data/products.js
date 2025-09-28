@@ -78,7 +78,42 @@ const HWSv12OGPhotos = {
   black: require("../assets/assortment/HWSv12OG/main_black.webp"),
 };
 
+const TSv7ProPhotos = {
+  black: require("../assets/assortment/TSv7PRO/main_black.webp"),
+};
+
 export const products = [
+  {
+    id: 19,
+    name: "Podstawka pod Thermomix TM7 TSv7PRO",
+    fullname:
+      "Podstawka deska tacka z kółkami pod Thermomix Termomiks TM7 TSv7PRO",
+    slug: "podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm7-tsv7PRO",
+    component: "TSv7PRO",
+    maxWords: 6,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: TSv7ProPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm7-czarna-tsv7pro-17907398308",
+          },
+        ],
+      },
+    ],
+    price: 199.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
   {
     id: 18,
     name: "Ekspozytor gablotek z oświetleniem do aut kolekcjonerskich 1:64 PREMIUM RLC",
