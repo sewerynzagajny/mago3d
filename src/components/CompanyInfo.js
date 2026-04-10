@@ -7,10 +7,11 @@ export default function CompanyInfo({ className = "" }) {
       <div className={className}>
         <p className={`${className}--heading`}>Dane:</p>
         <p className={`${className}--text`}>
-          <span className="company-name">MaGo3d</span> Mateusz Nowosielecki
+          <span className="company-name">MaGo3d</span>
         </p>
-        <p className={`${className}--text`}>NIP: 8512910330</p>
-        <p className={`${className}--text`}>REGON: 360483465</p>
+        {/* <p className={`${className}--text`}>Mateusz Nowosielecki</p> */}
+        {/* <p className={`${className}--text`}>NIP: 8512910330</p> */}
+        {/* <p className={`${className}--text`}>REGON: 360483465</p> */}
       </div>
 
       <div className={className}>

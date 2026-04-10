@@ -27,7 +27,7 @@ export default function Footer() {
           </Link>
           <p className="footer__logo-container--copyright">
             Copyright &copy; <span>{new Date().getFullYear()}</span> by{" "}
-            <span className="company-name">MaGo3d</span> <br />
+            <span className="company-name">Seweryn Zagajny</span> <br />
             All rights reserved.{" "}
             <Link
               to="/polityka-prywatnosci"

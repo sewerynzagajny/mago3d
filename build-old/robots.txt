@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Blokuj niepotrzebne strony
+Disallow: /test
+Disallow: /privacy
+
+# Sitemap
+Sitemap: https://mago3d.pl/sitemap.xml

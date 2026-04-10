@@ -44,6 +44,7 @@ import USBConnect from "./pages/assortyment/USBConnect";
 import WypelnienieGablotek from "./pages/assortyment/WypelnienieGablotek";
 import HWSv12OG from "./pages/assortyment/HWSv12OG"; // Importujemy komponent HWSv12OG
 import TSv7PRO from "./pages/assortyment/TSv7PRO";
+import Zawieszki from "./pages/assortyment/Zawieszki";
 import { products } from "./data/products"; // Importujemy dane produktów
 import GlobalAssortmentModal from "./components/GlobalAssortmentModal";
 
@@ -69,6 +70,7 @@ const componentMap = {
   WypelnienieGablotek: WypelnienieGablotek, // Dodajemy komponent WypelnienieGablotek do mapy
   HWSv12OG: HWSv12OG, // Dodajemy komponent HWSv12OG do mapy
   TSv7PRO: TSv7PRO,
+  Zawieszki: Zawieszki,
 };
 
 export default function App() {

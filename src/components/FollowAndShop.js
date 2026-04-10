@@ -76,7 +76,7 @@ export default function FollowAndShop({ className = "" }) {
 
       <li>
         <a
-          href="https://allegro.pl/uzytkownik/MaGo3d"
+          href="https://allegro.pl/uzytkownik/mkrzeminska16"
           className={`${className}__follow-and-shop--link--allegro`}
           target="_blank"
           rel="noopener noreferrer"

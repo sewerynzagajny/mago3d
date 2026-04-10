@@ -11,11 +11,11 @@ const TSv4Photos = {
   grey: require("../assets/assortment/TSv4/main_grey.webp"),
 };
 
-const TSv4ProPhotos = {
-  black: require("../assets/assortment/TSv4PRO/main_black.webp"),
-  white: require("../assets/assortment/TSv4PRO/main_white.webp"),
-  grey: require("../assets/assortment/TSv4PRO/main_grey.webp"),
-};
+// const TSv4ProPhotos = {
+//   black: require("../assets/assortment/TSv4PRO/main_black.webp"),
+//   white: require("../assets/assortment/TSv4PRO/main_white.webp"),
+//   grey: require("../assets/assortment/TSv4PRO/main_grey.webp"),
+// };
 
 const HWSv24SPhotos = {
   black: require("../assets/assortment/HWSv24S/main_black.webp"),
@@ -66,9 +66,9 @@ const przedluzkaPhotos = {
   black: require("../assets/assortment/Przedluzka/main_black.webp"),
 };
 
-const USBConnectPhotos = {
-  black: require("../assets/assortment/USBConnect/main_black.webp"),
-};
+// const USBConnectPhotos = {
+//   black: require("../assets/assortment/USBConnect/main_black.webp"),
+// };
 
 const WypelnienieGablotekPhotos = {
   black: require("../assets/assortment/WypelnienieGablotek/main_black.webp"),
@@ -82,7 +82,46 @@ const TSv7ProPhotos = {
   black: require("../assets/assortment/TSv7PRO/main_black.webp"),
 };
 
+const ZawieszkiPhotos = {
+  black: require("../assets/assortment/Zawieszki/main_black.webp"),
+};
+
 export const products = [
+  {
+    id: 20,
+    name: "Zawieszki na resoraki samochodziki Hot Wheels itp. na ścianę, gablotki itd.",
+    fullname:
+      "Zawieszki na resoraki samochodziki Hot Wheels itp. na ścianę, gablotki itd.",
+    slug: "zawieszki-na-resoraki-samochodziki-hot-wheels-itp-na-ścianę-gablotki-itd",
+    component: "Zawieszki",
+    maxWords: 6,
+    badge: "new",
+    thumbnailObjectPosition: "center center",
+    colors: [
+      {
+        name: "czarny",
+        nameEn: "black",
+        photo: ZawieszkiPhotos.black,
+        shoppingPlatform: [
+          {
+            name: "Etsy",
+            link: "https://www.etsy.com/pl/listing/4422965196/hot-wheels-car-hangers-for-walls-display?ref=shop_home_active_3&sts=1&logging_key=a5d262bc2fa0314be28ff6dd623bc6e8442487dd%3A4422965196",
+          },
+          {
+            name: "Allegro",
+            link: "https://allegro.pl/oferta/zawieszki-na-resoraki-samochodziki-hot-wheels-itp-na-sciane-gablotki-itd-18285636110",
+          },
+        ],
+      },
+    ],
+    price: 45.0,
+    get priceStringPl() {
+      return this.price.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
   {
     id: 19,
     name: "Podstawka pod Thermomix TM7 TSv7PRO",
@@ -101,12 +140,12 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm7-czarna-tsv7pro-17907398308",
+            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm7-czarna-tsv7pro-18285687382",
           },
         ],
       },
     ],
-    price: 199.0,
+    price: 169.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -116,10 +155,9 @@ export const products = [
   },
   {
     id: 18,
-    name: "Ekspozytor gablotek z oświetleniem do aut kolekcjonerskich 1:64 PREMIUM RLC",
-    fullname:
-      "Ekspozytor gablotek z oświetleniem do aut kolekcjonerskich 1:64 PREMIUM RLC",
-    slug: "ekspozytor-gablotek-z-oswietleniem-do-aut-kolekcjonerskich-1-64-premium-rlc",
+    name: "Ekspozytor gablotek do aut kolekcjonerskich 1:64 PREMIUM RLC",
+    fullname: "Ekspozytor gablotek do aut kolekcjonerskich 1:64 PREMIUM RLC",
+    slug: "ekspozytor-gablotek-do-aut-kolekcjonerskich-1-64-premium-rlc",
     component: "HWSv12OG",
     maxWords: 6,
     badge: "new",
@@ -132,12 +170,12 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/ekspozytor-gablotek-z-oswietleniem-do-aut-kolekcjonerskich-1-64-premium-rlc-17725943401",
+            link: "https://allegro.pl/oferta/ekspozytor-gablotek-do-aut-kolekcjonerskich-1-64-premium-rlc-pod-led-18285714645",
           },
         ],
       },
     ],
-    price: 59.0,
+    price: 34.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -162,7 +200,7 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/wypelnienie-ekspozytora-gablotek-pod-gablotki-hot-wheels-rlc-17726353778",
+            link: "https://allegro.pl/oferta/wypelnienie-ekspozytora-gablotek-pod-gablotki-hot-wheels-rlc-18285694584",
           },
         ],
       },
@@ -175,36 +213,36 @@ export const products = [
       });
     },
   },
-  {
-    id: 16,
-    name: "Zestaw podłączeniowy USB do gablotek LED i oświetlenia kart LED",
-    fullname: "Zestaw podłączeniowy USB do gablotek LED i oświetlenia kart LED",
-    slug: "zestaw-podlaczeniowy-usb-do-gablotek-led-i-oswietlenia-kart-led",
-    component: "USBConnect",
-    maxWords: 5,
-    badge: "new",
-    thumbnailObjectPosition: "center center",
-    colors: [
-      {
-        name: "czarny",
-        nameEn: "black",
-        photo: USBConnectPhotos.black,
-        shoppingPlatform: [
-          {
-            name: "Allegro",
-            link: "https://allegro.pl/oferta/zestaw-podlaczeniowy-usb-do-gablotek-led-i-oswietlenia-kart-led-17726278869",
-          },
-        ],
-      },
-    ],
-    price: 29.0,
-    get priceStringPl() {
-      return this.price.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
+  // {
+  //   id: 16,
+  //   name: "Zestaw podłączeniowy USB do gablotek LED i oświetlenia kart LED",
+  //   fullname: "Zestaw podłączeniowy USB do gablotek LED i oświetlenia kart LED",
+  //   slug: "zestaw-podlaczeniowy-usb-do-gablotek-led-i-oswietlenia-kart-led",
+  //   component: "USBConnect",
+  //   maxWords: 5,
+  //   badge: "new",
+  //   thumbnailObjectPosition: "center center",
+  //   colors: [
+  //     {
+  //       name: "czarny",
+  //       nameEn: "black",
+  //       photo: USBConnectPhotos.black,
+  //       shoppingPlatform: [
+  //         {
+  //           name: "Allegro",
+  //           link: "https://allegro.pl/oferta/zestaw-podlaczeniowy-usb-do-gablotek-led-i-oswietlenia-kart-led-17726278869",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  //   price: 29.0,
+  //   get priceStringPl() {
+  //     return this.price.toLocaleString("pl-PL", {
+  //       style: "currency",
+  //       currency: "PLN",
+  //     });
+  //   },
+  // },
   {
     id: 14,
     name: "Stojak ekspozytor organizer Hot Wheels, RLC itp. samoprzylepny nabiurkowy",
@@ -223,12 +261,12 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/stojak-ekspozytor-organizer-hot-wheels-rlc-itp-samoprzylepny-nabiurkowy-17719766335",
+            link: "https://allegro.pl/oferta/stojak-ekspozytor-organizer-hot-wheels-rlc-itp-samoprzylepny-nabiurkowy-18285724537",
           },
         ],
       },
     ],
-    price: 79.0,
+    price: 69.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -255,10 +293,6 @@ export const products = [
           {
             name: "Etsy",
             link: "https://www.etsy.com/pl/listing/4330369366/stand-base-stick-on-lego-minifigures?ref=shop_home_active_1&sts=1&logging_key=5499573baf382eb7156281ca1cfeef9696b1337e%3A4330369366",
-          },
-          {
-            name: "Allegro",
-            link: "https://allegro.pl/oferta/stojak-mocowanie-podst-obrotowa-na-lego-icons-71049-samochody-wyscigowe-f1-17689454402",
           },
         ],
       },
@@ -292,12 +326,12 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy-17612155556",
+            link: "https://allegro.pl/oferta/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy-18285727291",
           },
         ],
       },
     ],
-    price: 159.0,
+    price: 139.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -323,12 +357,12 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/przedluzka-rozszerzenie-0-5m-ekspozytora-na-karty-gablotki-hot-wheels-rlc-17719863545",
+            link: "https://allegro.pl/oferta/przedluzka-rozszerzenie-0-5m-ekspozytora-na-karty-gablotki-hot-wheels-rlc-18285720514",
           },
         ],
       },
     ],
-    price: 22.0,
+    price: 26.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -355,7 +389,7 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-czarna-tsv3-14871615902",
+            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-czarna-tsv3-18285785591",
           },
         ],
       },
@@ -370,7 +404,7 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-biala-tsv3-14871690760",
+            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-biala-tsv3b-18285781444",
           },
         ],
       },
@@ -385,12 +419,12 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-szara-tsv3-15314429429",
+            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-szara-tsv3sz-18285775430",
           },
         ],
       },
     ],
-    price: 109.0,
+    price: 99.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -413,7 +447,7 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-czarna-tsv4-16483396827",
+            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-czarna-tsv4-18285748371",
           },
         ],
       },
@@ -424,7 +458,7 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-biala-tsv4-16483422090",
+            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-biala-tsv4-18285742031",
           },
         ],
       },
@@ -435,12 +469,12 @@ export const products = [
         shoppingPlatform: [
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-szara-tsv4-16483365867",
+            link: "https://allegro.pl/oferta/podstawka-deska-tacka-z-kolkami-pod-thermomix-termomiks-tm5-tm6-szara-tsv4-18285754087",
           },
         ],
       },
     ],
-    price: 109.0,
+    price: 99.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -448,56 +482,56 @@ export const products = [
       });
     },
   },
-  {
-    id: 3,
-    name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
-    fullname:
-      "Podstawka deska tacka z kółkami pod Thermomix Termomiks TM5 TM6 TSv4PRO",
-    slug: "podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv4pro",
-    component: "TSv4PRO",
-    colors: [
-      {
-        name: "czarny",
-        nameEn: "black",
-        photo: TSv4ProPhotos.black,
-        shoppingPlatform: [
-          {
-            name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-czarna-tsv4pro-16483479087",
-          },
-        ],
-      },
-      {
-        name: "biały",
-        nameEn: "white",
-        photo: TSv4ProPhotos.white,
-        shoppingPlatform: [
-          {
-            name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-biala-tsv4pro-16483439788",
-          },
-        ],
-      },
-      {
-        name: "szary",
-        nameEn: "grey",
-        photo: TSv4ProPhotos.grey,
-        shoppingPlatform: [
-          {
-            name: "Allegro",
-            link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-szara-tsv4pro-16483500243",
-          },
-        ],
-      },
-    ],
-    price: 189.0,
-    get priceStringPl() {
-      return this.price.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
+  // {
+  //   id: 3,
+  //   name: "Podstawka pod Thermomix TM5 TM6 TSv4PRO",
+  //   fullname:
+  //     "Podstawka deska tacka z kółkami pod Thermomix Termomiks TM5 TM6 TSv4PRO",
+  //   slug: "podstawka-deska-tacka-z-kółkami-pod-thermomix-termomiks-tm5-tm6-tsv4pro",
+  //   component: "TSv4PRO",
+  //   colors: [
+  //     {
+  //       name: "czarny",
+  //       nameEn: "black",
+  //       photo: TSv4ProPhotos.black,
+  //       shoppingPlatform: [
+  //         {
+  //           name: "Allegro",
+  //           link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-czarna-tsv4pro-16483479087",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       name: "biały",
+  //       nameEn: "white",
+  //       photo: TSv4ProPhotos.white,
+  //       shoppingPlatform: [
+  //         {
+  //           name: "Allegro",
+  //           link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-biala-tsv4pro-16483439788",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       name: "szary",
+  //       nameEn: "grey",
+  //       photo: TSv4ProPhotos.grey,
+  //       shoppingPlatform: [
+  //         {
+  //           name: "Allegro",
+  //           link: "https://allegro.pl/oferta/podstawka-deska-z-kolkami-pod-thermomix-termomiks-tm5-tm6-szara-tsv4pro-16483500243",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  //   price: 189.0,
+  //   get priceStringPl() {
+  //     return this.price.toLocaleString("pl-PL", {
+  //       style: "currency",
+  //       currency: "PLN",
+  //     });
+  //   },
+  // },
   {
     id: 4,
     name: "Stojak Ekspozytor naścienny na karty / resoraki HOT WHEELS, Matchbox, Majorette itp. HWSv24S",
@@ -518,12 +552,12 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-organizer-karty-resoraki-hot-wheels-itp-nascienny-17161511948",
+            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-organizer-karty-resoraki-hot-wheels-itp-nascienny-18285735065",
           },
         ],
       },
     ],
-    price: 139.0,
+    price: 129.0,
     get priceStringPl() {
       return this.price.toLocaleString("pl-PL", {
         style: "currency",
@@ -551,7 +585,7 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-polka-na-karty-resoraki-hot-wheels-itp-pojedynczy-15702815032",
+            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-polka-na-karty-resoraki-hot-wheels-pojedynczy-18285768507",
           },
         ],
       },
@@ -584,7 +618,7 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-polka-na-karty-resoraki-hot-wheels-itp-podwojny-15727339316",
+            link: "https://allegro.pl/oferta/stojak-statyw-ekspozytor-polka-na-karty-resoraki-hot-wheels-itp-podwojny-18285761064",
           },
         ],
       },
@@ -617,7 +651,7 @@ export const products = [
           },
           {
             name: "Allegro",
-            link: "https://allegro.pl/oferta/ociekacz-tacka-pod-zlew-ikea-havsen-oslona-przed-zamakaniem-blatu-bialy-15610899313",
+            link: "https://allegro.pl/oferta/ociekacz-tacka-pod-zlew-ikea-havsen-oslona-przed-zamakaniem-blatu-bialy-18285681213",
           },
         ],
       },
