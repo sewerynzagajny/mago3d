@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AssortmentModal from "./AssortmentModal";
 import ProductList from "./ProductList";
-import { ReactComponent as ShopIcon } from "../svg//shopping-bag.svg";
+import { ReactComponent as CatalogIcon } from "../svg//catalog.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function GlobalAssortmentModal() {
@@ -45,8 +45,8 @@ export default function GlobalAssortmentModal() {
           !show || shouldHide
             ? " assortment-modal-btn--hidden"
             : visible
-            ? " assortment-modal-btn--open"
-            : ""
+              ? " assortment-modal-btn--open"
+              : ""
         }`}
         onClick={() => {
           if (window.innerWidth <= 576) {
@@ -57,8 +57,8 @@ export default function GlobalAssortmentModal() {
         }}
         aria-label="Pokaż asortyment"
       >
-        <span className={`icon-store${visible ? " icon-hidden" : ""}`}>
-          <ShopIcon className="icon-shopping-bag" />
+        <span className={`icon-catalog${visible ? " icon-hidden" : ""}`}>
+          <CatalogIcon className="icon-catalog-svg" />
         </span>
         <span className={`icon-close${visible ? " icon-visible" : ""}`}>
           <div className="icon-close-dimations">&times;</div>

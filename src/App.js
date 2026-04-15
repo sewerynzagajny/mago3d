@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { AuthProvider } from "./context/AuthContext";
 import {
   BrowserRouter as Router,
   Routes,
@@ -103,9 +104,12 @@ export default function App() {
     useEffect(() => {
       if (!pageRef.current) return;
 
-      const timeout = setTimeout(() => {
-        pageRef.current.classList.add("page-visible");
-      }, (firstLoadPageVideoTime * 1000) / 2);
+      const timeout = setTimeout(
+        () => {
+          pageRef.current.classList.add("page-visible");
+        },
+        (firstLoadPageVideoTime * 1000) / 2,
+      );
 
       return () => clearTimeout(timeout);
     }, [location, prevPathname]);
@@ -137,6 +141,7 @@ export default function App() {
   }
 
   return (
+    <AuthProvider>
     <Router>
       <ScrollToTopOrAnchor />
       <GlobalAssortmentModal />
@@ -194,7 +199,7 @@ export default function App() {
             (product) =>
               product.slug &&
               product.component &&
-              componentMap[product.component]
+              componentMap[product.component],
           )
           .map((product) => (
             <Route
@@ -218,5 +223,6 @@ export default function App() {
         {/* <Route path="/new-page" element={<NewPage />} /> */}
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }

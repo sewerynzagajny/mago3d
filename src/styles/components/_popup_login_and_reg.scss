@@ -1,0 +1,140 @@
+.popup_login,
+.popup_registraction {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  transition: opacity 0.3s;
+  animation: showUp 0.3s ease-in-out;
+  &__modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50rem;
+
+    &-btn_close {
+      position: absolute;
+      top: 1rem;
+      right: 1.8rem;
+      background: none;
+      border: none;
+      font-size: 3.6rem;
+      cursor: pointer;
+      z-index: 102;
+      color: $font-color-text;
+      transition: all 0.3s;
+      &:hover {
+        color: $font-color-primary;
+      }
+    }
+  }
+
+  &__content {
+    @extend %animated-gradient-bg;
+    background-color: $black;
+    border-radius: 1rem;
+    padding: 4rem 4.8rem;
+    // @media only screen and (max-width: $bp-smaller) {
+    //   width: 40rem;
+    // }
+
+    &__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-headline {
+        text-align: center;
+        font-size: 2.6rem;
+        font-weight: $font-strong;
+        margin-bottom: 4rem;
+      }
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4.2rem;
+      margin-bottom: 3.6rem;
+
+      &-field {
+        position: relative;
+        &--input {
+          width: 40rem;
+          height: 5rem;
+          padding: 1.5rem;
+          border-radius: 0.5rem;
+          border: 0.6rem solid transparent;
+          background-color: $font-color-text;
+          color: $black;
+          font-size: 1.8rem;
+          font-weight: $font-strong;
+          font-family: inherit;
+          text-align: left;
+          display: block;
+          transition: all 0.3s ease-in-out;
+
+          &::placeholder {
+            color: $color-grey-dark;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($black, 0.1);
+            border: 0.6rem solid $font-color-primary-litle-dark;
+          }
+          // @media only screen and (max-width: $bp-smaller) {
+          //   width: 30rem;
+          // }
+        }
+        label {
+          position: absolute;
+          top: -3rem;
+          left: 2.1rem;
+          font-size: 1.6rem;
+          transition: all 0.3s ease-in-out;
+        }
+
+        input:placeholder-shown + label {
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(4rem);
+        }
+
+        input:not(:placeholder-shown) + label,
+        input:-webkit-autofill + label {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
+    }
+    &-registration {
+      font-size: 1.6rem;
+
+      &-text {
+        &--btn_registration {
+          border: none;
+          background: none;
+          cursor: pointer;
+          color: $font-color-primary;
+          font-size: 1.6rem;
+          font-weight: $font-strong;
+          font-family: $font-primary;
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: $font-color-primary-litle-dark;
+          }
+        }
+      }
+    }
+  }
+}

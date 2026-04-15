@@ -10,7 +10,9 @@
   width: 3.2rem;
   fill: $font-color-text;
   // fill: $font-color-primary;
-  transition: fill 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition:
+    fill 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
   &:hover {
     fill: $font-color-primary;
     transform: scale(1.1);
@@ -26,12 +28,24 @@
   // vertical-align: middle;
 }
 
-.icon-shopping-bag {
-  height: 3.2rem;
-  width: 3.2rem;
-  color: #000;
+.icon-nav-svg {
+  height: 3rem;
+  width: 3rem;
+  margin-top: 0.6rem;
+  // color: #000;
+  @media only screen and (max-width: $bp-navigation) {
+    height: 5.2rem;
+    width: 5.2rem;
+  }
 }
 
+.icon-catalog-svg {
+  height: 3.2rem;
+  width: 3.2rem;
+  // color: #000;
+}
+
+.icon-catalog,
 .icon-store,
 .icon-close {
   position: absolute;
