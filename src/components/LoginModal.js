@@ -4,15 +4,15 @@ import Button from "./Btn";
 import Spinner from "./Spinner";
 // import { LoginAPI } from "../utils/Api";
 import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
+import { toastConfig } from "../config/toastConfig";
 
-export default function PopupLogin({
-  setPopupLoginVisible,
-  setPopupRegistractionVisible,
+export default function LoginModal({
+  onClose,
+  onSwitchToRegistration,
+  onSwitchToForgotPassword,
   loading,
   setLoading,
-  setLoginCheck,
-  getFoodItems,
-  getKcalItems,
 }) {
   const { setIsLogin } = useAuth();
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ export default function PopupLogin({
   const honeypotRef = useRef(null); // Ref do ukrytego pola honeypot
 
   function handleCancelLogin() {
-    setPopupLoginVisible(false);
+    onClose();
   }
 
   async function handleSubmitLogin(e) {
@@ -36,37 +36,43 @@ export default function PopupLogin({
       // await getFoodItems?.(response.token);
       // await getKcalItems?.(response.token);
       setIsLogin(true);
+      toast.success("Zalogowano pomyślnie!", toastConfig);
     } catch (err) {
-      alert(err.message);
+      toast.error("Logowanie nieudane!", toastConfig);
     } finally {
       // setLoading(false);
-      setPopupLoginVisible(false);
+      onClose();
     }
   }
 
   function handleRegistraction(e) {
-    setPopupLoginVisible(false);
-    setPopupRegistractionVisible(true);
+    onClose();
+    onSwitchToRegistration();
+  }
+
+  function handleForgotPassword(e) {
+    onClose();
+    onSwitchToForgotPassword();
   }
 
   return (
-    <div className="popup_login">
-      <div className="popup_login__modal frame">
+    <div className="login_modal">
+      <div className="login_modal__modal frame">
         <button
           type="button"
-          className={`popup_login__modal-btn_close ${loading ? "button--loading" : ""}`}
+          className={`login_modal__modal-btn_close ${loading ? "button--loading" : ""}`}
           aria-label="Zamknij"
           onClick={handleCancelLogin}
           disabled={loading}
         >
           ×
         </button>
-        <div className="popup_login__content">
-          <div className="popup_login__content__header">
-            <h2 className="popup_login__content__header-headline">Logowanie</h2>
+        <div className="login_modal__content">
+          <div className="login_modal__content__header">
+            <h2 className="login_modal__content__header-headline">Logowanie</h2>
           </div>
           <form
-            className="popup_login__content__form"
+            className="login_modal__content__form"
             onSubmit={handleSubmitLogin}
           >
             <input
@@ -78,9 +84,9 @@ export default function PopupLogin({
               tabIndex="-1"
               autoComplete="off"
             />
-            <div className="popup_login__content__form-field">
+            <div className="login_modal__content__form-field">
               <input
-                className={`popup_login__content__form-field--input ${loading ? "loading" : ""}`}
+                className={`login_modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="email"
                 id="email"
                 autoComplete="email"
@@ -92,9 +98,9 @@ export default function PopupLogin({
               />
               <label htmlFor="email">Adres e-mail</label>
             </div>
-            <div className="popup_login__content__form-field">
+            <div className="login_modal__content__form-field">
               <input
-                className={`popup_login__content__form-field--input ${loading ? "loading" : ""}`}
+                className={`login_modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="password"
                 id="password"
                 autoComplete="password"
@@ -106,6 +112,7 @@ export default function PopupLogin({
               <label htmlFor="password">Hasło</label>
             </div>
             <Button
+              className={` btn ${loading ? "loading" : ""}`}
               type="submit"
               style={{
                 animation: "moveInBotton 0.5s backwards ease-in-out 0.3s",
@@ -115,11 +122,22 @@ export default function PopupLogin({
               {loading ? <Spinner /> : "Zaloguj się"}
             </Button>
           </form>
-          <div className="popup_login__content-registration">
-            <p className="popup_login__content-registration-text">
+          <div className="login_modal__content-forgot_password">
+            <p className="login_modal__content-forgot_password-text">
+              <button
+                className={`login_modal__content-forgot_password-text--btn${loading ? "button--loading" : ""}`}
+                disabled={loading}
+                onClick={handleForgotPassword}
+              >
+                Nie pamietasz hasła?
+              </button>{" "}
+            </p>
+          </div>
+          <div className="login_modal__content-registration">
+            <p className="login_modal__content-registration-text">
               Nie masz jeszcze konta?{" "}
               <button
-                className={`popup_login__content-registration-text--btn_registration ${loading ? "button--loading" : ""}`}
+                className={`login_modal__content-registration-text--btn${loading ? "button--loading" : ""}`}
                 disabled={loading}
                 onClick={handleRegistraction}
               >

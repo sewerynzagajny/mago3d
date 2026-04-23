@@ -1,19 +1,50 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useReducer } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { ReactComponent as ShopIcon } from "../svg//shopping-bag.svg";
 import { ReactComponent as LoginIcon } from "../svg//login.svg";
 import { ReactComponent as LogoutIcon } from "../svg//logout.svg";
-import PopupLogin from "./PopupLogin";
+import LoginModal from "./LoginModal";
+import RegistrationModal from "./RegistrationModal";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 import { useAuth } from "../context/AuthContext";
+import UserSettingsModal from "./UserSettingsModal";
+// import useScrollLock from "../hooks/useScrollLock";
+
+const initialModalState = {
+  status: "",
+};
+
+const modalReducer = (state, action) => {
+  switch (action.type) {
+    case "SHOW_LOGIN":
+      return { status: "login" };
+    case "SHOW_REGISTRATION":
+      return { status: "registration" };
+    case "SHOW_FORGOT_PASSWORD":
+      return { status: "forgotPassword" };
+    case "HIDE_ALL":
+      return { ...initialModalState };
+    default:
+      throw new Error("action unknown");
+  }
+};
 
 export default function Navigation() {
   const { isLogin, setIsLogin } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [hasBackground, setHasBackground] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userSettingsOpen, setUserSettingsOpen] = useState(false);
   const navRef = useRef(null);
   const [navHeight, setNavHeight] = useState(0);
-  const [PopupLoginVisible, setPopupLoginVisible] = useState(false);
+  const [{ status }, dispatchModal] = useReducer(
+    modalReducer,
+    initialModalState,
+  );
+
+  // const bodyRef = useRef(document.body);
+  // useScrollLock(status !== "", bodyRef);
 
   useEffect(() => {
     if (navRef.current) {
@@ -44,18 +75,56 @@ export default function Navigation() {
   }
 
   function handleLogin() {
-    setPopupLoginVisible(true);
+    dispatchModal({ type: "SHOW_LOGIN" });
   }
 
   function handleLogout() {
     setIsLogin(false);
   }
+  function handleShowUserSetting() {
+    setUserSettingsOpen(true);
+  }
+
+  function handleModalClose() {
+    dispatchModal({ type: "HIDE_ALL" });
+  }
 
   return (
     <>
-      {PopupLoginVisible && (
-        <PopupLogin
-          setPopupLoginVisible={setPopupLoginVisible}
+      {
+        <UserSettingsModal
+          userSettingsOpen={userSettingsOpen}
+          setuserSettingsOpen={setUserSettingsOpen}
+          setIsLogin={setIsLogin}
+        />
+      }
+      {status === "login" && (
+        <LoginModal
+          onClose={handleModalClose}
+          onSwitchToRegistration={() =>
+            dispatchModal({ type: "SHOW_REGISTRATION" })
+          }
+          loading={loading}
+          setLoading={setLoading}
+          onSwitchToForgotPassword={() =>
+            dispatchModal({ type: "SHOW_FORGOT_PASSWORD" })
+          }
+        />
+      )}
+      {status === "registration" && (
+        <RegistrationModal
+          onClose={handleModalClose}
+          onSwitchToLogin={() => dispatchModal({ type: "SHOW_LOGIN" })}
+          loading={loading}
+          setLoading={setLoading}
+        />
+      )}
+      {status === "forgotPassword" && (
+        <ForgotPasswordModal
+          onClose={handleModalClose}
+          onSwitchToLogin={() => dispatchModal({ type: "SHOW_LOGIN" })}
+          loading={loading}
+          setLoading={setLoading}
         />
       )}
       {/* Placeholder zajmujący miejsce w układzie */}
@@ -111,7 +180,10 @@ export default function Navigation() {
               </li>
               <li key="login-or-logout" className="nav__btn__icons-svg">
                 {isLogin ? (
-                  <LogoutIcon className="icon-nav-svg" onClick={handleLogout} />
+                  <LogoutIcon
+                    className="icon-nav-svg"
+                    onClick={handleShowUserSetting}
+                  />
                 ) : (
                   <LoginIcon className="icon-nav-svg" onClick={handleLogin} />
                 )}

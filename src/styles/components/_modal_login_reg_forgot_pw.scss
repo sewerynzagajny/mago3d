@@ -1,5 +1,6 @@
-.popup_login,
-.popup_registraction {
+.login_modal,
+.registraction_modal,
+.forgot-pw_modal {
   opacity: 1;
   position: fixed;
   top: 0;
@@ -16,6 +17,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50rem;
+    @media only screen and (max-width: $bp-footer-3) {
+      width: 40rem;
+    }
 
     &-btn_close {
       position: absolute;
@@ -39,9 +43,6 @@
     background-color: $black;
     border-radius: 1rem;
     padding: 4rem 4.8rem;
-    // @media only screen and (max-width: $bp-smaller) {
-    //   width: 40rem;
-    // }
 
     &__header {
       display: flex;
@@ -66,6 +67,46 @@
 
       &-field {
         position: relative;
+
+        &--checkbox {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.2rem;
+          width: 40rem;
+
+          @media only screen and (max-width: $bp-footer-3) {
+            width: 30rem;
+          }
+
+          &-btn {
+            flex-shrink: 0;
+            background-color: $black !important;
+          }
+
+          & > label {
+            position: static !important;
+            font-size: 1.6rem !important;
+            transform: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            cursor: pointer;
+            line-height: 1.4;
+            top: unset !important;
+            left: unset !important;
+          }
+
+          &-link {
+            color: $font-color-primary;
+            font-weight: $font-strong;
+            transition: color 0.2s ease-in-out;
+            text-decoration: none;
+
+            &:hover {
+              color: $font-color-primary-litle-dark;
+            }
+          }
+        }
+
         &--input {
           width: 40rem;
           height: 5rem;
@@ -90,10 +131,11 @@
             box-shadow: 0 1rem 2rem rgba($black, 0.1);
             border: 0.6rem solid $font-color-primary-litle-dark;
           }
-          // @media only screen and (max-width: $bp-smaller) {
-          //   width: 30rem;
-          // }
+          @media only screen and (max-width: $bp-footer-3) {
+            width: 30rem;
+          }
         }
+
         label {
           position: absolute;
           top: -3rem;
@@ -116,11 +158,14 @@
         }
       }
     }
-    &-registration {
+
+    &-registration,
+    &-forgot_password,
+    &-login {
       font-size: 1.6rem;
 
       &-text {
-        &--btn_registration {
+        &--btn {
           border: none;
           background: none;
           cursor: pointer;

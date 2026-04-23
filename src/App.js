@@ -48,6 +48,9 @@ import TSv7PRO from "./pages/assortyment/TSv7PRO";
 import Zawieszki from "./pages/assortyment/Zawieszki";
 import { products } from "./data/products"; // Importujemy dane produktów
 import GlobalAssortmentModal from "./components/GlobalAssortmentModal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toastConfig } from "./config/toastConfig";
 
 // Mapa komponentów
 const componentMap = {
@@ -142,87 +145,97 @@ export default function App() {
 
   return (
     <AuthProvider>
-    <Router>
-      <ScrollToTopOrAnchor />
-      <GlobalAssortmentModal />
-      <Routes>
-        {/* Główna strona */}
-        <Route
-          path="/"
-          element={
-            <div>
-              <FirstLoadPageVideo
-                key={videoLoaded ? "video-hidden" : "video-visible"}
-                videoPath={videoMp4}
-                videoPathMobile={videoMp4Mobile}
-                videoType={"mp4"}
-                posterPath={poster}
-                videoWebmPath={videoWebm}
-                videoWebmPathMobile={videoWebmMobile}
-                animationTime={firstLoadPageVideoTime}
-                hideVideoTime={0.8}
-                hideVideotransformOriginX={"0%"}
-                hideVideotransformOriginY={"0%"}
-                mobileBreakpoint={560}
-                onVideoLoaded={() => setVideoLoaded(true)}
-                {...hideVideoProps}
+      <ToastContainer
+        toastOptions={toastConfig}
+        style={{
+          right: "1.2rem",
+          left: "1.2rem",
+          bottom: "1.2rem",
+          width: "auto",
+          zIndex: 999999,
+        }}
+      />
+      <Router>
+        <ScrollToTopOrAnchor />
+        <GlobalAssortmentModal />
+        <Routes>
+          {/* Główna strona */}
+          <Route
+            path="/"
+            element={
+              <div>
+                <FirstLoadPageVideo
+                  key={videoLoaded ? "video-hidden" : "video-visible"}
+                  videoPath={videoMp4}
+                  videoPathMobile={videoMp4Mobile}
+                  videoType={"mp4"}
+                  posterPath={poster}
+                  videoWebmPath={videoWebm}
+                  videoWebmPathMobile={videoWebmMobile}
+                  animationTime={firstLoadPageVideoTime}
+                  hideVideoTime={0.8}
+                  hideVideotransformOriginX={"0%"}
+                  hideVideotransformOriginY={"0%"}
+                  mobileBreakpoint={560}
+                  onVideoLoaded={() => setVideoLoaded(true)}
+                  {...hideVideoProps}
+                />
+                {videoLoaded && (
+                  <div ref={pageRef} className="page-container">
+                    {/* <GlobalAssortmentModal inRouter={false} /> */}
+                    <Header>
+                      <Navigation />
+                      <Hero />
+                      <CookieBanner />
+                    </Header>
+                    <main>
+                      <AboutUs />
+                    </main>
+                    <Footer />
+                  </div>
+                )}
+              </div>
+            }
+          />
+          {/* Podstrona Historia */}
+          <Route path="/test" element={<Test />} />
+          <Route path="/historia" element={<History />} />
+          <Route path="/materialy" element={<Materials />} />
+          <Route path="/kontakt" element={<Contact />} />
+          <Route path="/asortyment" element={<Assortment />} />
+          <Route path="/polityka-prywatnosci" element={<Privacy />} />
+          <Route path="/szczegoly" element={<Details />} />
+
+          {/* Dynamiczne generowanie tras dla szczegółów produktów */}
+          {products
+            .filter(
+              (product) =>
+                product.slug &&
+                product.component &&
+                componentMap[product.component],
+            )
+            .map((product) => (
+              <Route
+                key={product.id}
+                path={`/szczegoly/druki-3d/${product.slug}`}
+                element={React.createElement(componentMap[product.component], {
+                  productId: product.id,
+                })}
               />
-              {videoLoaded && (
-                <div ref={pageRef} className="page-container">
-                  {/* <GlobalAssortmentModal inRouter={false} /> */}
-                  <Header>
-                    <Navigation />
-                    <Hero />
-                    <CookieBanner />
-                  </Header>
-                  <main>
-                    <AboutUs />
-                  </main>
-                  <Footer />
-                </div>
-              )}
-            </div>
-          }
-        />
-        {/* Podstrona Historia */}
-        <Route path="/test" element={<Test />} />
-        <Route path="/historia" element={<History />} />
-        <Route path="/materialy" element={<Materials />} />
-        <Route path="/kontakt" element={<Contact />} />
-        <Route path="/asortyment" element={<Assortment />} />
-        <Route path="/polityka-prywatnosci" element={<Privacy />} />
-        <Route path="/szczegoly" element={<Details />} />
+            ))}
 
-        {/* Dynamiczne generowanie tras dla szczegółów produktów */}
-        {products
-          .filter(
-            (product) =>
-              product.slug &&
-              product.component &&
-              componentMap[product.component],
-          )
-          .map((product) => (
-            <Route
-              key={product.id}
-              path={`/szczegoly/druki-3d/${product.slug}`}
-              element={React.createElement(componentMap[product.component], {
-                productId: product.id,
-              })}
-            />
-          ))}
-
-        {/* <Route
+          {/* <Route
           path="/szczegoly/druki-3d/podstawka-pod-thermomix-tM5-tM6-tSv3"
           element={<Tsv3 />}
         /> */}
-        {/* <Route
+          {/* <Route
           path="/szczegoly/druki-3d/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy"
           element={<AdapterAntilop />}
         /> */}
-        {/* Nowa podstrona */}
-        {/* <Route path="/new-page" element={<NewPage />} /> */}
-      </Routes>
-    </Router>
+          {/* Nowa podstrona */}
+          {/* <Route path="/new-page" element={<NewPage />} /> */}
+        </Routes>
+      </Router>
     </AuthProvider>
   );
 }
