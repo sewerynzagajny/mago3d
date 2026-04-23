@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastConfig } from "../config/toastConfig";
 
+const user = {
+  email: "seweryn.zagajny@gmail.com",
+};
+
 export default function UserSettingsModal({
   userSettingsOpen,
   setuserSettingsOpen,
@@ -28,10 +32,12 @@ export default function UserSettingsModal({
         ✖
       </button>
       <div className="user-setings-modal__header">
-        <span className="user-setings-modal__header--icon">S</span>
+        <span className="user-setings-modal__header--icon">
+          {user.email[0].toUpperCase()}
+        </span>
         <p className="user-setings-modal__header--text">
           Witaj,
-          <br /> seweryn.zagajny@gmail.com
+          <br /> {user.email}
         </p>
       </div>
       <ul className="user-setings-modal__list">

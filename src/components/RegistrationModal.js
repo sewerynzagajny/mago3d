@@ -33,11 +33,6 @@ export default function RegistrationModal({
       "",
     );
     setLoading(true);
-    if (!termsAccepted) {
-      toast.error("Musisz zaakceptować regulamin!", toastConfig);
-      setLoading(false);
-      return;
-    }
 
     if (password.length < 6) {
       toast.error("Hasło musi składać się z minimum 6 znaków!", toastConfig);
@@ -50,6 +45,12 @@ export default function RegistrationModal({
       toast.error("Potwierdzenie hasła nie powiodło się!", toastConfig);
       passwordRef.current.value = "";
       checkPassworRef.current.value = "";
+      setLoading(false);
+      return;
+    }
+
+    if (!termsAccepted) {
+      toast.error("Musisz zaakceptować regulamin!", toastConfig);
       setLoading(false);
       return;
     }

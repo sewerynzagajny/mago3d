@@ -78,9 +78,6 @@ export default function Navigation() {
     dispatchModal({ type: "SHOW_LOGIN" });
   }
 
-  function handleLogout() {
-    setIsLogin(false);
-  }
   function handleShowUserSetting() {
     setUserSettingsOpen(true);
   }
@@ -178,14 +175,15 @@ export default function Navigation() {
               <li key="shop" className="nav__btn__icons-svg">
                 <ShopIcon className="icon-nav-svg" />
               </li>
-              <li key="login-or-logout" className="nav__btn__icons-svg">
+              <li
+                key="login-or-logout"
+                className="nav__btn__icons-svg"
+                onClick={isLogin ? handleShowUserSetting : handleLogin}
+              >
                 {isLogin ? (
-                  <LogoutIcon
-                    className="icon-nav-svg"
-                    onClick={handleShowUserSetting}
-                  />
+                  <LogoutIcon className="icon-nav-svg" />
                 ) : (
-                  <LoginIcon className="icon-nav-svg" onClick={handleLogin} />
+                  <LoginIcon className="icon-nav-svg" />
                 )}
               </li>
             </ul>
