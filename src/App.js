@@ -51,6 +51,7 @@ import GlobalAssortmentModal from "./components/GlobalAssortmentModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toastConfig } from "./config/toastConfig";
+import UserPanel from "./pages/UserPanel";
 
 // Mapa komponentów
 const componentMap = {
@@ -205,6 +206,7 @@ export default function App() {
           <Route path="/asortyment" element={<Assortment />} />
           <Route path="/polityka-prywatnosci" element={<Privacy />} />
           <Route path="/szczegoly" element={<Details />} />
+          <Route path="/panel" element={<UserPanel />} />
 
           {/* Dynamiczne generowanie tras dla szczegółów produktów */}
           {products

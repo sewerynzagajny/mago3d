@@ -42,25 +42,25 @@ export default function UserSettingsModal({
       </div>
       <ul className="user-setings-modal__list">
         <li>
-          <Link to="/zamowienia" onClick={handleCloseSettingsMenu}>
-            Zamówienia
-          </Link>
-        </li>
-        <li>
-          {" "}
-          <Link to="/koszyk" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel" onClick={handleCloseSettingsMenu}>
             Koszyk
           </Link>
         </li>
         <li>
           {" "}
-          <Link to="/ustawienia" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel" onClick={handleCloseSettingsMenu}>
+            Zamówienia
+          </Link>
+        </li>
+        <li>
+          {" "}
+          <Link to="/panel" onClick={handleCloseSettingsMenu}>
             Ustawienia konta
           </Link>
         </li>
         <li>
           {" "}
-          <Link to="/adresy" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel" onClick={handleCloseSettingsMenu}>
             Dane adresowe
           </Link>
         </li>

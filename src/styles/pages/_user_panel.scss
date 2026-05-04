@@ -1,0 +1,19 @@
+.user-panel {
+  @extend %section-background;
+
+  &__container {
+    @extend %container-style;
+
+    &__content {
+      text-align: justify;
+
+      &--signature {
+        text-align: right;
+        // font-weight: $font-stronger;
+        font-style: italic;
+        margin-bottom: 2.4rem;
+        margin-top: 4.8rem;
+      }
+    }
+  }
+}
