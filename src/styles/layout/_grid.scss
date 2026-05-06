@@ -229,3 +229,9 @@
     // column-gap: 2.4rem;
   }
 }
+
+.grid-2-col_shopping-cart {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+}

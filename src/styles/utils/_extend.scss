@@ -88,3 +88,9 @@
     transform: translate(1rem, 0.1rem);
   }
 }
+
+%sticky {
+  position: sticky;
+  top: 12.6rem; // dostosuj do wysokości nagłówka
+  align-self: start;
+}

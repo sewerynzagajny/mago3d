@@ -55,8 +55,14 @@ body {
   color: $font-color-primary;
   text-align: center;
 }
+.heading-fourth-tertiary {
+  font-size: 2.4rem;
+  font-weight: $font-strong;
+  color: $font-color-primary;
+}
 
-.heading-fourth-order {
+.heading-fourth-order,
+.heading-fourth-summary {
   font-size: 2.6rem;
   font-weight: $font-strong;
   color: $font-color-text;

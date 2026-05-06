@@ -1,0 +1,42 @@
+.shopping-cart {
+  margin-bottom: 8rem;
+  &__summary {
+    @extend %sticky;
+    &__content {
+      @extend %animated-gradient-bg;
+      background-color: $black;
+      border-radius: 1rem;
+      padding: 4rem 4.8rem;
+      // text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2.48rem;
+      justify-content: center;
+      // align-items: center;
+
+      &__total-price {
+        display: flex;
+        justify-content: space-between;
+
+        // margin: 2rem 0;
+
+        &_text {
+          font-weight: $font-strong;
+          color: $font-color-primary;
+          font-size: 2.4rem;
+        }
+
+        &_sum {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          &--value {
+            font-weight: $font-strong;
+            color: $font-color-primary;
+            font-size: 2.4rem;
+          }
+        }
+      }
+    }
+  }
+}

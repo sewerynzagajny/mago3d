@@ -1,4 +1,9 @@
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastConfig } from "../config/toastConfig";
 
@@ -11,6 +16,9 @@ export default function UserSettingsModal({
   setuserSettingsOpen,
   setIsLogin,
 }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   function handleCloseSettingsMenu() {
     setuserSettingsOpen(false);
   }
@@ -19,6 +27,9 @@ export default function UserSettingsModal({
     setIsLogin(false);
     setuserSettingsOpen(false);
     toast.success("Wylogowano pomyślnie!", toastConfig);
+    if (location.pathname === "/panel") {
+      navigate("/");
+    }
   }
   return (
     <div
@@ -42,25 +53,25 @@ export default function UserSettingsModal({
       </div>
       <ul className="user-setings-modal__list">
         <li>
-          <Link to="/panel" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel#koszyk" onClick={handleCloseSettingsMenu}>
             Koszyk
           </Link>
         </li>
         <li>
           {" "}
-          <Link to="/panel" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel#zamowienia" onClick={handleCloseSettingsMenu}>
             Zamówienia
           </Link>
         </li>
         <li>
           {" "}
-          <Link to="/panel" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel#ustawienia" onClick={handleCloseSettingsMenu}>
             Ustawienia konta
           </Link>
         </li>
         <li>
           {" "}
-          <Link to="/panel" onClick={handleCloseSettingsMenu}>
+          <Link to="/panel#adresy" onClick={handleCloseSettingsMenu}>
             Dane adresowe
           </Link>
         </li>

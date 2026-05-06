@@ -23,7 +23,9 @@
       margin-bottom: 2.4rem;
       &__item {
         // position: relative;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        transition:
+          transform 0.3s ease-in-out,
+          box-shadow 0.3s ease-in-out;
         &__content {
           padding: 2rem 2rem 2rem;
           @extend %animated-gradient-bg;
@@ -220,9 +222,7 @@
   }
 
   &__sticky-product {
-    position: sticky;
-    top: 12.6rem; // dostosuj do wysokości nagłówka
-    align-self: start;
+    @extend %sticky;
     z-index: 10;
   }
 }

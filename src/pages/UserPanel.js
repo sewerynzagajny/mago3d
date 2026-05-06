@@ -2,7 +2,10 @@ import Navigation from "../components/Navigation";
 import CookieBanner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import Footer from "../components/Footer";
-import ShoppingCart from "../components/ShoppingCart";
+import ShoppingCart from "../components/user-panel/ShoppingCart";
+import Orders from "../components/user-panel/Orders";
+import AccountSettings from "../components/user-panel/AccountSettings";
+import AddressDetails from "../components/user-panel/AddressDetails";
 
 export default function UserPanel() {
   return (
@@ -20,6 +23,9 @@ export default function UserPanel() {
             <h2 className="heading-secondary">Panel klienta</h2>
             <h3 className="heading-tertiary">Koszyk</h3>
             <ShoppingCart />
+            <Orders />
+            <AccountSettings />
+            <AddressDetails />
           </div>
           <Footer />
         </ScrollEffectContainer>
