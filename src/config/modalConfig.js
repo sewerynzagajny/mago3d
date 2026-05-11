@@ -1,0 +1,20 @@
+export const modalConfig = {
+  usun_adres: {
+    title: "Usunięcia adresu",
+    description: "Czy chcesz usunąć wybrany adres?",
+    confirmLabel: "Usuń",
+    cancelLabel: "Anuluj",
+  },
+  wyloguj: {
+    title: "Wylogowanie",
+    description: "Czy na pewno chcesz się wylogować?",
+    confirmLabel: "Wyloguj",
+    cancelLabel: "Anuluj",
+  },
+  usun_konto: {
+    title: "Usunięcie konta",
+    description: "Ta operacja jest nieodwracalna. Czy chcesz usunąć konto?",
+    confirmLabel: "Usuń konto",
+    cancelLabel: "Anuluj",
+  },
+};

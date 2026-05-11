@@ -62,12 +62,14 @@ function reducer(state, action) {
         ...obj,
         isDefaultShippingAddress: obj.id === action.id,
       }));
+    case "DELETE_ADDRESS":
+      return state.filter((obj) => obj.id !== action.id);
     default:
       throw new Error("action unknown");
   }
 }
 
-export default function AddressDetails() {
+export default function AddressDetails({ modalDispatch }) {
   const [addresses, dispatch] = useReducer(reducer, initialAddresses);
 
   return (
@@ -78,7 +80,12 @@ export default function AddressDetails() {
       </Btn>
       <div className="address-details__cards">
         {addresses.map((address, i) => (
-          <AdressCard key={i} address={address} dispatch={dispatch} />
+          <AdressCard
+            key={address.id}
+            address={address}
+            dispatch={dispatch}
+            modalDispatch={modalDispatch}
+          />
         ))}
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { useReducer } from "react";
 import Navigation from "../components/Navigation";
 import CookieBanner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
@@ -6,8 +7,15 @@ import ShoppingCart from "../components/user-panel/ShoppingCart";
 import Orders from "../components/user-panel/Orders";
 import AccountSettings from "../components/user-panel/AccountSettings";
 import AddressDetails from "../components/user-panel/AddressDetails";
+import ActionConfirmModal from "../components/ActionConfirmModal";
+import { modalReducer, initialModalState } from "../components/modalReducer";
 
 export default function UserPanel() {
+  const [modalState, modalDispatch] = useReducer(
+    modalReducer,
+    initialModalState,
+  );
+
   return (
     <>
       <section className="user-panel">
@@ -25,12 +33,13 @@ export default function UserPanel() {
             <ShoppingCart />
             <Orders />
             <AccountSettings />
-            <AddressDetails />
+            <AddressDetails modalDispatch={modalDispatch} />
           </div>
           <Footer />
         </ScrollEffectContainer>
         <CookieBanner />
       </section>
+      <ActionConfirmModal state={modalState} dispatch={modalDispatch} />
     </>
   );
 }
