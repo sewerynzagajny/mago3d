@@ -1,12 +1,10 @@
+import { useReducer, useState } from "react";
 import Btn from "../Btn";
-const user = {
-  name: "Seweryn",
-  surname: "Zagajny",
-  email: "seweryn.zagajny@gmail.com",
-};
+import AdressCard from "./AddressCard";
 
-const addresses = [
+const initialAddresses = [
   {
+    id: 0,
     firstName: "Marek",
     lastName: "Kowalski",
     phone: "512345678",
@@ -21,6 +19,7 @@ const addresses = [
     isDefaultShippingAddress: false,
   },
   {
+    id: 1,
     firstName: "Anna",
     lastName: "Nowak",
     phone: "698765432",
@@ -35,6 +34,7 @@ const addresses = [
     isDefaultShippingAddress: true,
   },
   {
+    id: 2,
     firstName: "Piotr",
     lastName: "Wiśniewski",
     phone: "723456789",
@@ -50,26 +50,36 @@ const addresses = [
   },
 ];
 
-const { name, surname, email } = user;
+function reducer(state, action) {
+  switch (action.type) {
+    case "SET_DEFAULT_ORDER":
+      return state.map((obj) => ({
+        ...obj,
+        isDefaultOrderAddress: obj.id === action.id,
+      }));
+    case "SET_DEFAULT_SHIPPING":
+      return state.map((obj) => ({
+        ...obj,
+        isDefaultShippingAddress: obj.id === action.id,
+      }));
+    default:
+      throw new Error("action unknown");
+  }
+}
 
 export default function AddressDetails() {
+  const [addresses, dispatch] = useReducer(reducer, initialAddresses);
+
   return (
-    <div id="adresy" className="address-details">
+    <div className="address-details">
       <h4 className="heading-fourth">Dane Adresowe</h4>
-      <Btn className=" btn address-details__btn">Dodaj adres</Btn>
-      <div className="address-details__container">
-        <div className="frame hover-effect-card">
-          <div className="address-details__container__info">
-            <p className="address-details__container__info--name">
-              {name} {surname}
-            </p>
-            <p className="address-details__container__info--email">{email}</p>
-            <div className="address-details__container__info__btn">
-              <Btn>Edytuj</Btn>
-              <Btn>Usuń</Btn>
-            </div>
-          </div>
-        </div>
+      <Btn id="adresy" className=" btn address-details__btn">
+        Dodaj adres
+      </Btn>
+      <div className="address-details__cards">
+        {addresses.map((address, i) => (
+          <AdressCard key={i} address={address} dispatch={dispatch} />
+        ))}
       </div>
     </div>
   );

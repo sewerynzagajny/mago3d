@@ -1,0 +1,71 @@
+.address-card {
+  // display: flex;
+  // flex-wrap: wrap;
+  max-width: max-content;
+  &__info {
+    @extend %animated-gradient-bg;
+    background-color: $black;
+    border-radius: 1rem;
+    padding: 4rem 4.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: max-content;
+
+    &__list {
+      list-style: none;
+      height: 24rem;
+    }
+
+    &__btn {
+      // margin-top: 2rem;
+      display: flex;
+      gap: 2.4rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2.4rem;
+    }
+    &__buttons {
+      // margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+
+      &--button {
+        background: transparent;
+        color: $font-color-text;
+        padding: 1.7rem 3rem 1.3rem;
+        display: inline-block;
+        text-decoration: none;
+        border: 0.2rem solid $font-color-text;
+        border-radius: 5rem;
+        font-size: 1.8rem;
+        font-weight: $font-strong;
+        cursor: pointer;
+        transition: all 0.4s;
+        position: relative;
+        width: 26rem;
+
+        &:hover {
+          transform: translateY(-0.3rem);
+          color: $font-color-primary;
+          border: 0.2rem solid $font-color-primary;
+        }
+        &:active,
+        &:focus {
+          outline: none;
+          transform: translateY(-0.1rem);
+          box-shadow: 0 1rem 3rem $btn-color-neon-hover-or-active;
+        }
+      }
+      &--default-address {
+        padding: 1.2rem 3rem 1rem;
+        width: 26rem;
+        text-align: center;
+        font-weight: $font-strong;
+        color: $font-color-primary;
+        // font-size: 1.7rem;
+      }
+    }
+  }
+}

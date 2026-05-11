@@ -52,6 +52,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toastConfig } from "./config/toastConfig";
 import UserPanel from "./pages/UserPanel";
+import AddEditAdress from "./components/user-panel/AddEditAdress";
 
 // Mapa komponentów
 const componentMap = {
@@ -207,6 +208,7 @@ export default function App() {
           <Route path="/polityka-prywatnosci" element={<Privacy />} />
           <Route path="/szczegoly" element={<Details />} />
           <Route path="/panel" element={<UserPanel />} />
+          <Route path="/panel/adres" element={<AddEditAdress />} />
 
           {/* Dynamiczne generowanie tras dla szczegółów produktów */}
           {products
