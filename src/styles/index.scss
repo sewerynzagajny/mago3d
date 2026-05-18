@@ -7,6 +7,7 @@
 @import "utils/mixins";
 @import "utils/extend";
 
+@import "components/addEditAddress";
 @import "components/animatedBar";
 @import "components/btn";
 @import "components/cookieBanner";
@@ -40,6 +41,7 @@
 @import "layout/photo";
 @import "layout/video";
 
+@import "pages/address";
 @import "pages/assortment";
 @import "pages/details";
 @import "pages/user_panel";

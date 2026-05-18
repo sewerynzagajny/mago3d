@@ -1,5 +1,6 @@
 import Btn from "../Btn";
 // import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastConfig } from "../../config/toastConfig";
 
@@ -55,7 +56,7 @@ export default function AddressCard({ address, dispatch, modalDispatch }) {
           try {
             //TODO;
 
-            dispatch({ type: "DELETE_ADDRESS", id: id });
+            dispatch({ type: "DELETE_ADDRESS", id });
             toast.success("Usunięto wybrany adres!", toastConfig);
           } catch (err) {
             toast.error("Nie udało się usunąć wybranego adresu!", toastConfig);
@@ -90,7 +91,13 @@ export default function AddressCard({ address, dispatch, modalDispatch }) {
             </li>
           </ul>
           <div className="address-card__info__btn">
-            <Btn>Edytuj</Btn>
+            <Btn
+              className=" btn address-card__info__btn--link"
+              as={Link}
+              to={`/panel/adres/${id}`}
+            >
+              Edytuj
+            </Btn>
             <Btn onClick={handleDeleteAddress}>Usuń</Btn>
           </div>
           <div className="address-card__info__buttons">
