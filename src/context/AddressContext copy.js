@@ -48,41 +48,8 @@ const initialAddresses = [
   },
 ];
 
-function applyExclusiveDefaults(state, payload) {
-  let result = state;
-  if (payload.isDefaultOrderAddress) {
-    result = result.map((obj) => ({
-      ...obj,
-      isDefaultOrderAddress: obj.id === payload.id,
-    }));
-  }
-  if (payload.isDefaultShippingAddress) {
-    result = result.map((obj) => ({
-      ...obj,
-      isDefaultShippingAddress: obj.id === payload.id,
-    }));
-  }
-  return result;
-}
-
-function applyFallbackDefaults(state) {
-  let result = state;
-  if (!result.some((el) => el.isDefaultOrderAddress)) {
-    result = result.map((obj, i) => ({
-      ...obj,
-      isDefaultOrderAddress: i === 0,
-    }));
-  }
-  if (!result.some((el) => el.isDefaultShippingAddress)) {
-    result = result.map((obj, i) => ({
-      ...obj,
-      isDefaultShippingAddress: i === 0,
-    }));
-  }
-  return result;
-}
-
 function reducer(state, action) {
+  let temporaryState;
   switch (action.type) {
     case "SET_DEFAULT_ORDER":
       return state.map((obj) => ({
@@ -95,18 +62,63 @@ function reducer(state, action) {
         isDefaultShippingAddress: obj.id === action.id,
       }));
     case "DELETE_ADDRESS":
-      return applyFallbackDefaults(state.filter((obj) => obj.id !== action.id));
+      return state.filter((obj) => obj.id !== action.id);
     case "ADD_NEW_ADDRESS":
-      return applyFallbackDefaults(
-        applyExclusiveDefaults([...state, action.payload], action.payload),
-      );
+      temporaryState = [...state, action.payload];
+      if (action.payload.isDefaultOrderAddress) {
+        temporaryState = temporaryState.map((obj) => ({
+          ...obj,
+          isDefaultOrderAddress: obj.id === action.payload.id,
+        }));
+      }
+      if (action.payload.isDefaultShippingAddress) {
+        temporaryState = temporaryState.map((obj) => ({
+          ...obj,
+          isDefaultShippingAddress: obj.id === action.payload.id,
+        }));
+      }
+
+      return temporaryState;
     case "EDIT_ADDRESS":
-      return applyExclusiveDefaults(
-        state.map((obj) =>
-          obj.id === action.payload.id ? action.payload : obj,
-        ),
-        action.payload,
+      temporaryState = state.map((obj) =>
+        obj.id === action.payload.id ? action.payload : obj,
       );
+      if (action.payload.isDefaultOrderAddress) {
+        temporaryState = temporaryState.map((obj) => ({
+          ...obj,
+          isDefaultOrderAddress: obj.id === action.payload.id,
+        }));
+      }
+      if (action.payload.isDefaultShippingAddress) {
+        temporaryState = temporaryState.map((obj) => ({
+          ...obj,
+          isDefaultShippingAddress: obj.id === action.payload.id,
+        }));
+      }
+      const checkDefaultOrderAddress = temporaryState.some(
+        (el) => el.isDefaultOrderAddress,
+      );
+
+      const checkDefaultShippingAddress = temporaryState.some(
+        (el) => el.isDefaultShippingAddress,
+      );
+
+      if (!checkDefaultOrderAddress) {
+        temporaryState = temporaryState.map((obj, i) => ({
+          ...obj,
+          isDefaultOrderAddress: i === 0,
+        }));
+      }
+      if (!checkDefaultShippingAddress) {
+        temporaryState = temporaryState.map((obj, i) => ({
+          ...obj,
+          isDefaultShippingAddress: i === 0,
+        }));
+      }
+      return temporaryState;
+    // state.map((obj) => ({
+    //   ...obj,
+    // }));
     default:
       throw new Error("action unknown");
   }
