@@ -73,6 +73,24 @@ export default function AddEditAddress() {
         return;
       }
     }
+    if (urlId === "nowy") {
+      const isTheSame = addresses.some((obj) =>
+        Object.keys(obj)
+          .filter(
+            (key) =>
+              key !== "id" &&
+              key !== "isDefaultOrderAddress" &&
+              key !== "isDefaultShippingAddress",
+          )
+          .every((key) => addressObj[key] === obj[key]),
+      );
+      if (isTheSame) {
+        toast.info("Już takie dane adresowe isnieją", toastConfig);
+        navigate("/panel#adresy");
+        return;
+      }
+    }
+
     dispatch({
       type: urlId === "nowy" ? "ADD_NEW_ADDRESS" : "EDIT_ADDRESS",
       payload: addressObj,
