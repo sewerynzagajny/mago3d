@@ -44,10 +44,10 @@ export default function ActionConfirmModal({ state, dispatch }) {
           ×
         </button>
         <div className="action-confirm-modal__modal__content">
-          <h2 classname="action-confirm-modal__modal__content--header">
+          <h2 className="action-confirm-modal__modal__content--header">
             {config.title}
           </h2>
-          <p classname="action-confirm-modal__modal__content--text">
+          <p className="action-confirm-modal__modal__content--text">
             {config.description}
           </p>
           <div className="action-confirm-modal__modal__content__actions">
