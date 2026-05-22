@@ -125,6 +125,7 @@ export default function AddEditAddress() {
                 className="add-edit-address__form__field--input"
                 name="firstName"
                 id="firstName"
+                required
               />
             </div>
             <div className="add-edit-address__form__field">
@@ -140,6 +141,7 @@ export default function AddEditAddress() {
                 className="add-edit-address__form__field--input"
                 name="lastName"
                 id="lastName"
+                required
               />
             </div>
             <div className="add-edit-address__form__field">
@@ -168,6 +170,7 @@ export default function AddEditAddress() {
                   className="add-edit-address__form__field--input"
                   name="phone"
                   id="phone"
+                  required
                 />
               </div>
               <span className="add-edit-address__form__field--hint">
@@ -259,6 +262,7 @@ export default function AddEditAddress() {
                 className="add-edit-address__form__field--input"
                 name="street"
                 id="street"
+                required
               />
               <span className="add-edit-address__form__field--hint">
                 Np.: Maciejkowa 88/24
@@ -277,6 +281,7 @@ export default function AddEditAddress() {
                 className="add-edit-address__form__field--input"
                 name="postalCode"
                 id="postalCode"
+                required
               />
               <span className="add-edit-address__form__field--hint">
                 Format dla Polski: xx-xxx
@@ -295,6 +300,7 @@ export default function AddEditAddress() {
                 className="add-edit-address__form__field--input"
                 name="city"
                 id="city"
+                required
               />
             </div>
             <div className="add-edit-address__form__field">
