@@ -6,10 +6,7 @@ import {
 } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastConfig } from "../config/toastConfig";
-
-const user = {
-  email: "seweryn.zagajny@gmail.com",
-};
+import { useUser } from "../context/UserContex";
 
 export default function UserSettingsModal({
   userSettingsOpen,
@@ -18,6 +15,13 @@ export default function UserSettingsModal({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, setUser } = useUser();
+  const { firstName, lastName, email } = user;
+  const welcomeUser = () => {
+    if (firstName) return firstName;
+    else if (!firstName && lastName) return lastName;
+    else return email;
+  };
 
   function handleCloseSettingsMenu() {
     setuserSettingsOpen(false);
@@ -44,11 +48,11 @@ export default function UserSettingsModal({
       </button>
       <div className="user-setings-modal__header">
         <span className="user-setings-modal__header--icon">
-          {user.email[0].toUpperCase()}
+          {welcomeUser()[0].toUpperCase()}
         </span>
         <p className="user-setings-modal__header--text">
           Witaj,
-          <br /> {user.email}
+          <br /> {welcomeUser()}
         </p>
       </div>
       <ul className="user-setings-modal__list">

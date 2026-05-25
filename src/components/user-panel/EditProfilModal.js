@@ -12,11 +12,7 @@ import { useUser } from "../../context/UserContex";
 
 export default function EditProfilModal({ onClose, loading, setLoading }) {
   //TODO hardcode
-  const passs = "Seweryn123456";
-  // const { setIsLogin } = useAuth();
-  const currentPasswordRef = useRef(null);
-  const newPasswordRef = useRef(null);
-  const checkPassworRef = useRef(null);
+
   const honeypotRef = useRef(null); // Ref do ukrytego pola honeypot
 
   const { user, setUser } = useUser();
@@ -24,63 +20,20 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
   // const [loading, setLoading] = useState(false);
   const { firstName, lastName, email } = user;
 
-  function handleCancelChangePassword() {
+  function handleCancelEditProfil() {
     onClose();
   }
 
-  async function handleSubmitChangePassword(e) {
+  async function handleSubmitEditProfil(e) {
     e.preventDefault();
 
-    const currentPassword = (currentPasswordRef.current?.value ?? "").replace(
-      /\s/g,
-      "",
-    );
-    const newPassword = (newPasswordRef.current?.value ?? "").replace(
-      /\s/g,
-      "",
-    );
-    const confirmPassword = (checkPassworRef.current?.value ?? "").replace(
-      /\s/g,
-      "",
-    );
-    setLoading(true);
+    setUser((obj) => ({
+      ...obj,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      email: e.target.email.value,
+    }));
 
-    if (currentPassword !== passs) {
-      toast.error("Aktualne hasło nieprawidłowe!", toastConfig);
-      currentPasswordRef.current.value = "";
-      newPasswordRef.current.value = "";
-      checkPassworRef.current.value = "";
-      setLoading(false);
-      return;
-    }
-
-    if (newPassword.length < 6) {
-      toast.error("Hasło musi składać się z minimum 6 znaków!", toastConfig);
-      currentPasswordRef.current.value = "";
-      newPasswordRef.current.value = "";
-      checkPassworRef.current.value = "";
-      setLoading(false);
-      return;
-    }
-
-    if (newPassword === currentPassword) {
-      toast.error("Nowe hasło jest takie samo co aktualne!", toastConfig);
-      currentPasswordRef.current.value = "";
-      newPasswordRef.current.value = "";
-      checkPassworRef.current.value = "";
-      setLoading(false);
-      return;
-    }
-    if (newPassword !== confirmPassword) {
-      toast.error("Potwierdzenie hasła nie powiodło się!", toastConfig);
-      currentPasswordRef.current.value = "";
-      newPasswordRef.current.value = "";
-      checkPassworRef.current.value = "";
-      setLoading(false);
-      return;
-    }
-
-    const userRegData = { password: newPasswordRef.current.value };
     // setLoading(true);
     try {
       //TODO;
@@ -91,9 +44,9 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
       // await getFoodItems?.(response.token);
       // await getKcalItems?.(response.token);
       // setIsLogin(true);
-      toast.success("Nowe hasło zapisano pomyślnie!", toastConfig);
+      toast.success("Profil edytowano pomyślnie!", toastConfig);
     } catch (err) {
-      toast.error("Zmiana hasła nieudana!", toastConfig);
+      toast.error("Edycja profilu nieudane!", toastConfig);
     } finally {
       setLoading(false);
       onClose();
@@ -101,26 +54,26 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
   }
 
   const modal = (
-    <div className="change-pw-modal">
-      <div className="change-pw-modal__modal frame">
+    <div className="edit-profil-modal">
+      <div className="edit-profil-modal__modal frame">
         <button
           type="button"
-          className={`change-pw-modal__modal-btn_close ${loading ? "button--loading" : ""}`}
+          className={`edit-profil-modal__modal-btn_close ${loading ? "button--loading" : ""}`}
           aria-label="Zamknij"
-          onClick={handleCancelChangePassword}
+          onClick={handleCancelEditProfil}
           disabled={loading}
         >
           ×
         </button>
-        <div className="change-pw-modal__content">
-          <div className="change-pw-modal__content__header">
-            <h2 className="change-pw-modal__content__header-headline">
+        <div className="edit-profil-modal__content">
+          <div className="edit-profil-modal__content__header">
+            <h2 className="edit-profil-modal__content__header-headline">
               Edycja profilu
             </h2>
           </div>
           <form
-            className="change-pw-modal__content__form"
-            onSubmit={handleSubmitChangePassword}
+            className="edit-profil-modal__content__form"
+            onSubmit={handleSubmitEditProfil}
           >
             <input
               type="text"
@@ -131,53 +84,44 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
               tabIndex="-1"
               autoComplete="off"
             />
-            <div className="registraction_modal__content__form-field">
-              <label htmlFor="email">*Adres e-mail</label>
+            <div className="edit-profil-modal__content__form-field">
               <input
-                className={`registraction_modal__content__form-field--input ${loading ? "loading" : ""}`}
+                className={`edit-profil-modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="email"
                 id="email"
                 autoComplete="email"
-                value={email}
-                onChange={(e) =>
-                  setUser((obj) => ({ ...obj, email: e.target.value }))
-                }
-                placeholder="Adres e-mail"
+                defaultValue={email}
+                placeholder="*Adres e-mail"
                 required
                 disabled={loading}
               />
+              <label htmlFor="email">*Adres e-mail</label>
             </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="firstName"
-              >
-                *Imię
-              </label>
+            <div className="edit-profil-modal__content__form-field">
               <input
+                className={`edit-profil-modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="text"
-                defaultValue={firstName || ""}
-                className="add-edit-address__form__field--input"
-                name="firstName"
                 id="firstName"
-                required
+                name="firstName"
+                autoComplete="given-name"
+                defaultValue={firstName || ""}
+                placeholder="Imię"
+                disabled={loading}
               />
+              <label htmlFor="firstName">Imię</label>
             </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="lastName"
-              >
-                *Nazwisko
-              </label>
+            <div className="edit-profil-modal__content__form-field">
               <input
+                className={`edit-profil-modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="text"
-                defaultValue={lastName || ""}
-                className="add-edit-address__form__field--input"
-                name="lastName"
                 id="lastName"
-                required
+                name="lastName"
+                autoComplete="family-name"
+                defaultValue={lastName || ""}
+                placeholder="Nazwisko"
+                disabled={loading}
               />
+              <label htmlFor="lastName">Nazwisko</label>
             </div>
 
             <Button
@@ -191,12 +135,6 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
               {loading ? <Spinner /> : "Zapisz"}
             </Button>
           </form>
-
-          <div className="change-pw-modal__contentchange-pw">
-            <p className="change-pw-modal__contentchange-pw-text">
-              Hasło powinno mieć min. 6 znaków{" "}
-            </p>
-          </div>
         </div>
       </div>
     </div>
