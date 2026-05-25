@@ -9,12 +9,14 @@ import AccountSettings from "../components/user-panel/AccountSettings";
 import AddressDetails from "../components/user-panel/AddressDetails";
 import ActionConfirmModal from "../components/ActionConfirmModal";
 import { modalReducer, initialModalState } from "../components/modalReducer";
+import { useAuth } from "../context/AuthContext";
 
 export default function UserPanel() {
   const [modalState, modalDispatch] = useReducer(
     modalReducer,
     initialModalState,
   );
+  const { isLogin } = useAuth();
 
   return (
     <>
@@ -31,9 +33,13 @@ export default function UserPanel() {
             <h2 className="heading-secondary">Panel klienta</h2>
             <h3 className="heading-tertiary">Koszyk</h3>
             <ShoppingCart />
-            <Orders />
-            <AccountSettings />
-            <AddressDetails modalDispatch={modalDispatch} />
+            {isLogin && (
+              <>
+                <Orders />
+                <AccountSettings />
+                <AddressDetails modalDispatch={modalDispatch} />{" "}
+              </>
+            )}
           </div>
           <Footer />
         </ScrollEffectContainer>

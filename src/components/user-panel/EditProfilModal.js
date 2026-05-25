@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { createPortal } from "react-dom";
 import Button from "../Btn";
 // import AJAX from "../utils/AJAX";
@@ -7,7 +7,7 @@ import Spinner from "../Spinner";
 // import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { toastConfig } from "../../config/toastConfig";
-import { toFormData } from "axios";
+
 import { useUser } from "../../context/UserContex";
 
 export default function EditProfilModal({ onClose, loading, setLoading }) {
@@ -17,7 +17,6 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
 
   const { user, setUser } = useUser();
 
-  // const [loading, setLoading] = useState(false);
   const { firstName, lastName, email } = user;
 
   function handleCancelEditProfil() {
