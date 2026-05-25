@@ -150,8 +150,8 @@ export default function Carousel({
     isModal && zoomed
       ? { cursor: "grab" }
       : isModal && !isTouchDevice()
-      ? { cursor: "zoom-in" }
-      : {};
+        ? { cursor: "zoom-in" }
+        : {};
 
   const swipe = useSwipe({
     onSwipeLeft: () => {
@@ -282,7 +282,7 @@ Carousel.propTypes = {
       type: PropTypes.oneOf(["image", "video"]).isRequired,
       src: PropTypes.string.isRequired,
       alt: PropTypes.string,
-    })
+    }),
   ).isRequired,
   onItemClick: PropTypes.func,
   initialIndex: PropTypes.number,
