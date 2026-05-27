@@ -10,6 +10,8 @@ import ShortenTitle from "./ShortenTitle";
 import OrderModal from "./OrderModal";
 import ColorChooser from "./ColorChooser";
 import useIsMobile from "../hooks/useIsMobile";
+import { toast } from "react-toastify";
+import { toastConfig } from "../config/toastConfig";
 
 export default function Product({
   product,
@@ -190,19 +192,22 @@ export default function Product({
 
   function handleBuyClick(e) {
     e.preventDefault();
+    //new feature
+    toast.success("Produkt dodano do koszyka", toastConfig);
 
-    if (itemRef.current) {
-      setMenuAnchorRect(itemRef.current.getBoundingClientRect());
-    }
-    // setMenuPosition({
-    //   x: e.clientX + window.scrollX,
-    //   y: e.clientY + window.scrollY,
-    // });
-    setTimeout(() => {
-      setMenuVisible(true);
-    }, 60);
+    //old feature
+    // if (itemRef.current) {
+    //   setMenuAnchorRect(itemRef.current.getBoundingClientRect());
+    // }
+    // // setMenuPosition({
+    // //   x: e.clientX + window.scrollX,
+    // //   y: e.clientY + window.scrollY,
+    // // });
+    // setTimeout(() => {
+    //   setMenuVisible(true);
+    // }, 60);
 
-    if (onMenuChange) onMenuChange(true); // Przekazanie wartości do rodzica
+    // if (onMenuChange) onMenuChange(true); // Przekazanie wartości do rodzica
   }
 
   function handleCloseMenu() {
@@ -339,7 +344,7 @@ export default function Product({
             className={`btn ${className}__content--btn`}
             onClick={handleBuyClick}
           >
-            Kup
+            Do koszyka
           </Btn>
         </div>
       </div>

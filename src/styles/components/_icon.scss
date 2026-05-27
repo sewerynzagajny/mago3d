@@ -74,3 +74,25 @@
 .icon-close.icon-visible {
   opacity: 1;
 }
+.icon-shop {
+  position: relative;
+
+  &__quantity {
+    position: absolute;
+    // top: auto;
+    // right: auto;
+    top: 0rem;
+    right: -0.8rem;
+    font-size: 1rem;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-color: $font-color-primary;
+    color: $black;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+}

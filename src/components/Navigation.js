@@ -172,8 +172,11 @@ export default function Navigation() {
           </div>
           <div>
             <ul className="nav__btn__icons">
-              <li key="shop" className="nav__btn__icons-svg">
-                <ShopIcon className="icon-nav-svg" />
+              <li key="shop" className="nav__btn__icons-svg icon-shop">
+                <Link className="nav__link" to="/panel#koszyk">
+                  <ShopIcon className="icon-nav-svg" />
+                  <span className="icon-shop__quantity">1</span>
+                </Link>
               </li>
               <li
                 key="login-or-logout"
