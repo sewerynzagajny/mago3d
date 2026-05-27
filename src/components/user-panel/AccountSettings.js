@@ -15,8 +15,8 @@ const initialModalState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SHOW_MODAL_CHANGE_PASSOWRD":
-      return { status: "changePassowrd" };
+    case "SHOW_MODAL_CHANGE_PASSWORD":
+      return { status: "changePassword" };
     case "SHOW_MODAL_EDIT_PROFIL":
       return { status: "editProfil" };
     case "HIDE_ALL":
@@ -35,7 +35,7 @@ export default function AccountSettings() {
   const [{ status }, dispatch] = useReducer(reducer, initialModalState);
 
   function handleShowChangePasswordModal() {
-    dispatch({ type: "SHOW_MODAL_CHANGE_PASSOWRD" });
+    dispatch({ type: "SHOW_MODAL_CHANGE_PASSWORD" });
   }
 
   function handleShowEditProfilModal() {
@@ -48,7 +48,7 @@ export default function AccountSettings() {
 
   return (
     <>
-      {status === "changePassowrd" && (
+      {status === "changePassword" && (
         <ChangePasswordModal
           loading={loading}
           setLoading={setLoading}

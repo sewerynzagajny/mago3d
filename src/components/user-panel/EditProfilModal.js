@@ -88,6 +88,7 @@ export default function EditProfilModal({ onClose, loading, setLoading }) {
                 className={`edit-profil-modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="email"
                 id="email"
+                name="email"
                 autoComplete="email"
                 defaultValue={email}
                 placeholder="*Adres e-mail"

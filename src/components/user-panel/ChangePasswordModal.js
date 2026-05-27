@@ -7,7 +7,6 @@ import Spinner from "../Spinner";
 // import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { toastConfig } from "../../config/toastConfig";
-import { toFormData } from "axios";
 
 export default function ChangePasswordModal({ onClose, loading, setLoading }) {
   //TODO hardcode
