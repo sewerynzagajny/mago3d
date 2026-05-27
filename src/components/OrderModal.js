@@ -13,12 +13,13 @@ export default function OrderModal({
   selectedColor,
   onColorChange,
   price,
-  anchorRect, // przekazuj rect kafelka, jeśli chcesz pozycjonować modal względem kafelka
-  modalRef, // przekazuj ref, jeśli chcesz mieć dostęp do modala
+  anchorRect,
+  modalRef,
+  quantity,
+  setQuantity,
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [quantity, setQuantity] = useState(1);
   const [heightOffset, setHeightOffset] = useState("3rem");
   const [loading, setIsLoading] = useState(false);
   const honeypotRef = useRef(null); // Ref do ukrytego pola honeypot
@@ -27,7 +28,6 @@ export default function OrderModal({
     if (!visible) {
       setName("");
       setEmail("");
-      setQuantity(1);
       // Jeśli chcesz resetować kolor:
       // onColorChange("black");
     }
@@ -79,7 +79,7 @@ export default function OrderModal({
       })
       .then((_response) => {
         alert(
-          `Zamówienie złożone: ${quantity}x ${product.name} (${selectedColor}), cena: ${totalPrice}.`
+          `Zamówienie złożone: ${quantity}x ${product.name} (${selectedColor}), cena: ${totalPrice}.`,
         );
         setName("");
         setEmail("");

@@ -69,12 +69,13 @@ export default function Product({
   };
 
   const [chooseColor, setChooseColor] = useState(
-    product.colors?.[0]?.nameEn || "black"
+    product.colors?.[0]?.nameEn || "black",
   );
 
   const [menuVisible, setMenuVisible] = useState(false);
   // const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [menuAnchorRect, setMenuAnchorRect] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   // const [orderModalVisible, setOrderModalVisible] = useState(false);
 
@@ -92,6 +93,10 @@ export default function Product({
   //   window.addEventListener("resize", handleResize);
   //   return () => window.removeEventListener("resize", handleResize);
   // }, []);
+
+  useEffect(() => {
+    if (!orderModalVisible) setQuantity(1);
+  }, [orderModalVisible]);
 
   // Zamknięcie modala po kliknięciu poza oknem
   useEffect(() => {
@@ -169,6 +174,9 @@ export default function Product({
   ];
 
   // Dodaj klasę horizontal-mobile na NAJZEWNĘTRZNYM divie
+  const totalPrice = (
+    parseFloat(product.priceStringPl.replace(",", ".")) * quantity
+  ).toLocaleString("pl-PL", { style: "currency", currency: "PLN" });
   const rootClass =
     // (className ? className + " " : "") +
     inDetails && isMobile ? "horizontal-mobile " : "";
@@ -258,24 +266,60 @@ export default function Product({
           {inDetails && isMobile ? (
             <div>
               <p className={`${className}__content--text-price`}>
-                {product.priceStringPl}
+                {totalPrice}
               </p>
               <ColorChooser
                 colors={product.colors}
                 selectedColor={chooseColor}
                 onColorChange={setChooseColor}
               />
+              <div className={`${className}__content--quantity--btns-q`}>
+                <span>Ilość: </span>
+                <button
+                  className={`${className}__content--quantity--btns-q--btn-quantity`}
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                >
+                  -
+                </button>
+                <span style={{ width: "1.2rem" }}>{quantity}</span>
+                <button
+                  className={`${className}__content--quantity--btns-q--btn-quantity`}
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.min(20, q + 1))}
+                >
+                  +
+                </button>
+              </div>
             </div>
           ) : (
             <>
               <p className={`${className}__content--text-price`}>
-                {product.priceStringPl}
+                {totalPrice}
               </p>
               <ColorChooser
                 colors={product.colors}
                 selectedColor={chooseColor}
                 onColorChange={setChooseColor}
               />
+              <div className={`${className}__content--quantity--btns-q`}>
+                <span>Ilość: </span>
+                <button
+                  className={`${className}__content--quantity--btns-q--btn-quantity`}
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                >
+                  -
+                </button>
+                <span style={{ width: "1.2rem" }}>{quantity}</span>
+                <button
+                  className={`${className}__content--quantity--btns-q--btn-quantity`}
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.min(20, q + 1))}
+                >
+                  +
+                </button>
+              </div>
             </>
           )}
 
@@ -285,7 +329,7 @@ export default function Product({
               className={`btn ${className}__content--btn`}
               as={Link}
               to={detailsLink}
-              style={inDetails ? { visibility: "hidden" } : undefined}
+              style={inDetails ? { display: "none" } : undefined}
             >
               Szczegóły
             </Btn>
@@ -327,7 +371,7 @@ export default function Product({
                     : window.open(
                         platform.link,
                         "_blank",
-                        "noopener,noreferrer"
+                        "noopener,noreferrer",
                       );
                 }, 50);
               }}
@@ -348,6 +392,8 @@ export default function Product({
         price={product.priceStringPl}
         anchorRect={!inDetails || !isMobile ? anchorRect : undefined}
         modalRef={modalRef} // przekazujemy ref do OrderModa
+        quantity={quantity}
+        setQuantity={setQuantity}
       />
     </div>
   );

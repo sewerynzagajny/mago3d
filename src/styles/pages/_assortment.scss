@@ -10,7 +10,9 @@
       position: relative;
       &__item {
         // position: relative;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        transition:
+          transform 0.3s ease-in-out,
+          box-shadow 0.3s ease-in-out;
         &__content {
           padding: 2rem 2rem 2rem;
           @extend %animated-gradient-bg;
@@ -132,6 +134,33 @@
           &--text-price {
             font-weight: $font-stronger;
             color: $font-color-primary;
+          }
+          &--quantity {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            &--btns-q {
+              display: flex;
+              gap: 2.4rem;
+              // justify-content: center;
+              align-items: center;
+
+              &--btn-quantity {
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 0.5rem;
+                border: 0.2rem solid #52d552;
+                background-color: $font-color-text;
+                color: $black;
+                font-size: 2rem;
+                font-weight: $font-stronger;
+                cursor: pointer;
+              }
+            }
           }
 
           & a {
