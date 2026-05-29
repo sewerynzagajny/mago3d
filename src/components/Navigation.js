@@ -10,6 +10,7 @@ import ForgotPasswordModal from "./ForgotPasswordModal";
 import { useAuth } from "../context/AuthContext";
 import UserSettingsModal from "./UserSettingsModal";
 // import useScrollLock from "../hooks/useScrollLock";
+import { useCart } from "../context/CartContext";
 
 const initialModalState = {
   status: "",
@@ -42,6 +43,7 @@ export default function Navigation() {
     modalReducer,
     initialModalState,
   );
+  const { cart } = useCart();
 
   // const bodyRef = useRef(document.body);
   // useScrollLock(status !== "", bodyRef);
@@ -85,6 +87,11 @@ export default function Navigation() {
   function handleModalClose() {
     dispatchModal({ type: "HIDE_ALL" });
   }
+
+  const quantityProductsShow = cart.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
 
   return (
     <>
@@ -171,14 +178,20 @@ export default function Navigation() {
             </ul>
           </div>
           <div>
-            <ul className="nav__btn__icons">
-              <li key="shop" className="nav__btn__icons-svg icon-shop">
-                <Link className="nav__link" to="/panel#koszyk">
+            <div className="nav__btn__icons">
+              <Link key="shop" className="nav__link" to="/panel#koszyk">
+                <div className="nav__btn__icons-svg icon-shop">
                   <ShopIcon className="icon-nav-svg" />
-                  <span className="icon-shop__quantity">1</span>
-                </Link>
-              </li>
-              <li
+                  {quantityProductsShow === 0 ? (
+                    ""
+                  ) : (
+                    <span className="icon-shop__quantity">
+                      {quantityProductsShow}
+                    </span>
+                  )}
+                </div>
+              </Link>
+              <div
                 key="login-or-logout"
                 className="nav__btn__icons-svg"
                 onClick={isLogin ? handleShowUserSetting : handleLogin}
@@ -188,8 +201,8 @@ export default function Navigation() {
                 ) : (
                   <LoginIcon className="icon-nav-svg" />
                 )}
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
           <button className="nav__btn__toggle" onClick={toggleMenu}>
             {menuOpen ? "✖" : "☰"}

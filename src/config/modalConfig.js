@@ -17,4 +17,10 @@ export const modalConfig = {
     confirmLabel: "Usuń konto",
     cancelLabel: "Anuluj",
   },
+  usun_item: {
+    title: "Usunięcie produktu",
+    description: "Czy chcesz usunąć wybrany pordukt z koszyka?",
+    confirmLabel: "Usuń",
+    cancelLabel: "Anuluj",
+  },
 };

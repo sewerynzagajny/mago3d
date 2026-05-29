@@ -12,6 +12,7 @@ import ColorChooser from "./ColorChooser";
 import useIsMobile from "../hooks/useIsMobile";
 import { toast } from "react-toastify";
 import { toastConfig } from "../config/toastConfig";
+import { useCart } from "../context/CartContext";
 
 export default function Product({
   product,
@@ -22,6 +23,8 @@ export default function Product({
   orderModalVisible,
   inDetails = false, // czy w szczegółach
 }) {
+  const { dispatch } = useCart();
+
   // const shoppingPlatforms = product.shoppingPlatform || [
   //   {
   //     name: "Etsy",
@@ -193,6 +196,10 @@ export default function Product({
   function handleBuyClick(e) {
     e.preventDefault();
     //new feature
+    dispatch({
+      type: "ADD_ITEM",
+      payload: { productId: product.id, colorKey: chooseColor, quantity },
+    });
     toast.success("Produkt dodano do koszyka", toastConfig);
 
     //old feature

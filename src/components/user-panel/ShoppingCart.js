@@ -1,114 +1,36 @@
-import { useState } from "react";
-import Product from "../Product";
 import { products } from "../../data/products";
+import { useCart } from "../../context/CartContext";
 import Btn from "../Btn";
+import CartItem from "./CartItem";
 
-export default function ShoppingCart() {
-  const product = products.find((p) => p.id === 12);
-  const product2 = products.find((p) => p.id === 2);
-  const product3 = products.find((p) => p.id === 4);
-  const [onMenuVisible, setOnMenuVisible] = useState(false);
-  const [orderModalProductId, setOrderModalProductId] = useState(null);
+export default function ShoppingCart({ modalDispatch }) {
+  const { cart } = useCart();
+  const totalPrice = cart.reduce((sum, item) => {
+    const product = products.find((p) => p.id === item.productId);
+    if (!product) return sum;
+    const price = parseFloat(product.priceStringPl.replace(",", "."));
+    return sum + price * item.quantity;
+  }, 0);
+  const totalPriceFormatted = totalPrice.toLocaleString("pl-PL", {
+    style: "currency",
+    currency: "PLN",
+  });
 
   return (
     <div id="koszyk" className="shopping-cart grid-2-col_shopping-cart ">
       <div className="shopping-cart__list">
-        <Product
-          key={product.id}
-          product={product}
-          className="horizontal-mobile  details__container__products__item"
-          onMenuChange={setOnMenuVisible}
-          inDetails={true}
-          setOrderModalVisible={(visible) =>
-            setOrderModalProductId(visible ? product.id : null)
-          }
-          orderModalVisible={orderModalProductId === product.id}
-          style={
-            onMenuVisible || orderModalProductId !== null
-              ? { opacity: "0.8" }
-              : {}
-          }
-        />
-        <Product
-          key={product2.id}
-          product={product2}
-          className="horizontal-mobile  details__container__products__item"
-          onMenuChange={setOnMenuVisible}
-          inDetails={true}
-          setOrderModalVisible={(visible) =>
-            setOrderModalProductId(visible ? product2.id : null)
-          }
-          orderModalVisible={orderModalProductId === product2.id}
-          style={
-            onMenuVisible || orderModalProductId !== null
-              ? { opacity: "0.8" }
-              : {}
-          }
-        />
-        <Product
-          key={4}
-          product={product3}
-          className="horizontal-mobile  details__container__products__item"
-          onMenuChange={setOnMenuVisible}
-          inDetails={true}
-          setOrderModalVisible={(visible) =>
-            setOrderModalProductId(visible ? product3.id : null)
-          }
-          orderModalVisible={orderModalProductId === product3.id}
-          style={
-            onMenuVisible || orderModalProductId !== null
-              ? { opacity: "0.8" }
-              : {}
-          }
-        />
-        <Product
-          key={5}
-          product={product2}
-          className="horizontal-mobile  details__container__products__item"
-          onMenuChange={setOnMenuVisible}
-          inDetails={true}
-          setOrderModalVisible={(visible) =>
-            setOrderModalProductId(visible ? product2.id : null)
-          }
-          orderModalVisible={orderModalProductId === product2.id}
-          style={
-            onMenuVisible || orderModalProductId !== null
-              ? { opacity: "0.8" }
-              : {}
-          }
-        />
-        <Product
-          key={6}
-          product={product2}
-          className="horizontal-mobile  details__container__products__item"
-          onMenuChange={setOnMenuVisible}
-          inDetails={true}
-          setOrderModalVisible={(visible) =>
-            setOrderModalProductId(visible ? product2.id : null)
-          }
-          orderModalVisible={orderModalProductId === product2.id}
-          style={
-            onMenuVisible || orderModalProductId !== null
-              ? { opacity: "0.8" }
-              : {}
-          }
-        />
-        <Product
-          key={7}
-          product={product2}
-          className="horizontal-mobile  details__container__products__item"
-          onMenuChange={setOnMenuVisible}
-          inDetails={true}
-          setOrderModalVisible={(visible) =>
-            setOrderModalProductId(visible ? product2.id : null)
-          }
-          orderModalVisible={orderModalProductId === product2.id}
-          style={
-            onMenuVisible || orderModalProductId !== null
-              ? { opacity: "0.8" }
-              : {}
-          }
-        />
+        {cart.map((item) => {
+          const product = products.find((p) => p.id === item.productId);
+          return (
+            <CartItem
+              key={item.cartItemId}
+              className="cart-item__container__product__item"
+              item={item}
+              product={product}
+              modalDispatch={modalDispatch}
+            />
+          );
+        })}
       </div>
 
       <div className="shopping-cart__summary">
@@ -122,7 +44,7 @@ export default function ShoppingCart() {
               <div className="shopping-cart__summary__content__total-price_sum">
                 <div className="shopping-cart__summary__content__total-price_sum--value">
                   {" "}
-                  1245,89 zł
+                  {totalPriceFormatted}
                 </div>
                 <p className="shopping-cart__summary__content__total-price_sum--text">
                   {" "}

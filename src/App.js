@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import { AddressProvider } from "./context/AddressContext";
 import { UserProvider } from "./context/UserContex";
+import { CartProvider } from "./context/CartContext";
 import {
   BrowserRouter as Router,
   Routes,
@@ -148,107 +149,109 @@ export default function App() {
   }
 
   return (
-    <AuthProvider>
-      <UserProvider>
-        <AddressProvider>
-          <ToastContainer
-            toastOptions={toastConfig}
-            style={{
-              right: "1.2rem",
-              left: "1.2rem",
-              bottom: "1.2rem",
-              width: "auto",
-              zIndex: 999999,
-            }}
-          />
-          <Router>
-            <ScrollToTopOrAnchor />
-            <GlobalAssortmentModal />
-            <Routes>
-              {/* Główna strona */}
-              <Route
-                path="/"
-                element={
-                  <div>
-                    <FirstLoadPageVideo
-                      key={videoLoaded ? "video-hidden" : "video-visible"}
-                      videoPath={videoMp4}
-                      videoPathMobile={videoMp4Mobile}
-                      videoType={"mp4"}
-                      posterPath={poster}
-                      videoWebmPath={videoWebm}
-                      videoWebmPathMobile={videoWebmMobile}
-                      animationTime={firstLoadPageVideoTime}
-                      hideVideoTime={0.8}
-                      hideVideotransformOriginX={"0%"}
-                      hideVideotransformOriginY={"0%"}
-                      mobileBreakpoint={560}
-                      onVideoLoaded={() => setVideoLoaded(true)}
-                      {...hideVideoProps}
-                    />
-                    {videoLoaded && (
-                      <div ref={pageRef} className="page-container">
-                        {/* <GlobalAssortmentModal inRouter={false} /> */}
-                        <Header>
-                          <Navigation />
-                          <Hero />
-                          <CookieBanner />
-                        </Header>
-                        <main>
-                          <AboutUs />
-                        </main>
-                        <Footer />
-                      </div>
-                    )}
-                  </div>
-                }
-              />
-              {/* Podstrona Historia */}
-              <Route path="/test" element={<Test />} />
-              <Route path="/historia" element={<History />} />
-              <Route path="/materialy" element={<Materials />} />
-              <Route path="/kontakt" element={<Contact />} />
-              <Route path="/asortyment" element={<Assortment />} />
-              <Route path="/polityka-prywatnosci" element={<Privacy />} />
-              <Route path="/szczegoly" element={<Details />} />
-              <Route path="/panel" element={<UserPanel />} />
-              <Route path="/panel/adres/:urlId" element={<Address />} />
+    <CartProvider>
+      <AuthProvider>
+        <UserProvider>
+          <AddressProvider>
+            <ToastContainer
+              toastOptions={toastConfig}
+              style={{
+                right: "1.2rem",
+                left: "1.2rem",
+                bottom: "1.2rem",
+                width: "auto",
+                zIndex: 999999,
+              }}
+            />
+            <Router>
+              <ScrollToTopOrAnchor />
+              <GlobalAssortmentModal />
+              <Routes>
+                {/* Główna strona */}
+                <Route
+                  path="/"
+                  element={
+                    <div>
+                      <FirstLoadPageVideo
+                        key={videoLoaded ? "video-hidden" : "video-visible"}
+                        videoPath={videoMp4}
+                        videoPathMobile={videoMp4Mobile}
+                        videoType={"mp4"}
+                        posterPath={poster}
+                        videoWebmPath={videoWebm}
+                        videoWebmPathMobile={videoWebmMobile}
+                        animationTime={firstLoadPageVideoTime}
+                        hideVideoTime={0.8}
+                        hideVideotransformOriginX={"0%"}
+                        hideVideotransformOriginY={"0%"}
+                        mobileBreakpoint={560}
+                        onVideoLoaded={() => setVideoLoaded(true)}
+                        {...hideVideoProps}
+                      />
+                      {videoLoaded && (
+                        <div ref={pageRef} className="page-container">
+                          {/* <GlobalAssortmentModal inRouter={false} /> */}
+                          <Header>
+                            <Navigation />
+                            <Hero />
+                            <CookieBanner />
+                          </Header>
+                          <main>
+                            <AboutUs />
+                          </main>
+                          <Footer />
+                        </div>
+                      )}
+                    </div>
+                  }
+                />
+                {/* Podstrona Historia */}
+                <Route path="/test" element={<Test />} />
+                <Route path="/historia" element={<History />} />
+                <Route path="/materialy" element={<Materials />} />
+                <Route path="/kontakt" element={<Contact />} />
+                <Route path="/asortyment" element={<Assortment />} />
+                <Route path="/polityka-prywatnosci" element={<Privacy />} />
+                <Route path="/szczegoly" element={<Details />} />
+                <Route path="/panel" element={<UserPanel />} />
+                <Route path="/panel/adres/:urlId" element={<Address />} />
 
-              {/* Dynamiczne generowanie tras dla szczegółów produktów */}
-              {products
-                .filter(
-                  (product) =>
-                    product.slug &&
-                    product.component &&
-                    componentMap[product.component],
-                )
-                .map((product) => (
-                  <Route
-                    key={product.id}
-                    path={`/szczegoly/druki-3d/${product.slug}`}
-                    element={React.createElement(
+                {/* Dynamiczne generowanie tras dla szczegółów produktów */}
+                {products
+                  .filter(
+                    (product) =>
+                      product.slug &&
+                      product.component &&
                       componentMap[product.component],
-                      {
-                        productId: product.id,
-                      },
-                    )}
-                  />
-                ))}
+                  )
+                  .map((product) => (
+                    <Route
+                      key={product.id}
+                      path={`/szczegoly/druki-3d/${product.slug}`}
+                      element={React.createElement(
+                        componentMap[product.component],
+                        {
+                          productId: product.id,
+                        },
+                      )}
+                    />
+                  ))}
 
-              {/* <Route
+                {/* <Route
           path="/szczegoly/druki-3d/podstawka-pod-thermomix-tM5-tM6-tSv3"
           element={<Tsv3 />}
           /> */}
-              {/* <Route
+                {/* <Route
           path="/szczegoly/druki-3d/adapter-z-kolkami-pod-fotelik-krzeselko-ikea-antilop-modul-rozbudowujacy"
           element={<AdapterAntilop />}
           /> */}
-              {/* Nowa podstrona */}
-              {/* <Route path="/new-page" element={<NewPage />} /> */}
-            </Routes>
-          </Router>
-        </AddressProvider>
-      </UserProvider>
-    </AuthProvider>
+                {/* Nowa podstrona */}
+                {/* <Route path="/new-page" element={<NewPage />} /> */}
+              </Routes>
+            </Router>
+          </AddressProvider>
+        </UserProvider>
+      </AuthProvider>
+    </CartProvider>
   );
 }
