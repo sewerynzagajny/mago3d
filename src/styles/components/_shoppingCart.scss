@@ -17,6 +17,7 @@
       &__total-price {
         display: flex;
         justify-content: space-between;
+        // justify-contenyyyt: center;
 
         // margin: 2rem 0;
 
@@ -35,6 +36,12 @@
             color: $font-color-primary;
             font-size: 2.4rem;
           }
+        }
+      }
+      @media only screen and (max-width: 58rem) {
+        &_btn {
+          align-self: center;
+          width: 13rem;
         }
       }
     }

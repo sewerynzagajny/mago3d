@@ -8,90 +8,103 @@
         transition:
           transform 0.3s ease-in-out,
           box-shadow 0.3s ease-in-out;
+        min-height: 28rem;
+        @media only screen and (max-width: 48rem) {
+          margin-bottom: 2.4rem;
+        }
         &__content {
           padding: 2rem 2rem 2rem;
           @extend %animated-gradient-bg;
-          display: flex;
+          display: grid;
+          grid-template-columns: auto 1fr;
           // flex-direction: column;
           gap: 1rem;
           border-radius: 1rem;
-          flex: 1 1 auto;
+          min-height: 28rem;
+          @media only screen and (max-width: 48rem) {
+            grid-template-columns: 1fr;
+          }
 
           &__img {
-            width: 80%;
-            height: 80%;
-            min-height: 25rem;
-            @media only screen and (max-width: 66rem) {
-              min-height: 22rem;
-            }
-            @media only screen and (max-width: 52rem) {
-              min-height: 32rem;
-            }
-            @media only screen and (max-width: 48.2rem) {
-              min-height: 28rem;
-            }
-            @media only screen and (max-width: 41.2rem) {
-              min-height: 22rem;
-            }
-            @media only screen and (max-width: 35rem) {
-              // min-height: 44rem;
-              min-height: 40rem;
-            }
-            @media only screen and (max-width: 34rem) {
-              // min-height: 40rem;
-              min-height: 38rem;
-            }
-            @media only screen and (max-width: 32rem) {
-              // min-height: 39rem;
-              min-height: 36rem;
-            }
-            @media only screen and (max-width: 31rem) {
-              // min-height: 37rem;
-              min-height: 34rem;
-            }
-            @media only screen and (max-width: 30rem) {
-              // min-height: 36rem;
-              min-height: 32rem;
-            }
-            @media only screen and (max-width: 28rem) {
-              // min-height: 33rem;
-              min-height: 30rem;
-            }
+            grid-row: span 2;
+            width: 61%;
 
-            @media only screen and (max-width: 27rem) {
-              // min-height: 31rem;
-              min-height: 28rem;
+            @media only screen and (max-width: 48rem) {
+              grid-row: 1;
             }
+            // height: 80%;
+            // min-height: 25rem;
+            // @media only screen and (max-width: 66rem) {
+            //   min-height: 22rem;
+            // }
+            // @media only screen and (max-width: 52rem) {
+            //   min-height: 32rem;
+            // }
+            // @media only screen and (max-width: 48.2rem) {
+            //   min-height: 28rem;
+            // }
+            // @media only screen and (max-width: 41.2rem) {
+            //   min-height: 22rem;
+            // }
+            // @media only screen and (max-width: 35rem) {
+            //   // min-height: 44rem;
+            //   min-height: 40rem;
+            // }
+            // @media only screen and (max-width: 34rem) {
+            //   // min-height: 40rem;
+            //   min-height: 38rem;
+            // }
+            // @media only screen and (max-width: 32rem) {
+            //   // min-height: 39rem;
+            //   min-height: 36rem;
+            // }
+            // @media only screen and (max-width: 31rem) {
+            //   // min-height: 37rem;
+            //   min-height: 34rem;
+            // }
+            // @media only screen and (max-width: 30rem) {
+            //   // min-height: 36rem;
+            //   min-height: 32rem;
+            // }
+            // @media only screen and (max-width: 28rem) {
+            //   // min-height: 33rem;
+            //   min-height: 30rem;
+            // }
 
-            @media only screen and (max-width: 26rem) {
-              // min-height: 30rem;
-              min-height: 26rem;
-            }
+            // @media only screen and (max-width: 27rem) {
+            //   // min-height: 31rem;
+            //   min-height: 28rem;
+            // }
 
-            @media only screen and (max-width: 25rem) {
-              // min-height: 28rem;
-              min-height: 24rem;
-            }
-            @media only screen and (max-width: 24rem) {
-              // min-height: 27rem;
-              min-height: 23rem;
-            }
-            @media only screen and (max-width: 23rem) {
-              // min-height: 25rem;
-              min-height: 21rem;
-            }
-            @media only screen and (max-width: 22rem) {
-              // min-height: 23rem;
-              min-height: 20rem;
-            }
-            @media only screen and (max-width: 21rem) {
-              // min-height: 22rem;
-              min-height: 19rem;
-            }
-            @media only screen and (max-width: 20rem) {
-              // min-height: 21rem;
-              min-height: 18rem;
-            }
+            // @media only screen and (max-width: 26rem) {
+            //   // min-height: 30rem;
+            //   min-height: 26rem;
+            // }
+
+            // @media only screen and (max-width: 25rem) {
+            //   // min-height: 28rem;
+            //   min-height: 24rem;
+            // }
+            // @media only screen and (max-width: 24rem) {
+            //   // min-height: 27rem;
+            //   min-height: 23rem;
+            // }
+            // @media only screen and (max-width: 23rem) {
+            //   // min-height: 25rem;
+            //   min-height: 21rem;
+            // }
+            // @media only screen and (max-width: 22rem) {
+            //   // min-height: 23rem;
+            //   min-height: 20rem;
+            // }
+            // @media only screen and (max-width: 21rem) {
+            //   // min-height: 22rem;
+            //   min-height: 19rem;
+            // }
+            // @media only screen and (max-width: 20rem) {
+            //   // min-height: 21rem;
+            //   min-height: 18rem;
+            // }
 
             overflow: hidden;
             justify-self: center;
@@ -136,7 +149,13 @@
             gap: 2rem;
 
             &--btns-q {
-              display: flex;
+              // display: flex;
+              display: grid;
+              // grid-template-rows: 1fr;
+              grid-template-columns: 0.25fr 0.15fr 0.15fr 1fr 1fr;
+              @media only screen and (max-width: 23rem) {
+                grid-template-columns: 0.25fr 0.15fr 0.15fr 1fr;
+              }
               gap: 2.4rem;
               // justify-content: center;
               align-items: center;

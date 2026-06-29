@@ -23,4 +23,10 @@ export const modalConfig = {
     confirmLabel: "Usuń",
     cancelLabel: "Anuluj",
   },
+  usun_wszystkie_itemy: {
+    title: "Usunięcie wszystkich produktów",
+    description: "Czy chcesz usunąć wszystkie produkty z koszyka?",
+    confirmLabel: "Usuń",
+    cancelLabel: "Anuluj",
+  },
 };
