@@ -29,7 +29,12 @@ export default function AddressForm({
   } = initialAddress;
 
   return (
-    <form className="add-edit-address__form" onSubmit={onSubmit}>
+    <form
+      className={`add-edit-address__form ${
+        !showActionButtons ? "add-edit-address__form--without-actions" : ""
+      }`.trim()}
+      onSubmit={onSubmit}
+    >
       <div className="add-edit-address__form__field">
         <label
           className="add-edit-address__form__field--label"

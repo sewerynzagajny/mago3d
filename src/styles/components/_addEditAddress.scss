@@ -17,6 +17,10 @@
     flex-direction: column;
     gap: 2rem;
 
+    &--without-actions {
+      margin-bottom: 2.6rem;
+    }
+
     &__field {
       display: flex;
       flex-direction: column;
@@ -54,6 +58,7 @@
         }
 
         &[type="number"] {
+          appearance: textfield;
           -moz-appearance: textfield;
         }
 
