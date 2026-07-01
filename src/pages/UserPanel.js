@@ -14,9 +14,9 @@ import Btn from "../components/Btn";
 import { modalReducer, initialModalState } from "../components/modalReducer";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
-import { products } from "../data/products";
 import { toast } from "react-toastify";
 import { toastConfig } from "../config/toastConfig";
+import { calculateCartTotal, formatCurrencyPLN } from "../utils/cartSummary";
 
 export default function UserPanel() {
   const { cart, dispatch } = useCart();
@@ -26,16 +26,8 @@ export default function UserPanel() {
   );
   const { isLogin } = useAuth();
   const isAnyItem = cart.length ? true : false;
-  const totalPrice = cart.reduce((sum, item) => {
-    const product = products.find((p) => p.id === item.productId);
-    if (!product) return sum;
-    const price = parseFloat(product.priceStringPl.replace(",", "."));
-    return sum + price * item.quantity;
-  }, 0);
-  const totalPriceFormatted = totalPrice.toLocaleString("pl-PL", {
-    style: "currency",
-    currency: "PLN",
-  });
+  const totalPrice = calculateCartTotal(cart);
+  const totalPriceFormatted = formatCurrencyPLN(totalPrice);
 
   function handleAllDeleteItems() {
     modalDispatch({
