@@ -13,6 +13,7 @@ export default function GlobalAssortmentModal() {
   const location = useLocation();
   const isAssortmentPage = location.pathname === "/asortyment";
   const isDetailsPage = location.pathname.startsWith("/szczegoly/");
+  const isOrderPage = location.pathname === "/panel/zamowienie";
   // const isMobile = window.innerWidth <= 600;
   const isHomePage = location.pathname === "/";
   // domyślnie widoczny poza główną
@@ -29,7 +30,7 @@ export default function GlobalAssortmentModal() {
   }, [isHomePage]);
 
   // if (isAssortmentPage || isDetailsPage || !show) return null;
-  const shouldHide = isAssortmentPage || isDetailsPage || !show;
+  const shouldHide = isAssortmentPage || isDetailsPage || isOrderPage || !show;
   // useEffect(() => {
   //   if (shouldHide) setVisible(false);
   // }, [shouldHide]);

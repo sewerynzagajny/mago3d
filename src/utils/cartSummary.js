@@ -16,3 +16,13 @@ export function formatCurrencyPLN(value) {
     currency: "PLN",
   });
 }
+
+export function getCartSummary(cart) {
+  const totalPrice = calculateCartTotal(cart);
+
+  return {
+    isAnyItem: cart.length > 0,
+    totalPrice,
+    totalPriceFormatted: formatCurrencyPLN(totalPrice),
+  };
+}

@@ -36,7 +36,7 @@ const orders = [
   },
 ];
 
-export default function Orders() {
+export default function OrdersHistory() {
   return (
     <div id="zamowienia" className="orders">
       <h4 className="heading-fourth">Zamówienia</h4>

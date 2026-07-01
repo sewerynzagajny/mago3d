@@ -56,6 +56,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { toastConfig } from "./config/toastConfig";
 import UserPanel from "./pages/UserPanel";
 import Address from "./pages/Address";
+import Order from "./pages/Order";
 
 // Mapa komponentów
 const componentMap = {
@@ -215,6 +216,7 @@ export default function App() {
                 <Route path="/szczegoly" element={<Details />} />
                 <Route path="/panel" element={<UserPanel />} />
                 <Route path="/panel/adres/:urlId" element={<Address />} />
+                <Route path="/panel/zamowienie/" element={<Order />} />
 
                 {/* Dynamiczne generowanie tras dla szczegółów produktów */}
                 {products

@@ -230,7 +230,8 @@
   }
 }
 
-.grid-2-col_shopping-cart {
+.grid-2-col_shopping-cart,
+.grid-2-col_order-cart {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 4rem;

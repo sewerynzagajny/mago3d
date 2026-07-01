@@ -1,6 +1,13 @@
 import Btn from "../Btn";
+import { useNavigate } from "react-router-dom";
 
 export default function SummaryShopping({ totalPriceFormatted }) {
+  const navigate = useNavigate();
+
+  function handleOrder() {
+    return navigate("/panel/zamowienie");
+  }
+
   return (
     <div className="shopping-cart__summary">
       <div className="frame hover-effect-card" style={{ width: "100%" }}>
@@ -21,7 +28,12 @@ export default function SummaryShopping({ totalPriceFormatted }) {
               </p>
             </div>
           </div>
-          <Btn className=" btn shopping-cart__summary__content_btn">Zamów</Btn>
+          <Btn
+            className=" btn shopping-cart__summary__content_btn"
+            onClick={handleOrder}
+          >
+            Zamów
+          </Btn>
         </div>
       </div>
     </div>

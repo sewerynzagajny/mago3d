@@ -1,0 +1,99 @@
+.delivery-method {
+  margin-bottom: 4rem;
+
+  &__content {
+    @extend %animated-gradient-bg;
+    background-color: $black;
+    border-radius: 1rem;
+    padding: 4rem 6.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media only screen and (max-width: $bp-footer-3) {
+      padding: 4rem 2.8rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__item {
+    border: 0.1rem solid $font-color-primary;
+    border-radius: 0.8rem;
+    padding: 2rem 2.4rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.6rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+
+    &:hover {
+      border-color: $font-color-primary-litle-dark;
+    }
+  }
+
+  &__radio-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__radio {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 0.3rem solid $font-color-text;
+    display: inline-block;
+    position: relative;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  &__radio-input:checked + &__radio {
+    border-color: $font-color-primary;
+
+    &::after {
+      content: "";
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: $font-color-primary;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__name {
+    color: $font-color-text;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &__price {
+    font-weight: $font-strong;
+    color: $font-color-text;
+    transition: color 0.2s ease-in-out;
+  }
+
+  &__radio-input:checked ~ &__name,
+  &__radio-input:checked ~ &__price {
+    color: $font-color-primary;
+  }
+
+  @media only screen and (max-width: 48rem) {
+    &__item {
+      grid-template-columns: auto 1fr;
+      row-gap: 0.8rem;
+    }
+
+    &__price {
+      grid-column: 2;
+      justify-self: end;
+    }
+  }
+}

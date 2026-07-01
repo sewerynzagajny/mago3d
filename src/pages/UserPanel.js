@@ -5,7 +5,7 @@ import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import Footer from "../components/Footer";
 import ShoppingCart from "../components/user-panel/ShoppingCart";
 import EmptyShoppingCart from "../components/EmptyShoppingCart";
-import Orders from "../components/user-panel/Orders";
+import Orders from "../components/user-panel/OrdersHistory";
 import AccountSettings from "../components/user-panel/AccountSettings";
 import AddressDetails from "../components/user-panel/AddressDetails";
 import ActionConfirmModal from "../components/ActionConfirmModal";
@@ -14,9 +14,8 @@ import Btn from "../components/Btn";
 import { modalReducer, initialModalState } from "../components/modalReducer";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
-import { toast } from "react-toastify";
-import { toastConfig } from "../config/toastConfig";
-import { calculateCartTotal, formatCurrencyPLN } from "../utils/cartSummary";
+import { getCartSummary } from "../utils/cartSummary";
+import { openClearCartConfirmModal } from "../utils/cartActions";
 
 export default function UserPanel() {
   const { cart, dispatch } = useCart();
@@ -25,29 +24,12 @@ export default function UserPanel() {
     initialModalState,
   );
   const { isLogin } = useAuth();
-  const isAnyItem = cart.length ? true : false;
-  const totalPrice = calculateCartTotal(cart);
-  const totalPriceFormatted = formatCurrencyPLN(totalPrice);
+  const { isAnyItem, totalPriceFormatted } = getCartSummary(cart);
 
   function handleAllDeleteItems() {
-    modalDispatch({
-      type: "OPEN",
-      payload: {
-        status: "usun_wszystkie_itemy",
-        onConfirm: () => {
-          try {
-            dispatch({
-              type: "CLEAR_CART",
-            });
-            toast.success("Usunięto wszystkie produkty!", toastConfig);
-          } catch (err) {
-            toast.error(
-              "Nie udało się usunąć wszystkich produktów!",
-              toastConfig,
-            );
-          }
-        },
-      },
+    openClearCartConfirmModal({
+      modalDispatch,
+      cartDispatch: dispatch,
     });
   }
 
@@ -64,12 +46,13 @@ export default function UserPanel() {
         >
           <div className="user-panel__container">
             <h2 className="heading-secondary">Panel klienta</h2>
-            <h3 className="heading-tertiary">Koszyk</h3>
+            <h3 className="heading-tertiary" id="koszyk">
+              Koszyk
+            </h3>
             {isAnyItem && (
               <>
                 <Btn
                   onClick={handleAllDeleteItems}
-                  id="koszyk"
                   className="btn u-margin-bottom-medium"
                 >
                   Usuń wszystkie produkty

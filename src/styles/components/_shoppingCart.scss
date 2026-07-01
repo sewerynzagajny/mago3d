@@ -1,5 +1,29 @@
-.shopping-cart {
+.shopping-cart,
+.order-cart {
   margin-bottom: 8rem;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  &__content {
+    .frame {
+      display: block;
+      width: 100%;
+    }
+
+    .add-edit-address__content {
+      width: 100%;
+    }
+
+    .add-edit-address__form__field--input,
+    .add-edit-address__form__field--phone-wrapper {
+      width: 100%;
+    }
+  }
+
   &__summary {
     @extend %sticky;
     &__content {

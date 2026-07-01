@@ -1,18 +1,19 @@
 import Btn from "./Btn";
 
 export default function AddressForm({
-  initialAddress,
+  initialAddress = {},
   onSubmit,
   onCancel,
   submitLabel,
-  countryList,
-  phonePrefix,
+  countryList = [],
+  phonePrefix = "+48",
   setPhonePrefix,
   showDefaultAddressOptions,
   orderDefault,
   setOrderDefault,
   shippingDefault,
   setShippingDefault,
+  showActionButtons = true,
 }) {
   const {
     firstName,
@@ -69,7 +70,7 @@ export default function AddressForm({
           <select
             className="add-edit-address__form__field--select-prefix"
             value={phonePrefix}
-            onChange={(e) => setPhonePrefix(e.target.value)}
+            onChange={(e) => setPhonePrefix?.(e.target.value)}
             aria-label="Kierunkowy kraju"
           >
             {countryList.map((el) => (
@@ -256,12 +257,14 @@ export default function AddressForm({
         </>
       )}
 
-      <div className="add-edit-address__form__btns">
-        <Btn type="button" onClick={onCancel}>
-          Wstecz
-        </Btn>
-        <Btn type="submit">{submitLabel}</Btn>
-      </div>
+      {showActionButtons && (
+        <div className="add-edit-address__form__btns">
+          <Btn type="button" onClick={onCancel}>
+            Wstecz
+          </Btn>
+          <Btn type="submit">{submitLabel}</Btn>
+        </div>
+      )}
     </form>
   );
 }
