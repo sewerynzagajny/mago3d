@@ -1,15 +1,17 @@
 import { useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Btn from "../Btn";
 import { useAddress } from "../../context/AddressContext";
 import { toast } from "react-toastify";
 import { toastConfig } from "../../config/toastConfig";
 import { countryList } from "../../data/countryList";
+import AddressForm from "../AddressForm";
+import { useAuth } from "../../context/AuthContext";
 
 export default function AddEditAddress() {
   const { urlId } = useParams();
   const { addresses, dispatch } = useAddress();
   const navigate = useNavigate();
+  const { isLogin } = useAuth();
 
   const address =
     urlId === "nowy"
@@ -34,9 +36,17 @@ export default function AddEditAddress() {
     postalCode,
     city,
     region,
-    isDefaultOrderAddress,
-    isDefaultShippingAddress,
   } = address;
+
+  function handleCancel() {
+    navigate(-1);
+    toast.info(
+      urlId === "nowy"
+        ? "Anulowano dodawanie adresu!"
+        : "Anulowano edycję adresu!",
+      toastConfig,
+    );
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -85,7 +95,7 @@ export default function AddEditAddress() {
           .every((key) => addressObj[key] === obj[key]),
       );
       if (isTheSame) {
-        toast.info("Już takie dane adresowe isnieją", toastConfig);
+        toast.info("Już takie dane adresowe istnieją", toastConfig);
         navigate("/panel#adresy");
         return;
       }
@@ -106,286 +116,48 @@ export default function AddEditAddress() {
     <div className="add-edit-address">
       {/* <h2 className="heading-second">Nowy adres</h2> */}
       <h2 className="heading-secondary">Formularz adresowy</h2>
-      <h3 className="heading-tertiary">
-        {urlId === "nowy" ? "Nowy Adres" : "Edytuj adres"}
-      </h3>
-      <div className="frame hover-effect-card">
-        <div className="add-edit-address__content">
-          <form className="add-edit-address__form" onSubmit={handleSubmit}>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="firstName"
-              >
-                *Imię
-              </label>
-              <input
-                type="text"
-                defaultValue={firstName || ""}
-                className="add-edit-address__form__field--input"
-                name="firstName"
-                id="firstName"
-                required
-              />
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="lastName"
-              >
-                *Nazwisko
-              </label>
-              <input
-                type="text"
-                defaultValue={lastName || ""}
-                className="add-edit-address__form__field--input"
-                name="lastName"
-                id="lastName"
-                required
-              />
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="phone"
-              >
-                *Telefon
-              </label>
-              <div className="add-edit-address__form__field--phone-wrapper">
-                <select
-                  className="add-edit-address__form__field--select-prefix"
-                  value={phonePrefix}
-                  onChange={(e) => setPhonePrefix(e.target.value)}
-                  aria-label="Kierunkowy kraju"
-                >
-                  {countryList.map((el) => (
-                    <option key={el.id} value={el.dialCode}>
-                      {el.isoCode} ({el.dialCode})
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="number"
-                  defaultValue={phone || ""}
-                  className="add-edit-address__form__field--input"
-                  name="phone"
-                  id="phone"
-                  required
-                />
-              </div>
-              <span className="add-edit-address__form__field--hint">
-                Format liczbowy, np.: 82345678
-              </span>
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="companyName"
-              >
-                Nazwa firmy
-              </label>
-              <input
-                type="text"
-                defaultValue={companyName || ""}
-                className="add-edit-address__form__field--input"
-                name="companyName"
-                id="companyName"
-              />
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="taxId"
-              >
-                NIP
-              </label>
-              <input
-                type="text"
-                defaultValue={taxId || ""}
-                className="add-edit-address__form__field--input"
-                name="taxId"
-                id="taxId"
-              />
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="country"
-              >
-                Kraj
-              </label>
-              {/* <input
-                type="text"
-                defaultValue={country || "Polska"}
-                className="add-edit-address__form__field--input"
-                name="country"
-                id="country"
-              /> */}
-              {/* <select
-                className="add-edit-address__form__field--select"
-                name="country"
-                id="country"
-                defaultValue={country || "Polska"}
-              >
-                {countryList.map((el) => (
-                  <option key={el.id} value={el.value}>
-                    {el.value}
-                  </option>
-                ))}
-              </select> */}
-              <input
-                type="text"
-                list="countryList"
-                className="add-edit-address__form__field--input"
-                name="country"
-                id="country"
-                defaultValue={country || "Polska"}
-                placeholder="Wpisz lub wybierz kraj..."
-                autoComplete="off"
-              />
-              <datalist id="countryList">
-                {countryList.map((el) => (
-                  <option key={el.id} value={el.country} />
-                ))}
-              </datalist>
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="street"
-              >
-                *Ulica i nr domu
-              </label>
-              <input
-                type="text"
-                defaultValue={street || ""}
-                className="add-edit-address__form__field--input"
-                name="street"
-                id="street"
-                required
-              />
-              <span className="add-edit-address__form__field--hint">
-                Np.: Maciejkowa 88/24
-              </span>
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="postalCode"
-              >
-                *Kod pocztowy
-              </label>
-              <input
-                type="text"
-                defaultValue={postalCode || ""}
-                className="add-edit-address__form__field--input"
-                name="postalCode"
-                id="postalCode"
-                required
-              />
-              <span className="add-edit-address__form__field--hint">
-                Format dla Polski: xx-xxx
-              </span>
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="city"
-              >
-                *Miasto
-              </label>
-              <input
-                type="text"
-                defaultValue={city || ""}
-                className="add-edit-address__form__field--input"
-                name="city"
-                id="city"
-                required
-              />
-            </div>
-            <div className="add-edit-address__form__field">
-              <label
-                className="add-edit-address__form__field--label"
-                htmlFor="region"
-              >
-                Województwo
-              </label>
-              <input
-                type="text"
-                defaultValue={region || ""}
-                className="add-edit-address__form__field--input"
-                name="region"
-                id="region"
-              />
-            </div>
-            {urlId === "nowy" && isAnyAdressRef.current && (
-              <>
-                <div className="add-edit-address__form__checkbox">
-                  <button
-                    type="button"
-                    className="text-color--item add-edit-address__form__checkbox--btn"
-                    onClick={() => setOrderDefault(!orderDefault)}
-                  >
-                    <div className="text-color--item--marker">
-                      {orderDefault ? "✓" : ""}
-                    </div>
-                  </button>
-                  <label onClick={() => setOrderDefault(!orderDefault)}>
-                    Ustaw jako domyślny adres do zamówienia
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="isDefaultOrderAddress"
-                    checked={orderDefault}
-                    onChange={(e) => setOrderDefault(e.target.checked)}
-                    style={{ display: "none" }}
-                  />
-                </div>
-
-                <div className="add-edit-address__form__checkbox">
-                  <button
-                    type="button"
-                    className="text-color--item add-edit-address__form__checkbox--btn"
-                    onClick={() => setShippingDefault(!shippingDefault)}
-                  >
-                    <div className="text-color--item--marker">
-                      {shippingDefault ? "✓" : ""}
-                    </div>
-                  </button>
-                  <label onClick={() => setShippingDefault(!shippingDefault)}>
-                    Ustaw jako domyślny adres dostawy
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="isDefaultShippingAddress"
-                    checked={shippingDefault}
-                    onChange={(e) => setShippingDefault(e.target.checked)}
-                    style={{ display: "none" }}
-                  />
-                </div>
-              </>
-            )}
-
-            <div className="add-edit-address__form__btns">
-              <Btn
-                type="button"
-                onClick={() => {
-                  navigate(-1);
-                  toast.info(
-                    urlId === "nowy"
-                      ? "Anulowano dodawanie adresu!"
-                      : "Anulowano edycję adresu!",
-                    toastConfig,
-                  );
+      {isLogin ? (
+        <>
+          <h3 className="heading-tertiary">
+            {urlId === "nowy" ? "Nowy Adres" : "Edytuj adres"}
+          </h3>
+          <div className="frame hover-effect-card">
+            <div className="add-edit-address__content">
+              <AddressForm
+                initialAddress={{
+                  firstName,
+                  lastName,
+                  phone,
+                  companyName,
+                  taxId,
+                  country,
+                  street,
+                  postalCode,
+                  city,
+                  region,
                 }}
-              >
-                Wstecz
-              </Btn>
-              <Btn type="submit">{urlId === "nowy" ? "Dodaj" : "Zapisz"}</Btn>
+                onSubmit={handleSubmit}
+                onCancel={handleCancel}
+                submitLabel={urlId === "nowy" ? "Dodaj" : "Zapisz"}
+                countryList={countryList}
+                phonePrefix={phonePrefix}
+                setPhonePrefix={setPhonePrefix}
+                showDefaultAddressOptions={
+                  urlId === "nowy" && isAnyAdressRef.current
+                }
+                orderDefault={orderDefault}
+                setOrderDefault={setOrderDefault}
+                shippingDefault={shippingDefault}
+                setShippingDefault={setShippingDefault}
+              />
             </div>
-          </form>
-        </div>
-      </div>
+          </div>
+        </>
+      ) : (
+        <h3 className="heading-fourth-fifth">
+          Tylko dla zalogowanych użytkowników
+        </h3>
+      )}
     </div>
   );
 }

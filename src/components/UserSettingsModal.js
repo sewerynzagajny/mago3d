@@ -31,7 +31,10 @@ export default function UserSettingsModal({
     setIsLogin(false);
     setuserSettingsOpen(false);
     toast.success("Wylogowano pomyślnie!", toastConfig);
-    if (location.pathname === "/panel" || "/panel/adres") {
+    // if (location.pathname === "/panel" || "/panel/adres") {
+    //   navigate("/");
+    // }
+    if (location.pathname.startsWith("/panel/adres")) {
       navigate("/");
     }
   }
