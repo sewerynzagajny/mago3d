@@ -4,22 +4,46 @@ const DELIVERY_METHODS = [
   {
     id: "inpost_paczkomat_24",
     label: "InPost Paczkomat 24/7",
-    priceLabel: "Darmowa",
+    priceLabel: 14.99,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
   },
   {
     id: "inpost_kurier",
     label: "InPost Kurier",
-    priceLabel: "Darmowa",
+    priceLabel: 16.99,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
   },
   {
     id: "poczta_polska",
     label: "Poczta Polska",
-    priceLabel: "Darmowa",
+    priceLabel: 15.99,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
   },
   {
     id: "odbior_osobisty",
     label: "Odbior osobisty",
-    priceLabel: "Darmowa",
+    priceLabel: 0,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
   },
 ];
 
@@ -48,7 +72,7 @@ export default function DeliveryMethod() {
                 <span className="delivery-method__radio" aria-hidden="true" />
                 <span className="delivery-method__name">{method.label}</span>
                 <span className="delivery-method__price">
-                  {method.priceLabel}
+                  {method.priceLabelStringPl}
                 </span>
               </label>
             ))}

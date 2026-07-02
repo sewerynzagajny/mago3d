@@ -12,6 +12,7 @@ export function openClearCartConfirmModal({ modalDispatch, cartDispatch }) {
             type: "CLEAR_CART",
           });
           toast.success("Usunięto wszystkie produkty!", toastConfig);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         } catch (err) {
           toast.error(
             "Nie udało się usunąć wszystkich produktów!",

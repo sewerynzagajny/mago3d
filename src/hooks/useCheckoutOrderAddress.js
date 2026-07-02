@@ -1,50 +1,195 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer } from "react";
 import { useAddress } from "../context/AddressContext";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "SET_BUYER_FROM_DEFAULT":
+      return {
+        ...state,
+        buyerAddressDraft: { ...action.payload.address },
+        buyerPhonePrefix: action.payload.phonePrefix,
+      };
+    case "SET_SHIPPING_FROM_DEFAULT":
+      return {
+        ...state,
+        shippingAddressDraft: { ...action.payload.address },
+        shippingPhonePrefix: action.payload.phonePrefix,
+      };
+    case "SET_BUYER_DRAFT":
+      return {
+        ...state,
+        buyerAddressDraft: {
+          ...state.buyerAddressDraft,
+          ...action.payload,
+        },
+      };
+    case "SET_SHIPPING_DRAFT":
+      return {
+        ...state,
+        shippingAddressDraft: {
+          ...state.shippingAddressDraft,
+          ...action.payload,
+        },
+      };
+    case "SET_BUYER_PHONE_PREFIX":
+      return {
+        ...state,
+        buyerPhonePrefix: action.payload,
+        buyerAddressDraft: {
+          ...state.buyerAddressDraft,
+          phonePrefix: action.payload,
+        },
+      };
+    case "SET_SHIPPING_PHONE_PREFIX":
+      return {
+        ...state,
+        shippingPhonePrefix: action.payload,
+        shippingAddressDraft: {
+          ...state.shippingAddressDraft,
+          phonePrefix: action.payload,
+        },
+      };
+    case "SYNC_SHIPPING_WITH_BUYER":
+      return {
+        ...state,
+        shippingAddressDraft: { ...state.buyerAddressDraft },
+        shippingPhonePrefix: state.buyerPhonePrefix,
+      };
+    default:
+      return state;
+  }
+}
 
 export default function useCheckoutOrderAddress() {
   const { addresses } = useAddress();
 
   const defaultOrderAddress = useMemo(
-    () =>
-      addresses.find((el) => el.isDefaultOrderAddress) || addresses[0] || {},
+    () => addresses.find((el) => el.isDefaultOrderAddress) || {},
     [addresses],
   );
 
-  const [orderAddressDraft, setOrderAddressDraft] = useState(() => ({
-    ...defaultOrderAddress,
-  }));
-  const [phonePrefix, setPhonePrefix] = useState(
-    defaultOrderAddress?.phonePrefix || "+48",
+  const defaultShippingAddress = useMemo(
+    () => addresses.find((el) => el.isDefaultShippingAddress) || {},
+    [addresses],
   );
 
+  const [state, dispatch] = useReducer(reducer, {
+    buyerAddressDraft: { ...defaultOrderAddress },
+    buyerPhonePrefix: defaultOrderAddress?.phonePrefix || "+48",
+    shippingAddressDraft: { ...defaultShippingAddress },
+    shippingPhonePrefix: defaultShippingAddress?.phonePrefix || "+48",
+  });
+
+  const {
+    buyerAddressDraft,
+    buyerPhonePrefix,
+    shippingAddressDraft,
+    shippingPhonePrefix,
+  } = state;
+
   useEffect(() => {
-    setOrderAddressDraft({ ...defaultOrderAddress });
-    setPhonePrefix(defaultOrderAddress?.phonePrefix || "+48");
+    dispatch({
+      type: "SET_BUYER_FROM_DEFAULT",
+      payload: {
+        address: defaultOrderAddress,
+        phonePrefix: defaultOrderAddress?.phonePrefix || "+48",
+      },
+    });
   }, [defaultOrderAddress]);
 
-  function handleCheckoutAddressSubmit(e) {
-    e.preventDefault();
+  useEffect(() => {
+    dispatch({
+      type: "SET_SHIPPING_FROM_DEFAULT",
+      payload: {
+        address: defaultShippingAddress,
+        phonePrefix: defaultShippingAddress?.phonePrefix || "+48",
+      },
+    });
+  }, [defaultShippingAddress]);
 
-    setOrderAddressDraft((prev) => ({
-      ...prev,
-      firstName: e.target.firstName.value,
-      lastName: e.target.lastName.value,
+  function buildDraftFromForm(form, phonePrefix) {
+    return {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
       phonePrefix,
-      phone: e.target.phone.value,
-      companyName: e.target.companyName.value,
-      taxId: e.target.taxId.value,
-      country: e.target.country.value,
-      street: e.target.street.value,
-      postalCode: e.target.postalCode.value,
-      city: e.target.city.value,
-      region: e.target.region.value,
-    }));
+      phone: form.phone.value,
+      companyName: form.companyName.value,
+      taxId: form.taxId.value,
+      country: form.country.value,
+      street: form.street.value,
+      postalCode: form.postalCode.value,
+      city: form.city.value,
+      region: form.region.value,
+    };
   }
 
+  function handleBuyerAddressChange(e) {
+    const form = e.currentTarget;
+    if (!form) return;
+
+    dispatch({
+      type: "SET_BUYER_DRAFT",
+      payload: buildDraftFromForm(form, buyerPhonePrefix),
+    });
+  }
+
+  function handleShippingAddressChange(e) {
+    const form = e.currentTarget;
+    if (!form) return;
+
+    dispatch({
+      type: "SET_SHIPPING_DRAFT",
+      payload: buildDraftFromForm(form, shippingPhonePrefix),
+    });
+  }
+
+  function handleBuyerAddressSubmit(e) {
+    e.preventDefault();
+
+    dispatch({
+      type: "SET_BUYER_DRAFT",
+      payload: buildDraftFromForm(e.target, buyerPhonePrefix),
+    });
+  }
+
+  function handleShippingAddressSubmit(e) {
+    e.preventDefault();
+
+    dispatch({
+      type: "SET_SHIPPING_DRAFT",
+      payload: buildDraftFromForm(e.target, shippingPhonePrefix),
+    });
+  }
+
+  function handleBuyerPhonePrefixChange(value) {
+    dispatch({
+      type: "SET_BUYER_PHONE_PREFIX",
+      payload: value,
+    });
+  }
+
+  function handleShippingPhonePrefixChange(value) {
+    dispatch({
+      type: "SET_SHIPPING_PHONE_PREFIX",
+      payload: value,
+    });
+  }
+
+  const syncShippingWithBuyer = useCallback(() => {
+    dispatch({ type: "SYNC_SHIPPING_WITH_BUYER" });
+  }, []);
+
   return {
-    orderAddressDraft,
-    phonePrefix,
-    setPhonePrefix,
-    handleCheckoutAddressSubmit,
+    buyerAddressDraft,
+    buyerPhonePrefix,
+    setBuyerPhonePrefix: handleBuyerPhonePrefixChange,
+    handleBuyerAddressChange,
+    handleBuyerAddressSubmit,
+    shippingAddressDraft,
+    shippingPhonePrefix,
+    setShippingPhonePrefix: handleShippingPhonePrefixChange,
+    handleShippingAddressChange,
+    handleShippingAddressSubmit,
+    syncShippingWithBuyer,
   };
 }

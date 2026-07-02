@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useCart } from "../../context/CartContext";
 // import { products } from "../../data/products";
 import ScrollEffectContainer from "../ScrollEffectContainer";
@@ -12,6 +13,7 @@ export default function CartItem({
   modalDispatch,
 }) {
   const { dispatch } = useCart();
+  const itemRef = useRef(null);
 
   const { colorKey, quantity } = item;
 
@@ -29,11 +31,22 @@ export default function CartItem({
         onConfirm: () => {
           try {
             //TODO;
+            const itemHeight =
+              itemRef.current?.getBoundingClientRect().height || 0;
+            const listGap = 24;
 
             dispatch({
               type: "REMOVE_ITEM",
               payload: { cartItemId: item.cartItemId },
             });
+
+            requestAnimationFrame(() => {
+              window.scrollBy({
+                top: -(itemHeight + listGap),
+                behavior: "smooth",
+              });
+            });
+
             toast.success("Usunięto wybrany produkt!", toastConfig);
           } catch (err) {
             toast.error(
@@ -69,7 +82,7 @@ export default function CartItem({
   }
 
   return (
-    <div className={`${className} frame`}>
+    <div ref={itemRef} className={`${className} frame`}>
       <div className={`${className}__content`}>
         <ScrollEffectContainer
           totalImages={1}
