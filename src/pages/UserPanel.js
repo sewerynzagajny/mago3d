@@ -9,7 +9,7 @@ import Orders from "../components/user-panel/OrdersHistory";
 import AccountSettings from "../components/user-panel/AccountSettings";
 import AddressDetails from "../components/user-panel/AddressDetails";
 import ActionConfirmModal from "../components/ActionConfirmModal";
-import SummaryShopping from "../components/user-panel/SummaryShopping";
+import ShoppingSummary from "../components/user-panel/ShoppingSummary";
 import Btn from "../components/Btn";
 import { modalReducer, initialModalState } from "../components/modalReducer";
 import { useAuth } from "../context/AuthContext";
@@ -24,7 +24,8 @@ export default function UserPanel() {
     initialModalState,
   );
   const { isLogin } = useAuth();
-  const { isAnyItem, totalPriceFormatted } = getCartSummary(cart);
+  const { isAnyItem, totalPriceFormatted: productsTotalPriceFormatted } =
+    getCartSummary(cart);
 
   function handleAllDeleteItems() {
     openClearCartConfirmModal({
@@ -59,7 +60,9 @@ export default function UserPanel() {
                 </Btn>
                 <div className="shopping-cart grid-2-col_shopping-cart">
                   <ShoppingCart modalDispatch={modalDispatch} />
-                  <SummaryShopping totalPriceFormatted={totalPriceFormatted} />
+                  <ShoppingSummary
+                    productsTotalPriceFormatted={productsTotalPriceFormatted}
+                  />
                 </div>
               </>
             )}

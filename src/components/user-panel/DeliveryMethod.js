@@ -1,57 +1,8 @@
-import { useState } from "react";
-
-const DELIVERY_METHODS = [
-  {
-    id: "inpost_paczkomat_24",
-    label: "InPost Paczkomat 24/7",
-    priceLabel: 14.99,
-    get priceLabelStringPl() {
-      return this.priceLabel.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-  {
-    id: "inpost_kurier",
-    label: "InPost Kurier",
-    priceLabel: 16.99,
-    get priceLabelStringPl() {
-      return this.priceLabel.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-  {
-    id: "poczta_polska",
-    label: "Poczta Polska",
-    priceLabel: 15.99,
-    get priceLabelStringPl() {
-      return this.priceLabel.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-  {
-    id: "odbior_osobisty",
-    label: "Odbior osobisty",
-    priceLabel: 0,
-    get priceLabelStringPl() {
-      return this.priceLabel.toLocaleString("pl-PL", {
-        style: "currency",
-        currency: "PLN",
-      });
-    },
-  },
-];
-
-export default function DeliveryMethod() {
-  const [selectedMethod, setSelectedMethod] = useState(
-    DELIVERY_METHODS[1]?.id || "",
-  );
-
+export default function DeliveryMethod({
+  deliveryMethod,
+  selectedMethod,
+  setSelectedMethod,
+}) {
   return (
     <div className="delivery-method">
       <div className="frame hover-effect-card u-margin-bottom-medium">
@@ -59,7 +10,7 @@ export default function DeliveryMethod() {
           <p className="delivery-method__text">Polska</p>
           <p className="delivery-method__text">Wysyłka w 48 godzin</p>
           <div className="delivery-method__list">
-            {DELIVERY_METHODS.map((method) => (
+            {deliveryMethod.map((method) => (
               <label key={method.id} className="delivery-method__item">
                 <input
                   type="radio"

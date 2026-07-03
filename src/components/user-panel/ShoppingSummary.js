@@ -1,7 +1,7 @@
 import Btn from "../Btn";
 import { useNavigate } from "react-router-dom";
 
-export default function SummaryShopping({ totalPriceFormatted }) {
+export default function ShoppingSummary({ productsTotalPriceFormatted }) {
   const navigate = useNavigate();
 
   function handleOrder() {
@@ -20,7 +20,7 @@ export default function SummaryShopping({ totalPriceFormatted }) {
             <div className="shopping-cart__summary__content__total-price_sum">
               <div className="shopping-cart__summary__content__total-price_sum--value">
                 {" "}
-                {totalPriceFormatted}
+                {productsTotalPriceFormatted}
               </div>
               <p className="shopping-cart__summary__content__total-price_sum--text">
                 {" "}

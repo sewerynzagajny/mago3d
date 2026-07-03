@@ -6,16 +6,17 @@ import Footer from "../components/Footer";
 import ShoppingCart from "../components/user-panel/ShoppingCart";
 import AddressForm from "../components/AddressForm";
 import ActionConfirmModal from "../components/ActionConfirmModal";
-import SummaryShopping from "../components/user-panel/SummaryShopping";
+import OrderSummary from "../components/user-panel/OrderSummary";
 import Btn from "../components/Btn";
 import { modalReducer, initialModalState } from "../components/modalReducer";
 import { useCart } from "../context/CartContext";
-import { getCartSummary } from "../utils/cartSummary";
+import { formatCurrencyPLN, getCartSummary } from "../utils/cartSummary";
 import { openClearCartConfirmModal } from "../utils/cartActions";
 import EmptyOrder from "../components/user-panel/EmptyOrder";
 import { countryList } from "../data/countryList";
 import useCheckoutOrderAddress from "../hooks/useCheckoutOrderAddress";
 import DeliveryMethod from "../components/user-panel/DeliveryMethod";
+import Payments from "../components/user-panel/Payments";
 
 function areAddressesEqual(a = {}, b = {}) {
   const fields = [
@@ -35,13 +36,64 @@ function areAddressesEqual(a = {}, b = {}) {
   return fields.every((field) => (a?.[field] || "") === (b?.[field] || ""));
 }
 
+const DELIVERY_METHODS = [
+  {
+    id: "inpost_paczkomat_24",
+    label: "InPost Paczkomat 24/7",
+    priceLabel: 14.99,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    id: "inpost_kurier",
+    label: "InPost Kurier",
+    priceLabel: 16.99,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    id: "poczta_polska",
+    label: "Poczta Polska",
+    priceLabel: 15.99,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+  {
+    id: "odbior_osobisty",
+    label: "Odbior osobisty",
+    priceLabel: 0,
+    get priceLabelStringPl() {
+      return this.priceLabel.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  },
+];
+
 export default function Order() {
   const { cart, dispatch } = useCart();
   const [modalState, modalDispatch] = useReducer(
     modalReducer,
     initialModalState,
   );
-  const { isAnyItem, totalPriceFormatted } = getCartSummary(cart);
+  const {
+    isAnyItem,
+    totalPrice: productsTotalPrice,
+    totalPriceFormatted: productsTotalPriceFormatted,
+  } = getCartSummary(cart);
   const {
     buyerAddressDraft,
     buyerPhonePrefix,
@@ -59,6 +111,19 @@ export default function Order() {
   const [sameAddress, setSameAddress] = useState(false);
   const [isSameAddressInitialized, setIsSameAddressInitialized] =
     useState(false);
+
+  const [selectedMethod, setSelectedMethod] = useState(
+    DELIVERY_METHODS[1]?.id || "",
+  );
+
+  const selectedDeliveryMethod =
+    DELIVERY_METHODS.find((method) => method.id === selectedMethod) ||
+    DELIVERY_METHODS[1] ||
+    DELIVERY_METHODS[0];
+
+  const orderTotalPrice =
+    productsTotalPrice + (selectedDeliveryMethod?.priceLabel || 0);
+  const orderTotalPriceFormatted = formatCurrencyPLN(orderTotalPrice);
 
   useEffect(() => {
     if (isSameAddressInitialized) return;
@@ -100,7 +165,11 @@ export default function Order() {
                 <h3 className="heading-fourth">Dostawa</h3>
                 <div className="order-cart grid-2-col_order-cart">
                   <div className="order-cart__content">
-                    <DeliveryMethod />
+                    <DeliveryMethod
+                      deliveryMethod={DELIVERY_METHODS}
+                      selectedMethod={selectedMethod}
+                      setSelectedMethod={setSelectedMethod}
+                    />
                     <h3 className="heading-tertiary">Dane kupującego</h3>
                     <div className="frame hover-effect-card u-margin-bottom-medium">
                       <div className="add-edit-address__content">
@@ -117,7 +186,7 @@ export default function Order() {
                       </div>
                     </div>
                     <h3 className="heading-tertiary">Dane dostawy</h3>
-                    <div className="add-edit-address__form__checkbox u-margin-bottom-small">
+                    <div className="add-edit-address__form__checkbox u-margin-bottom-medium">
                       <button
                         type="button"
                         className="text-color--item add-edit-address__form__checkbox--btn"
@@ -157,6 +226,8 @@ export default function Order() {
                         </div>
                       </div>
                     )}
+                    <h3 className="heading-tertiary">Płatność</h3>
+                    <Payments />
 
                     <h3 className="heading-tertiary">Koszyk</h3>
                     <Btn
@@ -167,7 +238,14 @@ export default function Order() {
                     </Btn>
                     <ShoppingCart modalDispatch={modalDispatch} />
                   </div>
-                  <SummaryShopping totalPriceFormatted={totalPriceFormatted} />
+                  <OrderSummary
+                    productsTotalPriceFormatted={productsTotalPriceFormatted}
+                    deliveryPriceFormatted={
+                      selectedDeliveryMethod?.priceLabelStringPl || ""
+                    }
+                    deliveryMethodLabel={selectedDeliveryMethod?.label || ""}
+                    orderTotalPriceFormatted={orderTotalPriceFormatted}
+                  />
                 </div>
               </>
             )}

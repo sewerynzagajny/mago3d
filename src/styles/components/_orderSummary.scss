@@ -1,0 +1,145 @@
+.order-summary {
+  @extend %sticky;
+
+  &__frame {
+    min-height: 30rem;
+    display: block;
+    width: 100%;
+  }
+
+  &__content {
+    @extend %animated-gradient-bg;
+    background-color: $black;
+    border-radius: 1rem;
+    padding: 3.2rem 3.6rem;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.2rem;
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgba($font-color-primary, 0.12);
+
+    &--delivery {
+      align-items: center;
+    }
+
+    &--total {
+      align-items: flex-start;
+      padding-top: 0.2rem;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  &__delivery-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__label {
+    margin: 0;
+    color: $font-color-primary;
+    font-weight: $font-strong;
+    // font-size: 1.6rem;
+    line-height: 1.3;
+
+    &--accent {
+      color: $font-color-text;
+    }
+
+    &--total {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__subline {
+    display: block;
+    margin: 0;
+    min-height: 1.35em;
+    color: rgba($font-color-primary, 0.72);
+    font-size: 1.4rem;
+    line-height: 1.35;
+
+    &--accent {
+      color: $font-color-text;
+    }
+  }
+
+  &__value {
+    margin: 0;
+    color: $font-color-primary;
+    // font-size: 1.7rem;
+    font-weight: $font-strong;
+    line-height: 1.25;
+    text-align: right;
+    white-space: nowrap;
+
+    &--total {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__total-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+  }
+
+  &__vat {
+    margin: 0;
+    color: rgba($font-color-primary, 0.7);
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  &__btn {
+    margin-top: 0.4rem;
+    @media only screen and (max-width: 58rem) {
+      align-self: center;
+      width: 13rem;
+    }
+  }
+
+  @media only screen and (max-width: 58rem) {
+    &__content {
+      padding: 2.8rem 2.2rem;
+      gap: 1.8rem;
+    }
+
+    &__label {
+      &--total {
+        font-size: 1.7rem;
+      }
+    }
+
+    &__value {
+      &--total {
+        font-size: 2.1rem;
+      }
+    }
+  }
+}
