@@ -76,8 +76,6 @@ export default function Order() {
     }
   }, [sameAddress, syncShippingWithBuyer]);
 
-  const shippingFormKey = sameAddress ? "same-address" : "shipping-address";
-
   function handleAllDeleteItems() {
     openClearCartConfirmModal({
       modalDispatch,
@@ -143,36 +141,22 @@ export default function Order() {
                         style={{ display: "none" }}
                       />
                     </div>
-                    <div className="frame hover-effect-card u-margin-bottom-medium">
-                      <div className="add-edit-address__content">
-                        <AddressForm
-                          key={shippingFormKey}
-                          initialAddress={
-                            sameAddress
-                              ? buyerAddressDraft
-                              : shippingAddressDraft
-                          }
-                          onSubmit={handleShippingAddressSubmit}
-                          onFormChange={
-                            sameAddress
-                              ? undefined
-                              : handleShippingAddressChange
-                          }
-                          countryList={countryList}
-                          phonePrefix={
-                            sameAddress ? buyerPhonePrefix : shippingPhonePrefix
-                          }
-                          setPhonePrefix={
-                            sameAddress
-                              ? setBuyerPhonePrefix
-                              : setShippingPhonePrefix
-                          }
-                          showDefaultAddressOptions={false}
-                          showActionButtons={false}
-                          isDisabled={sameAddress}
-                        />
+                    {!sameAddress && (
+                      <div className="frame hover-effect-card u-margin-bottom-medium">
+                        <div className="add-edit-address__content">
+                          <AddressForm
+                            initialAddress={shippingAddressDraft}
+                            onSubmit={handleShippingAddressSubmit}
+                            onFormChange={handleShippingAddressChange}
+                            countryList={countryList}
+                            phonePrefix={shippingPhonePrefix}
+                            setPhonePrefix={setShippingPhonePrefix}
+                            showDefaultAddressOptions={false}
+                            showActionButtons={false}
+                          />
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     <h3 className="heading-tertiary">Koszyk</h3>
                     <Btn
