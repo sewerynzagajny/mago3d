@@ -7,6 +7,7 @@ export function UserProvider({ children }) {
     firstName: "Seweryn",
     lastName: "Zagajny",
     email: "seweryn.zagajny@gmail.com",
+    password: "Seweryn123",
   });
 
   return (

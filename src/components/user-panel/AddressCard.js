@@ -9,6 +9,7 @@ export default function AddressCard({ address, dispatch, modalDispatch }) {
     id,
     firstName,
     lastName,
+    email,
     phonePrefix,
     phone,
     companyName,
@@ -87,8 +88,9 @@ export default function AddressCard({ address, dispatch, modalDispatch }) {
             </li>
             <li className="address-card__info__list--item">{region}</li>
             <li className="address-card__info__list--item">{country}</li>
+            <li className="address-card__info__list--item">{email}</li>
             <li className="address-card__info__list--item">
-              {phone ? `tel. ${phonePrefix} ${phone}` : ""}
+              {phone ? `${phonePrefix} ${phone}` : ""}
             </li>
           </ul>
           <div className="address-card__info__btn">

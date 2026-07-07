@@ -17,6 +17,7 @@ import { countryList } from "../data/countryList";
 import useCheckoutOrderAddress from "../hooks/useCheckoutOrderAddress";
 import DeliveryMethod from "../components/user-panel/DeliveryMethod";
 import Payments from "../components/user-panel/Payments";
+import { useAuth } from "../context/AuthContext";
 
 function areAddressesEqual(a = {}, b = {}) {
   const fields = [
@@ -24,6 +25,7 @@ function areAddressesEqual(a = {}, b = {}) {
     "lastName",
     "phonePrefix",
     "phone",
+    "email",
     "companyName",
     "taxId",
     "country",
@@ -89,6 +91,9 @@ export default function Order() {
     modalReducer,
     initialModalState,
   );
+
+  const { isLogin } = useAuth();
+
   const {
     isAnyItem,
     totalPrice: productsTotalPrice,
@@ -106,11 +111,14 @@ export default function Order() {
     handleShippingAddressChange,
     handleShippingAddressSubmit,
     syncShippingWithBuyer,
+    resetShippingToDefault,
   } = useCheckoutOrderAddress();
 
   const [sameAddress, setSameAddress] = useState(false);
   const [isSameAddressInitialized, setIsSameAddressInitialized] =
     useState(false);
+  const [shippingResetKey, setShippingResetKey] = useState(0);
+  const [showShippingForm, setShowShippingForm] = useState(false);
 
   const [selectedMethod, setSelectedMethod] = useState(
     DELIVERY_METHODS[1]?.id || "",
@@ -138,8 +146,16 @@ export default function Order() {
   useEffect(() => {
     if (sameAddress) {
       syncShippingWithBuyer();
+      setShowShippingForm(false);
+    } else {
+      resetShippingToDefault();
+      setShippingResetKey((prev) => prev + 1);
+      const timer = setTimeout(() => {
+        setShowShippingForm(true);
+      }, 10);
+      return () => clearTimeout(timer);
     }
-  }, [sameAddress, syncShippingWithBuyer]);
+  }, [sameAddress, syncShippingWithBuyer, resetShippingToDefault]);
 
   function handleAllDeleteItems() {
     openClearCartConfirmModal({
@@ -174,7 +190,9 @@ export default function Order() {
                     <div className="frame hover-effect-card u-margin-bottom-medium">
                       <div className="add-edit-address__content">
                         <AddressForm
-                          initialAddress={buyerAddressDraft}
+                          initialAddress={
+                            isLogin ? buyerAddressDraft : { email: "" }
+                          }
                           onSubmit={handleBuyerAddressSubmit}
                           onFormChange={handleBuyerAddressChange}
                           countryList={countryList}
@@ -210,11 +228,14 @@ export default function Order() {
                         style={{ display: "none" }}
                       />
                     </div>
-                    {!sameAddress && (
+                    {!sameAddress && showShippingForm && (
                       <div className="frame hover-effect-card u-margin-bottom-medium">
                         <div className="add-edit-address__content">
                           <AddressForm
-                            initialAddress={shippingAddressDraft}
+                            key={`shipping-${shippingResetKey}`}
+                            initialAddress={
+                              isLogin ? shippingAddressDraft : { email: "" }
+                            }
                             onSubmit={handleShippingAddressSubmit}
                             onFormChange={handleShippingAddressChange}
                             countryList={countryList}

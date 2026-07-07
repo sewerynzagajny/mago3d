@@ -28,6 +28,7 @@ export default function AddEditAddress() {
   const {
     firstName,
     lastName,
+    email,
     phone,
     companyName,
     taxId,
@@ -54,6 +55,7 @@ export default function AddEditAddress() {
       id: address.id,
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
+      email: e.target.email.value,
       phonePrefix: phonePrefix,
       phone: e.target.phone.value,
       companyName: e.target.companyName.value,
@@ -127,6 +129,7 @@ export default function AddEditAddress() {
                 initialAddress={{
                   firstName,
                   lastName,
+                  email,
                   phone,
                   companyName,
                   taxId,

@@ -1,4 +1,6 @@
 import Btn from "./Btn";
+import { useUser } from "../context/UserContex";
+import { useAuth } from "../context/AuthContext";
 
 export default function AddressForm({
   initialAddress = {},
@@ -16,9 +18,13 @@ export default function AddressForm({
   setShippingDefault,
   showActionButtons = true,
 }) {
+  const { user } = useUser();
+  const { isLogin } = useAuth();
+
   const {
     firstName,
     lastName,
+    email,
     phone,
     companyName,
     taxId,
@@ -66,6 +72,19 @@ export default function AddressForm({
           className="add-edit-address__form__field--input"
           name="lastName"
           id="lastName"
+          required
+        />
+      </div>
+      <div className="add-edit-address__form__field">
+        <label className="add-edit-address__form__field--label" htmlFor="email">
+          *Adres e-mail
+        </label>
+        <input
+          type="text"
+          defaultValue={email || (isLogin ? user?.email : "") || ""}
+          className="add-edit-address__form__field--input"
+          name="email"
+          id="email"
           required
         />
       </div>

@@ -55,6 +55,12 @@ function reducer(state, action) {
         shippingAddressDraft: { ...state.buyerAddressDraft },
         shippingPhonePrefix: state.buyerPhonePrefix,
       };
+    case "RESET_SHIPPING_TO_DEFAULT":
+      return {
+        ...state,
+        shippingAddressDraft: { ...action.payload.address },
+        shippingPhonePrefix: action.payload.phonePrefix,
+      };
     default:
       return state;
   }
@@ -111,6 +117,7 @@ export default function useCheckoutOrderAddress() {
     return {
       firstName: form.firstName.value,
       lastName: form.lastName.value,
+      email: form.email.value,
       phonePrefix,
       phone: form.phone.value,
       companyName: form.companyName.value,
@@ -179,6 +186,16 @@ export default function useCheckoutOrderAddress() {
     dispatch({ type: "SYNC_SHIPPING_WITH_BUYER" });
   }, []);
 
+  const resetShippingToDefault = useCallback(() => {
+    dispatch({
+      type: "RESET_SHIPPING_TO_DEFAULT",
+      payload: {
+        address: defaultShippingAddress,
+        phonePrefix: defaultShippingAddress?.phonePrefix || "+48",
+      },
+    });
+  }, [defaultShippingAddress]);
+
   return {
     buyerAddressDraft,
     buyerPhonePrefix,
@@ -191,5 +208,6 @@ export default function useCheckoutOrderAddress() {
     handleShippingAddressChange,
     handleShippingAddressSubmit,
     syncShippingWithBuyer,
+    resetShippingToDefault,
   };
 }

@@ -6,6 +6,7 @@ import Spinner from "./Spinner";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { toastConfig } from "../config/toastConfig";
+import { useUser } from "../context/UserContex";
 
 export default function LoginModal({
   onClose,
@@ -15,17 +16,26 @@ export default function LoginModal({
   setLoading,
 }) {
   const { setIsLogin } = useAuth();
+  const { user } = useUser();
   const [email, setEmail] = useState("");
   const passwordRef = useRef(null);
-  const honeypotRef = useRef(null); // Ref do ukrytego pola honeypot
+  const honeypotRef = useRef(null);
 
   function handleCancelLogin() {
     onClose();
   }
 
+  function compareObj(obj1, obj2) {
+    return Object.keys(obj1).every((key) => obj1[key] === obj2[key]);
+  }
+
   async function handleSubmitLogin(e) {
     e.preventDefault();
     const userLoginData = { email: email, password: passwordRef.current.value };
+    const userAccaunt = {
+      email: user?.email || "",
+      password: user?.password || "",
+    };
     // setLoading(true);
     try {
       //TODO;
@@ -35,13 +45,21 @@ export default function LoginModal({
       // setLoginCheck(true);
       // await getFoodItems?.(response.token);
       // await getKcalItems?.(response.token);
-      setIsLogin(true);
-      toast.success("Zalogowano pomyślnie!", toastConfig);
+      const isTheSame = compareObj(userLoginData, userAccaunt);
+      if (isTheSame && user) {
+        setIsLogin(true);
+        toast.success("Zalogowano pomyślnie!", toastConfig);
+        onClose();
+      } else {
+        toast.error("Logowanie nieudane!", toastConfig);
+        setEmail("");
+        passwordRef.current.value = "";
+      }
     } catch (err) {
       toast.error("Logowanie nieudane!", toastConfig);
     } finally {
       // setLoading(false);
-      onClose();
+      // onClose();
     }
   }
 
