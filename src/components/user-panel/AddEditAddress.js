@@ -4,7 +4,7 @@ import { useAddress } from "../../context/AddressContext";
 import { toast } from "react-toastify";
 import { toastConfig } from "../../config/toastConfig";
 import { countryList } from "../../data/countryList";
-import AddressForm from "../AddressForm";
+import AddressForm from "./AddressForm";
 import { useAuth } from "../../context/AuthContext";
 
 export default function AddEditAddress() {

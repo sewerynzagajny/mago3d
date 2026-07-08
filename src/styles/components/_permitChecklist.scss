@@ -1,0 +1,17 @@
+.permit-checklist {
+  margin-bottom: 4rem;
+
+  &__content {
+    @extend %animated-gradient-bg;
+    background-color: $black;
+    border-radius: 1rem;
+    padding: 4rem 6.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media only screen and (max-width: $bp-footer-3) {
+      padding: 4rem 2.8rem;
+    }
+  }
+}

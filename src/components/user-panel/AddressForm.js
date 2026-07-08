@@ -1,6 +1,6 @@
-import Btn from "./Btn";
-import { useUser } from "../context/UserContex";
-import { useAuth } from "../context/AuthContext";
+import Btn from "../Btn";
+import { useUser } from "../../context/UserContex";
+import { useAuth } from "../../context/AuthContext";
 
 export default function AddressForm({
   initialAddress = {},
@@ -81,7 +81,7 @@ export default function AddressForm({
         </label>
         <input
           type="text"
-          defaultValue={email || (isLogin ? user?.email : "") || ""}
+          defaultValue={email ?? (isLogin ? user?.email : "") ?? ""}
           className="add-edit-address__form__field--input"
           name="email"
           id="email"
@@ -237,10 +237,10 @@ export default function AddressForm({
 
       {showDefaultAddressOptions && (
         <>
-          <div className="add-edit-address__form__checkbox">
+          <div className="checkbox">
             <button
               type="button"
-              className="text-color--item add-edit-address__form__checkbox--btn"
+              className="text-color--item checkbox--btn"
               onClick={() => setOrderDefault(!orderDefault)}
             >
               <div className="text-color--item--marker">
@@ -259,10 +259,10 @@ export default function AddressForm({
             />
           </div>
 
-          <div className="add-edit-address__form__checkbox">
+          <div className="checkbox">
             <button
               type="button"
-              className="text-color--item add-edit-address__form__checkbox--btn"
+              className="text-color--item checkbox--btn"
               onClick={() => setShippingDefault(!shippingDefault)}
             >
               <div className="text-color--item--marker">

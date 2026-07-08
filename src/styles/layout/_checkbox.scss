@@ -1,0 +1,15 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  &--btn {
+    flex-shrink: 0;
+    background-color: $black;
+  }
+
+  label {
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+}

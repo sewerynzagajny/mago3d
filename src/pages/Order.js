@@ -4,7 +4,7 @@ import CookieBanner from "../components/CookieBanner";
 import ScrollEffectContainer from "../components/ScrollEffectContainer";
 import Footer from "../components/Footer";
 import ShoppingCart from "../components/user-panel/ShoppingCart";
-import AddressForm from "../components/AddressForm";
+import AddressForm from "../components/user-panel/AddressForm";
 import ActionConfirmModal from "../components/ActionConfirmModal";
 import OrderSummary from "../components/user-panel/OrderSummary";
 import Btn from "../components/Btn";
@@ -17,6 +17,7 @@ import { countryList } from "../data/countryList";
 import useCheckoutOrderAddress from "../hooks/useCheckoutOrderAddress";
 import DeliveryMethod from "../components/user-panel/DeliveryMethod";
 import Payments from "../components/user-panel/Payments";
+import PermitChecklist from "../components/user-panel/PermitChecklist";
 import { useAuth } from "../context/AuthContext";
 
 function areAddressesEqual(a = {}, b = {}) {
@@ -112,6 +113,8 @@ export default function Order() {
     handleShippingAddressSubmit,
     syncShippingWithBuyer,
     resetShippingToDefault,
+    clearShippingDraft,
+    hasSameDefaultAddress,
   } = useCheckoutOrderAddress();
 
   const [sameAddress, setSameAddress] = useState(false);
@@ -148,14 +151,24 @@ export default function Order() {
       syncShippingWithBuyer();
       setShowShippingForm(false);
     } else {
-      resetShippingToDefault();
+      if (hasSameDefaultAddress) {
+        clearShippingDraft();
+      } else {
+        resetShippingToDefault();
+      }
       setShippingResetKey((prev) => prev + 1);
       const timer = setTimeout(() => {
         setShowShippingForm(true);
       }, 10);
       return () => clearTimeout(timer);
     }
-  }, [sameAddress, syncShippingWithBuyer, resetShippingToDefault]);
+  }, [
+    sameAddress,
+    syncShippingWithBuyer,
+    resetShippingToDefault,
+    clearShippingDraft,
+    hasSameDefaultAddress,
+  ]);
 
   function handleAllDeleteItems() {
     openClearCartConfirmModal({
@@ -204,10 +217,10 @@ export default function Order() {
                       </div>
                     </div>
                     <h3 className="heading-tertiary">Dane dostawy</h3>
-                    <div className="add-edit-address__form__checkbox u-margin-bottom-medium">
+                    <div className="checkbox u-margin-bottom-medium">
                       <button
                         type="button"
-                        className="text-color--item add-edit-address__form__checkbox--btn"
+                        className="text-color--item checkbox--btn"
                         onClick={() => setSameAddress(!sameAddress)}
                       >
                         <div className="text-color--item--marker">
@@ -249,7 +262,8 @@ export default function Order() {
                     )}
                     <h3 className="heading-tertiary">Płatność</h3>
                     <Payments />
-
+                    <h3 className="heading-tertiary">Zgody i inne</h3>
+                    <PermitChecklist />
                     <h3 className="heading-tertiary">Koszyk</h3>
                     <Btn
                       onClick={handleAllDeleteItems}

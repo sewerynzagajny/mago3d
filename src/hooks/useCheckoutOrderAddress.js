@@ -61,6 +61,25 @@ function reducer(state, action) {
         shippingAddressDraft: { ...action.payload.address },
         shippingPhonePrefix: action.payload.phonePrefix,
       };
+    case "CLEAR_SHIPPING_DRAFT":
+      return {
+        ...state,
+        shippingAddressDraft: {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phonePrefix: "+48",
+          phone: "",
+          companyName: "",
+          taxId: "",
+          country: "",
+          street: "",
+          postalCode: "",
+          city: "",
+          region: "",
+        },
+        shippingPhonePrefix: "+48",
+      };
     default:
       return state;
   }
@@ -78,6 +97,14 @@ export default function useCheckoutOrderAddress() {
     () => addresses.find((el) => el.isDefaultShippingAddress) || {},
     [addresses],
   );
+
+  const hasSameDefaultAddress = useMemo(() => {
+    const orderDefault = addresses.find((el) => el.isDefaultOrderAddress);
+    const shippingDefault = addresses.find((el) => el.isDefaultShippingAddress);
+
+    if (!orderDefault || !shippingDefault) return false;
+    return String(orderDefault.id) === String(shippingDefault.id);
+  }, [addresses]);
 
   const [state, dispatch] = useReducer(reducer, {
     buyerAddressDraft: { ...defaultOrderAddress },
@@ -196,6 +223,10 @@ export default function useCheckoutOrderAddress() {
     });
   }, [defaultShippingAddress]);
 
+  const clearShippingDraft = useCallback(() => {
+    dispatch({ type: "CLEAR_SHIPPING_DRAFT" });
+  }, []);
+
   return {
     buyerAddressDraft,
     buyerPhonePrefix,
@@ -209,5 +240,7 @@ export default function useCheckoutOrderAddress() {
     handleShippingAddressSubmit,
     syncShippingWithBuyer,
     resetShippingToDefault,
+    clearShippingDraft,
+    hasSameDefaultAddress,
   };
 }
