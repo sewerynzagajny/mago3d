@@ -1,4 +1,5 @@
 import Btn from "../Btn";
+import SingleCheckbox from "./SingleCheckbox";
 import { useUser } from "../../context/UserContex";
 import { useAuth } from "../../context/AuthContext";
 
@@ -237,49 +238,20 @@ export default function AddressForm({
 
       {showDefaultAddressOptions && (
         <>
-          <div className="checkbox">
-            <button
-              type="button"
-              className="text-color--item checkbox--btn"
-              onClick={() => setOrderDefault(!orderDefault)}
-            >
-              <div className="text-color--item--marker">
-                {orderDefault ? "✓" : ""}
-              </div>
-            </button>
-            <label onClick={() => setOrderDefault(!orderDefault)}>
-              Ustaw jako domyślny adres do zamówienia
-            </label>
-            <input
-              type="checkbox"
-              name="isDefaultOrderAddress"
-              checked={orderDefault}
-              onChange={(e) => setOrderDefault(e.target.checked)}
-              style={{ display: "none" }}
-            />
-          </div>
-
-          <div className="checkbox">
-            <button
-              type="button"
-              className="text-color--item checkbox--btn"
-              onClick={() => setShippingDefault(!shippingDefault)}
-            >
-              <div className="text-color--item--marker">
-                {shippingDefault ? "✓" : ""}
-              </div>
-            </button>
-            <label onClick={() => setShippingDefault(!shippingDefault)}>
-              Ustaw jako domyślny adres dostawy
-            </label>
-            <input
-              type="checkbox"
-              name="isDefaultShippingAddress"
-              checked={shippingDefault}
-              onChange={(e) => setShippingDefault(e.target.checked)}
-              style={{ display: "none" }}
-            />
-          </div>
+          <SingleCheckbox
+            onChange={() => setOrderDefault(!orderDefault)}
+            stateChecked={orderDefault}
+            name="isDefaultOrderAddress"
+          >
+            Ustaw jako domyślny adres do zamówienia
+          </SingleCheckbox>
+          <SingleCheckbox
+            onChange={() => setShippingDefault(!shippingDefault)}
+            stateChecked={shippingDefault}
+            name="isDefaultShippingAddress"
+          >
+            Ustaw jako domyślny adres dostawy
+          </SingleCheckbox>
         </>
       )}
 

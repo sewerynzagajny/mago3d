@@ -19,6 +19,7 @@ import DeliveryMethod from "../components/user-panel/DeliveryMethod";
 import Payments from "../components/user-panel/Payments";
 import PermitChecklist from "../components/user-panel/PermitChecklist";
 import { useAuth } from "../context/AuthContext";
+import SingleCheckbox from "../components/user-panel/SingleCheckbox";
 
 function areAddressesEqual(a = {}, b = {}) {
   const fields = [
@@ -217,30 +218,15 @@ export default function Order() {
                       </div>
                     </div>
                     <h3 className="heading-tertiary">Dane dostawy</h3>
-                    <div className="checkbox u-margin-bottom-medium">
-                      <button
-                        type="button"
-                        className="text-color--item checkbox--btn"
-                        onClick={() => setSameAddress(!sameAddress)}
-                      >
-                        <div className="text-color--item--marker">
-                          {sameAddress ? "✓" : ""}
-                        </div>
-                      </button>
-                      <label
-                        className="u-font-size"
-                        onClick={() => setSameAddress(!sameAddress)}
-                      >
-                        Adres dostawy taki sam jak adres kupującego
-                      </label>
-                      <input
-                        type="checkbox"
-                        name="isDefaultOrderAddress"
-                        checked={sameAddress}
-                        onChange={(e) => setSameAddress(e.target.checked)}
-                        style={{ display: "none" }}
-                      />
-                    </div>
+                    <SingleCheckbox
+                      onChange={() => setSameAddress(!sameAddress)}
+                      stateChecked={sameAddress}
+                      name="sameAddress"
+                      fontSizeClass="u-font-size"
+                      className="u-margin-bottom-medium"
+                    >
+                      Adres dostawy taki sam jak adres kupującego
+                    </SingleCheckbox>
                     {!sameAddress && showShippingForm && (
                       <div className="frame hover-effect-card u-margin-bottom-medium">
                         <div className="add-edit-address__content">

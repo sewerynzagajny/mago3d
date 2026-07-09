@@ -1,70 +1,60 @@
-import { useState } from "react";
+import { useReducer } from "react";
+import SingleCheckbox from "./SingleCheckbox";
+const initialState = {
+  shopTerms: false,
+  parcelTerms: false,
+  invoice: false,
+};
+
+function checkboxRedoucer(state, action) {
+  switch (action.type) {
+    case "TOGGLE_FIELD":
+      return {
+        ...state,
+        [action.field]: !state[action.field],
+      };
+    default:
+      throw new Error("Uknown action");
+  }
+}
 
 export default function PermitChecklist() {
-  const [test, setTest] = useState(false);
-  const [test2, setTest2] = useState(false);
-  const [test3, setTest3] = useState(false);
+  const [state, dispatch] = useReducer(checkboxRedoucer, initialState);
+
+  function handleToggle(fieldName) {
+    return dispatch({ type: "TOGGLE_FIELD", field: fieldName });
+  }
+
   return (
     <div className="permit-checklist">
       <div className="frame hover-effect-card u-margin-bottom-medium">
         <div className="permit-checklist__content">
-          <div className="checkbox ">
-            <button
-              type="button"
-              className="text-color--item checkbox--btn"
-              onClick={() => setTest(!test)}
-            >
-              <div className="text-color--item--marker">{test ? "✓" : ""}</div>
-            </button>
-            <label className="u-font-size" onClick={() => setTest(!test)}>
-              *Znam i akceptuję regulamin sklepu internetowego
-            </label>
-            <input
-              type="checkbox"
-              name=""
-              checked={test}
-              onChange={(e) => setTest(e.target.checked)}
-              style={{ display: "none" }}
-            />
-          </div>
-          <div className="checkbox ">
-            <button
-              type="button"
-              className="text-color--item checkbox--btn"
-              onClick={() => setTest2(!test2)}
-            >
-              <div className="text-color--item--marker">{test2 ? "✓" : ""}</div>
-            </button>
-            <label className="u-font-size" onClick={() => setTest2(!test2)}>
-              *Znam i akceptuję regulamin Paczkomat 24/7
-            </label>
-            <input
-              type="checkbox"
-              name=""
-              checked={test2}
-              onChange={(e) => setTest2(e.target.checked)}
-              style={{ display: "none" }}
-            />
-          </div>
-          <div className="checkbox ">
-            <button
-              type="button"
-              className="text-color--item checkbox--btn"
-              onClick={() => setTest3(!test3)}
-            >
-              <div className="text-color--item--marker">{test3 ? "✓" : ""}</div>
-            </button>
-            <label className="u-font-size" onClick={() => setTest3(!test3)}>
-              Chcę otrzymać fakturę
-            </label>
-            <input
-              type="checkbox"
-              name=""
-              checked={test3}
-              onChange={(e) => setTest3(e.target.checked)}
-              style={{ display: "none" }}
-            />
-          </div>
+          <SingleCheckbox
+            onChange={() => handleToggle("shopTerms")}
+            stateChecked={state.shopTerms}
+            name="shopTerms"
+            required={true}
+            fontSizeClass="u-font-size"
+          >
+            *Znam i akceptuję regulamin sklepu internetowego
+          </SingleCheckbox>
+          <SingleCheckbox
+            onChange={() => handleToggle("parcelTerms")}
+            stateChecked={state.parcelTerms}
+            name="parcelTerms"
+            required={true}
+            fontSizeClass="u-font-size"
+          >
+            *Znam i akceptuję regulamin Paczkomat 24/7
+          </SingleCheckbox>
+          <SingleCheckbox
+            onChange={() => handleToggle("invoice")}
+            stateChecked={state.invoice}
+            name="invoice"
+            fontSizeClass="u-font-size"
+          >
+            Chcę otrzymać fakturę
+          </SingleCheckbox>
         </div>
       </div>
     </div>
