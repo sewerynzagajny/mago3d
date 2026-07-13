@@ -13,6 +13,13 @@
   box-sizing: inherit;
 }
 
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
 html {
   font-size: 62.5%;
 

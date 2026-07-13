@@ -18,13 +18,15 @@ function checkboxRedoucer(state, action) {
   }
 }
 
-export default function PermitChecklist() {
+export default function PermitChecklist({ selectedDeliveryMethodId }) {
   const [state, dispatch] = useReducer(checkboxRedoucer, initialState);
 
   function handleToggle(fieldName) {
     return dispatch({ type: "TOGGLE_FIELD", field: fieldName });
   }
 
+  const isInpostDeliveryMethod =
+    selectedDeliveryMethodId === "inpost_paczkomat_24";
   return (
     <div className="permit-checklist">
       <div className="frame hover-effect-card u-margin-bottom-medium">
@@ -38,15 +40,17 @@ export default function PermitChecklist() {
           >
             *Znam i akceptuję regulamin sklepu internetowego
           </SingleCheckbox>
-          <SingleCheckbox
-            onChange={() => handleToggle("parcelTerms")}
-            stateChecked={state.parcelTerms}
-            name="parcelTerms"
-            required={true}
-            fontSizeClass="u-font-size"
-          >
-            *Znam i akceptuję regulamin Paczkomat 24/7
-          </SingleCheckbox>
+          {isInpostDeliveryMethod && (
+            <SingleCheckbox
+              onChange={() => handleToggle("parcelTerms")}
+              stateChecked={state.parcelTerms}
+              name="parcelTerms"
+              required={true}
+              fontSizeClass="u-font-size"
+            >
+              *Znam i akceptuję regulamin Paczkomat 24/7
+            </SingleCheckbox>
+          )}
           <SingleCheckbox
             onChange={() => handleToggle("invoice")}
             stateChecked={state.invoice}

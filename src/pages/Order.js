@@ -20,7 +20,7 @@ import Payments from "../components/user-panel/Payments";
 import PermitChecklist from "../components/user-panel/PermitChecklist";
 import { useAuth } from "../context/AuthContext";
 import SingleCheckbox from "../components/user-panel/SingleCheckbox";
-
+import TextArea from "../components/user-panel/TextArea";
 function areAddressesEqual(a = {}, b = {}) {
   const fields = [
     "firstName",
@@ -249,7 +249,11 @@ export default function Order() {
                     <h3 className="heading-tertiary">Płatność</h3>
                     <Payments />
                     <h3 className="heading-tertiary">Zgody i inne</h3>
-                    <PermitChecklist />
+                    <PermitChecklist
+                      selectedDeliveryMethodId={selectedDeliveryMethod.id}
+                    />
+                    <h3 className="heading-tertiary">Dodakowe inforamcje</h3>
+                    <TextArea>Uwagi do zamówienia</TextArea>
                     <h3 className="heading-tertiary">Koszyk</h3>
                     <Btn
                       onClick={handleAllDeleteItems}
