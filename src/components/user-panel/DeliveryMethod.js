@@ -1,7 +1,11 @@
+import InpostGeowidget from "./InpostGeowidget";
+
 export default function DeliveryMethod({
   deliveryMethod,
   selectedMethod,
   setSelectedMethod,
+  selectedParcelMachine,
+  onParcelMachineSelect,
 }) {
   return (
     <div className="delivery-method">
@@ -11,21 +15,30 @@ export default function DeliveryMethod({
           <p className="delivery-method__text">Wysyłka w 48 godzin</p>
           <div className="delivery-method__list">
             {deliveryMethod.map((method) => (
-              <label key={method.id} className="delivery-method__item">
-                <input
-                  type="radio"
-                  name="deliveryMethod"
-                  value={method.id}
-                  checked={selectedMethod === method.id}
-                  onChange={() => setSelectedMethod(method.id)}
-                  className="delivery-method__radio-input"
-                />
-                <span className="delivery-method__radio" aria-hidden="true" />
-                <span className="delivery-method__name">{method.label}</span>
-                <span className="delivery-method__price">
-                  {method.priceLabelStringPl}
-                </span>
-              </label>
+              <div key={method.id}>
+                <label className="delivery-method__item">
+                  <input
+                    type="radio"
+                    name="deliveryMethod"
+                    value={method.id}
+                    checked={selectedMethod === method.id}
+                    onChange={() => setSelectedMethod(method.id)}
+                    className="delivery-method__radio-input"
+                  />
+                  <span className="delivery-method__radio" aria-hidden="true" />
+                  <span className="delivery-method__name">{method.label}</span>
+                  <span className="delivery-method__price">
+                    {method.priceLabelStringPl}
+                  </span>
+                </label>
+                {method.id === "inpost_paczkomat_24" &&
+                  selectedMethod === "inpost_paczkomat_24" && (
+                    <InpostGeowidget
+                      onSelect={onParcelMachineSelect}
+                      selectedParcelMachine={selectedParcelMachine}
+                    />
+                  )}
+              </div>
             ))}
           </div>
         </div>

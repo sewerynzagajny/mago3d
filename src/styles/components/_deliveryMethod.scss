@@ -97,3 +97,31 @@
     }
   }
 }
+
+.inpost-geowidget {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.6rem 2.4rem;
+  margin-top: -1rem;
+  margin-bottom: 0.8rem;
+
+  &__selected {
+    border: 0.1rem solid $font-color-primary;
+    border-radius: 0.8rem;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    p {
+      color: $font-color-text;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    strong {
+      color: $font-color-primary;
+    }
+  }
+}

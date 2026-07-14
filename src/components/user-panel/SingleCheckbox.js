@@ -14,13 +14,16 @@ export default function SingleCheckbox({
           {stateChecked ? "✓" : ""}
         </div>
       </button>
-      <label className={fontSizeClass}>{children}</label>
+      <label className={fontSizeClass} htmlFor={name}>
+        {children}
+      </label>
       <input
         type="checkbox"
         name={name}
         checked={stateChecked}
         onChange={onChange}
         required={required}
+        id={name}
       />
     </div>
   );

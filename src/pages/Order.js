@@ -127,6 +127,7 @@ export default function Order() {
   const [selectedMethod, setSelectedMethod] = useState(
     DELIVERY_METHODS[1]?.id || "",
   );
+  const [selectedParcelMachine, setSelectedParcelMachine] = useState(null);
 
   const selectedDeliveryMethod =
     DELIVERY_METHODS.find((method) => method.id === selectedMethod) ||
@@ -199,7 +200,15 @@ export default function Order() {
                       deliveryMethod={DELIVERY_METHODS}
                       selectedMethod={selectedMethod}
                       setSelectedMethod={setSelectedMethod}
+                      selectedParcelMachine={selectedParcelMachine}
+                      onParcelMachineSelect={setSelectedParcelMachine}
                     />
+                    {/* {selectedMethod === "inpost_paczkomat_24" && (
+                      <InpostGeowidget
+                        onSelect={onselect}
+                        selectedParcelMachine={selectedParcelMachine}
+                      />
+                    )} */}
                     <h3 className="heading-tertiary">Dane kupującego</h3>
                     <div className="frame hover-effect-card u-margin-bottom-medium">
                       <div className="add-edit-address__content">

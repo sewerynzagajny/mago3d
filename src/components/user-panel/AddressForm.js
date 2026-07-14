@@ -86,6 +86,7 @@ export default function AddressForm({
           className="add-edit-address__form__field--input"
           name="email"
           id="email"
+          autoComplete="email"
           required
         />
       </div>
@@ -99,6 +100,9 @@ export default function AddressForm({
             value={phonePrefix}
             onChange={(e) => setPhonePrefix?.(e.target.value)}
             aria-label="Kierunkowy kraju"
+            id="country-prefix"
+            name="country_prefix"
+            autoComplete="country-name"
           >
             {countryList.map((el) => (
               <option key={el.id} value={el.dialCode}>
@@ -112,6 +116,7 @@ export default function AddressForm({
             className="add-edit-address__form__field--input"
             name="phone"
             id="phone"
+            autoComplete="phone"
             required
           />
         </div>
@@ -233,6 +238,7 @@ export default function AddressForm({
           className="add-edit-address__form__field--input"
           name="region"
           id="region"
+          autoComplete="region"
         />
       </div>
 

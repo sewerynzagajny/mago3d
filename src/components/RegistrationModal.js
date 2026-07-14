@@ -129,27 +129,27 @@ export default function RegistrationModal({
               <input
                 className={`registraction_modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="password"
-                id="password"
-                autoComplete="password"
+                id="new-password"
+                autoComplete="new-password"
                 ref={passwordRef}
                 placeholder="Hasło"
                 required
                 disabled={loading}
               />
-              <label htmlFor="password">Hasło</label>
+              <label htmlFor="new-password">Hasło</label>
             </div>
             <div className="registraction_modal__content__form-field">
               <input
                 className={`registraction_modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="password"
-                id="password"
-                autoComplete="password"
+                id="repeat-password"
+                autoComplete="new-password"
                 ref={checkPassworRef}
                 placeholder="Powtórz hasło"
                 required
                 disabled={loading}
               />
-              <label htmlFor="password">Powtórz hasło</label>
+              <label htmlFor="repeat-password">Powtórz hasło</label>
             </div>
             <div className="registraction_modal__content__form-field registraction_modal__content__form-field--checkbox">
               <button

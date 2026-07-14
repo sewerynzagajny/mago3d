@@ -121,7 +121,7 @@ export default function LoginModal({
                 className={`login_modal__content__form-field--input ${loading ? "loading" : ""}`}
                 type="password"
                 id="password"
-                autoComplete="password"
+                autoComplete="current-password"
                 ref={passwordRef}
                 placeholder="Hasło"
                 required
