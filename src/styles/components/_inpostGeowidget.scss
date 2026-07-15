@@ -1,0 +1,224 @@
+.inpost-geowidget {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.6rem 2.4rem;
+  margin-top: -1rem;
+  margin-bottom: 0.8rem;
+
+  &__selected {
+    border: 0.1rem solid $font-color-primary;
+    border-radius: 0.8rem;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    p {
+      color: $font-color-text;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    strong {
+      color: $font-color-primary;
+    }
+  }
+}
+
+body > div:has(> #widget-modal) {
+  background: rgba(0, 0, 0, 0.45) !important;
+  animation: showUp 0.3s ease-in-out !important;
+}
+
+/* Główny kontener całego widgetu */
+.widget-modal {
+  width: 50rem;
+  height: 80rem;
+
+  &__content {
+    border-radius: 1rem !important;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden !important;
+  }
+}
+
+/* Górny pasek modala (ten z krzyżykiem do zamykania) */
+.widget-modal_topbar {
+  background-color: #000 !important;
+  border-bottom: 1px solid #eee !important;
+}
+/* Kontener wyszukiwarki */
+.search-widget.easypack-search-widget {
+  padding: 12px !important;
+  background: rgba(0, 0, 0, 0.45);
+  transition: opacity 0.3s;
+  animation: showUp 0.3s ease-in-out;
+}
+
+/* Sam input/pole tekstowe w środku search-group */
+.search-widget .search-group input {
+  border-radius: 6px !important;
+  border: 1px solid #ccc !important;
+  font-family: inherit !important;
+}
+/* Kontener rzędu mapy i listy */
+.map-list-row {
+  background-color: #ffffff !important;
+}
+
+/* Lista paczkomatów (UL) */
+.filters-widget__list {
+  background: #ffffff !important;
+  padding: 0 !important;
+}
+
+/* Pojedynczy element (LI) na liście paczkomatów */
+.filters-widget__list li {
+  border-bottom: 1px solid #f0f0f0 !important;
+  transition: background 0.2s;
+}
+
+.filters-widget__list li:hover {
+  background-color: #f7f7f7 !important;
+}
+/* Cały dolny pasek nawigacji */
+.view-chooser {
+  background-color: #222222 !important; /* Zmień na swój kolor menu */
+  border-top: 1px solid #333 !important;
+}
+
+/* Aktywny przycisk (ten, który na zdjęciu ma data-active="true") */
+.view-chooser .map-wrapper[data-active="true"],
+.view-chooser .list-wrapper[data-active="true"] {
+  background-color: #ffcc00 !important; /* Złoty kolor InPost / lub kolor Twojego sklepu */
+  color: #000000 !important;
+}
+
+/* Napisy na przyciskach wewnątrz dolnego paska */
+.view-chooser .btn.map-btn {
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.inpost_modal {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+
+/* Nowa, bezpieczna klasa dla przycisków InPostu */
+.inpost-btn {
+  /* Tutaj możesz dopisać własne style, jeśli chcesz zmienić wygląd przycisków InPostu */
+  font-family: inherit !important;
+  font-weight: bold !important;
+}
+
+/* Przyciski na dolnym pasku (MAPA / LISTA) */
+.view-chooser {
+  .inpost-btn {
+    text-transform: uppercase;
+  }
+}
+
+// /* 1. Neutralizacja Twojej globalnej klasy .btn wewnątrz okna InPostu */
+// .widget-modal {
+//   // Ten zapis wyszukuje KAŻDY element z klasą .btn wewnątrz mapy
+//   .btn {
+//     /* RESET: Wpisz tutaj domyślne wartości, które Twoja klasa .btn modyfikuje */
+//     display: inline-block !important;
+//     width: auto !important;
+//     height: auto !important;
+//     padding: 0 !important;         // Jeśli Twoja klasa dodaje duże paddingi, zerujemy je
+//     margin: 0 !important;
+//     background: transparent !important; // Czyści tło, jeśli Twoja klasa wymusza np. czerwone/niebieskie tło
+//     border: none !important;
+//     border-radius: 0 !important;
+//     box-shadow: none !important;
+//     transform: none !important;
+//     transition: none !important;
+//     position: relative !important;
+
+//     // Przywrócenie domyślnych zachowań czcionki dla InPostu
+//     font-family: inherit !important;
+//     font-size: inherit !important;
+//     line-height: inherit !important;
+//     color: inherit !important;
+//   }
+// }
+
+// /* 2. Przywrócenie i ostylowanie przycisków dolnego paska pod unikalną klasą InPostu */
+// .view-chooser {
+//   .list-btn, .map-btn {
+//     /* Tutaj wpisujesz bezpieczny wygląd dolnych przycisków MAPA / LISTA */
+//     font-weight: bold !important;
+//     text-transform: uppercase !important;
+//     cursor: pointer !important;
+//     display: flex !important;
+//     align-items: center !important;
+//     justify-content: center !important;
+//     width: 100% !important;
+//     height: 100% !important;
+//   }
+// }
+
+// .widget-modal {
+//   // 1. Twój dotychczasowy reset dla .btn
+//   .btn {
+//     display: inline-block !important;
+//     width: auto !important;
+//     height: auto !important;
+//     padding: 0 !important;
+//     margin: 0 !important;
+//     border: none !important;
+//     border-radius: 0 !important;
+//     box-shadow: none !important;
+//     transform: none !important;
+//     transition: none !important;
+//     position: relative !important;
+//     background-color: transparent !important;
+//     font-family: inherit !important;
+//     font-size: inherit !important;
+//     line-height: inherit !important;
+//     color: inherit !important;
+//   }
+
+//   // 2. NAPRAWA GÓRNEGO PASKA (Wyszukiwarka + Lupka)
+//   // Przywracamy pozycjonowanie dla kontenera przycisku lupki
+//   .search-group-btn {
+//     display: flex !important;
+//     align-items: center !important;
+//     justify-content: center !important;
+
+//     .btn-search {
+//       display: block !important; // Lupka wewnątrz paska musi być blokiem
+//       width: 44px !important; // Domyślna szerokość przycisku InPostu
+//       height: 44px !important; // Domyślna wysokość dopasowana do inputu
+//       background-repeat: no-repeat !important;
+//       background-position: center !important;
+//       background-size: 20px !important; // Odpowiednia wielkość samej ikony lupy
+//     }
+//   }
+
+//   // 3. NAPRAWA DOLNEGO PASKA (MAPA / LISTA)
+//   // Przycisk listy ucinał literę L, bo brakowało mu szerokości i flexa
+//   .view-chooser {
+//     .list-btn,
+//     .map-btn {
+//       display: flex !important;
+//       align-items: center !important;
+//       justify-content: center !important;
+//       width: 100% !important;
+//       height: 100% !important;
+//       padding: 0.1rem 0 !important;
+//       font-weight: bold !important;
+//       text-transform: uppercase !important;
+//       cursor: pointer !important;
+//     }
+//   }
+// }
