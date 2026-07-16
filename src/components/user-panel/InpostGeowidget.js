@@ -1,4 +1,7 @@
 import { useEffect, useRef } from "react";
+import Btn from "../Btn";
+import { toast } from "react-toastify";
+import { toastConfig } from "../../config/toastConfig";
 
 const GEOWIDGET_SCRIPT_URL =
   "https://geowidget.easypack24.net/js/sdk-for-javascript.js";
@@ -107,35 +110,102 @@ export default function InpostGeowidget({ selectedParcelMachine, onSelect }) {
     initialized.current = true;
   }
 
+  // function handleOpenWidget() {
+  //   if (!window.easyPack) return;
+
+  //   window.easyPack.modalMap(
+  //     (point, modal) => {
+  //       modal.closeModal();
+  //       // ZAMIAST bezpośredniego onSelect, pukamy do naszego mostka globalnego,
+  //       // który po powrocie na podstronę natychmiast przekieruje dane do NOWEGO stanu Reacta.
+  //       if (typeof window._currentInpostOnSelect === "function") {
+  //         window._currentInpostOnSelect({
+  //           id: point.name,
+  //           address: `${point.address.line1}, ${point.address.line2}`,
+  //         });
+  //       }
+  //       toast.success(`Wybrano Paczkomat: ${point.name}`, toastConfig);
+  //     },
+  //     { width: 500, height: 600 },
+  //   );
+  // }
+
   function handleOpenWidget() {
     if (!window.easyPack) return;
 
-    window.easyPack.modalMap(
-      (point, modal) => {
+    // Przekazujemy aktualny stan, aby mapa wiedziała czy ma zaznaczyć stary punkt, czy być czysta
+    const modalOptions = {
+      width: 500,
+      height: 600,
+      selectPoint: selectedParcelMachine?.id || "",
+    };
+
+    window.easyPack.modalMap((point, modal) => {
+      // Blok try-catch wewnątrz callbacku zabezpiecza przed błędami odczytu danych punktu
+      try {
         modal.closeModal();
-        // ZAMIAST bezpośredniego onSelect, pukamy do naszego mostka globalnego,
-        // który po powrocie na podstronę natychmiast przekieruje dane do NOWEGO stanu Reacta.
+
+        if (!point) throw new Error("Brak danych punktu z InPostu");
+
+        // 1. Sprawdzamy czy to pierwszy wybór, czy zmiana i wysyłamy odpowiedni toast
+        if (selectedParcelMachine && selectedParcelMachine.id) {
+          if (selectedParcelMachine.id !== point.name) {
+            toast.success(`Zmieniono Paczkomat na: ${point.name}`, toastConfig);
+          }
+        } else {
+          toast.success(`Wybrano Paczkomat: ${point.name}`, toastConfig);
+        }
+
+        // 2. Przekazanie danych do stanu Reacta przez mostek
         if (typeof window._currentInpostOnSelect === "function") {
           window._currentInpostOnSelect({
             id: point.name,
             address: `${point.address.line1}, ${point.address.line2}`,
           });
         }
-      },
-      { width: 500, height: 600 },
-    );
+      } catch (err) {
+        console.error("Błąd podczas zapisywania paczkomatu:", err);
+        toast.error("Nie udało się zapisać wybranego paczkomatu!", toastConfig);
+      } finally {
+        // Blok finally wykona się ZAWSZE – niezależnie od tego, czy zapis się udał, czy wywalił błąd.
+        // Przydatne, jeśli w przyszłości dodasz np. setLoading(false) dla całego widżetu.
+        console.log("Zakończono proces wyboru punktu InPost.");
+      }
+    }, modalOptions);
+  }
+
+  function handleDeleteParcelAddress() {
+    try {
+      // 1. Czyścimy wszelkie zaznaczenia i aktywne klasy InPostu w drzewie DOM
+      if (window.easyPack) {
+        window.easyPack.selectedPoint = null;
+      }
+
+      // Usuwamy klasę aktywności z elementów listy i markerów, jeśli InPost je zachował
+      const activeElements = document.querySelectorAll(
+        ".easypack-popup, .active, [data-active='true']",
+      );
+      activeElements.forEach((el) => {
+        el.classList.remove("active");
+        el.removeAttribute("data-active");
+      });
+
+      // Zamykamy dymki informacyjne (popupy) na mapie OpenStreetMap
+      const popups = document.querySelectorAll(".leaflet-popup-close-button");
+      popups.forEach((btn) => btn.click());
+      // 2. Zerujemy stan w React
+      onSelect(null);
+
+      toast.success("Usunięto adres paczkomatu", toastConfig);
+    } catch (err) {
+      toast.error("Nieudane usunięcie adresu paczkomatu!", toastConfig);
+    } finally {
+      // setLoading(false);
+    }
   }
 
   return (
     <div className="inpost-geowidget">
-      <button
-        type="button"
-        onClick={handleOpenWidget}
-        className="address-card__info__buttons--button"
-      >
-        {selectedParcelMachine ? "Zmień paczkomat" : "Wybierz paczkomat"}
-      </button>
-
       {selectedParcelMachine && (
         <div className="inpost-geowidget__selected">
           <p>
@@ -144,6 +214,16 @@ export default function InpostGeowidget({ selectedParcelMachine, onSelect }) {
           <p>{selectedParcelMachine.address}</p>
         </div>
       )}
+      <div className="inpost-geowidget__btns">
+        <Btn onClick={handleOpenWidget} className="btn">
+          {selectedParcelMachine ? "Zmień paczkomat" : "Wybierz paczkomat"}
+        </Btn>
+        {selectedParcelMachine && (
+          <Btn onClick={handleDeleteParcelAddress} className="btn">
+            Usuń
+          </Btn>
+        )}
+      </div>
     </div>
   );
 }
