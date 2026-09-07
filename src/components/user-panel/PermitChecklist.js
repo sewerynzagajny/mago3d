@@ -1,26 +1,12 @@
-import { useReducer } from "react";
 import SingleCheckbox from "./SingleCheckbox";
-const initialState = {
-  shopTerms: false,
-  parcelTerms: false,
-  invoice: false,
-};
 
-function checkboxRedoucer(state, action) {
-  switch (action.type) {
-    case "TOGGLE_FIELD":
-      return {
-        ...state,
-        [action.field]: !state[action.field],
-      };
-    default:
-      throw new Error("Uknown action");
-  }
-}
-
-export default function PermitChecklist({ selectedDeliveryMethodId }) {
-  const [state, dispatch] = useReducer(checkboxRedoucer, initialState);
-
+export default function PermitChecklist({
+  selectedDeliveryMethodId,
+  shopTerms,
+  parcelTerms,
+  invoice,
+  dispatch,
+}) {
   function handleToggle(fieldName) {
     return dispatch({ type: "TOGGLE_FIELD", field: fieldName });
   }
@@ -33,7 +19,7 @@ export default function PermitChecklist({ selectedDeliveryMethodId }) {
         <div className="permit-checklist__content">
           <SingleCheckbox
             onChange={() => handleToggle("shopTerms")}
-            stateChecked={state.shopTerms}
+            stateChecked={shopTerms}
             name="shopTerms"
             required={true}
             fontSizeClass="u-font-size"
@@ -43,7 +29,7 @@ export default function PermitChecklist({ selectedDeliveryMethodId }) {
           {isInpostDeliveryMethod && (
             <SingleCheckbox
               onChange={() => handleToggle("parcelTerms")}
-              stateChecked={state.parcelTerms}
+              stateChecked={parcelTerms}
               name="parcelTerms"
               required={true}
               fontSizeClass="u-font-size"
@@ -53,7 +39,7 @@ export default function PermitChecklist({ selectedDeliveryMethodId }) {
           )}
           <SingleCheckbox
             onChange={() => handleToggle("invoice")}
-            stateChecked={state.invoice}
+            stateChecked={invoice}
             name="invoice"
             fontSizeClass="u-font-size"
           >

@@ -9,6 +9,16 @@ export default function OrderSummary({
 }) {
   const navigate = useNavigate();
 
+  const initialDeliveryCost = {
+    cost: 0,
+    get costLabelStringPl() {
+      return this.cost.toLocaleString("pl-PL", {
+        style: "currency",
+        currency: "PLN",
+      });
+    },
+  };
+
   function handleBuy() {
     return navigate("/panel/podsumowanie");
   }
@@ -41,7 +51,11 @@ export default function OrderSummary({
                 </p>
                 <p className="order-summary__subline">{deliveryMethodLabel}</p>
               </div>
-              <p className="order-summary__value">{deliveryPriceFormatted}</p>
+              <p className="order-summary__value">
+                {!deliveryMethodLabel
+                  ? initialDeliveryCost?.costLabelStringPl
+                  : deliveryPriceFormatted}
+              </p>
             </div>
 
             <div className="order-summary__row order-summary__row--total">

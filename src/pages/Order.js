@@ -21,6 +21,7 @@ import PermitChecklist from "../components/user-panel/PermitChecklist";
 import { useAuth } from "../context/AuthContext";
 import SingleCheckbox from "../components/user-panel/SingleCheckbox";
 import TextArea from "../components/user-panel/TextArea";
+
 function areAddressesEqual(a = {}, b = {}) {
   const fields = [
     "firstName",
@@ -87,11 +88,33 @@ const DELIVERY_METHODS = [
   },
 ];
 
+const initialState = {
+  shopTerms: false,
+  parcelTerms: false,
+  invoice: false,
+};
+
+function checkboxRedoucer(state, action) {
+  switch (action.type) {
+    case "TOGGLE_FIELD":
+      return {
+        ...state,
+        [action.field]: !state[action.field],
+      };
+    default:
+      throw new Error("Uknown action");
+  }
+}
+
 export default function Order() {
   const { cart, dispatch } = useCart();
   const [modalState, modalDispatch] = useReducer(
     modalReducer,
     initialModalState,
+  );
+  const [checkboxState, checkboxDispatch] = useReducer(
+    checkboxRedoucer,
+    initialState,
   );
 
   const { isLogin } = useAuth();
@@ -124,15 +147,16 @@ export default function Order() {
   const [shippingResetKey, setShippingResetKey] = useState(0);
   const [showShippingForm, setShowShippingForm] = useState(false);
 
-  const [selectedMethod, setSelectedMethod] = useState(
-    DELIVERY_METHODS[1]?.id || "",
-  );
+  // const [selectedMethod, setSelectedMethod] = useState(
+  //   DELIVERY_METHODS[1]?.id || "",
+  // );
+  const [selectedMethod, setSelectedMethod] = useState("");
   const [selectedParcelMachine, setSelectedParcelMachine] = useState(null);
 
   const selectedDeliveryMethod =
-    DELIVERY_METHODS.find((method) => method.id === selectedMethod) ||
-    DELIVERY_METHODS[1] ||
-    DELIVERY_METHODS[0];
+    DELIVERY_METHODS.find((method) => method.id === selectedMethod) || "";
+  // DELIVERY_METHODS[1] ||
+  // DELIVERY_METHODS[0];
 
   const orderTotalPrice =
     productsTotalPrice + (selectedDeliveryMethod?.priceLabel || 0);
@@ -178,6 +202,23 @@ export default function Order() {
       cartDispatch: dispatch,
     });
   }
+
+  function handleBuy() {
+    const orderDraft = {
+      buyer: buyerAddressDraft,
+      shipping: sameAddress ? buyerAddressDraft : shippingAddressDraft,
+      delivery: {
+        id: selectedDeliveryMethod.id,
+        parcelMachine: selectedParcelMachine,
+      },
+      // paymentMethod,
+      // permits,
+      // note,
+      items: cart,
+      total: orderTotalPrice,
+    };
+  }
+
   return (
     <>
       <section className="user-panel">
@@ -226,40 +267,50 @@ export default function Order() {
                         />
                       </div>
                     </div>
-                    <h3 className="heading-tertiary">Dane dostawy</h3>
-                    <SingleCheckbox
-                      onChange={() => setSameAddress(!sameAddress)}
-                      stateChecked={sameAddress}
-                      name="sameAddress"
-                      fontSizeClass="u-font-size"
-                      className="u-margin-bottom-medium"
-                    >
-                      Adres dostawy taki sam jak adres kupującego
-                    </SingleCheckbox>
-                    {!sameAddress && showShippingForm && (
-                      <div className="frame hover-effect-card u-margin-bottom-medium">
-                        <div className="add-edit-address__content">
-                          <AddressForm
-                            key={`shipping-${shippingResetKey}`}
-                            initialAddress={
-                              isLogin ? shippingAddressDraft : { email: "" }
-                            }
-                            onSubmit={handleShippingAddressSubmit}
-                            onFormChange={handleShippingAddressChange}
-                            countryList={countryList}
-                            phonePrefix={shippingPhonePrefix}
-                            setPhonePrefix={setShippingPhonePrefix}
-                            showDefaultAddressOptions={false}
-                            showActionButtons={false}
-                          />
-                        </div>
-                      </div>
+                    {(selectedMethod === "inpost_paczkomat_24" &&
+                      selectedDeliveryMethod.id === "inpost_paczkomat_24") || (
+                      <>
+                        <h3 className="heading-tertiary">Dane dostawy</h3>
+                        <SingleCheckbox
+                          onChange={() => setSameAddress(!sameAddress)}
+                          stateChecked={sameAddress}
+                          name="sameAddress"
+                          fontSizeClass="u-font-size"
+                          className="u-margin-bottom-medium"
+                        >
+                          Adres dostawy taki sam jak adres kupującego
+                        </SingleCheckbox>
+                        {!sameAddress && showShippingForm && (
+                          <div className="frame hover-effect-card u-margin-bottom-medium">
+                            <div className="add-edit-address__content">
+                              <AddressForm
+                                key={`shipping-${shippingResetKey}`}
+                                initialAddress={
+                                  isLogin ? shippingAddressDraft : { email: "" }
+                                }
+                                onSubmit={handleShippingAddressSubmit}
+                                onFormChange={handleShippingAddressChange}
+                                countryList={countryList}
+                                phonePrefix={shippingPhonePrefix}
+                                setPhonePrefix={setShippingPhonePrefix}
+                                showDefaultAddressOptions={false}
+                                showActionButtons={false}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </>
                     )}
+
                     <h3 className="heading-tertiary">Płatność</h3>
                     <Payments />
                     <h3 className="heading-tertiary">Zgody i inne</h3>
                     <PermitChecklist
                       selectedDeliveryMethodId={selectedDeliveryMethod.id}
+                      shopTerms={checkboxState.shopTerms}
+                      parcelTerms={checkboxState.parcelTerms}
+                      invoice={checkboxState.invoice}
+                      dispatch={checkboxDispatch}
                     />
                     <h3 className="heading-tertiary">Dodakowe inforamcje</h3>
                     <TextArea>Uwagi do zamówienia</TextArea>
